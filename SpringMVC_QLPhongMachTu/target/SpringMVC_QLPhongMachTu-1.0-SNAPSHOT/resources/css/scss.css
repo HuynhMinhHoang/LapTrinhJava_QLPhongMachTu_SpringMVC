@@ -1,0 +1,182 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : Jul 26, 2023, 1:14:27 PM
+    Author     : Asus
+*/
+
+
+/*font*/
+/*@font-face {
+    font-family: font;
+    src: url('resource/font/HelveticaNeue.ttf.otf') format('truetype');
+}*/
+
+
+
+/* Index */
+.index{
+    background-image: url('hero-bg.png');
+}
+
+
+/*.font {
+    font-family: Segoe UI";
+}*/
+.logo1 >a > img{
+    width: 206px;
+    height: 43px;
+    margin-top: 25px;
+    margin-left: 200px;
+}
+.menu{
+    margin-right: 200px;
+}
+nav.menuchinh{
+    background-color: white;
+    display:flex;
+    justify-content:space-between;
+}
+
+ul.menucha{
+    list-style-type: none;
+    display: flex;
+}
+ul.menucha > li{
+    padding: 10px;
+}
+ul.menucha > li > a{
+    font-weight: 600;
+    text-decoration: none;
+    color:#112957;
+    display: block;
+    margin-top: 20px;
+    margin-left: 50px;
+    font-size: 20px;
+    transition: 0.2s;
+}
+ul.menucha > li > a:hover{
+    color: #28a745;
+}
+
+nav.banner{
+
+}
+
+
+
+
+/* Login */
+.login{
+    background-image: url('h1_hero.png');
+    padding: 225px;
+}
+.login_main {
+    display: flex;
+    justify-content: flex-start;
+    margin-left: 100px;
+}
+
+.login_main > form > p{
+    font-size: 23px;
+    font-weight: 500;
+    text-align: center;
+}
+.one{
+    border-radius: 13px;
+    display: flex;
+    width: 500px;
+    padding: 8px;
+    background: white;
+}
+.one1{
+    padding: 7px 7px 7px 10px;
+
+}
+.one1 > input{
+    background: white;
+    outline: none;
+    border: none;
+    vertical-align: middle;
+    width: 440px;
+    font-size: 18px;
+}
+.login0{
+    padding: 6px;
+}
+
+.one2{
+    padding-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.one2 > button{
+
+    width: 300px;
+    padding: 18px;
+    border: .0px solid rgb(43, 43, 43);
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 10px;
+}
+.one2 > button:hover{
+    background-color:#57C050 ;
+    color: white;
+}
+.one2 > a{
+    text-align: center;
+}
+#tk1 > i{
+    color: rgb(58, 58, 58);
+}
+.password{
+    padding-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.note{
+    display:flex;
+    justify-content:space-around;
+    padding-bottom: 30px;
+    padding-top: 20px;
+}
+.note1 > p{
+    font-size: 17px;
+    color: rgb(151, 0, 0);
+}
+.note1 > a {
+    text-decoration: none;
+    color: rgb(94, 94, 94);
+    font-size: 16px;
+    transition: 0.3s;
+}
+.note1 > a:hover{
+    color: rgb(0, 0, 0);
+    text-decoration:underline ;
+}
+
+/* footer */
+.footer_main{
+    padding-top: 30px;
+
+}
+.footer{
+    border-radius: 100px 100px 0px 0px;
+    padding: 40px;
+    text-align: center;
+    background: #f8f9fa;
+}
+.footer h1{
+    font-weight: 600;
+    font-style: italic;
+    color: #5AAC4E;
+    font-size: 35px;
+}
+.footer p{
+    padding: 0px;
+    margin: 0px;
+}

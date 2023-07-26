@@ -3,6 +3,7 @@ D:\LapTrinhJAVA\SpringMVC_QLPhongMachTu\src\main\java\com\hmh\configs\WebApplica
 D:\LapTrinhJAVA\SpringMVC_QLPhongMachTu\src\main\java\pojo\Thuoc.java
 D:\LapTrinhJAVA\SpringMVC_QLPhongMachTu\src\main\java\pojo\BacSi.java
 D:\LapTrinhJAVA\SpringMVC_QLPhongMachTu\src\main\java\pojo\PhieuKhamBenh.java
+D:\LapTrinhJAVA\SpringMVC_QLPhongMachTu\src\main\java\com\hmh\controllers\LoginController.java
 D:\LapTrinhJAVA\SpringMVC_QLPhongMachTu\src\main\java\com\hmh\configs\DispatcherServletInitializer.java
 D:\LapTrinhJAVA\SpringMVC_QLPhongMachTu\src\main\java\com\hmh\configs\HibernateConfig.java
 D:\LapTrinhJAVA\SpringMVC_QLPhongMachTu\src\main\java\pojo\TaiKhoan.java

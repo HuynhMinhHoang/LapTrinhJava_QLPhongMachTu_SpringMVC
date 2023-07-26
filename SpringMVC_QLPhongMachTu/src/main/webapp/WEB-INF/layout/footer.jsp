@@ -6,9 +6,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<section>
-    <div class="jumbotron">
-        <h1>Apache Tiles</h1>
-        <p>SpringMVC DemoApp...</p>
-    </div>
-</section>
+<nav class='footer_main'>
+    <section>
+        <div class="footer">
+            <h1>HEALTH COUCH</h1>
+            <p>SpringMVC DemoApp...</p>
+        </div>
+    </section>
+</nav>

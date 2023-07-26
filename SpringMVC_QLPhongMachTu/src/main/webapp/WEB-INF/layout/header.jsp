@@ -5,41 +5,29 @@
 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<nav class="navbar navbar-expand-lg navbar-light bg-info p-3">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="#">DBook Inc</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+<!DOCTYPE html>
+<!--<nav class="menuchinh">
+    <div class="menu">
+        <ul class="menucha">
+            <li class="sub"><img src="<c:url value="/img/logo2.png"/>" alt="alert" /></li>
+        </ul>
+    </div>
+    <div class="menu">
+        <ul class="menucha">
+            <li class="sub"><a href="#" >Đăng nhập</a></li>
+            <li class="sub"><a href="#" >Đăng ký</a></li>
+        </ul>
+    </div>
+</nav>-->
 
-        <div class=" collapse navbar-collapse" id="navbarNavDropdown">
-            <ul class="navbar-nav ms-auto ">
-                <li class="nav-item">
-                    <a class="nav-link mx-2 active" aria-current="page" href="#">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link mx-2" href="#">Products</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link mx-2" href="#">Pricing</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link mx-2 dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Company
-                    </a>
-                </li>
-            </ul>
-            <ul class="navbar-nav ms-auto d-none d-lg-inline-flex">
-                <li class="nav-item mx-2">
-                    <a class="nav-link text-dark h5" href="" target="blank"><i class="fab fa-google-plus-square"></i></a>
-                </li>
-                <li class="nav-item mx-2">
-                    <a class="nav-link text-dark h5" href="" target="blank"><i class="fab fa-twitter"></i></a>
-                </li>
-                <li class="nav-item mx-2">
-                    <a class="nav-link text-dark h5" href="" target="blank"><i class="fab fa-facebook-square"></i></a>
-                </li>
-            </ul>
-        </div>
+<nav class="menuchinh">
+    <div class="logo1">
+        <a href="#" id="logo"><img src="<c:url value="/img/logo_1.png"/>" alt="alert" /></a>
+    </div>
+    <div class="menu">
+        <ul class="menucha">
+            <li class="sub"><a href="<c:url value ="/dangnhap"/>">Đăng nhập</a></li>
+            <li class="sub"><a href="<c:url value ="/dangky"/>">Đăng ký</a></li>
+        </ul>
     </div>
 </nav>

@@ -16,10 +16,25 @@ Click nbfs://nbhost/SystemFileSystem/Templates/XML/XMLDocument.xml to edit this 
         <put-attribute name="footer"
                        value="/WEB-INF/layout/footer.jsp" />
     </definition>
+    
     <definition name="index" extends="baseLayout">
         <put-attribute name="title" value="Trang chủ" />
         <put-attribute name="content"
                        value="/WEB-INF/page/index.jsp" />
     </definition>
+    
+    <definition name="dangky" extends="baseLayout">
+        <put-attribute name="title" value="Trang đăng ký" />
+        <put-attribute name="content"
+                       value="/WEB-INF/page/dangky.jsp" />
+    </definition>
+    
+    <definition name="dangnhap" extends="baseLayout">
+        <put-attribute name="title" value="Trang đăng nhập" />
+        <put-attribute name="content"
+                       value="/WEB-INF/page/dangnhap.jsp" />
+    </definition>
+    
+    
 </tiles-definitions>
 

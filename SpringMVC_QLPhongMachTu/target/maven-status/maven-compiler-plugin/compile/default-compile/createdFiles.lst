@@ -14,6 +14,7 @@ com\hmh\pojo\PhieuDangKy.class
 com\hmh\pojo\Thuoc.class
 com\hmh\pojo\YTa_.class
 com\hmh\pojo\ChiTietThuoc.class
+com\hmh\controllers\LoginController.class
 com\hmh\pojo\BacSi.class
 com\hmh\pojo\BacSi_.class
 com\hmh\pojo\YTa.class

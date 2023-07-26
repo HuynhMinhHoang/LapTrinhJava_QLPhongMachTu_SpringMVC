@@ -25,14 +25,7 @@ public class HomeController {
     @RequestMapping("/")
     @Transactional
     public String index(Model model){
-        Session s = this.factoryBean.getObject().getCurrentSession();
-        Query q = s.createQuery("From BenhNhan");
-        model.addAttribute("benhnhans", q.getResultList());
         return "index";
     }
     
-    @RequestMapping("/login")
-    public String login(){
-        return "login";
-    }
 }
