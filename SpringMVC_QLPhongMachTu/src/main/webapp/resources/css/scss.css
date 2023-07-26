@@ -20,7 +20,12 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
 .index{
     background-image: url('hero-bg.png');
 }
-
+.title{
+    display: flex;
+    justify-content: center;
+    height: 750px;
+    
+}
 
 /*.font {
     font-family: Segoe UI";

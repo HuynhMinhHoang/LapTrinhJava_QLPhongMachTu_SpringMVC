@@ -15,8 +15,13 @@
 </c:forEach>--%>
 </ul>-->
 <nav class="index">
-    <div>
-        <h1>ÐANG KÝ KHÁM B?NH</h1>
+    <div class="title">
+        <div>
+            <a href="<c:url value ="/dangnhap"/>">Đăng nhập</a>
+        </div>
+        <div>
+            <img src="<c:url value="/img/appointment.png"/>" alt="alert" />
+        </div>
     </div>
 </nav>
 
