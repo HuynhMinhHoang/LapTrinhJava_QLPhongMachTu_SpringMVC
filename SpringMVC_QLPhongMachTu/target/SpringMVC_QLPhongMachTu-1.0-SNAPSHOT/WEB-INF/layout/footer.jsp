@@ -10,7 +10,8 @@
     <section>
         <div class="footer">
             <h1>HEALTH COUCH</h1>
-            <p>SpringMVC DemoApp...</p>
+            <p>SpringMVC DemoWeb...</p>
         </div>
     </section>
+
 </nav>

@@ -6,21 +6,16 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
-<!--<h1 class="idText">Đăng nhập</h1>
-<ul>
-<%--<c:forEach items="${benhnhans}" var="p">
-    <li>
-    ${p.idBn} - ${p.hoTen}
-</li>
-</c:forEach>--%>
-</ul>-->
+
 <nav class="index">
     <div class="title">
         <div>
-            <a href="<c:url value ="/dangnhap"/>">Đăng nhập</a>
+            <h3>BỆNH VIỆN CAO CẤP CHUẨN 5 SAO HÀNG ĐẦU VIỆT NAM</h3>
+            <p>Hệ thống Bệnh Viện Health Couch là địa chỉ uy tín về khám chữa bệnh, với đội ngũ chuyên gia bác sĩ hàng đầu, trang thiết bị hiện đại, cùng các phác đồ điều trị hiệu quả, khoa học mang đến dịch vụ khám, điều trị, chăm sóc sức khỏe cao cấp, toàn diện với chi phí hợp lý.</p>
+            <a href="<c:url value ="/dangnhap"/>"><button>ĐĂNG KÝ KHÁM</button></a>
         </div>
         <div>
-            <img src="<c:url value="/img/appointment.png"/>" alt="alert" />
+            <img src="<c:url value="/img/banner_img.png"/>" alt="alert" />
         </div>
     </div>
 </nav>

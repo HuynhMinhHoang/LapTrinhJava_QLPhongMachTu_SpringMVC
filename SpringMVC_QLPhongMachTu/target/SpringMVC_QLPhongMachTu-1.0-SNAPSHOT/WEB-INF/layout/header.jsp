@@ -6,28 +6,17 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<!--<nav class="menuchinh">
-    <div class="menu">
-        <ul class="menucha">
-            <li class="sub"><img src="<c:url value="/img/logo2.png"/>" alt="alert" /></li>
-        </ul>
-    </div>
-    <div class="menu">
-        <ul class="menucha">
-            <li class="sub"><a href="#" >Đăng nhập</a></li>
-            <li class="sub"><a href="#" >Đăng ký</a></li>
-        </ul>
-    </div>
-</nav>-->
+
 
 <nav class="menuchinh">
     <div class="logo1">
-        <a href="#" id="logo"><img src="<c:url value="/img/logo_1.png"/>" alt="alert" /></a>
+        <a href="<c:url value ="/"/>" id="logo"><img src="<c:url value="/img/logo_1.png"/>" alt="alert" /></a>
     </div>
     <div class="menu">
         <ul class="menucha">
             <li class="sub"><a href="<c:url value ="/dangnhap"/>">Đăng nhập</a></li>
             <li class="sub"><a href="<c:url value ="/dangky"/>">Đăng ký</a></li>
+            <li class="sub"><a href="<c:url value ="/dangkykham"/>">Đăng ký khám</a></li>
         </ul>
     </div>
 </nav>

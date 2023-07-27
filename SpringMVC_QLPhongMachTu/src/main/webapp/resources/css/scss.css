@@ -3,9 +3,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to c
 Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
 */
 /* 
-    Created on : Jul 26, 2023, 1:14:27 PM
+    Created on : Jul 26, 2023, 10:26:29 PM
     Author     : Asus
 */
+
 
 
 /*font*/
@@ -18,14 +19,50 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
 
 /* Index */
 .index{
-    background-image: url('hero-bg.png');
+    background-image: url('banner_bg.png');
+    padding: 100px;
 }
 .title{
     display: flex;
     justify-content: center;
-    height: 750px;
-    
+    height:607px;
+    align-items: center;
+    width: 75%;
+    margin: auto;
 }
+.title div{
+    text-align: justify;
+    margin: 0px;
+    align-items: center;
+}
+.title div h3{
+    font-weight: 600;
+    width: 55%;
+    font-size:35px;
+}
+.title div p{
+    padding-top: 10px;
+    font-size:18px;
+    width: 54%;
+    text-align: justify;
+    margin-bottom: 45px;
+}
+.title div button{
+    width: 250px;
+    padding: 18px;
+    font-size: 15px;
+    border: .0px solid rgb(43, 43, 43);
+    background: #5AAC4E;
+    transition: 0.3s;
+    color: white;
+    border-radius: 6px;
+}
+.title div button:hover{
+    background: #2e602b;
+    color: white;
+}
+
+
 
 /*.font {
     font-family: Segoe UI";
@@ -39,10 +76,12 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
 .menu{
     margin-right: 200px;
 }
+
 nav.menuchinh{
     background-color: white;
     display:flex;
     justify-content:space-between;
+    box-shadow: 40px 0px 40px 0px #c0f4b9;
 }
 
 ul.menucha{
@@ -76,7 +115,8 @@ nav.banner{
 /* Login */
 .login{
     background-image: url('h1_hero.png');
-    padding: 225px;
+    padding: 230px;
+    margin-bottom: 10px;
 }
 .login_main {
     display: flex;
@@ -86,8 +126,9 @@ nav.banner{
 
 .login_main > form > p{
     font-size: 23px;
-    font-weight: 500;
+    font-weight: 700;
     text-align: center;
+    color: #1b3919;
 }
 .one{
     border-radius: 13px;
@@ -119,13 +160,13 @@ nav.banner{
     align-items: center;
 }
 .one2 > button{
-
     width: 300px;
-    padding: 18px;
+    padding: 16px;
     border: .0px solid rgb(43, 43, 43);
     background-color: white;
     transition: 0.4s;
     border-radius: 10px;
+    font-size: 18px;
 }
 .one2 > button:hover{
     background-color:#57C050 ;
@@ -170,18 +211,157 @@ nav.banner{
 
 }
 .footer{
-    border-radius: 100px 100px 0px 0px;
+    /*border-radius: 50px 50px 0px 0px;*/
+    margin-top: 20px;
     padding: 40px;
     text-align: center;
-    background: #f8f9fa;
+    background: white;
+    box-shadow: 40px 0px 40px 0px #c0f4b9;
 }
 .footer h1{
-    font-weight: 600;
-    font-style: italic;
-    color: #5AAC4E;
-    font-size: 35px;
+    font-weight: 500;
+    font-size: 30px;
 }
 .footer p{
     padding: 0px;
     margin: 0px;
+}
+
+/*dangkykham*/
+
+.dkk_main{
+    padding: 50px 300px 0px 300px;
+}
+.textdkk h1{
+    font-weight: 700;
+    text-align: center;
+    font-size: 30px;
+    color: #094a2c;
+    margin-bottom: 40px;
+}
+
+.dkk{
+    /*    border: 1px solid #57C050;*/
+    /*    border-radius: 30px;*/
+    display: flex;
+    justify-content:  space-between;
+    /*padding: 50px;*/
+    border: 0.5px solid #5AAC4E;
+    border-radius: 30px;
+}
+
+.dkk1{
+
+    width: 40%;
+    /*background-image: url('bannerdkk.png');*/
+    background-image: radial-gradient(circle at top right, #28a745, #5aac4e);
+    border-right: none;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+    background-repeat: no-repeat;
+    background-size: 650px;
+    height: 700px;
+}
+.contentdkk1{
+    padding: 45px;
+    text-align: justify;
+}
+.contentdkk1 h5{
+    font-size: 18px;
+    color: white;
+}
+.dkk2{
+    width: 70%;
+}
+
+.contentdkk2 h1{
+    font-size: 23px;
+    font-weight: 700;
+    color: #136740;
+}
+.contentdkk2 h5{
+    font-size: 16px;
+    color: #136740;
+}
+
+.contentdkk2_main{
+    padding: 45px;
+
+}
+
+.contentdkk3{
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+}
+.contentdkk3 input{
+    width: 350px;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    font-size: 15px;
+    padding: 10px;
+}
+
+.contentdkk3 input:first-child{
+    margin-right: 20px;
+}
+
+.contentdkk5{
+    margin-top: 10px;
+    padding: 10px;
+}
+.contentdkk5 input{
+    width: 100%;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    font-size: 15px;
+    padding: 10px;
+}
+.contentdkk4{
+    margin-top: 20px;
+    font-size: 15px;
+
+    padding: 10px;
+    text-align: center;
+}
+.contentdkk4 form select{
+    width: 100%;
+    height: 45px;
+    border: 1px solid #e0e0e0;
+    padding: 5px;
+    border-radius: 10px;
+}
+
+.contentdkk6{
+    margin-top: 10px;
+    font-size: 15px;
+    padding: 5px;
+    text-align: center;
+}
+.contentdkk6 form input{
+    width: 100%;
+    height: 45px;
+    border: 1px solid #e0e0e0;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.submitdkk{
+    margin-top:30px;
+    display: flex;
+    justify-content: center;
+}
+.submitdkk a button{
+    width: 160px;
+    padding: 14px;
+    font-size: 14px;
+    border: 0px solid rgb(43, 43, 43);
+    background: #5AAC4E;
+    transition: 0.3s;
+    color: white;
+    border-radius: 6px;
+}
+.submitdkk a button:hover{
+    background: #2e602b;
+    color: white;
 }
