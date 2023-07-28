@@ -14,9 +14,24 @@
     </div>
     <div class="menu">
         <ul class="menucha">
-            <li class="sub"><a href="<c:url value ="/dangnhap"/>">Đăng nhập</a></li>
-            <li class="sub"><a href="<c:url value ="/dangky"/>">Đăng ký</a></li>
+            <c:if test="${pageContext.request.userPrincipal.name == null}">
+                <li class="sub"><a href="<c:url value ="/dangnhap"/>">Đăng nhập</a></li>
+                <li class="sub"><a href="<c:url value ="/dangky"/>">Đăng ký</a></li>
+
+            </c:if>
+
+            <c:if test="${pageContext.request.userPrincipal.name != null}">
+                <li class="sub"><a href="<c:url value ="/"/>">${pageContext.request.userPrincipal.name}</a></li>
+                </c:if>
+
+
             <li class="sub"><a href="<c:url value ="/dangkykham"/>">Đăng ký khám</a></li>
+
+            <c:if test="${pageContext.request.userPrincipal.name != null}">
+                <li class="sub"><a href="<c:url value ="/logout"/>">Đăng xuất</a></li>
+                </c:if>
+
+            <li class="sub"><a href="<c:url value ="/lapdskham"/>">Lập danh sách khám</a></li>
         </ul>
     </div>
 </nav>

@@ -3,12 +3,28 @@
     Created on : Jul 26, 2023, 5:10:05 PM
     Author     : Asus
 --%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+
+<c:url value="/dangnhap" var="action"/>
+<c:if test="${param.error !=null}">
+    <div class="alert alert-danger">
+        Sai tai khoan hoac mat khau!!
+    </div>
+</c:if>
+
+
+<c:if test="${param.accessDenied !=null}">
+    <div class="alert alert-danger">
+        Khong co quyen truy cap!!
+    </div>
+</c:if>
+
 <nav class="login">
     <div class="login_main">  
-        <form class="form_login">
+        <form class="form_login" method="post" action="${action}">
+
             <p>ĐĂNG NHẬP</p>
             <div class="login0">
                 <div class="one">
@@ -17,7 +33,7 @@
                     </div>
 
                     <div class="one1">
-                        <input type="email" placeholder="Nhập tài khoản"/>
+                        <input type="text" id="username" name="username" placeholder="Nhập tài khoản"/>
                     </div>
                 </div>
             </div>
@@ -29,7 +45,7 @@
                     </div>
 
                     <div class="one1">
-                        <input type="password" placeholder="Nhập mật khẩu">
+                        <input type="password" id="password" name="password" placeholder="Nhập mật khẩu">
                     </div>
                 </div>
             </div>

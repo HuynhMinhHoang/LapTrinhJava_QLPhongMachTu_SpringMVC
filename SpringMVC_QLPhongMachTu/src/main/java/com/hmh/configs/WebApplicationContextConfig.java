@@ -21,7 +21,7 @@ import org.springframework.web.servlet.view.JstlView;
  */
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = "com.hmh.controllers")
+@ComponentScan(basePackages = {"com.hmh.controllers", "com.hmh.repository", "com.hmh.service"})
 @EnableTransactionManagement
 public class WebApplicationContextConfig implements WebMvcConfigurer {
 

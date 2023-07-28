@@ -41,5 +41,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/XML/XMLDocument.xml to edit this 
                        value="/WEB-INF/page/dangkykham.jsp" />
     </definition>
     
+    <definition name="lapdskham" extends="baseLayout">
+        <put-attribute name="title" value="Lập danh sách khám" />
+        <put-attribute name="content"
+                       value="/WEB-INF/page/lapdskham.jsp" />
+    </definition>
+    
 </tiles-definitions>
 

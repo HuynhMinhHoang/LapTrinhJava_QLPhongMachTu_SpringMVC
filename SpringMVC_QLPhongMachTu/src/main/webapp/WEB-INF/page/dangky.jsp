@@ -3,12 +3,23 @@
     Created on : Jul 24, 2023, 1:34:13 AM
     Author     : Asus
 --%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+
+
+<c:url value="/dangky" var="action"/>
+
+<c:if test="${errMsg != null}">
+    <div class="alert alert-danger">
+        ${errMsg}
+    </div>
+</c:if>
+
+
 <nav class="login">
     <div class="login_main">  
-        <form class="form_login">
+        <form:form class="form_login" method="post" action="${action}" modelAttribute="user">
             <p>ĐĂNG KÝ</p>
             <div class="login0">
                 <div class="one">
@@ -17,7 +28,7 @@
                     </div>
 
                     <div class="one1">
-                        <input type="email" placeholder="Nhập tài khoản"/>
+                        <form:input type="text" id="username" path="taiKhoan" placeholder="Nhập tài khoản"/>
                     </div>
                 </div>
             </div>
@@ -29,7 +40,7 @@
                     </div>
 
                     <div class="one1">
-                        <input type="password" placeholder="Nhập mật khẩu">
+                        <form:input type="password" id="password" path="matKhau" placeholder="Nhập mật khẩu"/>
                     </div>
                 </div>
             </div>
@@ -41,19 +52,19 @@
                     </div>
 
                     <div class="one1">
-                        <input type="password" placeholder="Nhập lại mật khẩu">
+                        <form:input type="password" id="confirm-password" path="confirmmatKhau" placeholder="Nhập lại mật khẩu"/>
                     </div>
                 </div>
             </div>
-            
+
 
             <div class="login0">
                 <div class="one2">
-                    <button onclick="submit3(this)">Đăng ký</button>
+                    <button onclick="#">Đăng ký</button>
                 </div>
             </div>
 
-        </form>
+        </form:form>
     </div>
 </nav>
 

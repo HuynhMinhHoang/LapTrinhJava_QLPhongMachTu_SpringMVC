@@ -4,13 +4,15 @@
  */
 package com.hmh.controllers;
 
-import javax.persistence.Query;
-import org.hibernate.Session;
+import com.hmh.pojo.TaiKhoan;
+import com.hmh.service.TaiKhoanService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.stereotype.Controller;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
@@ -19,14 +21,36 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @Controller
 public class DangKyController {
+
     @Autowired
-    private LocalSessionFactoryBean factoryBean;
-    
-    @RequestMapping("/dangky")
-    @Transactional
-    public String dangky(Model model){
-       
+    private TaiKhoanService userDetailsService;
+
+//    @RequestMapping("/dangky")
+//    public String dangky() {
+//        return "dangky";
+//    }
+
+    @GetMapping("/dangky")
+    public String dangky(Model model) {
+        model.addAttribute("user", new TaiKhoan());
         return "dangky";
     }
 
+    @PostMapping("/dangky")
+    public String dangky(Model model, @ModelAttribute(value = "user") TaiKhoan user) {
+        String errMsg = "";
+        if (user.getMatKhau().equals(user.getConfirmmatKhau())) {
+            if (this.userDetailsService.addTaiKhoan(user) == true) {
+                return "redirect:/dangnhap";
+            } else {
+                errMsg = "Mat khau khong khop!!";
+            }
+        } else {
+            errMsg = "Mat khau khong khop!!";
+        }
+
+        model.addAttribute("errMsg", errMsg);
+
+        return "dangky";
+    }
 }
