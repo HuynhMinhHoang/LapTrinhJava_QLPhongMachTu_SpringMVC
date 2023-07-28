@@ -29,7 +29,6 @@ public class DangKyController {
 //    public String dangky() {
 //        return "dangky";
 //    }
-
     @GetMapping("/dangky")
     public String dangky(Model model) {
         model.addAttribute("user", new TaiKhoan());
@@ -45,6 +44,7 @@ public class DangKyController {
             } else {
                 errMsg = "Mat khau khong khop!!";
             }
+        
         } else {
             errMsg = "Mat khau khong khop!!";
         }

@@ -30,14 +30,13 @@ public class TaiKhoanServiceImpl implements TaiKhoanService {
 
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
-    
+
     @Override
     public boolean addTaiKhoan(TaiKhoan tk) {
         String pass = tk.getMatKhau();
         tk.setMatKhau(this.passwordEncoder.encode(pass));
         tk.setUserRole(TaiKhoan.BENHNHAN);
-        
-        
+
         return this.taiKhoanRepository.addTaiKhoan(tk);
     }
 
@@ -49,16 +48,18 @@ public class TaiKhoanServiceImpl implements TaiKhoanService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         List<TaiKhoan> users = this.getTaiKhoan(username);
+        TaiKhoan user = users.get(0);
         if (users.isEmpty()) {
             throw new UsernameNotFoundException("Tai khoan khong ton tai!");
         }
-        TaiKhoan user = users.get(0);
+        
+        
 
         Set<GrantedAuthority> authorities = new HashSet<>();
         authorities.add(new SimpleGrantedAuthority(user.getUserRole()));
 
         return new org.springframework.security.core.userdetails.User(user.getTaiKhoan(), user.getMatKhau(), authorities);
-        
+
     }
 
 }

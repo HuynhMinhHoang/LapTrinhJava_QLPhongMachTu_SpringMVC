@@ -43,6 +43,13 @@ public class TaiKhoanRepositoryImpl implements TaiKhoanRepository {
         }
         return false;
     }
+    
+//    public boolean ktrTK(String username){
+//        Session session = this.sessionFactoryBean.getObject().getCurrentSession();
+//        CriteriaBuilder builder = session.getCriteriaBuilder();
+//        
+//        
+//    }
 
     @Override
     public List<TaiKhoan> getTaiKhoan(String username) {
@@ -56,6 +63,7 @@ public class TaiKhoanRepositoryImpl implements TaiKhoanRepository {
             Predicate p = builder.equal(root.get("taiKhoan").as(String.class), username.trim());
             query = query.where(p);
         }
+        
 
         Query q = session.createQuery(query);
         return q.getResultList();
