@@ -8,8 +8,9 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 
-
-<div class="container">
+<!--<form:form method="post" action="${action}" modelAttribute="user" 
+           enctype="multipart/form-data">-->
+<div class="containerr">
     <header>
         <a href="<c:url value ="/"/>" class="logo">
             <h3>Health couch.</h3>
@@ -21,9 +22,22 @@
                     <li class="tab"><a href="<c:url value ="/dangky"/>">Đăng ký</a></li>
                     </c:if>
 
+
+
                 <c:if test="${pageContext.request.userPrincipal.name != null}">
-                    <li class="tab"><a href="<c:url value ="/"/>">Xin chào ${pageContext.request.userPrincipal.name}!</a></li>
+                    <%--<c:forEach items="${user}" var="c">--%>
+                        <li class="tab1">
+                            <div class="avt_user">
+                                <img src="<c:url value="/img/avt111.jpg"/>" alt="alert" />
+                            </div>
+                        </li> 
+                    <%--</c:forEach>--%>
+
+                    <li class="tab1"><a href="<c:url value ="/"/>">Xin chào, ${pageContext.request.userPrincipal.name}!</a></li>
                     </c:if>
+
+
+
 
                 <sec:authorize access="hasRole('BENHNHAN')">
                     <li class="tab"><a href="<c:url value ="/dangkykham"/>">Đăng ký khám</a></li>
@@ -31,14 +45,15 @@
 
 
                 <sec:authorize access="hasRole('YTA')">
-                    <li class="tab"><a href="<c:url value ="/lapdskham"/>">Lập danh sách khám</a></li>
+                    <li class="tab"><a href="<c:url value ="/yta/lapdskham"/>">Lập danh sách khám</a></li>
                     </sec:authorize>
 
                 <c:if test="${pageContext.request.userPrincipal.name != null}">
-                    <li class="tab"><a href="<c:url value ="/logout"/>">Đăng xuất</a></li>
+                    <li class="tab" style="color: darkred"><a href="<c:url value ="/logout"/>">Đăng xuất</a></li>
                     </c:if>
 
             </ul>
         </div>
     </header>
 </div>
+<!--</form:form>-->

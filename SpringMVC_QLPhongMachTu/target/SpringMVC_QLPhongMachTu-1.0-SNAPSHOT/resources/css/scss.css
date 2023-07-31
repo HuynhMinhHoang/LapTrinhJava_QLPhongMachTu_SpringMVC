@@ -73,18 +73,20 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     }
 }
 
-.container {
-    /*box-shadow: 40px 0px 40px 0px #c0f4b9;*/
+.containerr {
+    box-shadow: 0px 0px 40px 0px #c0f4b9;
     width: 100%;
+    margin: 0px;
+    padding: 0px;
     background-color: #ffffff;
     transition: all 0.3s;
     transform-origin: 50% 50%;
 }
 
 
-.container header {
+.containerr header {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
 }
 
@@ -117,7 +119,8 @@ header .logo h3 {
 header .list {
     display: flex;
     margin: 0px;
-    padding: 20px;
+    padding: 15px;
+    align-items: center;
 }
 
 header .list .tab{
@@ -127,6 +130,17 @@ header .list .tab{
     margin: 0 20px;
     transition: all 0.3s;
     cursor: pointer;
+    align-items: center;
+}
+
+header .list .tab1{
+    font-size: 20px;
+    position: relative;
+    list-style: none;
+    margin: 0 20px;
+    transition: all 0.3s;
+    cursor: pointer;
+    align-items: center;
 }
 
 header .list .tab a:hover {
@@ -171,6 +185,15 @@ header .list .tab:hover::after {
     color:#112957;
 }
 
+.navbar ul li div img{
+    width: 40px;
+    height: 40px;
+    border-radius: 50px;
+
+}
+.avt_user{
+   
+}
 
 
 
@@ -226,7 +249,7 @@ ul.menucha > li > a:hover{
 /* Login */
 .login{
     background-image: url('h1_hero.png');
-    padding: 230px;
+    padding: 190px;
     margin-bottom: 10px;
 }
 .login_main {
@@ -235,12 +258,28 @@ ul.menucha > li > a:hover{
     margin-left: 100px;
 }
 
+
+
 .login_main > form > p{
     font-size: 23px;
     font-weight: 700;
     text-align: center;
     color: #1b3919;
 }
+.login_main1 > form > p{
+    font-size: 23px;
+    font-weight: 700;
+    text-align: center;
+    color: #1b3919;
+}
+
+.login_main1 {
+    display: flex;
+    justify-content: flex-start;
+    margin-left: 100px;
+    padding-bottom: 90px;
+}
+
 .one{
     border-radius: 13px;
     display: flex;
@@ -327,7 +366,7 @@ ul.menucha > li > a:hover{
     padding: 40px;
     text-align: center;
     background: white;
-    box-shadow: 40px 0px 40px 0px #c0f4b9;
+    box-shadow: 0px 0px 40px 0px #c0f4b9;
 }
 .footer h1{
     font-weight: 500;
@@ -359,6 +398,8 @@ ul.menucha > li > a:hover{
     /*padding: 50px;*/
     border: 0.5px solid #5AAC4E;
     border-radius: 30px;
+    /*box-shadow: 0px 10px 40px 0px #c0f4b9;*/
+
 }
 
 .dkk1{

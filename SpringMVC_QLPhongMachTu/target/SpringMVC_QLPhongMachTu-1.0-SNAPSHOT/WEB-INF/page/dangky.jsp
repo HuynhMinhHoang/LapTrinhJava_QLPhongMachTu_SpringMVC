@@ -19,12 +19,13 @@
 
 <nav class="login">
     <div class="login_main">  
-        <form:form class="form_login" method="post" action="${action}" modelAttribute="user">
+        <form:form class="form_login" method="post" action="${action}" modelAttribute="user" 
+                   enctype="multipart/form-data">
             <p>ĐĂNG KÝ</p>
             <div class="login0">
                 <div class="one">
                     <div class="one1">
-                        <div id="tk1"><i class="fas fa-key"></i></div>
+                        <div id="tk1"><i class="fa-solid fa-user"></i></div>
                     </div>
 
                     <div class="one1">
@@ -57,10 +58,22 @@
                 </div>
             </div>
 
+                <div class="login0">
+                    <div class="one">
+                        <div class="one1">
+                            <div id="tk1"><i class="fa-solid fa-cloud-arrow-up"></i></div>
+                        </div>
+
+                        <div class="one1">
+                            <form:input type="file" id="file" path="file" placeholder="Upload Avatar"/>
+                           
+                        </div>
+                    </div>
+                </div>
 
             <div class="login0">
                 <div class="one2">
-                    <button onclick="#">Đăng ký</button>
+                    <button type="submit" >Đăng ký</button>
                 </div>
             </div>
 

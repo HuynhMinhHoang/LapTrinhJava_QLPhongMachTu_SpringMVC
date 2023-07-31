@@ -22,14 +22,14 @@
 </c:if>
 
 <nav class="login">
-    <div class="login_main">  
+    <div class="login_main1">  
         <form class="form_login" method="post" action="${action}">
 
             <p>ĐĂNG NHẬP</p>
             <div class="login0">
                 <div class="one">
                     <div class="one1">
-                        <div id="tk1"><i class="fas fa-key"></i></div>
+                        <div id="tk1"><i class="fa-solid fa-user"></i></div>
                     </div>
 
                     <div class="one1">

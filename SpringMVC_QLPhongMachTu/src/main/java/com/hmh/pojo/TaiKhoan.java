@@ -22,6 +22,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  *
@@ -46,6 +47,8 @@ public class TaiKhoan implements Serializable {
 
     @Transient
     private String confirmmatKhau;
+    @Transient 
+    private MultipartFile file;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -68,7 +71,7 @@ public class TaiKhoan implements Serializable {
     @Size(min = 1, max = 1000)
     @Column(name = "mat_khau")
     private String matKhau;
-    @Size(max = 45)
+    @Size(max = 1000)
     @Column(name = "avt")
     private String avt;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idTk")
@@ -196,6 +199,20 @@ public class TaiKhoan implements Serializable {
      */
     public void setConfirmmatKhau(String confirmmatKhau) {
         this.confirmmatKhau = confirmmatKhau;
+    }
+
+    /**
+     * @return the file
+     */
+    public MultipartFile getFile() {
+        return file;
+    }
+
+    /**
+     * @param file the file to set
+     */
+    public void setFile(MultipartFile file) {
+        this.file = file;
     }
 
 }

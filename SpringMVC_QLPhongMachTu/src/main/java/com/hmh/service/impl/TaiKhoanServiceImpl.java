@@ -4,12 +4,18 @@
  */
 package com.hmh.service.impl;
 
+import com.cloudinary.Cloudinary;
+import com.cloudinary.utils.ObjectUtils;
 import com.hmh.pojo.TaiKhoan;
 import com.hmh.repository.TaiKhoanRepository;
 import com.hmh.service.TaiKhoanService;
+import java.io.IOException;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -27,7 +33,8 @@ public class TaiKhoanServiceImpl implements TaiKhoanService {
 
     @Autowired
     private TaiKhoanRepository taiKhoanRepository;
-
+    @Autowired
+    private Cloudinary cloudinary;
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
 
@@ -36,7 +43,15 @@ public class TaiKhoanServiceImpl implements TaiKhoanService {
         String pass = tk.getMatKhau();
         tk.setMatKhau(this.passwordEncoder.encode(pass));
         tk.setUserRole(TaiKhoan.BENHNHAN);
-
+        
+        if (!tk.getFile().isEmpty()) {
+            try {
+                Map res = this.cloudinary.uploader().upload(tk.getFile().getBytes(), ObjectUtils.asMap("resource_type", "auto"));
+                tk.setAvt(res.get("secure_url").toString());
+            } catch (IOException ex) {
+                Logger.getLogger(TaiKhoanServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
         return this.taiKhoanRepository.addTaiKhoan(tk);
     }
 
@@ -52,8 +67,6 @@ public class TaiKhoanServiceImpl implements TaiKhoanService {
         if (users.isEmpty()) {
             throw new UsernameNotFoundException("Tai khoan khong ton tai!");
         }
-        
-        
 
         Set<GrantedAuthority> authorities = new HashSet<>();
         authorities.add(new SimpleGrantedAuthority(user.getUserRole()));

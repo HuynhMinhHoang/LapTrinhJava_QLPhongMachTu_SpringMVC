@@ -4,9 +4,12 @@
  */
 package com.hmh.configs;
 
+import com.cloudinary.Cloudinary;
+import com.cloudinary.utils.ObjectUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.core.env.Environment;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -29,6 +32,8 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 })
 public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
+    @Autowired
+    private Environment env;
     @Autowired
     private UserDetailsService userDetailsService;
 
@@ -56,9 +61,20 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
         http.authorizeRequests().antMatchers("/").permitAll().antMatchers("/dangkykham/**").access("hasRole('BENHNHAN')");
 
-        http.authorizeRequests().antMatchers("/").permitAll().antMatchers("/lapdskham/**").access("hasRole('YTA')");
+        http.authorizeRequests().antMatchers("/").permitAll().antMatchers("/yta/lapdskham/**").access("hasRole('YTA')");
 
         http.csrf().disable();
+    }
+    
+    @Bean
+    public Cloudinary cloudinary() {
+        Cloudinary cloudinary
+                = new Cloudinary(ObjectUtils.asMap(
+                        "cloud_name", this.env.getProperty("cloudinary.cloud_name"),
+                        "api_key", this.env.getProperty("cloudinary.api_id"),
+                        "api_secret", this.env.getProperty("cloudinary.api_secret"),
+                        "secure", true));
+        return cloudinary;
     }
 
 }
