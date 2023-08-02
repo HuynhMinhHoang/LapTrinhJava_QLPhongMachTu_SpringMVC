@@ -47,7 +47,7 @@ public class TaiKhoan implements Serializable {
 
     @Transient
     private String confirmmatKhau;
-    @Transient 
+    @Transient
     private MultipartFile file;
 
     private static final long serialVersionUID = 1L;

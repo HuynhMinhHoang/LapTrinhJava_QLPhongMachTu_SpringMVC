@@ -5,6 +5,7 @@
 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 
 <c:url value="/dangnhap" var="action"/>
@@ -20,6 +21,8 @@
         Khong co quyen truy cap!!
     </div>
 </c:if>
+
+
 
 <nav class="login">
     <div class="login_main1">  
@@ -52,7 +55,7 @@
 
             <div class="login0">
                 <div class="one2">
-                    <button onclick="submit3(this)">Đăng nhập</button>
+                    <button type="submit">Đăng nhập</button>
                 </div>
             </div>
 

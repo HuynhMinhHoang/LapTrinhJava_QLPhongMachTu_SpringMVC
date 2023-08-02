@@ -14,7 +14,7 @@
             <h3>BỆNH VIỆN CAO CẤP CHUẨN 5 SAO HÀNG ĐẦU VIỆT NAM</h3>
             <p>Hệ thống Bệnh Viện Health Couch là địa chỉ uy tín về khám chữa bệnh, với đội ngũ chuyên gia bác sĩ hàng đầu, trang thiết bị hiện đại, cùng các phác đồ điều trị hiệu quả, khoa học mang đến dịch vụ khám, điều trị, chăm sóc sức khỏe cao cấp, toàn diện với chi phí hợp lý.</p>
             <%--<sec:authorize access="hasRole('BENHNHAN')">--%>
-                <a href="<c:url value ="/dangkykham"/>"><button>ĐĂNG KÝ KHÁM</button></a>
+                <a href="<c:url value ="/benhnhan/dangkykham"/>"><button>ĐĂNG KÝ KHÁM</button></a>
             <%--</sec:authorize>--%>
 
         </div>

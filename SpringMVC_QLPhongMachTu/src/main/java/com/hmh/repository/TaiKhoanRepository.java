@@ -11,7 +11,7 @@ import java.util.List;
  *
  * @author Asus
  */
-public interface TaiKhoanRepository {
+public interface TaiKhoanRepository{
     boolean addTaiKhoan(TaiKhoan tk);
     List<TaiKhoan> getTaiKhoan(String username);
 

@@ -4,18 +4,14 @@
  */
 package com.hmh.controllers;
 
-import com.cloudinary.Cloudinary;
-import com.cloudinary.utils.ObjectUtils;
+
 import com.hmh.pojo.TaiKhoan;
 import com.hmh.service.TaiKhoanService;
-import com.hmh.service.impl.TaiKhoanServiceImpl;
-import java.io.IOException;
-import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -40,7 +36,7 @@ public class DangKyController {
     }
 
     @PostMapping("/dangky")
-    public String dangky(Model model, @ModelAttribute(value = "user") TaiKhoan user) {
+    public String dangky(Model model, @ModelAttribute(value = "user") TaiKhoan user ) {
         String errMsg = "";
         if (user.getMatKhau().equals(user.getConfirmmatKhau())) {
             if (this.userDetailsService.addTaiKhoan(user) == true) {
@@ -57,7 +53,6 @@ public class DangKyController {
 
         return "dangky";
     }
-    
     
 
 }

@@ -7,6 +7,7 @@ package com.hmh.configs;
 import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.core.env.Environment;
@@ -36,6 +37,10 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     private Environment env;
     @Autowired
     private UserDetailsService userDetailsService;
+    
+    @Autowired
+    @Qualifier("customSuccessHandler")
+    private CustomSuccessHandler customSuccessHandler;
 
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
@@ -53,19 +58,25 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.formLogin().loginPage("/dangnhap").usernameParameter("username").passwordParameter("password");
 
-        http.formLogin().defaultSuccessUrl("/").failureUrl("/dangnhap?error");
+        http.formLogin().successHandler(customSuccessHandler).
+                failureUrl("/dangnhap?error");
 
         http.logout().logoutSuccessUrl("/dangnhap");
 
         http.exceptionHandling().accessDeniedPage("/dangnhap?accessDenied");
 
-        http.authorizeRequests().antMatchers("/").permitAll().antMatchers("/dangkykham/**").access("hasRole('BENHNHAN')");
+        http.authorizeRequests().antMatchers("/").permitAll().
+                antMatchers("/benhnhan/dangkykham/**").access("hasRole('BENHNHAN')");
 
-        http.authorizeRequests().antMatchers("/").permitAll().antMatchers("/yta/lapdskham/**").access("hasRole('YTA')");
+        http.authorizeRequests().antMatchers("/").permitAll().
+                antMatchers("/yta/lapdskham/**").access("hasRole('YTA')");
+        
+        http.authorizeRequests().antMatchers("/").permitAll().
+                antMatchers("/admin/quanlythuoc/**").access("hasRole('ADMIN')");
 
         http.csrf().disable();
     }
-    
+
     @Bean
     public Cloudinary cloudinary() {
         Cloudinary cloudinary

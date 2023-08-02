@@ -74,5 +74,7 @@ public class TaiKhoanServiceImpl implements TaiKhoanService {
         return new org.springframework.security.core.userdetails.User(user.getTaiKhoan(), user.getMatKhau(), authorities);
 
     }
+    
+    
 
 }

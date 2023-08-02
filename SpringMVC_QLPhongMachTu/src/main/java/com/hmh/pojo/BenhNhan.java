@@ -22,7 +22,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
@@ -50,33 +49,23 @@ public class BenhNhan implements Serializable {
     @Basic(optional = false)
     @Column(name = "id_bn")
     private Integer idBn;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 50)
+    @Size(max = 50)
     @Column(name = "ho_ten")
     private String hoTen;
-    @Basic(optional = false)
-    @NotNull
     @Column(name = "nam_sinh")
     @Temporal(TemporalType.TIMESTAMP)
     private Date namSinh;
-    @Basic(optional = false)
-    @NotNull
     @Column(name = "gioi_tinh")
-    private short gioiTinh;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 50)
+    private Short gioiTinh;
+    @Size(max = 50)
     @Column(name = "dia_chi")
     private String diaChi;
     // @Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message="Invalid email")//if the field contains email address consider using this annotation to enforce field validation
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 45)
+    @Size(max = 45)
     @Column(name = "email")
     private String email;
     @JoinColumn(name = "id_tk", referencedColumnName = "id_tk")
-    @ManyToOne(optional = false)
+    @ManyToOne
     private TaiKhoan idTk;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idBn")
     private Set<PhieuDangKy> phieuDangKySet;
@@ -88,15 +77,6 @@ public class BenhNhan implements Serializable {
 
     public BenhNhan(Integer idBn) {
         this.idBn = idBn;
-    }
-
-    public BenhNhan(Integer idBn, String hoTen, Date namSinh, short gioiTinh, String diaChi, String email) {
-        this.idBn = idBn;
-        this.hoTen = hoTen;
-        this.namSinh = namSinh;
-        this.gioiTinh = gioiTinh;
-        this.diaChi = diaChi;
-        this.email = email;
     }
 
     public Integer getIdBn() {
@@ -123,11 +103,11 @@ public class BenhNhan implements Serializable {
         this.namSinh = namSinh;
     }
 
-    public short getGioiTinh() {
+    public Short getGioiTinh() {
         return gioiTinh;
     }
 
-    public void setGioiTinh(short gioiTinh) {
+    public void setGioiTinh(Short gioiTinh) {
         this.gioiTinh = gioiTinh;
     }
 

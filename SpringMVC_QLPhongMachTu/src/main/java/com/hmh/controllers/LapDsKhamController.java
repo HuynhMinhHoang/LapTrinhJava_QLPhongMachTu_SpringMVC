@@ -4,7 +4,11 @@
  */
 package com.hmh.controllers;
 
+import com.hmh.pojo.BenhNhan;
+import com.hmh.service.BenhNhanService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -14,9 +18,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @Controller
 public class LapDsKhamController {
+    @Autowired
+    private BenhNhanService benhNhanService; 
     
     @RequestMapping("/yta/lapdskham")
-    public String index(){
+    public String lapdskham(Model model){
+        model.addAttribute("benhnhan", this.benhNhanService.getBenhNhan(null));
         return "lapdskham";
     }
     
