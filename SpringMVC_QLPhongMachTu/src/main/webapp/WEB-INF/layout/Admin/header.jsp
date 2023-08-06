@@ -9,15 +9,15 @@
 
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
-<div class="l-navbar animate__animated animate__fadeInLeft" id="navbar">
+<div class="l-navbar" id="navbar">
     <div class="nav">
-        <div class="nav_main">
+        <div class="nav_main animate__animated animate__fadeInLeft">
             <a href="#" class="nav__logo">
                 <span class="nav__logo-text">Health couch.</span>
             </a>
 
             <ul class="nav__list">
-                <a href="#" class="nav__link active">
+                <a href="<c:url value ="/admin/quanlytaikhoan"/>" class="nav__link active">
                     <i class='bx bx-user' ></i>
                     <span class="nav__text">Tài khoản</span>
                 </a>
@@ -40,7 +40,7 @@
         </div>
 
         <c:if test="${pageContext.request.userPrincipal.name != null}">
-            <a href="<c:url value ="/logout"/>" class="nav__link active " id="active1">
+            <a href="<c:url value ="/logout"/>" class="nav__link active animate__animated animate__fadeInLeft" id="active1">
                 <i class='bx bx-log-out-circle' ></i>
                 <span class="nav__text">Đăng xuất</span>
             </a>

@@ -37,7 +37,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     private Environment env;
     @Autowired
     private UserDetailsService userDetailsService;
-    
+
     @Autowired
     @Qualifier("customSuccessHandler")
     private CustomSuccessHandler customSuccessHandler;
@@ -70,9 +70,12 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
         http.authorizeRequests().antMatchers("/").permitAll().
                 antMatchers("/yta/lapdskham/**").access("hasRole('YTA')");
-        
+
         http.authorizeRequests().antMatchers("/").permitAll().
                 antMatchers("/admin/quanlythuoc/**").access("hasRole('ADMIN')");
+        
+        http.authorizeRequests().antMatchers("/").permitAll().
+                antMatchers("/admin/quanlytaikhoan/**").access("hasRole('ADMIN')");
 
         http.csrf().disable();
     }

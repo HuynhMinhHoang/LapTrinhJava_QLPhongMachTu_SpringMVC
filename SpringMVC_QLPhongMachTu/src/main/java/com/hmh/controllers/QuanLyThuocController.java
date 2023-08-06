@@ -4,6 +4,8 @@
  */
 package com.hmh.controllers;
 
+import com.hmh.service.BenhNhanService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,9 +16,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @Controller
 public class QuanLyThuocController {
+
+
     @RequestMapping("/admin/quanlythuoc")
-    
-    public String lapdskham(Model model){
+    public String lapdskham(Model model) {
+        
         return "quanlythuoc";
     }
 }

@@ -68,5 +68,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/XML/XMLDocument.xml to edit this 
                        value="/WEB-INF/page/Admin/quanlythuoc.jsp" />
     </definition>
     
+    <definition name="quanlytaikhoan" extends="baseLayoutAdmin">
+        <put-attribute name="title" value="Quản lý tài khoản" />
+        <put-attribute name="content"
+                       value="/WEB-INF/page/Admin/quanlytaikhoan.jsp" />
+    </definition>
+    
 </tiles-definitions>
 

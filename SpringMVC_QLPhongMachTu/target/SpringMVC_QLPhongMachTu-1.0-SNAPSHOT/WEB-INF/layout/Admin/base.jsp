@@ -22,7 +22,7 @@
             />
 
     </head>
-    <body class="font" id="body">
+    <body class="font">
         <tiles:insertAttribute name="header" />
         <tiles:insertAttribute name="content" />
         <tiles:insertAttribute name="footer" />
