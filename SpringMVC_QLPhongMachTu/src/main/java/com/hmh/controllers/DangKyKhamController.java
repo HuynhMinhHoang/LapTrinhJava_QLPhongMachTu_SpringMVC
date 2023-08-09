@@ -4,9 +4,12 @@
  */
 package com.hmh.controllers;
 
-import com.hmh.pojo.BenhNhan;
+import com.hmh.pojo.TaiKhoan;
 import com.hmh.service.BenhNhanService;
+import com.hmh.service.TaiKhoanService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,19 +25,27 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class DangKyKhamController {
 
     @Autowired
-    private BenhNhanService benhNhanService;
+    private TaiKhoanService taiKhoanService;
 
-    @GetMapping("/benhnhan/dangkykham")
-    public String dangkykham(Model model) {
-        model.addAttribute("benhnhan", new BenhNhan());
-        return "dangkykham";
-    }
-
-    @PostMapping("/benhnhan/dangkykham")
-    public String add(@ModelAttribute(value = "benhnhan") BenhNhan bn) {
-        if (this.benhNhanService.addOrUpdateBenhNhan(bn) == true) {
-            return "redirect:/";
-        }
+//    @GetMapping("/benhnhan/dangkykham")
+//    public String dangkykham(Model model) {
+//        model.addAttribute("taikhoan", new TaiKhoan());
+//        return "dangkykham";
+//    }
+//
+//    @PostMapping("/benhnhan/dangkykham")
+//    public String add(@ModelAttribute(value = "taikhoan") TaiKhoan tk) {
+//        if (this.taiKhoanService.addTaiKhoan(tk) == true) {
+//            return "redirect:/";
+//        }
+//        return "dangkykham";
+//    }
+    @RequestMapping("/benhnhan/dangkykham")
+    public String dangkykham(Model model, Authentication authentication) {
+        model.addAttribute("user", new TaiKhoan());
+        UserDetails user = taiKhoanService.loadUserByUsername(authentication.getName());
+        TaiKhoan u = taiKhoanService.getTaiKhoan(user.getUsername()).get(0);
+        model.addAttribute("user", u);
         return "dangkykham";
     }
 }

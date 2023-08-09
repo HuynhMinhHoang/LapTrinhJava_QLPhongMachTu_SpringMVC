@@ -5,21 +5,20 @@
 package com.hmh.pojo;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.Set;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
@@ -35,7 +34,8 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "PhieuKhamBenh.findAll", query = "SELECT p FROM PhieuKhamBenh p"),
     @NamedQuery(name = "PhieuKhamBenh.findByIdPhieukham", query = "SELECT p FROM PhieuKhamBenh p WHERE p.idPhieukham = :idPhieukham"),
     @NamedQuery(name = "PhieuKhamBenh.findByTrieuChung", query = "SELECT p FROM PhieuKhamBenh p WHERE p.trieuChung = :trieuChung"),
-    @NamedQuery(name = "PhieuKhamBenh.findByKetLuan", query = "SELECT p FROM PhieuKhamBenh p WHERE p.ketLuan = :ketLuan")})
+    @NamedQuery(name = "PhieuKhamBenh.findByKetLuan", query = "SELECT p FROM PhieuKhamBenh p WHERE p.ketLuan = :ketLuan"),
+    @NamedQuery(name = "PhieuKhamBenh.findByNgayKhamBenh", query = "SELECT p FROM PhieuKhamBenh p WHERE p.ngayKhamBenh = :ngayKhamBenh")})
 public class PhieuKhamBenh implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -44,38 +44,25 @@ public class PhieuKhamBenh implements Serializable {
     @Basic(optional = false)
     @Column(name = "id_phieukham")
     private Integer idPhieukham;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 50)
+    @Size(max = 50)
     @Column(name = "trieu_chung")
     private String trieuChung;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 50)
+    @Size(max = 50)
     @Column(name = "ket_luan")
     private String ketLuan;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idPhieukham")
+    @Column(name = "ngay_kham_benh")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date ngayKhamBenh;
+    @OneToMany(mappedBy = "idPk")
+    private Set<PhieuDangKy> phieuDangKySet;
+    @OneToMany(mappedBy = "idPhieukham")
     private Set<ChiTietThuoc> chiTietThuocSet;
-    @JoinColumn(name = "id_bs", referencedColumnName = "id_bs")
-    @ManyToOne(optional = false)
-    private BacSi idBs;
-    @JoinColumn(name = "id_bn", referencedColumnName = "id_bn")
-    @ManyToOne(optional = false)
-    private BenhNhan idBn;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idPhieukham")
-    private Set<HoaDon> hoaDonSet;
 
     public PhieuKhamBenh() {
     }
 
     public PhieuKhamBenh(Integer idPhieukham) {
         this.idPhieukham = idPhieukham;
-    }
-
-    public PhieuKhamBenh(Integer idPhieukham, String trieuChung, String ketLuan) {
-        this.idPhieukham = idPhieukham;
-        this.trieuChung = trieuChung;
-        this.ketLuan = ketLuan;
     }
 
     public Integer getIdPhieukham() {
@@ -102,6 +89,23 @@ public class PhieuKhamBenh implements Serializable {
         this.ketLuan = ketLuan;
     }
 
+    public Date getNgayKhamBenh() {
+        return ngayKhamBenh;
+    }
+
+    public void setNgayKhamBenh(Date ngayKhamBenh) {
+        this.ngayKhamBenh = ngayKhamBenh;
+    }
+
+    @XmlTransient
+    public Set<PhieuDangKy> getPhieuDangKySet() {
+        return phieuDangKySet;
+    }
+
+    public void setPhieuDangKySet(Set<PhieuDangKy> phieuDangKySet) {
+        this.phieuDangKySet = phieuDangKySet;
+    }
+
     @XmlTransient
     public Set<ChiTietThuoc> getChiTietThuocSet() {
         return chiTietThuocSet;
@@ -109,31 +113,6 @@ public class PhieuKhamBenh implements Serializable {
 
     public void setChiTietThuocSet(Set<ChiTietThuoc> chiTietThuocSet) {
         this.chiTietThuocSet = chiTietThuocSet;
-    }
-
-    public BacSi getIdBs() {
-        return idBs;
-    }
-
-    public void setIdBs(BacSi idBs) {
-        this.idBs = idBs;
-    }
-
-    public BenhNhan getIdBn() {
-        return idBn;
-    }
-
-    public void setIdBn(BenhNhan idBn) {
-        this.idBn = idBn;
-    }
-
-    @XmlTransient
-    public Set<HoaDon> getHoaDonSet() {
-        return hoaDonSet;
-    }
-
-    public void setHoaDonSet(Set<HoaDon> hoaDonSet) {
-        this.hoaDonSet = hoaDonSet;
     }
 
     @Override

@@ -7,6 +7,7 @@ package com.hmh.service.impl;
 import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
 import com.hmh.pojo.TaiKhoan;
+import com.hmh.pojo.UserRole;
 import com.hmh.repository.TaiKhoanRepository;
 import com.hmh.service.TaiKhoanService;
 import java.io.IOException;
@@ -31,6 +32,7 @@ import org.springframework.stereotype.Service;
 @Service("userDetailsService")
 public class TaiKhoanServiceImpl implements TaiKhoanService {
 
+    
     @Autowired
     private TaiKhoanRepository taiKhoanRepository;
     @Autowired
@@ -42,7 +44,7 @@ public class TaiKhoanServiceImpl implements TaiKhoanService {
     public boolean addTaiKhoan(TaiKhoan tk) {
         String pass = tk.getMatKhau();
         tk.setMatKhau(this.passwordEncoder.encode(pass));
-        tk.setUserRole(TaiKhoan.BENHNHAN);
+        tk.setIdRole(this.getRoleBenhNhan("ROLE_BENHNHAN"));
         
         if (!tk.getFile().isEmpty()) {
             try {
@@ -65,14 +67,19 @@ public class TaiKhoanServiceImpl implements TaiKhoanService {
         List<TaiKhoan> users = this.getTaiKhoan(username);
         TaiKhoan user = users.get(0);
         if (users.isEmpty()) {
-            throw new UsernameNotFoundException("Tai khoan khong ton tai!");
+            throw new UsernameNotFoundException("Tài khoản không tồn tại!");
         }
 
         Set<GrantedAuthority> authorities = new HashSet<>();
-        authorities.add(new SimpleGrantedAuthority(user.getUserRole()));
+        authorities.add(new SimpleGrantedAuthority(user.getIdRole().getChucVu()));
 
         return new org.springframework.security.core.userdetails.User(user.getTaiKhoan(), user.getMatKhau(), authorities);
 
+    }
+
+    @Override
+    public UserRole getRoleBenhNhan(String role) {
+        return this.taiKhoanRepository.getRoleBenhNhan(role);
     }
     
     

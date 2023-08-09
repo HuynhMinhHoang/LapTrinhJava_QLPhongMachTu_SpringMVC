@@ -10,6 +10,8 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 
+
+
 <form:form method="post" action="${action}" modelAttribute="user" 
            enctype="multipart/form-data">
     <div class="containerr">
@@ -28,19 +30,19 @@
 
                     <c:if test="${pageContext.request.userPrincipal.name != null}">
                         <%--<c:forEach items="${user}" var="c">--%>
-                            <li class="tab1">
-                                <div class="avt_user">
-                                    <img src="<c:url value="/img/avt111.jpg"/>" alt="alert" />
-                                    <!--<img src="${c.avt}" alt="alert" />-->
-                                </div>
-                            </li> 
+                        <%--<sec:authorize access="hasRole('BENHNHAN')">--%>
+                        <li class="tab1">
+                            <div class="avt_user">
+                                <img src="<c:url value="${user.avt}"/>" alt="alert
+                                     " />
+                                <!--<img src="${c.avt}" alt="alert" />-->
+                            </div>
+                        </li> 
+                        <%--</sec:authorize>--%>
                         <%--</c:forEach>--%>
 
                         <li class="tab1"><a href="<c:url value ="/"/>">Xin chào, ${pageContext.request.userPrincipal.name}!</a></li>
                         </c:if>
-
-
-
 
                     <sec:authorize access="hasRole('BENHNHAN')">
                         <li class="tab"><a href="<c:url value ="/benhnhan/dangkykham"/>">Đăng ký khám</a></li>

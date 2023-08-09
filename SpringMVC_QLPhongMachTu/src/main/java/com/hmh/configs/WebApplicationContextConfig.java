@@ -6,7 +6,10 @@ package com.hmh.configs;
 
 import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
-import com.hmh.formatter.PhieuDangKyFormatter;
+import com.hmh.formatter.DateFormatter;
+import com.hmh.formatter.UserRoleFormatter;
+
+import java.text.SimpleDateFormat;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -41,7 +44,8 @@ public class WebApplicationContextConfig implements WebMvcConfigurer {
 
     @Override
     public void addFormatters(FormatterRegistry registry) {
-        registry.addFormatter(new PhieuDangKyFormatter());
+        registry.addFormatter(new UserRoleFormatter());
+        registry.addFormatter(new DateFormatter());
     }
     
     
@@ -79,4 +83,8 @@ public class WebApplicationContextConfig implements WebMvcConfigurer {
         return cloudinary;
     }
 
+    @Bean
+    public SimpleDateFormat simpleDateFormat() {
+        return new SimpleDateFormat("yyyy-MM-dd");
+    }
 }

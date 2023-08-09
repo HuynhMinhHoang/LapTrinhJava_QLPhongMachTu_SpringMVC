@@ -6,6 +6,8 @@ package com.hmh.configs;
 
 import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
+import java.text.SimpleDateFormat;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
@@ -15,7 +17,9 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+
 import org.springframework.security.core.userdetails.UserDetailsService;
+
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
@@ -37,6 +41,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     private Environment env;
     @Autowired
     private UserDetailsService userDetailsService;
+
 
     @Autowired
     @Qualifier("customSuccessHandler")
@@ -73,7 +78,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
         http.authorizeRequests().antMatchers("/").permitAll().
                 antMatchers("/admin/quanlythuoc/**").access("hasRole('ADMIN')");
-        
+
         http.authorizeRequests().antMatchers("/").permitAll().
                 antMatchers("/admin/quanlytaikhoan/**").access("hasRole('ADMIN')");
 
@@ -91,4 +96,8 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
         return cloudinary;
     }
 
+    @Bean
+    public SimpleDateFormat simpleDateFormat() {
+        return new SimpleDateFormat("yyyy-MM-dd");
+    }
 }

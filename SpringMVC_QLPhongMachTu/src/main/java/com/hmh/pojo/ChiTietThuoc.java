@@ -16,7 +16,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -29,7 +29,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "ChiTietThuoc.findAll", query = "SELECT c FROM ChiTietThuoc c"),
     @NamedQuery(name = "ChiTietThuoc.findByIdChitietThuoc", query = "SELECT c FROM ChiTietThuoc c WHERE c.idChitietThuoc = :idChitietThuoc"),
-    @NamedQuery(name = "ChiTietThuoc.findBySoLuong", query = "SELECT c FROM ChiTietThuoc c WHERE c.soLuong = :soLuong")})
+    @NamedQuery(name = "ChiTietThuoc.findBySoLuongSd", query = "SELECT c FROM ChiTietThuoc c WHERE c.soLuongSd = :soLuongSd"),
+    @NamedQuery(name = "ChiTietThuoc.findByHdsd", query = "SELECT c FROM ChiTietThuoc c WHERE c.hdsd = :hdsd")})
 public class ChiTietThuoc implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -38,15 +39,16 @@ public class ChiTietThuoc implements Serializable {
     @Basic(optional = false)
     @Column(name = "id_chitiet_thuoc")
     private Integer idChitietThuoc;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "so_luong")
-    private long soLuong;
+    @Column(name = "so_luong_sd")
+    private Integer soLuongSd;
+    @Size(max = 500)
+    @Column(name = "hdsd")
+    private String hdsd;
     @JoinColumn(name = "id_phieukham", referencedColumnName = "id_phieukham")
-    @ManyToOne(optional = false)
+    @ManyToOne
     private PhieuKhamBenh idPhieukham;
     @JoinColumn(name = "id_thuoc", referencedColumnName = "id_thuoc")
-    @ManyToOne(optional = false)
+    @ManyToOne
     private Thuoc idThuoc;
 
     public ChiTietThuoc() {
@@ -54,11 +56,6 @@ public class ChiTietThuoc implements Serializable {
 
     public ChiTietThuoc(Integer idChitietThuoc) {
         this.idChitietThuoc = idChitietThuoc;
-    }
-
-    public ChiTietThuoc(Integer idChitietThuoc, long soLuong) {
-        this.idChitietThuoc = idChitietThuoc;
-        this.soLuong = soLuong;
     }
 
     public Integer getIdChitietThuoc() {
@@ -69,12 +66,20 @@ public class ChiTietThuoc implements Serializable {
         this.idChitietThuoc = idChitietThuoc;
     }
 
-    public long getSoLuong() {
-        return soLuong;
+    public Integer getSoLuongSd() {
+        return soLuongSd;
     }
 
-    public void setSoLuong(long soLuong) {
-        this.soLuong = soLuong;
+    public void setSoLuongSd(Integer soLuongSd) {
+        this.soLuongSd = soLuongSd;
+    }
+
+    public String getHdsd() {
+        return hdsd;
+    }
+
+    public void setHdsd(String hdsd) {
+        this.hdsd = hdsd;
     }
 
     public PhieuKhamBenh getIdPhieukham() {

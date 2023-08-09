@@ -11,14 +11,15 @@
 <c:url value="/dangnhap" var="action"/>
 <c:if test="${param.error !=null}">
     <div class="alert alert-danger">
-        Sai tai khoan hoac mat khau!!
+        Sai tài khoản hoặc mật khẩu!
     </div>
 </c:if>
 
 
-<c:if test="${param.accessDenied !=null}">
+
+<c:if test="${param.accessDenied != null}">
     <div class="alert alert-danger">
-        Khong co quyen truy cap!!
+        Không có quyền truy cập!
     </div>
 </c:if>
 

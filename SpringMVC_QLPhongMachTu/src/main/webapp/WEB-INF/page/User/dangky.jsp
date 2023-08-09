@@ -22,6 +22,68 @@
         <form:form class="form_login" method="post" action="${action}" modelAttribute="user" 
                    enctype="multipart/form-data">
             <p>ĐĂNG KÝ</p>
+
+            <!--
+                        <div class="login0">
+                            <div class="one">
+                                <div class="one1">
+                                    <div id="tk1"><i class="fas fa-lock"></i></div>
+                                </div>
+            
+                                <div class="one1">
+            <form:input type="password" id="password" path="matKhau" placeholder="Nhập mật khẩu"/>
+        </div>
+    </div>
+</div>
+
+<div class="login0">
+    <div class="one">
+        <div class="one1">
+            <div id="tk1"><i class="fas fa-lock"></i></div>
+        </div>
+
+        <div class="one1">
+            <form:input type="password" id="password" path="matKhau" placeholder="Nhập mật khẩu"/>
+        </div>
+    </div>
+</div>
+
+<div class="login0">
+    <div class="one">
+        <div class="one1">
+            <div id="tk1"><i class="fas fa-lock"></i></div>
+        </div>
+
+        <div class="one1">
+            <form:input type="password" id="password" path="matKhau" placeholder="Nhập mật khẩu"/>
+        </div>
+    </div>
+</div>
+
+<div class="login0">
+    <div class="one">
+        <div class="one1">
+            <div id="tk1"><i class="fas fa-lock"></i></div>
+        </div>
+
+        <div class="one1">
+            <form:input type="password" id="password" path="matKhau" placeholder="Nhập mật khẩu"/>
+        </div>
+    </div>
+</div>
+
+<div class="login0">
+    <div class="one">
+        <div class="one1">
+            <div id="tk1"><i class="fas fa-lock"></i></div>
+        </div>
+
+        <div class="one1">
+            <form:input type="password" id="password" path="matKhau" placeholder="Nhập mật khẩu"/>
+        </div>
+    </div>
+</div>-->
+
             <div class="login0">
                 <div class="one">
                     <div class="one1">
@@ -46,6 +108,8 @@
                 </div>
             </div>
 
+
+
             <div class="login0">
                 <div class="one">
                     <div class="one1">
@@ -58,18 +122,17 @@
                 </div>
             </div>
 
-                <div class="login0">
-                    <div class="one">
-                        <div class="one1">
-                            <div id="tk1"><i class="fa-solid fa-cloud-arrow-up"></i></div>
-                        </div>
+            <div class="login0">
+                <div class="one">
+                    <div class="one1">
+                        <div id="tk1"><i class="fa-solid fa-cloud-arrow-up"></i></div>
+                    </div>
 
-                        <div class="one1">
-                            <form:input type="file" id="file" path="file" placeholder="Upload Avatar"/>
-                           
-                        </div>
+                    <div class="one1">
+                        <form:input type="file" id="file" path="file" placeholder="Upload Avatar"/>
                     </div>
                 </div>
+            </div>
 
             <div class="login0">
                 <div class="one2">

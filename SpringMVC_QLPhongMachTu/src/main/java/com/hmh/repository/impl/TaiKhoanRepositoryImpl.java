@@ -5,6 +5,7 @@
 package com.hmh.repository.impl;
 
 import com.hmh.pojo.TaiKhoan;
+import com.hmh.pojo.UserRole;
 import com.hmh.repository.TaiKhoanRepository;
 import java.util.List;
 import javax.persistence.Query;
@@ -60,6 +61,14 @@ public class TaiKhoanRepositoryImpl implements TaiKhoanRepository {
         return q.getResultList();
     }
 
+    @Override
+    public UserRole getRoleBenhNhan(String role) {
+        Session session = this.sessionFactoryBean.getObject().getCurrentSession();
+        Query q = session.createQuery("FROM UserRole WHERE chucVu = :role");
+        q.setParameter("role", role);
+        return (UserRole) q.getSingleResult();
+    }
 
+    
 
 }

@@ -4,7 +4,6 @@
  */
 package com.hmh.service.impl;
 
-import com.hmh.pojo.BenhNhan;
 import com.hmh.repository.BenhNhanRepository;
 import com.hmh.service.BenhNhanService;
 import java.util.List;
@@ -22,14 +21,14 @@ public class BenhNhanServiceImpl implements BenhNhanService {
     @Autowired
     private BenhNhanRepository benhNhanRepository;
 
-    @Override
-    public List<BenhNhan> getBenhNhan(Map<String, String> params) {
-        return this.benhNhanRepository.getBenhNhan(params);
-    }
+//    @Override
+//    public List<BenhNhan> getBenhNhan(Map<String, String> params) {
+//        return this.benhNhanRepository.getBenhNhan(params);
+//    }
 
-    @Override
-    public boolean addOrUpdateBenhNhan(BenhNhan bn) {
-        return this.benhNhanRepository.addOrUpdateBenhNhan(bn);
-    }
+//    @Override
+//    public boolean addOrUpdateBenhNhan(BenhNhan bn) {
+//        return this.benhNhanRepository.addOrUpdateBenhNhan(bn);
+//    }
 
 }

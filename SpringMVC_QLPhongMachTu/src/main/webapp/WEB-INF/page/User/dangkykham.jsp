@@ -7,9 +7,9 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
-<c:url value="/benhnhan/dangkykham" var="action"/>
+<c:url value="/benhnhan/dangkykham" var="actions"/>
 
-<form:form method="post" modelAttribute="benhnhan" action="${action}">
+<form:form method="post" modelAttribute="taikhoan" action="${actions}">
     <nav class="dkk_main">
         <!--<div class="textdkk"><h1>ĐĂNG KÝ KHÁM</h1></div>-->
 
@@ -34,17 +34,17 @@
                     <form:input type="text" path="email" id="email" placeholder="Email"/>
                 </div>
 
-                <div class="contentdkk4">
-                    <form:select class="form_sex" name="lang" id="lang-select" path="gioiTinh">
+<!--                <div class="contentdkk4">
+                    <%--<form:select class="form_sex" name="lang" id="lang-select" path="gioiTinh">--%>
                         <option value="">Giới tính</option>
                         <option value="sex">Nam</option>
                         <option value="sex">Nữ</option>
-                    </form:select>
+                    <%--</form:select>--%>
                 </div>
 
                 <div class="contentdkk6">
-                    <form:input type="date" path="namSinh" name="ngaysinh" id="ngaysinh" value="yyyy-mm-dd"/>
-                </div>
+                    <%--<form:input type="date" path="ngaySinh" name="ngaysinh" id="ngaysinh" value="yyyy-mm-dd"/>--%>
+                </div>-->
 
                 <div class="contentdkk5">
                     <form:input type="text" path="diaChi" placeholder="Địa chỉ"/>

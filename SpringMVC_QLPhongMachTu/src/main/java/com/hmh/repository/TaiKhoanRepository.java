@@ -5,6 +5,7 @@
 package com.hmh.repository;
 
 import com.hmh.pojo.TaiKhoan;
+import com.hmh.pojo.UserRole;
 import java.util.List;
 
 /**
@@ -14,5 +15,6 @@ import java.util.List;
 public interface TaiKhoanRepository{
     boolean addTaiKhoan(TaiKhoan tk);
     List<TaiKhoan> getTaiKhoan(String username);
-
+    UserRole getRoleBenhNhan(String role);
+    
 }

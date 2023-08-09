@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -25,10 +26,17 @@ import org.springframework.web.bind.annotation.RequestParam;
 @ControllerAdvice
 public class IndexController {
 
-    @RequestMapping("/")
-    public String index(Model model) {
-        model.addAttribute("user", new TaiKhoan());
-        return "index";
+    @Autowired 
+    private TaiKhoanService taiKhoanService;
 
+    @RequestMapping("/")
+    public String index(Model model, Authentication authentication) {
+        model.addAttribute("user", new TaiKhoan());
+        if (authentication != null) {
+            UserDetails user = taiKhoanService.loadUserByUsername(authentication.getName());
+            TaiKhoan u = taiKhoanService.getTaiKhoan(user.getUsername()).get(0);
+            model.addAttribute("user", u);
+        }
+        return "index";
     }
 }

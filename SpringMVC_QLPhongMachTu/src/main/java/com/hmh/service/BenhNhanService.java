@@ -4,7 +4,7 @@
  */
 package com.hmh.service;
 
-import com.hmh.pojo.BenhNhan;
+
 import java.util.List;
 import java.util.Map;
 
@@ -13,6 +13,6 @@ import java.util.Map;
  * @author Asus
  */
 public interface BenhNhanService {
-    List<BenhNhan> getBenhNhan(Map<String, String> params);
-    boolean addOrUpdateBenhNhan(BenhNhan bn);
+//    List<BenhNhan> getBenhNhan(Map<String, String> params);
+//    boolean addOrUpdateBenhNhan(BenhNhan bn);
 }

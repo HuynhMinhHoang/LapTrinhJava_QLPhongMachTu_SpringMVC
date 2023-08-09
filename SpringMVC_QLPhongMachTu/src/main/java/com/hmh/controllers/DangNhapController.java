@@ -22,8 +22,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class DangNhapController {
 
-    @Autowired
-    private TaiKhoanService tks;
 
     @RequestMapping("/dangnhap")
     public String dangnhap(Model model) {

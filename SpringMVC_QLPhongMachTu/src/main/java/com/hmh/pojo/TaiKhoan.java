@@ -5,23 +5,24 @@
 package com.hmh.pojo;
 
 import java.io.Serializable;
-import java.util.Set;
+import java.util.Date;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.persistence.Transient;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Null;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 import org.springframework.web.multipart.MultipartFile;
 
 /**
@@ -34,20 +35,22 @@ import org.springframework.web.multipart.MultipartFile;
 @NamedQueries({
     @NamedQuery(name = "TaiKhoan.findAll", query = "SELECT t FROM TaiKhoan t"),
     @NamedQuery(name = "TaiKhoan.findByIdTk", query = "SELECT t FROM TaiKhoan t WHERE t.idTk = :idTk"),
-    @NamedQuery(name = "TaiKhoan.findByUserRole", query = "SELECT t FROM TaiKhoan t WHERE t.userRole = :userRole"),
+    @NamedQuery(name = "TaiKhoan.findByHoTen", query = "SELECT t FROM TaiKhoan t WHERE t.hoTen = :hoTen"),
+    @NamedQuery(name = "TaiKhoan.findByNgaySinh", query = "SELECT t FROM TaiKhoan t WHERE t.ngaySinh = :ngaySinh"),
+    @NamedQuery(name = "TaiKhoan.findByGioiTinh", query = "SELECT t FROM TaiKhoan t WHERE t.gioiTinh = :gioiTinh"),
+    @NamedQuery(name = "TaiKhoan.findByDiaChi", query = "SELECT t FROM TaiKhoan t WHERE t.diaChi = :diaChi"),
+    @NamedQuery(name = "TaiKhoan.findByEmail", query = "SELECT t FROM TaiKhoan t WHERE t.email = :email"),
+    @NamedQuery(name = "TaiKhoan.findBySdt", query = "SELECT t FROM TaiKhoan t WHERE t.sdt = :sdt"),
     @NamedQuery(name = "TaiKhoan.findByTaiKhoan", query = "SELECT t FROM TaiKhoan t WHERE t.taiKhoan = :taiKhoan"),
     @NamedQuery(name = "TaiKhoan.findByMatKhau", query = "SELECT t FROM TaiKhoan t WHERE t.matKhau = :matKhau"),
     @NamedQuery(name = "TaiKhoan.findByAvt", query = "SELECT t FROM TaiKhoan t WHERE t.avt = :avt")})
 public class TaiKhoan implements Serializable {
 
-    public static final String ADMIN = "ROLE_ADMIN";
-    public static final String BACSI = "ROLE_BACSI";
-    public static final String YTA = "ROLE_YTA";
-    public static final String BENHNHAN = "ROLE_BENHNHAN";
-
     @Transient
+    @Null
     private String confirmmatKhau;
     @Transient
+    @Null
     private MultipartFile file;
 
     private static final long serialVersionUID = 1L;
@@ -56,43 +59,43 @@ public class TaiKhoan implements Serializable {
     @Basic(optional = false)
     @Column(name = "id_tk")
     private Integer idTk;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 45)
-    @Column(name = "user_role")
-    private String userRole;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 45)
+    @Size(max = 45)
+    @Column(name = "ho_ten")
+    private String hoTen;
+    @Column(name = "ngay_sinh")
+    @Temporal(TemporalType.DATE)
+    private Date ngaySinh;
+    @Size(max = 45)
+    @Column(name = "gioi_tinh")
+    private String gioiTinh;
+    @Size(max = 45)
+    @Column(name = "dia_chi")
+    private String diaChi;
+    // @Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message="Invalid email")//if the field contains email address consider using this annotation to enforce field validation
+    @Size(max = 45)
+    @Column(name = "email")
+    private String email;
+    @Size(max = 45)
+    @Column(name = "sdt")
+    private String sdt;
+    @Size(max = 45)
     @Column(name = "tai_khoan")
     private String taiKhoan;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 1000)
+    @Size(max = 1000)
     @Column(name = "mat_khau")
     private String matKhau;
     @Size(max = 1000)
     @Column(name = "avt")
     private String avt;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idTk")
-    private Set<BacSi> bacSiSet;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idTk")
-    private Set<BenhNhan> benhNhanSet;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idTk")
-    private Set<YTa> yTaSet;
+    @JoinColumn(name = "id_role", referencedColumnName = "id_role")
+    @ManyToOne
+    private UserRole idRole;
 
     public TaiKhoan() {
     }
 
     public TaiKhoan(Integer idTk) {
         this.idTk = idTk;
-    }
-
-    public TaiKhoan(Integer idTk, String userRole, String taiKhoan, String matKhau) {
-        this.idTk = idTk;
-        this.userRole = userRole;
-        this.taiKhoan = taiKhoan;
-        this.matKhau = matKhau;
     }
 
     public Integer getIdTk() {
@@ -103,12 +106,52 @@ public class TaiKhoan implements Serializable {
         this.idTk = idTk;
     }
 
-    public String getUserRole() {
-        return userRole;
+    public String getHoTen() {
+        return hoTen;
     }
 
-    public void setUserRole(String userRole) {
-        this.userRole = userRole;
+    public void setHoTen(String hoTen) {
+        this.hoTen = hoTen;
+    }
+
+    public Date getNgaySinh() {
+        return ngaySinh;
+    }
+
+    public void setNgaySinh(Date ngaySinh) {
+        this.ngaySinh = ngaySinh;
+    }
+
+    public String getGioiTinh() {
+        return gioiTinh;
+    }
+
+    public void setGioiTinh(String gioiTinh) {
+        this.gioiTinh = gioiTinh;
+    }
+
+    public String getDiaChi() {
+        return diaChi;
+    }
+
+    public void setDiaChi(String diaChi) {
+        this.diaChi = diaChi;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getSdt() {
+        return sdt;
+    }
+
+    public void setSdt(String sdt) {
+        this.sdt = sdt;
     }
 
     public String getTaiKhoan() {
@@ -135,31 +178,12 @@ public class TaiKhoan implements Serializable {
         this.avt = avt;
     }
 
-    @XmlTransient
-    public Set<BacSi> getBacSiSet() {
-        return bacSiSet;
+    public UserRole getIdRole() {
+        return idRole;
     }
 
-    public void setBacSiSet(Set<BacSi> bacSiSet) {
-        this.bacSiSet = bacSiSet;
-    }
-
-    @XmlTransient
-    public Set<BenhNhan> getBenhNhanSet() {
-        return benhNhanSet;
-    }
-
-    public void setBenhNhanSet(Set<BenhNhan> benhNhanSet) {
-        this.benhNhanSet = benhNhanSet;
-    }
-
-    @XmlTransient
-    public Set<YTa> getYTaSet() {
-        return yTaSet;
-    }
-
-    public void setYTaSet(Set<YTa> yTaSet) {
-        this.yTaSet = yTaSet;
+    public void setIdRole(UserRole idRole) {
+        this.idRole = idRole;
     }
 
     @Override

@@ -5,10 +5,8 @@
 package com.hmh.pojo;
 
 import java.io.Serializable;
-import java.util.Date;
 import java.util.Set;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,9 +16,6 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
@@ -37,10 +32,9 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Thuoc.findByIdThuoc", query = "SELECT t FROM Thuoc t WHERE t.idThuoc = :idThuoc"),
     @NamedQuery(name = "Thuoc.findByTenThuoc", query = "SELECT t FROM Thuoc t WHERE t.tenThuoc = :tenThuoc"),
     @NamedQuery(name = "Thuoc.findByXuatXu", query = "SELECT t FROM Thuoc t WHERE t.xuatXu = :xuatXu"),
-    @NamedQuery(name = "Thuoc.findByNgayNhap", query = "SELECT t FROM Thuoc t WHERE t.ngayNhap = :ngayNhap"),
-    @NamedQuery(name = "Thuoc.findByHanSd", query = "SELECT t FROM Thuoc t WHERE t.hanSd = :hanSd"),
     @NamedQuery(name = "Thuoc.findByGiaThuoc", query = "SELECT t FROM Thuoc t WHERE t.giaThuoc = :giaThuoc"),
-    @NamedQuery(name = "Thuoc.findByDonVi", query = "SELECT t FROM Thuoc t WHERE t.donVi = :donVi")})
+    @NamedQuery(name = "Thuoc.findByDonVi", query = "SELECT t FROM Thuoc t WHERE t.donVi = :donVi"),
+    @NamedQuery(name = "Thuoc.findBySoLuong", query = "SELECT t FROM Thuoc t WHERE t.soLuong = :soLuong")})
 public class Thuoc implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -49,36 +43,20 @@ public class Thuoc implements Serializable {
     @Basic(optional = false)
     @Column(name = "id_thuoc")
     private Integer idThuoc;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 50)
+    @Size(max = 50)
     @Column(name = "ten_thuoc")
     private String tenThuoc;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 50)
+    @Size(max = 50)
     @Column(name = "xuat_xu")
     private String xuatXu;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "ngay_nhap")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date ngayNhap;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "han_sd")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date hanSd;
-    @Basic(optional = false)
-    @NotNull
     @Column(name = "gia_thuoc")
-    private long giaThuoc;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 50)
+    private Long giaThuoc;
+    @Size(max = 50)
     @Column(name = "don_vi")
     private String donVi;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idThuoc")
+    @Column(name = "so_luong")
+    private Integer soLuong;
+    @OneToMany(mappedBy = "idThuoc")
     private Set<ChiTietThuoc> chiTietThuocSet;
 
     public Thuoc() {
@@ -86,16 +64,6 @@ public class Thuoc implements Serializable {
 
     public Thuoc(Integer idThuoc) {
         this.idThuoc = idThuoc;
-    }
-
-    public Thuoc(Integer idThuoc, String tenThuoc, String xuatXu, Date ngayNhap, Date hanSd, long giaThuoc, String donVi) {
-        this.idThuoc = idThuoc;
-        this.tenThuoc = tenThuoc;
-        this.xuatXu = xuatXu;
-        this.ngayNhap = ngayNhap;
-        this.hanSd = hanSd;
-        this.giaThuoc = giaThuoc;
-        this.donVi = donVi;
     }
 
     public Integer getIdThuoc() {
@@ -122,27 +90,11 @@ public class Thuoc implements Serializable {
         this.xuatXu = xuatXu;
     }
 
-    public Date getNgayNhap() {
-        return ngayNhap;
-    }
-
-    public void setNgayNhap(Date ngayNhap) {
-        this.ngayNhap = ngayNhap;
-    }
-
-    public Date getHanSd() {
-        return hanSd;
-    }
-
-    public void setHanSd(Date hanSd) {
-        this.hanSd = hanSd;
-    }
-
-    public long getGiaThuoc() {
+    public Long getGiaThuoc() {
         return giaThuoc;
     }
 
-    public void setGiaThuoc(long giaThuoc) {
+    public void setGiaThuoc(Long giaThuoc) {
         this.giaThuoc = giaThuoc;
     }
 
@@ -152,6 +104,14 @@ public class Thuoc implements Serializable {
 
     public void setDonVi(String donVi) {
         this.donVi = donVi;
+    }
+
+    public Integer getSoLuong() {
+        return soLuong;
+    }
+
+    public void setSoLuong(Integer soLuong) {
+        this.soLuong = soLuong;
     }
 
     @XmlTransient
