@@ -64,8 +64,13 @@ public class QuanLyTaiKhoanServiceImpl implements QuanLyTaiKhoanService {
     }
 
     @Override
-    public TaiKhoan getTaiKhoanUpdate(int id) {
-        return this.quanLyTaiKhoanRepository.getTaiKhoanUpdate(id);
+    public TaiKhoan getTaiKhoanById(int id) {
+        return this.quanLyTaiKhoanRepository.getTaiKhoanById(id);
+    }
+
+    @Override
+    public boolean xoaTaiKhoan(int id) {
+        return this.quanLyTaiKhoanRepository.xoaTaiKhoan(id);
     }
 
 }

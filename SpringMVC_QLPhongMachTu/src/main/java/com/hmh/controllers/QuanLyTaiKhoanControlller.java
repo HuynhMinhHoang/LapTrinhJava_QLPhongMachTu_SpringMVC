@@ -49,7 +49,7 @@ public class QuanLyTaiKhoanControlller {
     public String updateTaiKhoanAdmin(Model model,@PathVariable(value = "id") int id) {
                 model.addAttribute("qltaikhoan", this.quanLyTaiKhoanService.getTaiKhoanAdmin(null));
 
-        model.addAttribute("addtaikhoan", this.quanLyTaiKhoanService.getTaiKhoanUpdate(id));
+        model.addAttribute("addtaikhoan", this.quanLyTaiKhoanService.getTaiKhoanById(id));
         return "quanlytaikhoan";
     }
     

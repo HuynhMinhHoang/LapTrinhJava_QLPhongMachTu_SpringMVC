@@ -24,6 +24,7 @@ com\hmh\service\impl\UserRoleServiceImpl.class
 com\hmh\controllers\LapDsKhamController.class
 com\hmh\service\UserRoleService.class
 com\hmh\pojo\UserRole_.class
+com\hmh\controllers\ApiQuanLyTaiKhoanController.class
 com\hmh\repository\UserRoleRepository.class
 com\hmh\pojo\DichVu_.class
 com\hmh\pojo\ChiTietLichTruc_.class

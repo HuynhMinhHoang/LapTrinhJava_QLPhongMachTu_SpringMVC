@@ -26,6 +26,7 @@
                 <table>
                     <thead>
                         <tr>
+                            <th></th>
                             <th>Avatar</th>
                             <th>ID</th>
                             <th>Họ tên </th>
@@ -42,12 +43,23 @@
 
                     <tbody>
                         <c:forEach items="${qltaikhoan}" var="p">
+
+
                             <tr>
                                 <td>
+                                    <c:url value="/api/admin/quanlytaikhoan/${p.idTk}" var="apiDel"/>
+                                    <div class="admin_submit admin_submit11" onclick="xoaTaiKhoan('${apiDel}')">
+                                        XÓA  
+                                    </div>
+                                </td>
+
+
+                                <td>
                                     <a href="<c:url value="/admin/quanlytaikhoan/${p.idTk}"/>" >
-                                        <img src="${p.avt}" alt="${p.hoTen}" width="70" />
+                                        <img src="${p.avt}" alt="null" width="70" />
                                     </a>
                                 </td>
+
                                 <td>${p.idTk}</td>
                                 <td>${p.hoTen}</td>
                                 <td>${p.ngaySinh}</td>
@@ -65,21 +77,27 @@
             </section>
 
             <section class="admin_btn">
+                <!--                <div class="admin_submit">
+                                    <button type="submit">THÊM</button>         
+                                </div>-->
+
                 <div class="admin_submit">
-                    <button type="submit">THÊM</button>         
+                    <button type="submit">
+                        <c:choose>
+                            <c:when test="${addtaikhoan.idRole != null}">
+                                CẬP NHẬT
+                            </c:when>
+                            <c:otherwise>
+                                THÊM    
+                            </c:otherwise>
+                        </c:choose>
+                    </button>      
                 </div>
 
                 <div class="admin_submit">
-                    <button >SỬA</button>      
+                    <button type="submit">TẢI LẠI</button>   
                 </div>
 
-                <div class="admin_submit">
-                    <button >TẢI LẠI</button>   
-                </div>
-
-                <div class="admin_submit admin_submit1">
-                    <button >XÓA</button>   
-                </div>
             </section>
 
         </div>
@@ -89,6 +107,9 @@
                 </div>-->
 
 
+
+        <form:hidden path="idTk"/>
+        <form:hidden path="avt"/>
 
         <div class="change_ac">
 
@@ -161,7 +182,14 @@
                     <h5>Chức vụ</h5>
                     <form:select class="role" name="role" id="role" path="idRole">
                         <c:forEach items="${user_role}" var="c" >
-                            <option value="${c.idRole}" selected>${c.chucVu}</option>
+                            <c:choose>
+                                <c:when test="${c.idRole == addtaikhoan.idRole.idRole}">
+                                    <option value="${c.idRole}" selected>${c.chucVu}</option>
+                                </c:when>
+                                <c:otherwise>
+                                    <option value="${c.idRole}">${c.chucVu}</option>
+                                </c:otherwise>
+                            </c:choose>
                         </c:forEach>
                     </form:select>
                 </div>
@@ -182,4 +210,4 @@
 </form:form>
 
 
-<!--<script src="<c:url value="/js/main.js" />"></script>-->
+<script src="<c:url value="/js/main.js" />"></script>

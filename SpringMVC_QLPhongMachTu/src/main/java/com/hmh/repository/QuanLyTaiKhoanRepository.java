@@ -15,5 +15,6 @@ import java.util.Map;
 public interface QuanLyTaiKhoanRepository {
     List<TaiKhoan> getTaiKhoanAdmin(String username);
     boolean themTaiKhoan(TaiKhoan tk);
-    TaiKhoan getTaiKhoanUpdate(int id);
+    TaiKhoan getTaiKhoanById(int id);
+    boolean xoaTaiKhoan(int id);
 }

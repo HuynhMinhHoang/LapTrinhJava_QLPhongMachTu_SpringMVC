@@ -16,5 +16,6 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 public interface QuanLyTaiKhoanService {
     List<TaiKhoan> getTaiKhoanAdmin(String username);
     boolean themTaiKhoan(TaiKhoan tk);
-    TaiKhoan getTaiKhoanUpdate(int id);
+    TaiKhoan getTaiKhoanById(int id);
+    boolean xoaTaiKhoan(int id);
 }

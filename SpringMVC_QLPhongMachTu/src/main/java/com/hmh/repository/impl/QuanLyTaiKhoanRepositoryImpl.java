@@ -30,7 +30,6 @@ public class QuanLyTaiKhoanRepositoryImpl implements QuanLyTaiKhoanRepository {
 
     @Autowired
     private LocalSessionFactoryBean factory;
-    
 
     @Override
     public List<TaiKhoan> getTaiKhoanAdmin(String username) {
@@ -44,7 +43,6 @@ public class QuanLyTaiKhoanRepositoryImpl implements QuanLyTaiKhoanRepository {
 //            Predicate p = builder.equal(root.get("taiKhoan").as(String.class), username.trim());
 //            query = query.where(p);
 //        }
-
         Query q = session.createQuery(query);
         return q.getResultList();
     }
@@ -55,17 +53,34 @@ public class QuanLyTaiKhoanRepositoryImpl implements QuanLyTaiKhoanRepository {
         try {
             if (tk.getIdTk() == null) {
                 session.save(tk);
+            } else {
+                session.update(tk);
             }
+
             return true;
         } catch (HibernateException ex) {
             ex.printStackTrace();
+            return false;
         }
-        return false;
+
     }
 
     @Override
-    public TaiKhoan getTaiKhoanUpdate(int id) {
+    public TaiKhoan getTaiKhoanById(int id) {
         Session session = this.factory.getObject().getCurrentSession();
-        return session.get(TaiKhoan.class,id);
+        return session.get(TaiKhoan.class, id);
+    }
+
+    @Override
+    public boolean xoaTaiKhoan(int id) {
+        Session session = this.factory.getObject().getCurrentSession();
+        TaiKhoan tk = this.getTaiKhoanById(id);
+        try {
+            session.delete(tk);
+            return true;
+        } catch (HibernateException ex) {
+            ex.printStackTrace();
+            return false;
+        }
     }
 }
