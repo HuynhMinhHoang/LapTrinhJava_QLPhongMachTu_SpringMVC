@@ -49,7 +49,10 @@ public class QuanLyTaiKhoanServiceImpl implements QuanLyTaiKhoanService {
     @Override
     public boolean themTaiKhoan(TaiKhoan tk) {
         String pass = tk.getMatKhau();
-        tk.setMatKhau(this.passwordEncoder.encode(pass));
+
+        if (tk.getIdTk() == null) {
+            tk.setMatKhau(this.passwordEncoder.encode(pass));
+        }
 
         if (!tk.getFile().isEmpty()) {
             try {

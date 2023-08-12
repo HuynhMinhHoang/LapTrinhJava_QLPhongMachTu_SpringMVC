@@ -21,6 +21,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 import javax.validation.constraints.Null;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import org.springframework.web.multipart.MultipartFile;
@@ -49,6 +50,7 @@ public class TaiKhoan implements Serializable {
     @Transient
     @Null
     private String confirmmatKhau;
+
     @Transient
     @Null
     private MultipartFile file;
@@ -71,16 +73,18 @@ public class TaiKhoan implements Serializable {
     @Size(max = 45)
     @Column(name = "dia_chi")
     private String diaChi;
-    // @Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message="Invalid email")//if the field contains email address consider using this annotation to enforce field validation
+//    @Pattern(regexp = "[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message = "{user.email.forMat}")//if the field contains email address consider using this annotation to enforce field validation
     @Size(max = 45)
     @Column(name = "email")
     private String email;
+//    @Pattern(regexp="^\\(?(\\d{3})\\)?[- ]?(\\d{3})[- ]?(\\d{4})$", message="{user.phone.forMat}")
     @Size(max = 45)
     @Column(name = "sdt")
     private String sdt;
     @Size(max = 45)
     @Column(name = "tai_khoan")
     private String taiKhoan;
+//    @Size(min = 6, max = 1000, message = "{user.password.lenErr}")
     @Size(max = 1000)
     @Column(name = "mat_khau")
     private String matKhau;

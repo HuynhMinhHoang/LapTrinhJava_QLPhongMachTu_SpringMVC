@@ -9,7 +9,16 @@
 
 <c:url value="/benhnhan/dangkykham" var="actions"/>
 
-<form:form method="post" modelAttribute="taikhoan" action="${actions}">
+<c:if test="${errMsg != null}">
+    <div class="alert1">
+        ${errMsg}
+    </div>
+</c:if>
+
+
+<form:form method="post" modelAttribute="user" action="${actions}" enctype="multipart/form-data">
+
+
     <nav class="dkk_main">
         <!--<div class="textdkk"><h1>ĐĂNG KÝ KHÁM</h1></div>-->
 
@@ -29,33 +38,48 @@
                     <h5>Vui lòng điền thông tin vào form bên dưới để đăng ký khám bệnh theo yêu cầu!</h5>
                 </div>
 
+
+                <form:hidden path="idTk"/>
+                <form:hidden path="taiKhoan"/>
+                <form:hidden path="avt"/>
+
+
                 <div class="contentdkk3">
                     <form:input type="text" path="hoTen" id="hoTen" placeholder="Họ tên"/>
                     <form:input type="text" path="email" id="email" placeholder="Email"/>
                 </div>
 
-<!--                <div class="contentdkk4">
-                    <%--<form:select class="form_sex" name="lang" id="lang-select" path="gioiTinh">--%>
-                        <option value="">Giới tính</option>
-                        <option value="sex">Nam</option>
-                        <option value="sex">Nữ</option>
-                    <%--</form:select>--%>
+                <div class="contentdkk4">
+                    <form:select path="gioiTinh" id="gioiTinh" class="form-select" cssErrorClass="is-invalid">
+                        <form:option value="" label="Giới tính" />
+                        <form:option value="Nam" label="Nam" />
+                        <form:option value="Nữ" label="Nữ" />
+                        <form:option value="Khác" label="Khác" />
+                    </form:select>
+
+
+                    <div class="contentdkk5">
+                        <form:input type="text" path="ngaySinh" placeholder="Ngày sinh"/>
+                    </div>
+
+                    <div class="contentdkk5">
+                        <form:input type="text" path="sdt" placeholder="Số điện thoại"/>
+                    </div>
+
+                    <div class="contentdkk5">
+                        <form:input type="text" path="diaChi" placeholder="Địa chỉ"/>
+                    </div>
+
+                    <!--hide-->
+                    <form:input type="text" path="matKhau" id="matKhau" placeholder=""/>
+                    <form:input type="file" id="file1" path="file" placeholder="Upload Avatar"/>
+
+                    <div class="submitdkk">
+                        <a><button type="submit">ĐĂNG KÝ KHÁM</button></a>
+                    </div>
                 </div>
 
-                <div class="contentdkk6">
-                    <%--<form:input type="date" path="ngaySinh" name="ngaysinh" id="ngaysinh" value="yyyy-mm-dd"/>--%>
-                </div>-->
 
-                <div class="contentdkk5">
-                    <form:input type="text" path="diaChi" placeholder="Địa chỉ"/>
-                </div>
-
-                <div class="submitdkk">
-                    <a href="#"><button type="submit">ĐĂNG KÝ KHÁM</button></a>
-                </div>
             </div>
-
-
-        </div>
     </nav>
 </form:form>

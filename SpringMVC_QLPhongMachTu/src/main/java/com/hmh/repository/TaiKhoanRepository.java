@@ -16,5 +16,5 @@ public interface TaiKhoanRepository{
     boolean addTaiKhoan(TaiKhoan tk);
     List<TaiKhoan> getTaiKhoan(String username);
     UserRole getRoleBenhNhan(String role);
-    
+    TaiKhoan getTaiKhoanById(int id);
 }

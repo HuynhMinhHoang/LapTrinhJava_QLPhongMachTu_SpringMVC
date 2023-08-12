@@ -10,7 +10,6 @@
 
 <c:url value="/admin/quanlytaikhoan" var="actions"/>
 <form:form method="post" modelAttribute="addtaikhoan" action="${actions}" enctype="multipart/form-data">
-
     <main class="table">
         <div>
             <section class="table__header">
@@ -30,14 +29,16 @@
                             <th>Avatar</th>
                             <th>ID</th>
                             <th>Họ tên </th>
+                            <th id="Username">Username</th>
+                            <th id="Password">Password</th>
+                            <th id="User_Role">Chức vụ</th>
+                            <th>Email</th>
+                            <th>SĐT</th>
                             <th>Năm sinh</th>
                             <th>Giới tính</th>
                             <th>Địa chỉ</th>
-                            <th>Email</th>
-                            <th>SDT</th>
-                            <th>Username</th>
-                            <th>Password</th>
-                            <th>User_Role</th>
+                            
+
                         </tr>
                     </thead>
 
@@ -56,20 +57,22 @@
 
                                 <td>
                                     <a href="<c:url value="/admin/quanlytaikhoan/${p.idTk}"/>" >
-                                        <img src="${p.avt}" alt="null" width="70" />
+                                        <img src="${p.avt}" alt="null" width="65" />
                                     </a>
                                 </td>
 
                                 <td>${p.idTk}</td>
                                 <td>${p.hoTen}</td>
+                                <td>${p.taiKhoan}</td>
+                                <td id="pass-text"><i class="fa-solid fa-eye-slash"></i></td>
+                                <td>${p.idRole.chucVu}</td>
+                                <td>${p.email}</td>
+                                <td>${p.sdt}</td>
                                 <td>${p.ngaySinh}</td>
                                 <td>${p.gioiTinh}</td>
                                 <td>${p.diaChi}</td>
-                                <td>${p.email}</td>
-                                <td>${p.sdt}</td>
-                                <td>${p.taiKhoan}</td>
-                                <td id="pass-text">${p.matKhau}</td>
-                                <td>${p.idRole.chucVu}</td>
+                                
+
                             </tr>
                         </c:forEach>
                     </tbody>
@@ -101,19 +104,23 @@
             </section>
 
         </div>
-        <!--        <div class="change1">
-                    <h5>ID</h5>
-                    <input type="text" id="idTk" placeholder="" disabled/>
-                </div>-->
+        <!--                <div class="change1">
+                            <h5>ID</h5>
+                            <input type="text" id="idTk" placeholder="" disabled/>
+                        </div>-->
 
 
 
         <form:hidden path="idTk"/>
         <form:hidden path="avt"/>
+        <%--<form:hidden path="matKhau"/>--%>
 
         <div class="change_ac">
 
             <div class="change_ac1">
+
+
+
                 <div class="change1">
                     <h5>Họ tên</h5>
                     <form:input type="text" path="hoTen" id="hoTen" placeholder=""/>
@@ -132,6 +139,7 @@
                     <h5>Giới tính</h5>
                     <%--<form:input type="text" path="gioiTinh" id="gioiTinh" placeholder=""/>--%>
                     <form:select path="gioiTinh" id="gioiTinh" class="form-select" cssErrorClass="is-invalid">
+                        <form:option value="" label="Giới tính" />
                         <form:option value="Nam" label="Nam" />
                         <form:option value="Nữ" label="Nữ" />
                         <form:option value="Khác" label="Khác" />
@@ -171,7 +179,15 @@
 
                 <div class="change1">
                     <h5>Password</h5>
-                    <form:input type="text" path="matKhau" id="matKhau" placeholder=""/>
+                    <c:choose>
+                        <c:when test="${addtaikhoan.idTk == null}">
+                            <form:input type="text" path="matKhau" id="matKhau" placeholder=""/>
+
+                        </c:when>
+                        <c:otherwise>
+                            <form:input type="text" path="matKhau" id="matKhau" placeholder="" readonly="true"/>
+                        </c:otherwise>
+                    </c:choose>
                 </div>
 
             </div>
@@ -197,12 +213,9 @@
                 <div class="change1">
                     <h5>Avatar</h5>
                     <form:input type="file" id="file" path="file" placeholder="Upload Avatar"/>
-
                 </div>
+
             </div>
-
-
-
 
         </div>
 

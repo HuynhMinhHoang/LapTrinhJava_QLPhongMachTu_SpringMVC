@@ -43,19 +43,18 @@ public class QuanLyTaiKhoanControlller {
         model.addAttribute("qltaikhoan", this.quanLyTaiKhoanService.getTaiKhoanAdmin(null));
         return "quanlytaikhoan";
     }
-    
-    
+
     @GetMapping("/admin/quanlytaikhoan/{id}")
-    public String updateTaiKhoanAdmin(Model model,@PathVariable(value = "id") int id) {
-                model.addAttribute("qltaikhoan", this.quanLyTaiKhoanService.getTaiKhoanAdmin(null));
+    public String updateTaiKhoanAdmin(Model model, @PathVariable(value = "id") int id) {
+        model.addAttribute("qltaikhoan", this.quanLyTaiKhoanService.getTaiKhoanAdmin(null));
 
         model.addAttribute("addtaikhoan", this.quanLyTaiKhoanService.getTaiKhoanById(id));
         return "quanlytaikhoan";
     }
-    
 
     @PostMapping("/admin/quanlytaikhoan")
     public String addTaiKhoanAdmin(@ModelAttribute(value = "addtaikhoan") TaiKhoan tk) {
+//        System.out.println(tk.getIdTk());
         if (this.quanLyTaiKhoanService.themTaiKhoan(tk) == true) {
             return "redirect:/admin/quanlytaikhoan";
         }

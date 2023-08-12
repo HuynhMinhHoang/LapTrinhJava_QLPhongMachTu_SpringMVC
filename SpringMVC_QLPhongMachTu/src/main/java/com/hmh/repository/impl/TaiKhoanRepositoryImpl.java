@@ -15,6 +15,7 @@ import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.stereotype.Repository;
@@ -36,11 +37,17 @@ public class TaiKhoanRepositoryImpl implements TaiKhoanRepository {
         Session session = this.sessionFactoryBean.getObject().getCurrentSession();
 
         try {
-            session.save(tk);
+            if (tk.getIdTk() == null) {
+                session.save(tk);
+            } else {
+                session.update(tk);
+            }
+
             return true;
         } catch (HibernateException ex) {
             System.err.println(ex.getMessage());
         }
+
         return false;
     }
 
@@ -69,6 +76,10 @@ public class TaiKhoanRepositoryImpl implements TaiKhoanRepository {
         return (UserRole) q.getSingleResult();
     }
 
-    
+    @Override
+    public TaiKhoan getTaiKhoanById(int id) {
+        Session session = this.sessionFactoryBean.getObject().getCurrentSession();
+        return session.get(TaiKhoan.class, id);
+    }
 
 }
