@@ -82,4 +82,14 @@ public class TaiKhoanRepositoryImpl implements TaiKhoanRepository {
         return session.get(TaiKhoan.class, id);
     }
 
+    @Override
+    public TaiKhoan getTaiKhoanByUsername(String username) {
+
+        Session s = this.sessionFactoryBean.getObject().getCurrentSession();
+        Query q = s.createQuery("FROM TaiKhoan WHERE taiKhoan=:un");
+        q.setParameter("un", username);
+
+        return (TaiKhoan) q.getSingleResult();
+    }
+
 }

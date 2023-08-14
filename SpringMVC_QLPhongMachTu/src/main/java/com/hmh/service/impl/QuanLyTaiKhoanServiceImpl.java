@@ -7,22 +7,18 @@ package com.hmh.service.impl;
 import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
 import com.hmh.pojo.TaiKhoan;
-import com.hmh.repository.BenhNhanRepository;
 import com.hmh.repository.QuanLyTaiKhoanRepository;
-import com.hmh.repository.TaiKhoanRepository;
+
 import com.hmh.service.QuanLyTaiKhoanService;
 import java.io.IOException;
-import java.util.HashSet;
+
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
+
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
+
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -53,6 +49,8 @@ public class QuanLyTaiKhoanServiceImpl implements QuanLyTaiKhoanService {
         if (tk.getIdTk() == null) {
             tk.setMatKhau(this.passwordEncoder.encode(pass));
         }
+        
+        
 
         if (!tk.getFile().isEmpty()) {
             try {

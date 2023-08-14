@@ -9,11 +9,14 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
 
 
 
-/*font*/
-/*@font-face {
-    font-family: font;
-    src: url('resource/font/HelveticaNeue.ttf.otf') format('truetype');
-}*/
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@660&display=swap');
+*{
+    font-family: 'Quicksand', sans-serif;
+}
+
+
+
+
 
 
 
@@ -196,7 +199,7 @@ header .list .tab:hover::after {
 }
 .tab1 a{
     font-weight: 700 !important;
-    color: #dc3545 !important ;
+    color: #800080 !important ;
 }
 
 
@@ -574,7 +577,7 @@ ul.menucha > li > a:hover{
     width: 350px;
     border: 1px solid #e0e0e0;
     border-radius: 10px;
-    font-size: 15px;
+    font-size: 17px;
     padding: 10px;
 }
 
@@ -590,16 +593,16 @@ ul.menucha > li > a:hover{
     width: 100%;
     border: 1px solid #e0e0e0;
     border-radius: 10px;
-    font-size: 15px;
+    font-size: 17px;
     padding: 10px;
 }
 .contentdkk4{
     margin-top: 20px;
-    font-size: 15px;
+    font-size: 17px;
     text-align: center;
 }
 .contentdkk4 select{
-    font-size: 15px;
+    font-size: 17px;
     width: 100%;
     height: 45px;
     border: 1px solid #e0e0e0;
@@ -629,7 +632,7 @@ ul.menucha > li > a:hover{
 .submitdkk a button{
     width: 160px;
     padding: 14px;
-    font-size: 14px;
+    font-size: 15px;
     border: 0px solid rgb(43, 43, 43);
     background-color:rgb(130, 201, 30);
     color: white;
@@ -804,7 +807,9 @@ ul.menucha > li > a:hover{
 
 }
 
-
+#upload{
+    padding: 3px;
+}
 
 
 
@@ -816,7 +821,7 @@ main.table {
     background-color: #fffff;
     margin-left: 290px;
     box-shadow: 5px 5px 15px 5px rgba(198, 198, 198,0.9);
-    margin-top: 0px;
+    margin-top: 20px;
     /*        display: flex;
             justify-content: center;*/
 }
@@ -974,7 +979,7 @@ tbody tr.hide {
 .admin_btn{
     display: flex;
     justify-content: space-evenly;
-    margin-top: 55px;
+    margin-top: 50px;
 }
 
 .admin_btn button{
@@ -1017,10 +1022,151 @@ tbody tr.hide {
 
 /*dangkykham*/
 
-#matKhau{
+#matKhauu{
     display: none;
 }
 #file1{
     display: none;
 
 }
+
+
+
+
+
+
+
+
+/*lapdskham*/
+main.table1{
+    /*    height: 100%;*/
+    width: 84%;
+    border-radius: 30px;
+    background-color: #fffff;
+    box-shadow: 5px 5px 15px 5px rgba(198, 198, 198,0.9);
+    margin-top: 50px;
+    /*        display: flex;
+            justify-content: center;*/
+}
+
+.table__body1 {
+    width: 100%;
+    border-radius: 20px;
+    height: 550px;
+    margin-top: 40px;
+    background-color: #fffb;
+    border-radius: 20p;
+    overflow: auto;
+    overflow: overlay;
+    border: 1px solid #E9F9E7;
+
+}
+
+table {
+    width: 100%;
+
+}
+
+table, th, td {
+    border-collapse: collapse;
+    padding: 1rem;
+    text-align: center;
+    font-size: 20px;
+}
+
+thead th {
+    position: sticky;
+    top: 0;
+    left: 0;
+    background-color: #E9F9E7;
+    cursor: pointer;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #0000000b;
+}
+
+
+
+.admin_submit111{
+    width: 160px;
+    text-align: center;
+    font-size: 17px;
+    border-radius: 6px;
+    border: none;
+    background-color: rgb(130, 201, 30);
+    padding: 10px;
+    box-shadow: 0px 5px 10px 0 rgba(130, 201, 30, 0.1);
+}
+
+.admin_submit111 a{
+    text-decoration: none;
+    color: white;
+}
+.admin_submit111 a:hover{
+    color: white;
+}
+
+.admin_submit1111{
+    margin: auto;
+    width: 100px;
+}
+
+#capnhathuoc a{
+    color: white;
+    text-decoration: none;
+}
+
+
+#capnhathuoc{
+    font-size: 16.5px;
+    width: 110px;
+}
+
+.table__body1{
+    width: 100%;
+}
+
+.table1{
+
+    display: flex;
+    justify-content: space-around;
+    padding: 0px;
+    border-radius: 0px;
+}
+
+.change_ac11{
+    padding: 60px;
+    background: #E9F9E7;
+    border-radius: 0px;
+    display: block;
+}
+.admin_btn1{
+    margin-bottom: 50px;
+}
+
+
+
+
+
+#idRole{
+    width: 250px;
+    margin: auto;
+    text-align: center;
+}
+
+#xacnhan{
+    color:#dc3545;
+    margin: 0px;
+}
+
+#xacnhan1{
+    color:rgb(130, 201, 30);
+    margin: 0px;
+}
+
+#xoaThuoc{
+    padding: 10px;
+}
+
+

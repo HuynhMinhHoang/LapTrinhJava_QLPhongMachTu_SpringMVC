@@ -51,7 +51,7 @@ public class PhieuKhamBenh implements Serializable {
     @Column(name = "ket_luan")
     private String ketLuan;
     @Column(name = "ngay_kham_benh")
-    @Temporal(TemporalType.TIMESTAMP)
+    @Temporal(TemporalType.DATE)
     private Date ngayKhamBenh;
     @OneToMany(mappedBy = "idPk")
     private Set<PhieuDangKy> phieuDangKySet;

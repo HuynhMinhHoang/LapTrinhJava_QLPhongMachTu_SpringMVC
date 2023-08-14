@@ -17,4 +17,5 @@ public interface TaiKhoanRepository{
     List<TaiKhoan> getTaiKhoan(String username);
     UserRole getRoleBenhNhan(String role);
     TaiKhoan getTaiKhoanById(int id);
+    TaiKhoan getTaiKhoanByUsername(String username);
 }

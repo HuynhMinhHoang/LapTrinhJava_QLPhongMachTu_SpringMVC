@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
  *
@@ -27,19 +26,7 @@ public class DangKyKhamController {
     @Autowired
     private TaiKhoanService taiKhoanService;
 
-//    @GetMapping("/benhnhan/dangkykham")
-//    public String dangkykham(Model model) {
-//        model.addAttribute("taikhoan", new TaiKhoan());
-//        return "dangkykham";
-//    }
-//
-//    @PostMapping("/benhnhan/dangkykham")
-//    public String add(@ModelAttribute(value = "taikhoan") TaiKhoan tk) {
-//        if (this.taiKhoanService.addTaiKhoan(tk) == true) {
-//            return "redirect:/";
-//        }
-//        return "dangkykham";
-//    }
+
     @GetMapping("/benhnhan/dangkykham")
     public String dangkykham(Model model, Authentication authentication) {
         model.addAttribute("user", new TaiKhoan());
@@ -58,25 +45,14 @@ public class DangKyKhamController {
 
     @PostMapping("/benhnhan/dangkykham")
     public String updateBenhNhan(@ModelAttribute(value = "user") TaiKhoan tk) {
-
+        String errMsg = "";
         if (this.taiKhoanService.addTaiKhoan(tk) == true) {
-            return "redirect:/";
-        }
 
+//            return "dangkykham";
+        } else {
+            errMsg = " Đăng ký khám không thành công!";
+        }
         return "dangkykham";
     }
 
-    //        String errMsg = "";
-//        if (this.taiKhoanService.addTaiKhoan(tk) == true) {
-//            errMsg = " Đăng ký khám thành công, vui lòng kiểm tra email phản hồi!";
-////            return "redirect:/";
-//        }
-//        else{
-//            errMsg = " Đăng ký khám không thành công!";
-//        }
-//    @GetMapping("/benhnhan/dangkykham/{id}")
-//    public String updateTaiKhoanAdmin(Model model,@PathVariable(value = "id") int id) {
-//        model.addAttribute("info", this.taiKhoanService.getTaiKhoanById(id));
-//        return "dangkykham";
-//    }
 }

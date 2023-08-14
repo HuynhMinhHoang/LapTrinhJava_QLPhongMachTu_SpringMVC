@@ -72,6 +72,10 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
         http.authorizeRequests().antMatchers("/").permitAll().
                 antMatchers("/benhnhan/dangkykham/**").access("hasRole('BENHNHAN')");
+        
+        http.authorizeRequests().antMatchers("/").permitAll().
+                antMatchers("/benhnhan/lichsukham/**").access("hasRole('BENHNHAN')");
+        
 
         http.authorizeRequests().antMatchers("/").permitAll().
                 antMatchers("/yta/lapdskham/**").access("hasRole('YTA')");

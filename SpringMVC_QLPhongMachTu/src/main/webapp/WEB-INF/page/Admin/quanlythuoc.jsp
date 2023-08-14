@@ -9,37 +9,126 @@
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 
-<nav class="container">
-    <div class="container mt-3">
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>HỌ VÀ TÊN</th>
-                    <th>NĂM SINH</th>
-                    <th>GIỚI TÍNH</th>
-                    <th>ĐỊA CHỈ</th>
-                    <th>EMAIL</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                <c:forEach items="${benhnhan}" var="p">
-                    <tr>
-                        <td>${p.idBn}</td>
-                        <td>${p.hoTen}</td>
-                        <td>${p.namSinh}</td>
-                        <td>${p.gioiTinh}</td>
-                        <td>${p.diaChi}</td>
-                        <td>${p.email}</td>
-                        <td>
-                            <a href="#" class="btn btn-success">Đồng ý</a>
-                        </td>
-                    </tr>
-                </c:forEach>
-            </tbody>
-        </table>
-    </div>
-</nav>
+<c:url value="/admin/quanlythuoc" var="actions"/>
+<form:form method="post"  action="${actions}" modelAttribute="thuoc" enctype="multipart/form-data">
+
+    <main class="table table1">
+        <div>
+            <c:if test="${err != null}">
+                <div class="alert1">
+                    ${err}
+                </div>
+            </c:if>
+            <section class="table__header">
+                <h3>DANH SÁCH THUỐC</h3>
+                <div class="input-group">
+                    <input type="search" placeholder="Tìm kiếm...">
+                    <button> <i class='bx bx-search-alt-2'></i> </button>
+                </div>
+            </section>
+            <section class="table__body table__body1">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Tên Thuốc</th>
+                            <th>Xuất Xứ</th>
+                            <th>Giá Thuốc</th>
+                            <th>Đơn Vị </th>
+                            <th>Số Lượng</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody >
+                        <c:forEach items="${qlThuoc}" var="t">
+                            <tr >
+
+                                <td>${t.idThuoc}</td>
+                                <td>${t.tenThuoc}</td>
+                                <td>${t.xuatXu}</td>
+                                <td>${t.giaThuoc}</td>
+                                <td>${t.donVi}</td>
+                                <td>${t.soLuong}</td>
+                                <td id="xoaThuoc">
+                                    <c:url value="/api/admin/quanlythuoc/${t.idThuoc}" var="apiDelete" />
+                                    <div class="admin_submit admin_submit11 admin_submit1111" onclick="xoaThuoc('${apiDelete}')">
+                                        XÓA  
+                                    </div>
+                                </td>
+                                <td id="xoaThuoc">
+                                    <div class="admin_submit admin_submit11" id="capnhathuoc">
+                                        <a href="<c:url value="/admin/quanlythuoc/${t.idThuoc}"/>" >
+                                            Chọn
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        </c:forEach>
+                    </tbody>
+                </table>
+            </section>
+
+
+
+        </div>
+        <form:hidden path="idThuoc"/>
+
+        <div class="change_ac change_ac11">
+
+            <div class="change_ac1">
+                <div class="change1">
+                    <h5>Tên Thuốc</h5>
+                    <form:input type="text" path="tenThuoc" id="tenThuoc" placeholder=""/>
+                </div>
+
+                <div class="change1">
+                    <h5>Xuất Xứ</h5>
+                    <form:input type="text" path="xuatXu" id="xuatXu" placeholder=""/>
+                </div>
+
+            </div>
+
+            <div class="change_ac1">
+                <div class="change1">
+                    <h5>Giá Thuốc</h5>
+                    <form:input type="text" path="giaThuoc" id="giaThuoc" placeholder=""/>
+                </div>
+                <div class="change1">
+                    <h5>Đơn Vị</h5>
+                    <form:input type="text" path="donVi" id="donVi" placeholder=""/>
+                </div>
+
+            </div>
+            <div class="change_ac1">
+                <div class="change1">
+                    <h5>Số Lượng</h5>
+                    <form:input type="text" path="soLuong" id="soLuong" placeholder=""/>
+                </div>
+            </div>
+
+            <section class="admin_btn admin_btn1">
+                <div class="admin_submit">
+                    <button type="submit">
+                        <c:choose>
+
+                            <c:when test="${thuoc.idThuoc != null}">
+                                CẬP NHẬT
+                            </c:when>
+                            <c:otherwise>
+                                THÊM    
+                            </c:otherwise>
+                        </c:choose>
+                    </button>      
+                </div>
+            </section>
+        </div>
+
+
+    </main>
+
+</form:form>
+
+<script src="<c:url value="/js/main.js" />"></script>
 
 

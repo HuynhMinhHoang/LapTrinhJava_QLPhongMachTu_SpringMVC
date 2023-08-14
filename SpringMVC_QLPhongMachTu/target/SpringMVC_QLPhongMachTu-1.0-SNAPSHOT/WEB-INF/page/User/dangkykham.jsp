@@ -9,11 +9,7 @@
 
 <c:url value="/benhnhan/dangkykham" var="actions"/>
 
-<c:if test="${errMsg != null}">
-    <div class="alert1">
-        ${errMsg}
-    </div>
-</c:if>
+
 
 
 <form:form method="post" modelAttribute="user" action="${actions}" enctype="multipart/form-data">
@@ -71,7 +67,7 @@
                     </div>
 
                     <!--hide-->
-                    <form:input type="text" path="matKhau" id="matKhau" placeholder=""/>
+                    <form:input type="text" path="matKhau" id="matKhauu" placeholder=""/>
                     <form:input type="file" id="file1" path="file" placeholder="Upload Avatar"/>
 
                     <div class="submitdkk">

@@ -41,7 +41,7 @@
 
                     <sec:authorize access="hasRole('BENHNHAN')">
                         <li class="tab"><a href="<c:url value ="/benhnhan/dangkykham"/>">Đăng ký khám</a></li>
-                        <li class="tab"><a href="<c:url value ="/benhnhan/lichsukhambenh"/>">Lịch sử khám bệnh</a></li>
+                        <li class="tab"><a href="<c:url value ="/benhnhan/lichsukham"/>">Lịch sử khám bệnh</a></li>
                         </sec:authorize>
 
 
@@ -50,7 +50,7 @@
                         </sec:authorize>
 
                     <c:if test="${pageContext.request.userPrincipal.name != null}">
-                        <li class="tab"><a href="<c:url value ="#"/>">Đổi mật khẩu</a></li>
+                        <li class="tab"><a href="<c:url value ="/doimatkhau"/>">Đổi mật khẩu</a></li>
                     </c:if>
 
 

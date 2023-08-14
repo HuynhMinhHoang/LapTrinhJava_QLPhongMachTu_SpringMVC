@@ -7,11 +7,18 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-
 <c:url value="/admin/quanlytaikhoan" var="actions"/>
+
+
 <form:form method="post" modelAttribute="addtaikhoan" action="${actions}" enctype="multipart/form-data">
     <main class="table">
         <div>
+
+            <c:if test="${err != null}">
+                <div class="alert1">
+                    ${err}
+                </div>
+            </c:if>
             <section class="table__header">
                 <h3>DANH SÁCH TÀI KHOẢN</h3>
                 <div class="input-group">
@@ -37,7 +44,7 @@
                             <th>Năm sinh</th>
                             <th>Giới tính</th>
                             <th>Địa chỉ</th>
-                            
+
 
                         </tr>
                     </thead>
@@ -71,7 +78,7 @@
                                 <td>${p.ngaySinh}</td>
                                 <td>${p.gioiTinh}</td>
                                 <td>${p.diaChi}</td>
-                                
+
 
                             </tr>
                         </c:forEach>
@@ -87,19 +94,20 @@
                 <div class="admin_submit">
                     <button type="submit">
                         <c:choose>
-                            <c:when test="${addtaikhoan.idRole != null}">
+                            <c:when test="${addtaikhoan.idTk != null}">
                                 CẬP NHẬT
                             </c:when>
                             <c:otherwise>
                                 THÊM    
                             </c:otherwise>
                         </c:choose>
+
                     </button>      
                 </div>
 
-                <div class="admin_submit">
-                    <button type="submit">TẢI LẠI</button>   
-                </div>
+                <!--                <div class="admin_submit">
+                                    <button type="submit">TẢI LẠI</button>   
+                                </div>-->
 
             </section>
 
@@ -182,7 +190,6 @@
                     <c:choose>
                         <c:when test="${addtaikhoan.idTk == null}">
                             <form:input type="text" path="matKhau" id="matKhau" placeholder=""/>
-
                         </c:when>
                         <c:otherwise>
                             <form:input type="text" path="matKhau" id="matKhau" placeholder="" readonly="true"/>
@@ -212,7 +219,7 @@
 
                 <div class="change1">
                     <h5>Avatar</h5>
-                    <form:input type="file" id="file" path="file" placeholder="Upload Avatar"/>
+                    <form:input type="file" id="upload" path="file" placeholder="Upload Avatar"/>
                 </div>
 
             </div>

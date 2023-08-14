@@ -6,6 +6,7 @@ package com.hmh.pojo;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Set;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,14 +17,15 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 import javax.validation.constraints.Null;
-import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 import org.springframework.web.multipart.MultipartFile;
 
 /**
@@ -73,24 +75,30 @@ public class TaiKhoan implements Serializable {
     @Size(max = 45)
     @Column(name = "dia_chi")
     private String diaChi;
-//    @Pattern(regexp = "[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message = "{user.email.forMat}")//if the field contains email address consider using this annotation to enforce field validation
+    // @Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message="Invalid email")//if the field contains email address consider using this annotation to enforce field validation
     @Size(max = 45)
     @Column(name = "email")
     private String email;
-//    @Pattern(regexp="^\\(?(\\d{3})\\)?[- ]?(\\d{3})[- ]?(\\d{4})$", message="{user.phone.forMat}")
     @Size(max = 45)
     @Column(name = "sdt")
     private String sdt;
     @Size(max = 45)
     @Column(name = "tai_khoan")
     private String taiKhoan;
-//    @Size(min = 6, max = 1000, message = "{user.password.lenErr}")
     @Size(max = 1000)
     @Column(name = "mat_khau")
     private String matKhau;
     @Size(max = 1000)
     @Column(name = "avt")
     private String avt;
+    @OneToMany(mappedBy = "idTk")
+    private Set<LichTruc> lichTrucSet;
+    @OneToMany(mappedBy = "idBn")
+    private Set<PhieuDangKy> phieuDangKySet;
+    @OneToMany(mappedBy = "idBs")
+    private Set<PhieuDangKy> phieuDangKySet1;
+    @OneToMany(mappedBy = "idYt")
+    private Set<PhieuDangKy> phieuDangKySet2;
     @JoinColumn(name = "id_role", referencedColumnName = "id_role")
     @ManyToOne
     private UserRole idRole;
@@ -180,6 +188,42 @@ public class TaiKhoan implements Serializable {
 
     public void setAvt(String avt) {
         this.avt = avt;
+    }
+
+    @XmlTransient
+    public Set<LichTruc> getLichTrucSet() {
+        return lichTrucSet;
+    }
+
+    public void setLichTrucSet(Set<LichTruc> lichTrucSet) {
+        this.lichTrucSet = lichTrucSet;
+    }
+
+    @XmlTransient
+    public Set<PhieuDangKy> getPhieuDangKySet() {
+        return phieuDangKySet;
+    }
+
+    public void setPhieuDangKySet(Set<PhieuDangKy> phieuDangKySet) {
+        this.phieuDangKySet = phieuDangKySet;
+    }
+
+    @XmlTransient
+    public Set<PhieuDangKy> getPhieuDangKySet1() {
+        return phieuDangKySet1;
+    }
+
+    public void setPhieuDangKySet1(Set<PhieuDangKy> phieuDangKySet1) {
+        this.phieuDangKySet1 = phieuDangKySet1;
+    }
+
+    @XmlTransient
+    public Set<PhieuDangKy> getPhieuDangKySet2() {
+        return phieuDangKySet2;
+    }
+
+    public void setPhieuDangKySet2(Set<PhieuDangKy> phieuDangKySet2) {
+        this.phieuDangKySet2 = phieuDangKySet2;
     }
 
     public UserRole getIdRole() {

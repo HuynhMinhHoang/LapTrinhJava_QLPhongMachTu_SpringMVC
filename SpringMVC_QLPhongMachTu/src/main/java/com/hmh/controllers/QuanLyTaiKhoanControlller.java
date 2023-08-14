@@ -5,7 +5,6 @@
 package com.hmh.controllers;
 
 import com.hmh.pojo.TaiKhoan;
-import com.hmh.service.BenhNhanService;
 import com.hmh.service.QuanLyTaiKhoanService;
 //import com.hmh.service.QuanLyTaiKhoanService;
 import com.hmh.service.TaiKhoanService;
@@ -53,11 +52,18 @@ public class QuanLyTaiKhoanControlller {
     }
 
     @PostMapping("/admin/quanlytaikhoan")
-    public String addTaiKhoanAdmin(@ModelAttribute(value = "addtaikhoan") TaiKhoan tk) {
-//        System.out.println(tk.getIdTk());
-        if (this.quanLyTaiKhoanService.themTaiKhoan(tk) == true) {
-            return "redirect:/admin/quanlytaikhoan";
+    public String addTaiKhoanAdmin(Model model, @ModelAttribute(value = "addtaikhoan") TaiKhoan tk) {
+        String err = "";
+        if (!tk.getTaiKhoan().isEmpty() && !tk.getMatKhau().isEmpty()) {
+            if (this.quanLyTaiKhoanService.themTaiKhoan(tk) == true) {
+                return "redirect:/admin/quanlytaikhoan";
+            }
+        } else {
+            err = "Vui lòng nhập tài khoản hoặc mật khẩu!";
+            model.addAttribute("qltaikhoan", this.quanLyTaiKhoanService.getTaiKhoanAdmin(null));
         }
+
+        model.addAttribute("err", err);
         return "quanlytaikhoan";
     }
 }

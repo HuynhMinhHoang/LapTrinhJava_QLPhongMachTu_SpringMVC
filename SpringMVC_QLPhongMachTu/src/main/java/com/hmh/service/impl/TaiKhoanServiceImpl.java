@@ -88,4 +88,9 @@ public class TaiKhoanServiceImpl implements TaiKhoanService {
         return this.taiKhoanRepository.getTaiKhoanById(id);
     }
 
+    @Override
+    public TaiKhoan getTaiKhoanByUsername(String username) {
+        return this.taiKhoanRepository.getTaiKhoanByUsername(username);
+    }
+
 }
