@@ -4,7 +4,10 @@
  */
 package com.hmh.controllers;
 
+import com.hmh.pojo.PhieuDangKy;
 import com.hmh.pojo.TaiKhoan;
+//import com.hmh.service.DangKyKhamService;
+import com.hmh.service.LapDsKhamService;
 import com.hmh.service.TaiKhoanService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -26,14 +29,21 @@ public class DangKyKhamController {
     @Autowired
     private TaiKhoanService taiKhoanService;
 
+//    @Autowired
+//    private DangKyKhamService dangKyKhamService;
+    @Autowired
+    private LapDsKhamService lapDsKhamService;
 
     @GetMapping("/benhnhan/dangkykham")
     public String dangkykham(Model model, Authentication authentication) {
-        model.addAttribute("user", new TaiKhoan());
+//        model.addAttribute("user", new TaiKhoan());
+        model.addAttribute("themphieudky", new PhieuDangKy());
         UserDetails user = taiKhoanService.loadUserByUsername(authentication.getName());
         TaiKhoan u = taiKhoanService.getTaiKhoan(user.getUsername()).get(0);
-
         model.addAttribute("user", u);
+
+        model.addAttribute("user", this.taiKhoanService.getTaiKhoan(authentication.getName()).get(0));
+
         return "dangkykham";
     }
 
@@ -44,11 +54,12 @@ public class DangKyKhamController {
     }
 
     @PostMapping("/benhnhan/dangkykham")
-    public String updateBenhNhan(@ModelAttribute(value = "user") TaiKhoan tk) {
-        String errMsg = "";
-        if (this.taiKhoanService.addTaiKhoan(tk) == true) {
+    public String updateBenhNhanPhieuDky(@ModelAttribute(value = "themphieudky") PhieuDangKy pdk,
+            Authentication authentication) {
 
-//            return "dangkykham";
+        String errMsg = "";
+        if (this.lapDsKhamService.themPhieuDangKy(pdk) == true) {
+            return "redirect:/benhnhan/lichsukham";
         } else {
             errMsg = " Đăng ký khám không thành công!";
         }

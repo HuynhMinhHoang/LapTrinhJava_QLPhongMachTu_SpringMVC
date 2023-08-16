@@ -17,7 +17,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.hmh.service.LapDsKhamService;
 import java.util.Map;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 /**
@@ -35,6 +37,7 @@ public class LapDsKhamController {
     @GetMapping("/yta/lapdskham")
     public String lapdskham(Model model, Authentication authentication, @RequestParam Map<String, String> params) {
         model.addAttribute("user", new TaiKhoan());
+        model.addAttribute("themDSpkd", new PhieuDangKy());
         if (authentication != null) {
             UserDetails user = taiKhoanService.loadUserByUsername(authentication.getName());
             TaiKhoan u = taiKhoanService.getTaiKhoan(user.getUsername()).get(0);
@@ -58,13 +61,20 @@ public class LapDsKhamController {
 
             model.addAttribute("user", tk);
 
-            if (this.phieuDangKyService.trangThai(id,tk) == true) {
+            if (this.phieuDangKyService.trangThai(id, tk) == true) {
                 return "redirect:/yta/lapdskham";
             }
         }
 
-        model.addAttribute("dskham", this.phieuDangKyService.getPhieuDangKy(params));
+        model.addAttribute("", this.phieuDangKyService.getPhieuDangKy(params));
 
+        return "lapdskham";
+    }
+
+    @PostMapping("/yta/lapdskham")
+    public String lapdskham(Model model, @ModelAttribute(value = "dskham") PhieuDangKy pdk) {
+
+        
         return "lapdskham";
     }
 

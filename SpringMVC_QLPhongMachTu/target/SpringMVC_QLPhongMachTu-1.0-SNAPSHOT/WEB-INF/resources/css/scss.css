@@ -199,7 +199,7 @@ header .list .tab:hover::after {
 }
 .tab1 a{
     font-weight: 700 !important;
-    color: #800080 !important ;
+    color: #842029 !important;
 }
 
 
@@ -470,9 +470,19 @@ ul.menucha > li > a:hover{
     text-align: center;
 }
 
+#hoTen111{
+    display: none;
+    background: white;
+}
 
+#custom-input1::placeholder{
+    color: black;
 
+}
 
+.custom-input {
+    background-color: white;
+}
 
 /*end_dangky*/
 
@@ -789,7 +799,13 @@ ul.menucha > li > a:hover{
 
 .change1{
     padding: 10px;
+    margin-top: 20px;
+
 }
+.change11{
+    margin-right: 20px;
+}
+
 #pass-text{
     /*    display: none;*/
     word-break: break-word;
@@ -820,7 +836,7 @@ main.table {
     border-radius: 50px;
     background-color: #fffff;
     margin-left: 290px;
-    box-shadow: 5px 5px 15px 5px rgba(198, 198, 198,0.9);
+    box-shadow: 0px 0px 40px 0px #c0f4b9;
     margin-top: 20px;
     /*        display: flex;
             justify-content: center;*/
@@ -837,7 +853,7 @@ main.table {
     align-items: center;
 }
 .table__header h3{
-    margin-top: 25px;
+    margin-top: 35px;
     font-size: 30px;
 }
 .input-group{
@@ -845,7 +861,7 @@ main.table {
 }
 
 .table__header .input-group {
-    width: 20%;
+    /*width: 20%;*/
     height: 45px;
     background-color: #F4F4F4;
     /*    padding: 0 .8rem;*/
@@ -946,7 +962,9 @@ main.table {
 table {
     width: 100%;
 }
-
+.table>:not(:last-child)>:last-child>*{
+    border-bottom-color: snow !important;
+}
 table, th, td {
     border-collapse: collapse;
     padding: 1rem;
@@ -1043,7 +1061,7 @@ main.table1{
     width: 84%;
     border-radius: 30px;
     background-color: #fffff;
-    box-shadow: 5px 5px 15px 5px rgba(198, 198, 198,0.9);
+    box-shadow: 0px 0px 40px 0px #c0f4b9;
     margin-top: 50px;
     /*        display: flex;
             justify-content: center;*/
@@ -1059,12 +1077,11 @@ main.table1{
     overflow: auto;
     overflow: overlay;
     border: 1px solid #E9F9E7;
-
+    padding: 0px;
 }
 
 table {
     width: 100%;
-
 }
 
 table, th, td {
@@ -1145,7 +1162,25 @@ tbody tr:nth-child(even) {
     margin-bottom: 50px;
 }
 
+.inputkw input{
+    width: 250px;
+    border-radius: 10px;
+    background: #F4F4F4;
+    border: none;
+    padding: 8px;
+    margin-top: 25px;
+}
+.inputkw button{
+    background: #F4F4F4;
+    width: 50px;
+    border-radius: 10px;
+    border: none;
+    padding: 8px;
+}
 
+.inputkw button i{
+    font-size: 17px;
+}
 
 
 
@@ -1169,4 +1204,123 @@ tbody tr:nth-child(even) {
     padding: 10px;
 }
 
+.table>:not(caption)>*>*{
+    padding: 0px !important;
+}
 
+
+/*doimatkhau*/
+.login111{
+    /*    background:  rgba(130, 201, 30, 0.2);*/
+    margin: auto;
+    padding: 100px;
+    text-align: center;
+}
+.login_main1111 {
+    display: flex;
+    justify-content: center;
+    margin-left: 100px;
+}
+
+
+
+.login111  p{
+    font-size: 23px;
+    font-weight: 700;
+    color: #1b3919;
+}
+
+
+.login_main1111 {
+    display: flex;
+    justify-content: flex-start;
+    box-shadow: 0px 0px 40px 0px #c0f4b9;
+    padding: 50px;
+    border-radius: 20px;
+    flex-direction: column;
+    background: #f3fef2;
+
+}
+
+.one111{
+    border-radius: 13px;
+    display: flex;
+    width: 470px;
+    padding: 7px;
+    background: white;
+    margin: auto;
+}
+.one1111{
+
+    padding: 7px 7px 7px 10px;
+
+}
+.one1111 > input{
+    background: white;
+    outline: none;
+    border: none;
+    vertical-align: middle;
+    width: 380px;
+    font-size: 18px;
+}
+.login0111{
+    padding: 6px 13px 6px 13px;
+}
+
+.one2111{
+    padding-top: 20px;
+
+}
+.one2111 > button{
+    width: 300px;
+    padding: 15px;
+    border: .0px solid rgb(43, 43, 43);
+    background-color:rgb(130, 201, 30);
+    transition: 0.4s;
+    color: black;
+    border-radius: 10px;
+    font-size: 18px;
+    color: white;
+
+}
+
+/*#57C050*/
+.one2111 > a{
+    text-align: center;
+}
+
+
+
+
+/*lichsukhambenh*/
+main.lskham{
+    margin: auto;
+    border-radius: 0px;
+    margin-top:40px;
+    margin-bottom:20px;
+}
+
+.lskham1{
+    width: 100%;
+
+}
+
+.text-lsk{
+    color: #136740;
+    font-size: 30px;
+    font-weight: 700;
+    text-align: center;
+    margin-top: 40px;
+}
+
+.btn_lsk{
+    border: none;
+    width: 200px;
+    text-align: center;
+    color: white;
+    font-size: 16px;
+    border-radius: 6px;
+    background-color: #dc3545;
+    padding: 12px;
+    box-shadow: 0px 5px 10px 0 rgba(220,53,69, 0.5);
+}

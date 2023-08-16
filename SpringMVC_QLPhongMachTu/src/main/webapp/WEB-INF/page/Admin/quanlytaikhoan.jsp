@@ -10,24 +10,25 @@
 <c:url value="/admin/quanlytaikhoan" var="actions"/>
 
 
-<form:form method="post" modelAttribute="addtaikhoan" action="${actions}" enctype="multipart/form-data">
-    <main class="table">
-        <div>
+<main class="table">
+    <div>
 
-            <c:if test="${err != null}">
-                <div class="alert1">
-                    ${err}
-                </div>
-            </c:if>
-            <section class="table__header">
-                <h3>DANH SÁCH TÀI KHOẢN</h3>
-                <div class="input-group">
-                    <input type="search" placeholder="Tìm kiếm...">
-                    <button> <i class='bx bx-search-alt-2'></i> </button>
-                </div>
-            </section>
+        <c:if test="${err != null}">
+            <div class="alert1">
+                ${err}
+            </div>
+        </c:if>
+        <section class="table__header">
+            <h3>DANH SÁCH TÀI KHOẢN</h3>
+            <div class="inputkw">
+                <form action="${actions}">
+                    <input name="kw" type="search" placeholder="Tìm kiếm...">
+                    <button type="submit"> <i class="fa-solid fa-magnifying-glass"></i> </button>
+                </form>
+            </div>
+        </section>
 
-
+        <form:form method="post" modelAttribute="addtaikhoan" action="${actions}" enctype="multipart/form-data">
             <section class="table__body">
                 <table>
                     <thead>
@@ -129,12 +130,12 @@
 
 
 
-                <div class="change1">
+                <div class="change1 change11">
                     <h5>Họ tên</h5>
                     <form:input type="text" path="hoTen" id="hoTen" placeholder=""/>
                 </div>
 
-                <div class="change1">
+                <div class="change1 change11">
                     <h5>Ngày sinh</h5>
                     <form:input type="text" path="ngaySinh" id="ngaySinh" placeholder=""/>
                 </div>
@@ -143,7 +144,7 @@
 
 
             <div class="change_ac1">
-                <div class="change1">
+                <div class="change1 change11">
                     <h5>Giới tính</h5>
                     <%--<form:input type="text" path="gioiTinh" id="gioiTinh" placeholder=""/>--%>
                     <form:select path="gioiTinh" id="gioiTinh" class="form-select" cssErrorClass="is-invalid">
@@ -155,7 +156,7 @@
 
                 </div>
 
-                <div class="change1">
+                <div class="change1 change11">
                     <h5>Email</h5>
                     <form:input type="text" path="email" id="Email" placeholder=""/>
                 </div>
@@ -165,11 +166,11 @@
 
 
             <div class="change_ac1">
-                <div class="change1">
+                <div class="change1 change11">
                     <h5>Địa chỉ</h5>
                     <form:input type="text" path="diaChi" id="diaChi" placeholder=""/>
                 </div>
-                <div class="change1">
+                <div class="change1 change11">
                     <h5>SÐT</h5>
                     <form:input type="text" path="sdt" id="sdt" placeholder=""/>
                 </div>
@@ -180,12 +181,12 @@
             <div class="change_ac1">
 
 
-                <div class="change1">
+                <div class="change1 change11">
                     <h5>Username</h5>
                     <form:input type="text" path="taiKhoan" id="taiKhoan" placeholder=""/>
                 </div>
 
-                <div class="change1">
+                <div class="change1 change11">
                     <h5>Password</h5>
                     <c:choose>
                         <c:when test="${addtaikhoan.idTk == null}">
@@ -201,7 +202,7 @@
 
 
             <div class="change_ac1" id="role_main">
-                <div class="change1">
+                <div class="change1 change11">
                     <h5>Chức vụ</h5>
                     <form:select class="role" name="role" id="role" path="idRole">
                         <c:forEach items="${user_role}" var="c" >
@@ -217,17 +218,17 @@
                     </form:select>
                 </div>
 
-                <div class="change1">
+                <div class="change1 change11">
                     <h5>Avatar</h5>
                     <form:input type="file" id="upload" path="file" placeholder="Upload Avatar"/>
                 </div>
 
             </div>
+        </form:form>
+    </div>
 
-        </div>
+</main>
 
-    </main>
-</form:form>
 
 
 <script src="<c:url value="/js/main.js" />"></script>

@@ -46,7 +46,7 @@ public class TaiKhoanServiceImpl implements TaiKhoanService {
             tk.setMatKhau(this.passwordEncoder.encode(pass));
         }
         tk.setIdRole(this.getRoleBenhNhan("ROLE_BENHNHAN"));
-        
+
         if (!tk.getFile().isEmpty()) {
             try {
                 Map res = this.cloudinary.uploader().upload(tk.getFile().getBytes(), ObjectUtils.asMap("resource_type", "auto"));
@@ -91,6 +91,12 @@ public class TaiKhoanServiceImpl implements TaiKhoanService {
     @Override
     public TaiKhoan getTaiKhoanByUsername(String username) {
         return this.taiKhoanRepository.getTaiKhoanByUsername(username);
+    }
+
+    @Override
+    public boolean doiMatKhau(int idTk, String matKhauMoi, String matKhauHienTai) {
+        return taiKhoanRepository.doiMatKhau(idTk, matKhauMoi, matKhauHienTai);
+
     }
 
 }

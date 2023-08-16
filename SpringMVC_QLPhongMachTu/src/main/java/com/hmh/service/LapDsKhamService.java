@@ -20,4 +20,6 @@ public interface LapDsKhamService {
     public List<TaiKhoan> getBacSi();
 
     Boolean trangThai(int id, TaiKhoan tk);
+
+    boolean themPhieuDangKy(PhieuDangKy pdk);
 }

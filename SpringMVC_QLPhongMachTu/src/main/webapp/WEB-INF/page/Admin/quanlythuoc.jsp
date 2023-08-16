@@ -10,22 +10,26 @@
 
 
 <c:url value="/admin/quanlythuoc" var="actions"/>
-<form:form method="post"  action="${actions}" modelAttribute="thuoc" enctype="multipart/form-data">
 
-    <main class="table table1">
-        <div>
-            <c:if test="${err != null}">
-                <div class="alert1">
-                    ${err}
-                </div>
-            </c:if>
-            <section class="table__header">
-                <h3>DANH SÁCH THUỐC</h3>
-                <div class="input-group">
-                    <input type="search" placeholder="Tìm kiếm...">
-                    <button> <i class='bx bx-search-alt-2'></i> </button>
-                </div>
-            </section>
+<main class="table table1">
+    <div>
+        <c:if test="${err != null}">
+            <div class="alert1">
+                ${err}
+            </div>
+        </c:if>
+        <section class="table__header">
+            <h3>DANH SÁCH THUỐC</h3>
+            <div class="inputkw">
+                <form action="${actions}">
+                    <input name="kw" type="search" placeholder="Tìm kiếm...">
+                    <button type="submit"> <i class="fa-solid fa-magnifying-glass"></i> </button>
+                </form>
+            </div>
+        </section>
+
+        <form:form method="post"  action="${actions}" modelAttribute="thuoc" enctype="multipart/form-data">
+
             <section class="table__body table__body1">
                 <table>
                     <thead>
@@ -122,12 +126,13 @@
                     </button>      
                 </div>
             </section>
-        </div>
+        </form:form>
+    </div>
 
 
-    </main>
+</main>
 
-</form:form>
+
 
 <script src="<c:url value="/js/main.js" />"></script>
 

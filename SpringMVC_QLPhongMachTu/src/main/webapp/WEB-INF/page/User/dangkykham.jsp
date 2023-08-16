@@ -10,9 +10,14 @@
 <c:url value="/benhnhan/dangkykham" var="actions"/>
 
 
+<c:if test="${err != null}">
+    <div class="alert1">
+        ${err}
+    </div>
+</c:if>
 
 
-<form:form method="post" modelAttribute="user" action="${actions}" enctype="multipart/form-data">
+<form:form method="post" modelAttribute="themphieudky" action="${actions}" enctype="multipart/form-data">
 
 
     <nav class="dkk_main">
@@ -31,44 +36,43 @@
             <div class="contentdkk2_main">
                 <div class="contentdkk2">
                     <h1>ĐĂNG KÝ KHÁM</h1>
-                    <h5>Vui lòng điền thông tin vào form bên dưới để đăng ký khám bệnh theo yêu cầu!</h5>
+                    <h5>Vui lòng kiểm tra thông tin chính xác trước khi gửi phiếu đăng ký khám!</h5>
                 </div>
 
 
-                <form:hidden path="idTk"/>
-                <form:hidden path="taiKhoan"/>
-                <form:hidden path="avt"/>
+                <%--<form:hidden path="idTk"/>--%>
+                <%--<form:hidden path="taiKhoan"/>--%>
+                <%--<form:hidden path="avt"/>--%>
 
 
                 <div class="contentdkk3">
-                    <form:input type="text" path="hoTen" id="hoTen" placeholder="Họ tên"/>
-                    <form:input type="text" path="email" id="email" placeholder="Email"/>
+                    <input class="custom-input" type="text" id="custom-input1" placeholder="${user.hoTen}" disabled ="true"/>
+                    <input class="custom-input" type="text" id="custom-input1" placeholder="${user.email}" disabled ="true"/>
                 </div>
 
                 <div class="contentdkk4">
-                    <form:select path="gioiTinh" id="gioiTinh" class="form-select" cssErrorClass="is-invalid">
-                        <form:option value="" label="Giới tính" />
-                        <form:option value="Nam" label="Nam" />
-                        <form:option value="Nữ" label="Nữ" />
-                        <form:option value="Khác" label="Khác" />
-                    </form:select>
+                    <select class="custom-input" path="gioiTinh" id="custom-input1" cssErrorClass="is-invalid">
+                        <option value="${user.gioiTinh}" label="${user.gioiTinh}" />
+                    </select>
 
 
                     <div class="contentdkk5">
-                        <form:input type="text" path="ngaySinh" placeholder="Ngày sinh"/>
+                        <input class="custom-input" type="text" id="custom-input1" placeholder="${user.ngaySinh}" disabled ="true"/>
                     </div>
 
                     <div class="contentdkk5">
-                        <form:input type="text" path="sdt" placeholder="Số điện thoại"/>
+                        <input class="custom-input" type="text" id="custom-input1" placeholder="${user.sdt}" disabled ="true"/>
                     </div>
 
                     <div class="contentdkk5">
-                        <form:input type="text" path="diaChi" placeholder="Địa chỉ"/>
+                        <input class="custom-input" type="text" id="custom-input1" placeholder="${user.diaChi}" disabled ="true"/>
                     </div>
 
                     <!--hide-->
-                    <form:input type="text" path="matKhau" id="matKhauu" placeholder=""/>
-                    <form:input type="file" id="file1" path="file" placeholder="Upload Avatar"/>
+                    <%--<form:input type="text" path="matKhau" id="matKhauu" placeholder=""/>--%>
+                    <%--<form:input type="file" id="file1" path="file" placeholder="Upload Avatar"/>--%>
+
+
 
                     <div class="submitdkk">
                         <a><button type="submit">ĐĂNG KÝ KHÁM</button></a>
@@ -78,4 +82,6 @@
 
             </div>
     </nav>
+
+    <form:input type="text" id="hoTen111" path="tenBenhNhanDky" value="${pageContext.request.userPrincipal.name}" />
 </form:form>

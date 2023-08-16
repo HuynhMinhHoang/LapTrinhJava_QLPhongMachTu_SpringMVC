@@ -9,6 +9,8 @@ import com.hmh.service.QuanLyTaiKhoanService;
 //import com.hmh.service.QuanLyTaiKhoanService;
 import com.hmh.service.TaiKhoanService;
 import com.hmh.service.UserRoleService;
+import java.util.List;
+import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,6 +19,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  *
@@ -37,9 +40,11 @@ public class QuanLyTaiKhoanControlller {
     }
 
     @GetMapping("/admin/quanlytaikhoan")
-    public String quanlytaikhoan(Model model) {
+    public String quanlytaikhoan(Model model,@RequestParam Map<String, String> params) {
         model.addAttribute("addtaikhoan", new TaiKhoan());
         model.addAttribute("qltaikhoan", this.quanLyTaiKhoanService.getTaiKhoanAdmin(null));
+        model.addAttribute("qltaikhoan", this.quanLyTaiKhoanService.timKiemTK(params));
+
         return "quanlytaikhoan";
     }
 
@@ -54,15 +59,16 @@ public class QuanLyTaiKhoanControlller {
     @PostMapping("/admin/quanlytaikhoan")
     public String addTaiKhoanAdmin(Model model, @ModelAttribute(value = "addtaikhoan") TaiKhoan tk) {
         String err = "";
+
         if (!tk.getTaiKhoan().isEmpty() && !tk.getMatKhau().isEmpty()) {
             if (this.quanLyTaiKhoanService.themTaiKhoan(tk) == true) {
                 return "redirect:/admin/quanlytaikhoan";
             }
         } else {
             err = "Vui lòng nhập tài khoản hoặc mật khẩu!";
-            model.addAttribute("qltaikhoan", this.quanLyTaiKhoanService.getTaiKhoanAdmin(null));
         }
 
+        model.addAttribute("qltaikhoan", this.quanLyTaiKhoanService.getTaiKhoanAdmin(null));
         model.addAttribute("err", err);
         return "quanlytaikhoan";
     }

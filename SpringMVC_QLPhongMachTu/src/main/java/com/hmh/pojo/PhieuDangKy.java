@@ -21,6 +21,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -38,6 +39,9 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "PhieuDangKy.findByNgayDky", query = "SELECT p FROM PhieuDangKy p WHERE p.ngayDky = :ngayDky"),
     @NamedQuery(name = "PhieuDangKy.findByNgayHkham", query = "SELECT p FROM PhieuDangKy p WHERE p.ngayHkham = :ngayHkham")})
 public class PhieuDangKy implements Serializable {
+
+    @Transient
+    private String tenBenhNhanDky;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -172,5 +176,19 @@ public class PhieuDangKy implements Serializable {
     public String toString() {
         return "com.hmh.pojo.PhieuDangKy[ idPhieudk=" + idPhieudk + " ]";
     }
-    
+
+    /**
+     * @return the tenBenhNhanDky
+     */
+    public String getTenBenhNhanDky() {
+        return tenBenhNhanDky;
+    }
+
+    /**
+     * @param tenBenhNhanDky the tenBenhNhanDky to set
+     */
+    public void setTenBenhNhanDky(String tenBenhNhanDky) {
+        this.tenBenhNhanDky = tenBenhNhanDky;
+    }
+
 }

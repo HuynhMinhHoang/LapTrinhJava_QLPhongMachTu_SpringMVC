@@ -5,10 +5,14 @@
 package com.hmh.controllers;
 
 import com.hmh.pojo.TaiKhoan;
+import com.hmh.repository.LichSuKhamRepository;
+import com.hmh.service.TaiKhoanService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
@@ -17,9 +21,26 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @Controller
 public class LichSuKhamController {
-    
-    @RequestMapping("/benhnhan/lichsukham")
-    public String lichsukham() {
+
+    @Autowired
+    private LichSuKhamRepository lichSuKhamRepository;
+
+    @Autowired
+    private TaiKhoanService taiKhoanService;
+
+    @GetMapping("/benhnhan/lichsukham")
+    public String lichsukham(Model model, Authentication authentication) {
+
+        model.addAttribute("user", new TaiKhoan());
+
+        UserDetails user = this.taiKhoanService.loadUserByUsername(authentication.getName());
+
+        TaiKhoan u = this.taiKhoanService.getTaiKhoanByUsername(user.getUsername());
+
+        model.addAttribute("lskham", this.lichSuKhamRepository.getPhieuDangKy(u));
+
+        model.addAttribute("user", u);
+
         return "lichsukham";
     }
 }

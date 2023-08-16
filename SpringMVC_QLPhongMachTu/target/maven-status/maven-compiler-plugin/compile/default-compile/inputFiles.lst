@@ -1,6 +1,8 @@
 C:\Users\Asus\Desktop\SpringMVC_QLPhongMachTu\SpringMVC_QLPhongMachTu\src\main\java\com\hmh\controllers\IndexController.java
+C:\Users\Asus\Desktop\SpringMVC_QLPhongMachTu\SpringMVC_QLPhongMachTu\src\main\java\com\hmh\formatter\LapDsKhamFormatter.java
 C:\Users\Asus\Desktop\SpringMVC_QLPhongMachTu\SpringMVC_QLPhongMachTu\src\main\java\com\hmh\pojo\ChiTietThuoc.java
 C:\Users\Asus\Desktop\SpringMVC_QLPhongMachTu\SpringMVC_QLPhongMachTu\src\main\java\com\hmh\pojo\ChiTietDv.java
+C:\Users\Asus\Desktop\SpringMVC_QLPhongMachTu\SpringMVC_QLPhongMachTu\src\main\java\com\hmh\service\impl\LichSuKhamServiceImpl.java
 C:\Users\Asus\Desktop\SpringMVC_QLPhongMachTu\SpringMVC_QLPhongMachTu\src\main\java\com\hmh\controllers\LichSuKhamController.java
 C:\Users\Asus\Desktop\SpringMVC_QLPhongMachTu\SpringMVC_QLPhongMachTu\src\main\java\com\hmh\repository\impl\TaiKhoanRepositoryImpl.java
 C:\Users\Asus\Desktop\SpringMVC_QLPhongMachTu\SpringMVC_QLPhongMachTu\src\main\java\com\hmh\service\impl\LapDsKhamServiceImpl.java
@@ -8,12 +10,16 @@ C:\Users\Asus\Desktop\SpringMVC_QLPhongMachTu\SpringMVC_QLPhongMachTu\src\main\j
 C:\Users\Asus\Desktop\SpringMVC_QLPhongMachTu\SpringMVC_QLPhongMachTu\src\main\java\com\hmh\repository\impl\LapDsKhamRepositoryImpl.java
 C:\Users\Asus\Desktop\SpringMVC_QLPhongMachTu\SpringMVC_QLPhongMachTu\src\main\java\com\hmh\configs\DispatcherServletInitializer.java
 C:\Users\Asus\Desktop\SpringMVC_QLPhongMachTu\SpringMVC_QLPhongMachTu\src\main\java\com\hmh\configs\SecurityWebApplnitializer.java
+C:\Users\Asus\Desktop\SpringMVC_QLPhongMachTu\SpringMVC_QLPhongMachTu\src\main\java\com\hmh\service\LichSuKhamService.java
 C:\Users\Asus\Desktop\SpringMVC_QLPhongMachTu\SpringMVC_QLPhongMachTu\src\main\java\com\hmh\repository\UserRoleRepository.java
 C:\Users\Asus\Desktop\SpringMVC_QLPhongMachTu\SpringMVC_QLPhongMachTu\src\main\java\com\hmh\configs\WebApplicationContextConfig.java
+C:\Users\Asus\Desktop\SpringMVC_QLPhongMachTu\SpringMVC_QLPhongMachTu\src\main\java\com\hmh\repository\DangKyKhamRepository.java
 C:\Users\Asus\Desktop\SpringMVC_QLPhongMachTu\SpringMVC_QLPhongMachTu\src\main\java\com\hmh\service\impl\TaiKhoanServiceImpl.java
 C:\Users\Asus\Desktop\SpringMVC_QLPhongMachTu\SpringMVC_QLPhongMachTu\src\main\java\com\hmh\pojo\PhieuDangKy.java
+C:\Users\Asus\Desktop\SpringMVC_QLPhongMachTu\SpringMVC_QLPhongMachTu\src\main\java\com\hmh\repository\impl\LichSuKhamRepositoryImpl.java
 C:\Users\Asus\Desktop\SpringMVC_QLPhongMachTu\SpringMVC_QLPhongMachTu\src\main\java\com\hmh\repository\impl\QuanLyTaiKhoanRepositoryImpl.java
 C:\Users\Asus\Desktop\SpringMVC_QLPhongMachTu\SpringMVC_QLPhongMachTu\src\main\java\com\hmh\service\TaiKhoanService.java
+C:\Users\Asus\Desktop\SpringMVC_QLPhongMachTu\SpringMVC_QLPhongMachTu\src\main\java\com\hmh\service\DangKyKhamService.java
 C:\Users\Asus\Desktop\SpringMVC_QLPhongMachTu\SpringMVC_QLPhongMachTu\src\main\java\com\hmh\controllers\DoiMatKhauController.java
 C:\Users\Asus\Desktop\SpringMVC_QLPhongMachTu\SpringMVC_QLPhongMachTu\src\main\java\com\hmh\service\impl\UserRoleServiceImpl.java
 C:\Users\Asus\Desktop\SpringMVC_QLPhongMachTu\SpringMVC_QLPhongMachTu\src\main\java\com\hmh\controllers\QuanLyTaiKhoanControlller.java
@@ -35,6 +41,7 @@ C:\Users\Asus\Desktop\SpringMVC_QLPhongMachTu\SpringMVC_QLPhongMachTu\src\main\j
 C:\Users\Asus\Desktop\SpringMVC_QLPhongMachTu\SpringMVC_QLPhongMachTu\src\main\java\com\hmh\controllers\ApiQuanLyAdminController.java
 C:\Users\Asus\Desktop\SpringMVC_QLPhongMachTu\SpringMVC_QLPhongMachTu\src\main\java\com\hmh\pojo\ChiTietLichTruc.java
 C:\Users\Asus\Desktop\SpringMVC_QLPhongMachTu\SpringMVC_QLPhongMachTu\src\main\java\com\hmh\repository\impl\QuanLyThuocRepositoryImpl.java
+C:\Users\Asus\Desktop\SpringMVC_QLPhongMachTu\SpringMVC_QLPhongMachTu\src\main\java\com\hmh\repository\LichSuKhamRepository.java
 C:\Users\Asus\Desktop\SpringMVC_QLPhongMachTu\SpringMVC_QLPhongMachTu\src\main\java\com\hmh\pojo\TaiKhoan.java
 C:\Users\Asus\Desktop\SpringMVC_QLPhongMachTu\SpringMVC_QLPhongMachTu\src\main\java\com\hmh\pojo\HoaDon.java
 C:\Users\Asus\Desktop\SpringMVC_QLPhongMachTu\SpringMVC_QLPhongMachTu\src\main\java\com\hmh\service\LapDsKhamService.java
@@ -43,10 +50,12 @@ C:\Users\Asus\Desktop\SpringMVC_QLPhongMachTu\SpringMVC_QLPhongMachTu\src\main\j
 C:\Users\Asus\Desktop\SpringMVC_QLPhongMachTu\SpringMVC_QLPhongMachTu\src\main\java\com\hmh\service\impl\QuanLyTaiKhoanServiceImpl.java
 C:\Users\Asus\Desktop\SpringMVC_QLPhongMachTu\SpringMVC_QLPhongMachTu\src\main\java\com\hmh\pojo\PhieuKhamBenh.java
 C:\Users\Asus\Desktop\SpringMVC_QLPhongMachTu\SpringMVC_QLPhongMachTu\src\main\java\com\hmh\controllers\DangKyController.java
+C:\Users\Asus\Desktop\SpringMVC_QLPhongMachTu\SpringMVC_QLPhongMachTu\src\main\java\com\hmh\repository\impl\DangKyKhamRepositoryImpl.java
 C:\Users\Asus\Desktop\SpringMVC_QLPhongMachTu\SpringMVC_QLPhongMachTu\src\main\java\com\hmh\configs\AppConfig.java
 C:\Users\Asus\Desktop\SpringMVC_QLPhongMachTu\SpringMVC_QLPhongMachTu\src\main\java\com\hmh\repository\QuanLyTaiKhoanRepository.java
 C:\Users\Asus\Desktop\SpringMVC_QLPhongMachTu\SpringMVC_QLPhongMachTu\src\main\java\com\hmh\service\QuanLyTaiKhoanService.java
 C:\Users\Asus\Desktop\SpringMVC_QLPhongMachTu\SpringMVC_QLPhongMachTu\src\main\java\com\hmh\repository\impl\UserRoleRepositoryImpl.java
 C:\Users\Asus\Desktop\SpringMVC_QLPhongMachTu\SpringMVC_QLPhongMachTu\src\main\java\com\hmh\pojo\DichVu.java
 C:\Users\Asus\Desktop\SpringMVC_QLPhongMachTu\SpringMVC_QLPhongMachTu\src\main\java\com\hmh\controllers\QuanLyThuocController.java
+C:\Users\Asus\Desktop\SpringMVC_QLPhongMachTu\SpringMVC_QLPhongMachTu\src\main\java\com\hmh\service\impl\DangKyKhamServiceImpl.java
 C:\Users\Asus\Desktop\SpringMVC_QLPhongMachTu\SpringMVC_QLPhongMachTu\src\main\java\com\hmh\configs\CustomSuccessHandler.java

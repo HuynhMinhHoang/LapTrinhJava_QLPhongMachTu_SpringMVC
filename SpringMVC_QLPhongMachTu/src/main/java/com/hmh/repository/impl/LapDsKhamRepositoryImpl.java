@@ -14,6 +14,7 @@ import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import com.hmh.repository.LapDsKhamRepository;
+import com.hmh.repository.UserRoleRepository;
 import java.util.Map;
 import org.hibernate.HibernateException;
 
@@ -48,10 +49,12 @@ public class LapDsKhamRepositoryImpl implements LapDsKhamRepository {
     public Boolean trangThai(int id, TaiKhoan tk) {
         Session session = this.factory.getObject().getCurrentSession();
         PhieuDangKy pdk = session.get(PhieuDangKy.class, id);
+
         try {
             if (pdk.getTrangThaidky() == 1) {
                 pdk.setTrangThaidky((short) 0);
                 pdk.setIdYt(null);
+
             } else {
                 pdk.setTrangThaidky((short) 1);
                 pdk.setIdYt(tk);
@@ -62,5 +65,22 @@ public class LapDsKhamRepositoryImpl implements LapDsKhamRepository {
         }
         return false;
     }
+
+    @Override
+    public boolean themPhieuDangKy(PhieuDangKy pdk) {
+        Session session = this.factory.getObject().getCurrentSession();
+        try {
+            session.save(pdk);
+            return true;
+        } catch (HibernateException e) {
+            System.err.println(e.getMessage());
+        }
+        return false;
+    }
+//
+//    @Override
+//    public TaiKhoan getBacSiByID() {
+//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//    }
 
 }

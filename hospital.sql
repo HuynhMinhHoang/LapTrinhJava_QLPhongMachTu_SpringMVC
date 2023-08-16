@@ -195,13 +195,19 @@ CREATE TABLE `phieu_dang_ky` (
   `id_yt` int DEFAULT NULL,
   `id_bn` int DEFAULT NULL,
   `trangThai_dky` tinyint DEFAULT NULL,
-  `ngay_dky` datetime DEFAULT NULL,
-  `ngay_hkham` datetime DEFAULT NULL,
+  `ngay_dky` date DEFAULT NULL,
+  `ngay_hkham` date DEFAULT NULL,
   `id_pk` int DEFAULT NULL,
   PRIMARY KEY (`id_phieudk`),
   KEY `id_pk_idx` (`id_pk`),
-  CONSTRAINT `id_pk` FOREIGN KEY (`id_pk`) REFERENCES `phieu_kham_benh` (`id_phieukham`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  KEY `id_bs_idx` (`id_bs`),
+  KEY `id_yt_idx` (`id_yt`),
+  KEY `id_bn_idx` (`id_bn`),
+  CONSTRAINT `id_bn` FOREIGN KEY (`id_bn`) REFERENCES `tai_khoan` (`id_tk`),
+  CONSTRAINT `id_bs` FOREIGN KEY (`id_bs`) REFERENCES `tai_khoan` (`id_tk`),
+  CONSTRAINT `id_pk` FOREIGN KEY (`id_pk`) REFERENCES `phieu_kham_benh` (`id_phieukham`),
+  CONSTRAINT `id_yt` FOREIGN KEY (`id_yt`) REFERENCES `tai_khoan` (`id_tk`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -210,7 +216,7 @@ CREATE TABLE `phieu_dang_ky` (
 
 LOCK TABLES `phieu_dang_ky` WRITE;
 /*!40000 ALTER TABLE `phieu_dang_ky` DISABLE KEYS */;
-INSERT INTO `phieu_dang_ky` VALUES (1,NULL,NULL,NULL,NULL,'2023-08-05 00:00:00','2023-09-05 00:00:00',NULL);
+INSERT INTO `phieu_dang_ky` VALUES (1,122,122,123,1,'2023-08-05','2023-09-05',1),(2,122,122,NULL,1,'2023-08-06','2023-08-06',2),(5,NULL,NULL,NULL,0,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `phieu_dang_ky` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -225,9 +231,9 @@ CREATE TABLE `phieu_kham_benh` (
   `id_phieukham` int NOT NULL AUTO_INCREMENT,
   `trieu_chung` varchar(50) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
   `ket_luan` varchar(50) DEFAULT NULL,
-  `ngay_kham_benh` datetime DEFAULT NULL,
+  `ngay_kham_benh` date DEFAULT NULL,
   PRIMARY KEY (`id_phieukham`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -236,7 +242,7 @@ CREATE TABLE `phieu_kham_benh` (
 
 LOCK TABLES `phieu_kham_benh` WRITE;
 /*!40000 ALTER TABLE `phieu_kham_benh` DISABLE KEYS */;
-INSERT INTO `phieu_kham_benh` VALUES (1,'ho','ho nang',NULL);
+INSERT INTO `phieu_kham_benh` VALUES (1,'ho','ho nang','2023-09-05'),(2,'cảm','cảm nắng','2023-09-05');
 /*!40000 ALTER TABLE `phieu_kham_benh` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -263,7 +269,7 @@ CREATE TABLE `tai_khoan` (
   UNIQUE KEY `tai_khoan_UNIQUE` (`tai_khoan`),
   KEY `id_role_idx` (`id_role`),
   CONSTRAINT `id_role` FOREIGN KEY (`id_role`) REFERENCES `user_role` (`id_role`)
-) ENGINE=InnoDB AUTO_INCREMENT=79 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=178 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -272,7 +278,7 @@ CREATE TABLE `tai_khoan` (
 
 LOCK TABLES `tai_khoan` WRITE;
 /*!40000 ALTER TABLE `tai_khoan` DISABLE KEYS */;
-INSERT INTO `tai_khoan` VALUES (1,'admin','1991-01-01','Nam','HCM','admin@gmail.com','0336334143','admin','$2a$12$DI.LBue1IlviMivalkSoT.Ni7tomVrl.FyRSyUqG3qHRVtBvsNSXa','https://res.cloudinary.com/diyeuzxqt/image/upload/v1691566361/irulrq0mqcp9ayharass.png',1),(2,'bacsi','1992-01-01','Nam','GV','bacsi@gmail.com','0336334143','bacsi','$2a$12$P66aiJnF8915xCY/mNSHLOb/.b7/1aMmkUfKvj4RtdPr4MNpa8wSC','https://res.cloudinary.com/diyeuzxqt/image/upload/v1691566361/irulrq0mqcp9ayharass.png',2),(3,'yta','1998-02-02','Nữ','TĐ','yta@gmail.com','0166786871','yta','$2a$12$cHqq9XpbHP5hRPKPrXtvmuTXp3StdoKcPGXyDcsfTt.bXoqibsdae','https://res.cloudinary.com/diyeuzxqt/image/upload/v1691566361/irulrq0mqcp9ayharass.png',3),(4,'benhnhan','2001-01-01','Nam','GL','hoang@gmail.com','0979042815','benhnhan','$2a$12$ft9fcwYbsuY/T0HlJnWxdOf7ao6ENTlaBuiWWJpvYfKEs8EW/nOoO','https://res.cloudinary.com/diyeuzxqt/image/upload/v1691566361/irulrq0mqcp9ayharass.png',4),(44,NULL,NULL,NULL,NULL,NULL,NULL,'hoangne','$2a$10$bkqX9/Cyopn08G/W2DtnAO9p8PQQKj4RZ./eSakhUd9R5apMNf7vi','https://res.cloudinary.com/diyeuzxqt/image/upload/v1691566361/irulrq0mqcp9ayharass.png',4),(62,'huynh minh hoang','2001-09-23','nam',NULL,NULL,NULL,'hoangcool','$2a$10$wvFVnBFfiUGvPxLfYTyWzOmXrxgR1mVEEjU.HaPon4VskTQ8DYYj.','https://res.cloudinary.com/diyeuzxqt/image/upload/v1691566361/irulrq0mqcp9ayharass.png',3),(70,'my nguyen','2001-09-23','nữ',NULL,NULL,NULL,'my','$2a$10$WxQm/iNeGaCsbk9pX1esduaACmPEJUXs63Hbr/UrcJXWjqPCGCF3q','https://res.cloudinary.com/diyeuzxqt/image/upload/v1691566361/irulrq0mqcp9ayharass.png',4),(72,'hoang dep zai','2001-09-23','Khác','hồ chí minh','hoangcool2309@gmail.com','0979042815','hoangdepzai','$2a$10$XUo4MevzILz.03284J58YeYl9CPiod3EIHqZVUDh86npJizHv2yLe','https://res.cloudinary.com/diyeuzxqt/image/upload/v1691566361/irulrq0mqcp9ayharass.png',3),(73,'',NULL,'Nam','','','','','$2a$10$xA8elx5CX.O9oO5qAM6qeeacLpVoAna84Omn8lC8wCS6g42ZeKEE6',NULL,4),(78,'sdfsdf','2001-09-23','Nữ','ểtrt','jhj','67567','gfhfgh','$2a$10$Ruw1M/Nin8vJmIooFKdwZeTd/u.L/D4HP3lMQoQLkUfDJRZKltqpS','https://res.cloudinary.com/diyeuzxqt/image/upload/v1691597242/bwlrhw7obe3zyqpoepkz.jpg',1);
+INSERT INTO `tai_khoan` VALUES (120,'admin','1993-01-01','Nam','Hồ Chí Minh','hmh20172018@gmail.com','0336334143','admin','$2a$10$NRkUDEpXVmNXeFh8HPtxNuc05YVyDpvhoFvziW9laLC0F6Cml2X3G','https://res.cloudinary.com/diyeuzxqt/image/upload/v1691683103/kneho0d5yklvcdk3noko.png',1),(121,'bacsiCEO','0014-02-13','Nam','Thủ Đức','2051052046hoang@ou.edu.vn','0336334143','bacsi','$2a$10$DyZzg5B0QvNUN6K3XRZCAu9XBhcXPIwT6KHUlqxbEqnYHdh1RgX26','https://res.cloudinary.com/diyeuzxqt/image/upload/v1691683133/evjnocjyaqeo9muvbcni.png',2),(122,'Myx','1993-01-01','Nam','Gia Lai','hoangcool2309@gmail.com','0979042815','yta','$2a$10$.U8hfAy7SYlLoFZ1djzZMO29V3U1.i11zcN8QEz1J5uU7lW4R1MiK','https://res.cloudinary.com/diyeuzxqt/image/upload/v1691683176/jkovgyw8x9ddw0xy0ape.png',3),(123,'Minh Hoang','2001-09-23','Nữ','Phú Mỹ','hmh20172018@gmail.com','0336334143','benhnhan','$2a$10$lL9/XioShRJN2JCIBSRR4eNb.if6/WQf22WqNWEYETcp0CPQYZSnC','https://res.cloudinary.com/diyeuzxqt/image/upload/v1691683271/eflfqkh8otktvjbbdolr.png',4),(133,'hoanghacker123','2001-09-23','','','','','hoanghacker1233','$2a$10$thSj4m9EvlXhjGzeeSe1MOuD2DGqsFNB10mjmor5udlYmSkZ455zK','https://res.cloudinary.com/diyeuzxqt/image/upload/v1691769245/pnly3xqxld8tkk3s4hj4.png',1),(137,'huynh minh hoang','2001-09-23','Nam','','','0336334143','hoangqqqq','$2a$10$/e6qqE0Yb.UQohApHwyqZ.TW7L/f0um5hL.hzvl5XdZOCUDSEn3nm','https://res.cloudinary.com/diyeuzxqt/image/upload/v1691779088/ticu2u7xubs5vx82uxes.png',4),(140,'nguyen thanh thuyengggg an cccc','2001-09-23','Nữ','hcmcccc','thuyencc@gmail.com','0979041234','thuyennguyen','$2a$10$kzgmV6hGBNojGwGihNNdYuOucnvLIouD9stKe/2gD8hVgA2mNd8/m','https://res.cloudinary.com/diyeuzxqt/image/upload/v1691819015/mcc1dkpzqixqz2wo117h.png',4),(141,'phan yen vi ccccc','2004-09-23','Nữ','asdasd','hmh20172018@gmail.com','0336334143','yenvi','$2a$10$RHP78TyEifrW6P7PCSBHR.5q.zXjFseR7.0syNVQLUbxTpxU/Uh7a','https://res.cloudinary.com/diyeuzxqt/image/upload/v1691819015/mcc1dkpzqixqz2wo117h.png',4),(142,'nguyen thi ngoc yen hahahaha','1993-01-01','Nữ','fdgdfg','yen@gmail.com','123123123','ngocyen','$2a$10$OhWdL6dX1lQuKivqe5RE6eb2FeuYRbsw/5Z9MVBHyRp4Vbux75Bcu','https://res.cloudinary.com/diyeuzxqt/image/upload/v1691819351/zmypw6asvugdqsfytbly.png',4),(143,'thay ong noi ne haccccc','1998-09-23','Nữ','an giang city','2051052046hoangvvv@ou.edu.vn','09790428147','tanphat','$2a$10$oxMZihduwkhdcTK.HDLCwueemWI/OgAiPxKAP7Ewz/Ai6kSviTeSu','https://res.cloudinary.com/diyeuzxqt/image/upload/v1691855635/p4trk1pz3dj5n8ytkyow.png',4),(144,'huynh minh hoang','2001-09-23','Nam','sdfsdf','2051052046hoang@ou.edu.vn','0336334143','bacsihoang','$2a$10$pVolHAzMploxcvMZ19e8qeZKXMZTQZ0maXkQ6AAyt.ays7fXH6fEW',NULL,2),(145,'my nguyen','2001-09-23','Nữ','dfgdfgdfg','hoangcool2309@gmail.com','0336334143','bacsimy','$2a$10$lEnFzmUAOnH9SORleH0oqeujYzpJzUneEQaQEjNEobF4BLGcePmia',NULL,2),(146,'',NULL,'','','','','ytahoang','$2a$10$M1nonR5WPfQZ/NFKcPLp1eOxuHPGQZnj0Xivy6rCu/VHl55xOYITS',NULL,3),(151,'cccccccccc',NULL,'','','','','cc','$2a$10$QS2DrnqaUTC4VTWiHXPnG.PdXePXY4nfMRHHELuMusdwaVdYuggdC','',1),(166,'sssss','0014-02-13','Nam','dsff','hmh20172018@gmail.com','0336334143','hoanggggg','$2a$10$X3oVribKU9PqYnhDLkPjR.xbAOM.1ATN53N4IpN9yC7kZ83zuPiyG','',4),(167,'',NULL,'','','','','','$2a$10$1jv2GExx66jzR4F8XpGt..zAmHx9M8RWPnnnGSK7DNWPPHe291G7a','',1),(170,'',NULL,'','','','','123','$2a$10$pKf6vjrmQHpJWUfH3aHVpOjFFdOwhyDsnRzgc.h/q8VH3aiaW./nK','',1),(173,'',NULL,'','','','','123123','$2a$10$c4XI8jXkQ9gK1Fxlzx6fD.fQ5uQ/O0DlKBcU87wcxOLjbpDDeQ6Ci','',1),(174,'ccccDSDFSDF',NULL,'','','','','haha','$2a$10$E0nxkyTR.xGyGFaRROiolO0Ad8kTXB7T1Pf4Ihsm7gX.GI.I/BTS.','',1),(176,'ddddddccc',NULL,'','','','','dd','$2a$10$46hHlkMI/iO1IiGtCzzBUeHENtUM2aaiKJuNBA9oU/v/LJARWk6Zq','',1),(177,'thuyen ngu ngoc','1993-01-01','Nam','động đĩ','2051fdsfg@ou.edu.vn','1231312','ytathuyen','$2a$10$AjTCLJ9QH8Yx2I8GkiaMbefCQQvP1Q5N4T1MbwMqOSUd4vwVLzMYq','',3);
 /*!40000 ALTER TABLE `tai_khoan` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -316,7 +322,7 @@ CREATE TABLE `thuoc` (
   `don_vi` varchar(50) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
   `so_luong` int DEFAULT NULL,
   PRIMARY KEY (`id_thuoc`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -325,7 +331,7 @@ CREATE TABLE `thuoc` (
 
 LOCK TABLES `thuoc` WRITE;
 /*!40000 ALTER TABLE `thuoc` DISABLE KEYS */;
-INSERT INTO `thuoc` VALUES (1,'vitaminA','việt nam',25000,'tuýp',100);
+INSERT INTO `thuoc` VALUES (1,'vitaminA','việt nam',25000,'tuýp',100),(5,'thuốc cảm','vn',20000,'viên',123),(6,'thuốc sốt','vn',123000,'vỉ',200),(12,'dfg','dfgdfg',34234,'df',234234),(15,'dfs','sdfsdf',12321,'sdfsdf',123123),(16,'cccc','',NULL,'',NULL),(17,'VitaminBaaa','VN',123123123,'vieen',123);
 /*!40000 ALTER TABLE `thuoc` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -362,4 +368,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-08-09 23:51:35
+-- Dump completed on 2023-08-15 11:43:01

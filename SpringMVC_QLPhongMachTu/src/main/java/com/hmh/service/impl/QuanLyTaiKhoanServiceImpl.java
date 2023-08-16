@@ -49,8 +49,6 @@ public class QuanLyTaiKhoanServiceImpl implements QuanLyTaiKhoanService {
         if (tk.getIdTk() == null) {
             tk.setMatKhau(this.passwordEncoder.encode(pass));
         }
-        
-        
 
         if (!tk.getFile().isEmpty()) {
             try {
@@ -72,6 +70,11 @@ public class QuanLyTaiKhoanServiceImpl implements QuanLyTaiKhoanService {
     @Override
     public boolean xoaTaiKhoan(int id) {
         return this.quanLyTaiKhoanRepository.xoaTaiKhoan(id);
+    }
+
+    @Override
+    public List<TaiKhoan> timKiemTK(Map<String, String> params) {
+        return this.quanLyTaiKhoanRepository.timKiemTK(params);
     }
 
 }

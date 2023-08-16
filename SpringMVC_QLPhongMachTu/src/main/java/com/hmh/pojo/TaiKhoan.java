@@ -56,6 +56,10 @@ public class TaiKhoan implements Serializable {
     @Transient
     @Null
     private MultipartFile file;
+    
+    @Transient
+    @Null
+    private String matKhauHienTai;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -286,5 +290,20 @@ public class TaiKhoan implements Serializable {
     public void setFile(MultipartFile file) {
         this.file = file;
     }
+
+    /**
+     * @return the matKhauHienTai
+     */
+    public String getMatKhauHienTai() {
+        return matKhauHienTai;
+    }
+
+    /**
+     * @param matKhauHienTai the matKhauHienTai to set
+     */
+    public void setMatKhauHienTai(String matKhauHienTai) {
+        this.matKhauHienTai = matKhauHienTai;
+    }
+
 
 }

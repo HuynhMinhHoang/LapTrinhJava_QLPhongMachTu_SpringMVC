@@ -18,4 +18,6 @@ public interface TaiKhoanRepository{
     UserRole getRoleBenhNhan(String role);
     TaiKhoan getTaiKhoanById(int id);
     TaiKhoan getTaiKhoanByUsername(String username);
+    
+    boolean doiMatKhau(int idTk, String matKhauMoi, String matKhauHienTai);
 }

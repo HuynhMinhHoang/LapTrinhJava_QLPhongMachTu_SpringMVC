@@ -18,6 +18,8 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -92,4 +94,24 @@ public class TaiKhoanRepositoryImpl implements TaiKhoanRepository {
         return (TaiKhoan) q.getSingleResult();
     }
 
+    @Override
+    public boolean doiMatKhau(int idTk, String matKhauMoi, String matKhauHienTai) {
+        Session session = this.sessionFactoryBean.getObject().getCurrentSession();
+        TaiKhoan tk = session.get(TaiKhoan.class, idTk);
+        if (tk != null) {
+            PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+            matKhauHienTai = passwordEncoder.encode(matKhauHienTai);
+            String hashedPassword = passwordEncoder.encode(matKhauMoi);
+
+            if (matKhauHienTai.equals(tk.getMatKhau())) {
+                tk.setMatKhau(hashedPassword);
+                session.update(tk);
+            } else {
+                throw new RuntimeException("Mật khẩu hiện tại không chính xác");
+            }
+        } else {
+            throw new RuntimeException("Không tìm thấy tài khoản");
+        }
+        return false;
+    }
 }

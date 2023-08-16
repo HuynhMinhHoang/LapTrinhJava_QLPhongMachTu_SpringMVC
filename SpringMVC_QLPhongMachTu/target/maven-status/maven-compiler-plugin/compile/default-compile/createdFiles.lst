@@ -14,12 +14,14 @@ com\hmh\repository\impl\UserRoleRepositoryImpl.class
 com\hmh\configs\WebApplicationContextConfig.class
 com\hmh\pojo\PhieuKhamBenh.class
 com\hmh\repository\impl\TaiKhoanRepositoryImpl.class
+com\hmh\repository\LichSuKhamRepository.class
 com\hmh\controllers\IndexController.class
 com\hmh\pojo\Thuoc.class
 com\hmh\repository\impl\QuanLyTaiKhoanRepositoryImpl.class
 com\hmh\repository\QuanLyThuocRepository.class
 com\hmh\pojo\ChiTietDv.class
 com\hmh\service\impl\UserRoleServiceImpl.class
+com\hmh\service\LichSuKhamService.class
 com\hmh\controllers\LapDsKhamController.class
 com\hmh\service\UserRoleService.class
 com\hmh\pojo\UserRole_.class
@@ -41,6 +43,7 @@ com\hmh\configs\CustomSuccessHandler.class
 com\hmh\pojo\Thuoc_.class
 com\hmh\pojo\PhieuKhamBenh_.class
 com\hmh\configs\AppConfig.class
+com\hmh\repository\impl\LichSuKhamRepositoryImpl.class
 com\hmh\configs\SecurityWebApplnitializer.class
 com\hmh\configs\DispatcherServletInitializer.class
 com\hmh\controllers\DangNhapController.class
@@ -55,6 +58,7 @@ com\hmh\pojo\ChiTietLichTruc.class
 com\hmh\pojo\PhieuDangKy.class
 com\hmh\pojo\ChiTietThuoc.class
 com\hmh\pojo\LichTruc_.class
+com\hmh\formatter\LapDsKhamFormatter.class
 com\hmh\repository\LapDsKhamRepository.class
 com\hmh\controllers\QuanLyThuocController.class
 com\hmh\repository\TaiKhoanRepository.class
@@ -62,3 +66,4 @@ com\hmh\controllers\DangKyController.class
 com\hmh\formatter\DateFormatter.class
 com\hmh\controllers\LichSuKhamController.class
 com\hmh\pojo\PhieuDangKy_.class
+com\hmh\service\impl\LichSuKhamServiceImpl.class

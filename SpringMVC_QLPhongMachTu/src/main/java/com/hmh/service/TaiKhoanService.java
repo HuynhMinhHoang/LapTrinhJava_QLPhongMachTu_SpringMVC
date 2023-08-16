@@ -19,4 +19,5 @@ public interface TaiKhoanService extends UserDetailsService {
     UserRole getRoleBenhNhan(String role);
     TaiKhoan getTaiKhoanById(int id);
     TaiKhoan getTaiKhoanByUsername(String username);
+    boolean doiMatKhau(int idTk, String matKhauMoi, String matKhauHienTai);
 }
