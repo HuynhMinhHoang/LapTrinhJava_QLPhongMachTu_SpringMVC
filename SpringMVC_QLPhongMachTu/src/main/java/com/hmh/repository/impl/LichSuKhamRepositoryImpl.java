@@ -9,6 +9,7 @@ import com.hmh.pojo.TaiKhoan;
 import com.hmh.repository.LichSuKhamRepository;
 import java.util.List;
 import javax.persistence.Query;
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
@@ -33,6 +34,25 @@ public class LichSuKhamRepositoryImpl implements LichSuKhamRepository {
 
         q.setParameter("idBn", idBn);
         return q.getResultList();
+    }
+
+    @Override
+    public PhieuDangKy getLsKhamId(int id) {
+        Session session = this.factory.getObject().getCurrentSession();
+        return session.get(PhieuDangKy.class, id);
+    }
+
+    @Override
+    public boolean xoaLsKham(int id) {
+        Session session = this.factory.getObject().getCurrentSession();
+        PhieuDangKy pdk = this.getLsKhamId(id);
+        try {
+            session.delete(pdk);
+            return true;
+        } catch (HibernateException ex) {
+            ex.printStackTrace();
+            return false;
+        }
     }
 
 }

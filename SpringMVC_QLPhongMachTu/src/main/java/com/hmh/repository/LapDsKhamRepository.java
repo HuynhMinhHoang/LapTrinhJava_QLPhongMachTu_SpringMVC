@@ -24,4 +24,6 @@ public interface LapDsKhamRepository {
     Boolean trangThai(int id, TaiKhoan tk);
     
     boolean themPhieuDangKy(PhieuDangKy pdk);
+    
+
 }

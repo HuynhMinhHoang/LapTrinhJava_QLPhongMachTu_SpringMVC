@@ -9,12 +9,16 @@ import com.hmh.service.QuanLyTaiKhoanService;
 //import com.hmh.service.QuanLyTaiKhoanService;
 import com.hmh.service.TaiKhoanService;
 import com.hmh.service.UserRoleService;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -33,6 +37,14 @@ public class QuanLyTaiKhoanControlller {
 
     @Autowired
     private UserRoleService userRoleService;
+    
+    @Autowired
+    private CustomDateEditor customDateEditor;
+
+    @InitBinder
+    public void initBinder(WebDataBinder binder) {
+        binder.registerCustomEditor(Date.class, customDateEditor);
+    }
 
     @ModelAttribute
     public void commonAttr(Model model) {
@@ -40,7 +52,7 @@ public class QuanLyTaiKhoanControlller {
     }
 
     @GetMapping("/admin/quanlytaikhoan")
-    public String quanlytaikhoan(Model model,@RequestParam Map<String, String> params) {
+    public String quanlytaikhoan(Model model, @RequestParam Map<String, String> params) {
         model.addAttribute("addtaikhoan", new TaiKhoan());
         model.addAttribute("qltaikhoan", this.quanLyTaiKhoanService.getTaiKhoanAdmin(null));
         model.addAttribute("qltaikhoan", this.quanLyTaiKhoanService.timKiemTK(params));

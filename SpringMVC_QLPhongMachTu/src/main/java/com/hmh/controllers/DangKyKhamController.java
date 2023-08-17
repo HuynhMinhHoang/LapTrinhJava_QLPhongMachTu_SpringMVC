@@ -9,6 +9,9 @@ import com.hmh.pojo.TaiKhoan;
 //import com.hmh.service.DangKyKhamService;
 import com.hmh.service.LapDsKhamService;
 import com.hmh.service.TaiKhoanService;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -48,21 +51,26 @@ public class DangKyKhamController {
     }
 
     @GetMapping("/benhnhan/dangkykham/{id}")
-    public String updateTaiKhoanBenhNhan(Model model, @PathVariable(value = "id") int id) {
+    public String getBenhNhanId(Model model, @PathVariable(value = "id") int id) {
         model.addAttribute("user", this.taiKhoanService.getTaiKhoanById(id));
         return "dangkykham";
     }
 
     @PostMapping("/benhnhan/dangkykham")
-    public String updateBenhNhanPhieuDky(@ModelAttribute(value = "themphieudky") PhieuDangKy pdk,
+    public String benhNhanDkyKham(Model model, @ModelAttribute(value = "themphieudky") PhieuDangKy pdk,
             Authentication authentication) {
 
-        String errMsg = "";
+        String err = "";
+
         if (this.lapDsKhamService.themPhieuDangKy(pdk) == true) {
+
             return "redirect:/benhnhan/lichsukham";
+
         } else {
-            errMsg = " Đăng ký khám không thành công!";
+            err = "Đăng ký khám không thành công!";
         }
+
+        model.addAttribute("err", err);
         return "dangkykham";
     }
 

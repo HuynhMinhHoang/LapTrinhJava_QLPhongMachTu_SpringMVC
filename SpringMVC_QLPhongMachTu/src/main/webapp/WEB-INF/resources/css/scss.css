@@ -650,6 +650,13 @@ ul.menucha > li > a:hover{
     transition: 0.3s;
     border-radius: 6px;
 }
+
+#ngayHKham{
+    padding: 7.5px;
+    border-radius: 10px;
+    border: 1px solid #ced4da;
+}
+
 /*.submitdkk a button:hover{
     background: #2e602b;
     color: white;
@@ -893,6 +900,7 @@ main.table {
     height: 45px;
     border: 1px solid #e0e0e0;
     border-radius: 10px;
+    padding: 10px;
 }
 .change_ac1{
     text-align: justify;
@@ -942,6 +950,10 @@ main.table {
 .class{
     display: flex;
     justify-content: center;
+}
+
+#ngaySinhAdmin{
+    width: 241px;
 }
 
 /*.table__body::-webkit-scrollbar{
@@ -1048,7 +1060,11 @@ tbody tr.hide {
 
 }
 
-
+#luuy{
+    margin-top: 30px;
+    font-size: 13px;
+    color:#dc3545;
+}
 
 
 
@@ -1071,7 +1087,8 @@ main.table1{
     width: 100%;
     border-radius: 20px;
     height: 550px;
-    margin-top: 40px;
+    margin-top: 10px;
+    margin-bottom: 50px;
     background-color: #fffb;
     border-radius: 20p;
     overflow: auto;
@@ -1116,6 +1133,7 @@ tbody tr:nth-child(even) {
     box-shadow: 0px 5px 10px 0 rgba(130, 201, 30, 0.1);
 }
 
+
 .admin_submit111 a{
     text-decoration: none;
     color: white;
@@ -1145,7 +1163,6 @@ tbody tr:nth-child(even) {
 }
 
 .table1{
-
     display: flex;
     justify-content: space-around;
     padding: 0px;
@@ -1323,4 +1340,12 @@ main.lskham{
     background-color: #dc3545;
     padding: 12px;
     box-shadow: 0px 5px 10px 0 rgba(220,53,69, 0.5);
+}
+
+.btn_lsk1{
+    display: none;
+}
+
+.lsk1{
+    
 }

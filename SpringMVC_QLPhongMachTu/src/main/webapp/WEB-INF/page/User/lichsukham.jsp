@@ -17,7 +17,7 @@
 
 <form:form modelAttribute="user">
     <div class="text-lsk">
-        <p>Lịch sử khám bệnh</p>
+        <p>Lịch sử đăng ký phiếu khám</p>
     </div>
     <main class="table lskham">
         <div>
@@ -28,7 +28,7 @@
 
                             <th>Tên bệnh nhân</th>
                             <th>Trạng thái</th>
-                            <th>Ngày đăng ký</th>
+                            <th>Ngày đăng ký và thời gian</th>
                             <th></th>
 
                         </tr>
@@ -38,7 +38,8 @@
                         <c:forEach items="${lskham}" var="p">
                             <tr>
                                 <td>${p.idBn.hoTen}</td>
-                                <td><c:choose>
+                                <td>
+                                    <c:choose>
                                         <c:when test="${p.trangThaidky.toString() eq 0}">
                                             <p id="xacnhan">Chưa xác nhận</p>
                                         </c:when>
@@ -50,7 +51,15 @@
 
                                 <td>${p.ngayDky}</td>
                                 <td>
-                                    <button class="btn_lsk">Hủy phiếu đăng ký</button>
+                                    <c:url value="/api/benhnhan/lichsukham/${t.idPhieudk}" var="apiDelete" />
+                                    <c:choose>
+                                        <c:when test="${p.trangThaidky.toString() eq 0}">
+                                            <div class="btn_lsk" onclick="xoaLsPhieuDky('${apiDelete}')" > Hủy phiếu đăng ký </div>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <div class ="btn_lsk1" disabled>Hủy phiếu đăng ký</div>
+                                        </c:otherwise>
+                                    </c:choose>
                                 </td>
                             </tr>
                         </c:forEach>
@@ -60,3 +69,4 @@
         </div>
     </main>
 </form:form>
+<script src="<c:url value="/js/main.js" />"></script>

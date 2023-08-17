@@ -6,7 +6,6 @@ package com.hmh.configs;
 
 import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
-import com.hmh.formatter.DateFormatter;
 import com.hmh.formatter.LapDsKhamFormatter;
 import com.hmh.formatter.UserRoleFormatter;
 
@@ -51,7 +50,6 @@ public class WebApplicationContextConfig implements WebMvcConfigurer {
     @Override
     public void addFormatters(FormatterRegistry registry) {
         registry.addFormatter(new UserRoleFormatter());
-        registry.addFormatter(new DateFormatter());
         registry.addFormatter(new LapDsKhamFormatter());
     }
 
@@ -89,10 +87,6 @@ public class WebApplicationContextConfig implements WebMvcConfigurer {
         return cloudinary;
     }
 
-    @Bean
-    public SimpleDateFormat simpleDateFormat() {
-        return new SimpleDateFormat("yyyy-MM-dd");
-    }
 
 //    @Bean
 //    public MessageSource messageSource() {

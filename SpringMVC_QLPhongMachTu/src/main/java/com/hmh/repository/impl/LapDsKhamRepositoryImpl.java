@@ -25,39 +25,40 @@ import org.hibernate.HibernateException;
 @Repository
 @Transactional
 public class LapDsKhamRepositoryImpl implements LapDsKhamRepository {
-
+    
     @Autowired
     private LocalSessionFactoryBean factory;
-
+    
     @Override
     public List<PhieuDangKy> getPhieuDangKy(Map<String, String> params) {
         Session s = this.factory.getObject().getCurrentSession();
         Query q = s.createQuery("From PhieuDangKy");
-
+        
         return q.getResultList();
     }
-
+    
     @Override
     public List<TaiKhoan> getBacSi() {
         Session s = this.factory.getObject().getCurrentSession();
         Query q = s.createQuery("From TaiKhoan Where idRole=2");
-
+        
         return q.getResultList();
     }
-
+    
     @Override
     public Boolean trangThai(int id, TaiKhoan tk) {
         Session session = this.factory.getObject().getCurrentSession();
         PhieuDangKy pdk = session.get(PhieuDangKy.class, id);
-
+        
         try {
             if (pdk.getTrangThaidky() == 1) {
                 pdk.setTrangThaidky((short) 0);
                 pdk.setIdYt(null);
-
+                pdk.setIdBs(null);
             } else {
                 pdk.setTrangThaidky((short) 1);
                 pdk.setIdYt(tk);
+                pdk.setIdBs(getBacSi().get(0));
             }
             return true;
         } catch (HibernateException ex) {
@@ -65,7 +66,7 @@ public class LapDsKhamRepositoryImpl implements LapDsKhamRepository {
         }
         return false;
     }
-
+    
     @Override
     public boolean themPhieuDangKy(PhieuDangKy pdk) {
         Session session = this.factory.getObject().getCurrentSession();

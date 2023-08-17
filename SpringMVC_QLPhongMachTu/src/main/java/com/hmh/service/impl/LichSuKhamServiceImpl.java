@@ -27,4 +27,14 @@ public class LichSuKhamServiceImpl implements LichSuKhamService {
         return lichSuKhamRepository.getPhieuDangKy(idBn);
     }
 
+    @Override
+    public PhieuDangKy getLsKhamId(int id) {
+        return this.lichSuKhamRepository.getLsKhamId(id);
+    }
+
+    @Override
+    public boolean xoaLsKham(int id) {
+        return this.lichSuKhamRepository.xoaLsKham(id);
+    }
+
 }

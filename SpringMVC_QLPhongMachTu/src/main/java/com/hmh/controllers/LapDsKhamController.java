@@ -66,15 +66,17 @@ public class LapDsKhamController {
             }
         }
 
-        model.addAttribute("", this.phieuDangKyService.getPhieuDangKy(params));
+        model.addAttribute("dskham", this.phieuDangKyService.getPhieuDangKy(params));
 
         return "lapdskham";
     }
 
     @PostMapping("/yta/lapdskham")
-    public String lapdskham(Model model, @ModelAttribute(value = "dskham") PhieuDangKy pdk) {
+    public String lapdskham(Model model, @ModelAttribute(value = "themDSpkd") PhieuDangKy pdk, @RequestParam Map<String, String> params) {
 
         
+        model.addAttribute("dskham", this.phieuDangKyService.getPhieuDangKy(params));
+
         return "lapdskham";
     }
 

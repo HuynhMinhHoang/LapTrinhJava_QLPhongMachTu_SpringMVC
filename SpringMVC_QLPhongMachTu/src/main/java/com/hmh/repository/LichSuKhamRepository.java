@@ -12,6 +12,13 @@ import java.util.List;
  *
  * @author Asus
  */
+
+
 public interface LichSuKhamRepository {
+
     List<Object> getPhieuDangKy(TaiKhoan idBn);
+
+    PhieuDangKy getLsKhamId(int id);
+
+    boolean xoaLsKham(int id);
 }

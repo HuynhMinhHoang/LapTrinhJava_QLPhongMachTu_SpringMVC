@@ -24,6 +24,7 @@ import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
+import org.eclipse.persistence.jpa.jpql.parser.DateTime;
 
 /**
  *
@@ -52,7 +53,7 @@ public class PhieuDangKy implements Serializable {
     @Column(name = "trangThai_dky")
     private Short trangThaidky;
     @Column(name = "ngay_dky")
-    @Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.TIMESTAMP)
     private Date ngayDky;
     @Column(name = "ngay_hkham")
     @Temporal(TemporalType.DATE)

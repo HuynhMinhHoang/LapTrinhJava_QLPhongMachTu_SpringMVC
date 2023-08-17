@@ -137,7 +137,7 @@
 
                 <div class="change1 change11">
                     <h5>Ngày sinh</h5>
-                    <form:input type="text" path="ngaySinh" id="ngaySinh" placeholder=""/>
+                    <form:input type="date" path="ngaySinh" id="ngaySinhAdmin" placeholder=""/>
                 </div>
 
             </div>

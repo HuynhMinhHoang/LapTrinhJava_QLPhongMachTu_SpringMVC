@@ -12,9 +12,10 @@ import org.springframework.stereotype.Service;
 import com.hmh.repository.LapDsKhamRepository;
 import com.hmh.repository.TaiKhoanRepository;
 import com.hmh.service.LapDsKhamService;
-import java.time.LocalDate;
-import java.util.Date;
+import java.sql.Timestamp;
+
 import java.util.Map;
+import org.eclipse.persistence.jpa.jpql.parser.DateTime;
 
 /**
  *
@@ -22,43 +23,45 @@ import java.util.Map;
  */
 @Service
 public class LapDsKhamServiceImpl implements LapDsKhamService {
-    
+
     @Autowired
-    private LapDsKhamRepository phieuDangKyRepository;
-    
+    private LapDsKhamRepository lapDsKhamRepository;
+
     @Autowired
     private TaiKhoanRepository taiKhoanRepository;
-    
+
     @Override
     public List<PhieuDangKy> getPhieuDangKy(Map<String, String> params) {
-        return this.phieuDangKyRepository.getPhieuDangKy(params);
+        return this.lapDsKhamRepository.getPhieuDangKy(params);
     }
-    
+
     @Override
     public List<TaiKhoan> getBacSi() {
-        return this.phieuDangKyRepository.getBacSi();
+        return this.lapDsKhamRepository.getBacSi();
     }
-    
+
     @Override
     public Boolean trangThai(int id, TaiKhoan tk) {
-        return this.phieuDangKyRepository.trangThai(id, tk);
+        return this.lapDsKhamRepository.trangThai(id, tk);
     }
-    
+
     @Override
     public boolean themPhieuDangKy(PhieuDangKy pdk) {
         TaiKhoan tk = taiKhoanRepository.getTaiKhoan(pdk.getTenBenhNhanDky()).get(0);
-        
+
         java.util.Date currentDate = new java.util.Date();
-        
-        java.sql.Date sqlDate = new java.sql.Date(currentDate.getTime());
-        
+
+        Timestamp timestamp = new Timestamp(currentDate.getTime());
+
         pdk.setIdBn(tk);
-        
-        pdk.setNgayDky(sqlDate);
-        
+
+        pdk.setNgayDky(timestamp);
+
         pdk.setTrangThaidky((short) 0);
         
-        return this.phieuDangKyRepository.themPhieuDangKy(pdk);
+//        pdk.setNgayHkham(currentDate);
+
+        return this.lapDsKhamRepository.themPhieuDangKy(pdk);
     }
-    
+
 }

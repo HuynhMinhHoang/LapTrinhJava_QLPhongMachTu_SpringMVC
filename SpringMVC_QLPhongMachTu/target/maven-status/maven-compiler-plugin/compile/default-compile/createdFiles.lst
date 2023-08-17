@@ -51,11 +51,13 @@ com\hmh\repository\QuanLyTaiKhoanRepository.class
 com\hmh\repository\impl\QuanLyThuocRepositoryImpl.class
 com\hmh\service\QuanLyTaiKhoanService.class
 com\hmh\controllers\DangKyKhamController.class
+com\hmh\controllers\ApiUserController.class
 com\hmh\service\impl\LapDsKhamServiceImpl.class
 com\hmh\controllers\QuanLyTaiKhoanControlller.class
 com\hmh\service\TaiKhoanService.class
 com\hmh\pojo\ChiTietLichTruc.class
 com\hmh\pojo\PhieuDangKy.class
+com\hmh\controllers\ApiYTaController.class
 com\hmh\pojo\ChiTietThuoc.class
 com\hmh\pojo\LichTruc_.class
 com\hmh\formatter\LapDsKhamFormatter.class
@@ -63,7 +65,6 @@ com\hmh\repository\LapDsKhamRepository.class
 com\hmh\controllers\QuanLyThuocController.class
 com\hmh\repository\TaiKhoanRepository.class
 com\hmh\controllers\DangKyController.class
-com\hmh\formatter\DateFormatter.class
 com\hmh\controllers\LichSuKhamController.class
 com\hmh\pojo\PhieuDangKy_.class
 com\hmh\service\impl\LichSuKhamServiceImpl.class

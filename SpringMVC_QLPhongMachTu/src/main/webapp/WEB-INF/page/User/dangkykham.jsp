@@ -77,6 +77,7 @@
                     <div class="submitdkk">
                         <a><button type="submit">ĐĂNG KÝ KHÁM</button></a>
                     </div>
+                    <p id="luuy">*Lưu ý: bệnh nhân chỉ được gửi phiếu đăng ký khám mới sau 24h kể từ khi gửi phiếu đăng ký hiện tại!</p>
                 </div>
 
 

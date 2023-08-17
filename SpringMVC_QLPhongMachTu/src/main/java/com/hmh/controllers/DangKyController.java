@@ -6,15 +6,19 @@ package com.hmh.controllers;
 
 import com.hmh.pojo.TaiKhoan;
 import com.hmh.service.TaiKhoanService;
+import java.util.Date;
 import java.util.List;
 import javax.validation.Valid;
 import org.hibernate.HibernateException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -29,6 +33,13 @@ public class DangKyController {
 //    private Cloudinary cloudinary;
     @Autowired
     private TaiKhoanService userDetailsService;
+    @Autowired
+    private CustomDateEditor customDateEditor;
+
+    @InitBinder
+    public void initBinder(WebDataBinder binder) {
+        binder.registerCustomEditor(Date.class, customDateEditor);
+    }
 
     @GetMapping("/dangky")
     public String dangky(Model model) {
@@ -63,25 +74,3 @@ public class DangKyController {
     }
 
 }
-
-//if (userDetailsService.getTaiKhoan(username).isEmpty() || user.getTaiKhoan().isBlank()) {
-//            if (user.getMatKhau().length() >= 6) {
-//                if (user.getSdt().matches("\\d{10}")) {
-//                    if (user.getMatKhau().equals(user.getConfirmmatKhau())) {
-//                        if (this.userDetailsService.addTaiKhoan(user) == true) {
-//                            return "redirect:/dangnhap";
-//                        } else {
-//                            errMsg = "Mật khẩu không khớp!!";
-//                        }
-//                    } else {
-//                        errMsg = "Mật khẩu không khớp!!";
-//                    }
-//                } else {
-//                    errMsg = "Số điện thoại phải đủ 10 ký tự!";
-//                }
-//            } else {
-//                errMsg = "Mật khẩu phải hơn 6 ký tự!";
-//            }
-//        } else {
-//            errMsg = "Tên người dùng đã tồn tại!";
-//        }

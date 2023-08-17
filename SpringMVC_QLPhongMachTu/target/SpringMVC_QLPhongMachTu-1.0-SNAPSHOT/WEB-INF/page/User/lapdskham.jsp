@@ -9,8 +9,10 @@
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <c:url value="/yta/lapdskham" var="actions"/>
-<form:form method="post" modelAttribute="dskham" action="${actions}">
-
+<form:form method="post" modelAttribute="themDSpkd" action="${actions}">
+    <div class="text-lsk lsk1">
+        <p>Danh sách bệnh nhân đăng ký khám</p>
+    </div>
     <nav class="table1">
         <section class="table__body1">
             <table>
@@ -18,16 +20,14 @@
                     <tr>
                         <th>ID</th>
                         <th>Bệnh nhân</th>
+                        <th>Email</th>
                         <th>Ngày đăng ký</th>
                         <th>Y tá</th>
-                        <th>Ngày hẹn khám</th>
-
-
-
-                        <th>Trạng thái</th>
                         <th>Bác sĩ</th>
+                        <th>Ngày hẹn khám</th>
+                        <th>Trạng thái</th>
                         <th></th>
-                        <th>ID Phiếu khám</th>
+                        <!--<th>ID Phiếu khám</th>-->
                     </tr>
                 </thead>
                 <c:forEach items="${dskham}" var="p">
@@ -35,24 +35,28 @@
                         <tr>
                             <td>${p.idPhieudk}</td>
                             <td>${p.idBn.hoTen}</td>
+                            <td>${p.idBn.email}</td>
                             <td>${p.ngayDky}</td>
                             <td>${p.idYt.hoTen}</td>
-                            <td>${p.ngayHkham}</td>
-
-                            <td><c:choose>
+                            <td>
+                                <form:select name="idBs" path="idBs" id="idBs" class="form-select" cssErrorClass="is-invalid">
+                                    <c:forEach items="${dsbacsi}" var="c">
+                                        <form:option value="${c.idTk}" >${c.hoTen}</form:option>
+                                    </c:forEach>
+                                </form:select>
+                            </td>
+                            <td>
+                                <form:input type="date" path="ngayHkham" id="ngayHKham" placeholder=""/>
+                            </td>
+                            <td>
+                                <c:choose>
                                     <c:when test="${p.trangThaidky.toString() eq 0}">
                                         <p id="xacnhan">Chưa xác nhận</p>
                                     </c:when>
                                     <c:otherwise>
                                         <p id="xacnhan1"> Đã xác nhận </p>
                                     </c:otherwise>
-                                </c:choose></td>
-                            <td>
-                                <select name="idBs" path="idBs" id="idBs" class="form-select" cssErrorClass="is-invalid">
-                                    <c:forEach items="${dsbacsi}" var="c">
-                                        <option value="${c.idTk}" >${c.hoTen}</option>
-                                    </c:forEach>
-                                </select>
+                                </c:choose>
                             </td>
                             <td>
                                 <button class="admin_submit111" type="submit">
@@ -67,9 +71,8 @@
                                         </c:choose>
                                     </a>
                                 </button>
-
                             </td>
-                            <td>${p.idPk.idPhieukham}</td>
+                            <!--<td>${p.idPk.idPhieukham}</td>-->
 
                         </tr>
                     </tbody>

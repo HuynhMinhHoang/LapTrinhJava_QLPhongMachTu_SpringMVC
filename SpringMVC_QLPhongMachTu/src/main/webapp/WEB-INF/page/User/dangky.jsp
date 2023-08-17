@@ -142,7 +142,7 @@
                             </div>
 
                             <div class="one11">
-                                <form:input type="ngaySinh" id="ngaySinh" path="ngaySinh" placeholder="Ngày sinh"/>
+                                <form:input type="date" id="ngaySinh" path="ngaySinh" placeholder="Ngày sinh"/>
                             </div>
                         </div>
                     </div>
