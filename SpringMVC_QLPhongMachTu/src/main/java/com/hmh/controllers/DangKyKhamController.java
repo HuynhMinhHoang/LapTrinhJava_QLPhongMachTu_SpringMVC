@@ -13,11 +13,14 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -36,6 +39,14 @@ public class DangKyKhamController {
 //    private DangKyKhamService dangKyKhamService;
     @Autowired
     private LapDsKhamService lapDsKhamService;
+
+    @Autowired
+    private CustomDateEditor customDateEditor;
+
+    @InitBinder
+    public void initBinder(WebDataBinder binder) {
+        binder.registerCustomEditor(Date.class, customDateEditor);
+    }
 
     @GetMapping("/benhnhan/dangkykham")
     public String dangkykham(Model model, Authentication authentication) {
@@ -57,8 +68,26 @@ public class DangKyKhamController {
     }
 
     @PostMapping("/benhnhan/dangkykham")
-    public String benhNhanDkyKham(Model model, @ModelAttribute(value = "themphieudky") PhieuDangKy pdk,
-            Authentication authentication) {
+    public String benhNhanCapNhat(Model model,
+            Authentication authentication, @ModelAttribute(value = "user") TaiKhoan tk) {
+
+        String err = "";
+
+        if (this.taiKhoanService.addTaiKhoan(tk) == true) {
+
+            return "redirect:/benhnhan/dangkykham";
+
+        } else {
+            err = "Cập nhật thông tin không thành công!";
+        }
+
+        model.addAttribute("err", err);
+        return "dangkykham";
+    }
+
+    @PostMapping("/benhnhan/dangkykham_pdk")
+    public String benhNhanDkyKham(Model model,
+            Authentication authentication, @ModelAttribute(value = "themphieudky") PhieuDangKy pdk) {
 
         String err = "";
 

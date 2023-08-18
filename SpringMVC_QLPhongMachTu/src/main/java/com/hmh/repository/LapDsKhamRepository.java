@@ -18,12 +18,11 @@ public interface LapDsKhamRepository {
     public List<PhieuDangKy> getPhieuDangKy(Map<String, String> params);
 
     public List<TaiKhoan> getBacSi();
-    
+
 //    public TaiKhoan getBacSiByID();
-
     Boolean trangThai(int id, TaiKhoan tk);
-    
-    boolean themPhieuDangKy(PhieuDangKy pdk);
-    
 
+    boolean themPhieuDangKy(PhieuDangKy pdk);
+
+    List<PhieuDangKy> timKiemPDK(Map<String, String> params);
 }

@@ -536,6 +536,7 @@ ul.menucha > li > a:hover{
     border: 0.5px solid #5AAC4E;
     border-radius: 30px;
     /*box-shadow: 0px 10px 40px 0px #c0f4b9;*/
+    
 
 }
 
@@ -1225,6 +1226,35 @@ tbody tr:nth-child(even) {
     padding: 0px !important;
 }
 
+.header-lapdskham{
+    display: flex;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.lapdskham_search{
+    align-items: center;
+}
+
+.lapdskham_search input{
+    width: 200px;
+    padding: 5px;
+    border-radius: 10px;
+    border: 1px solid #ced4da;
+}
+.lapdskham_search button{
+    margin-left: 10px;
+    width: 50px;
+    background: rgb(130, 201, 30);
+    padding: 5px;
+    color: white;
+    border-radius: 10px;
+    border: 0px solid #ced4da;
+    box-shadow: 0px 5px 10px 0 rgba(130, 201, 30, 0.5);
+}
+
 
 /*doimatkhau*/
 .login111{
@@ -1327,7 +1357,10 @@ main.lskham{
     font-size: 30px;
     font-weight: 700;
     text-align: center;
-    margin-top: 40px;
+
+}
+.text-lsk111{
+    margin-top:40px;
 }
 
 .btn_lsk{
@@ -1346,6 +1379,6 @@ main.lskham{
     display: none;
 }
 
-.lsk1{
-    
+.lsk1 p{
+    margin: 0px;
 }

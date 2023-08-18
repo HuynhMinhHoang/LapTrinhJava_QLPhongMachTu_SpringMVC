@@ -22,6 +22,6 @@ public interface LapDsKhamService {
     Boolean trangThai(int id, TaiKhoan tk);
 
     boolean themPhieuDangKy(PhieuDangKy pdk);
-    
 
+    List<PhieuDangKy> timKiemPDK(Map<String, String> params);
 }

@@ -9,17 +9,28 @@
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <c:url value="/yta/lapdskham" var="actions"/>
-<form:form method="post" modelAttribute="themDSpkd" action="${actions}">
+
+<nav class="header-lapdskham">
     <div class="text-lsk lsk1">
         <p>Danh sách bệnh nhân đăng ký khám</p>
     </div>
+    <div class="lapdskham_search">
+        <p>Tìm kiếm theo ngày</p>
+        <form action="${actions}">
+            <input name="kwDate" type="date"" placeholder="Tìm kiếm theo ngày...">
+            <button type="submit"> <i class="fa-solid fa-magnifying-glass"></i> </button>
+        </form>
+    </div>
+</nav>
+
+<form:form method="post" modelAttribute="themDSpkd" action="${actions}">
     <nav class="table1">
         <section class="table__body1">
             <table>
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Bệnh nhân</th>
+                        <th>ID Bệnh nhân</th>
                         <th>Email</th>
                         <th>Ngày đăng ký</th>
                         <th>Y tá</th>
@@ -34,7 +45,7 @@
                     <tbody>
                         <tr>
                             <td>${p.idPhieudk}</td>
-                            <td>${p.idBn.hoTen}</td>
+                            <td>[${p.idBn.idTk}] ${p.idBn.hoTen}</td>
                             <td>${p.idBn.email}</td>
                             <td>${p.ngayDky}</td>
                             <td>${p.idYt.hoTen}</td>

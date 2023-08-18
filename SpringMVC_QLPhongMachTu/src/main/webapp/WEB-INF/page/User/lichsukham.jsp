@@ -16,7 +16,7 @@
 </c:if>
 
 <form:form modelAttribute="user">
-    <div class="text-lsk">
+    <div class="text-lsk text-lsk111">
         <p>Lịch sử đăng ký phiếu khám</p>
     </div>
     <main class="table lskham">

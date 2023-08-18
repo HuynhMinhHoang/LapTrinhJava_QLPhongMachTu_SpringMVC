@@ -8,7 +8,7 @@
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <c:url value="/benhnhan/dangkykham" var="actions"/>
-
+<c:url value="/benhnhan/dangkykham_pdk" var="actionss"/>
 
 <c:if test="${err != null}">
     <div class="alert1">
@@ -17,13 +17,14 @@
 </c:if>
 
 
-<form:form method="post" modelAttribute="themphieudky" action="${actions}" enctype="multipart/form-data">
 
 
-    <nav class="dkk_main">
-        <!--<div class="textdkk"><h1>ĐĂNG KÝ KHÁM</h1></div>-->
+<nav class="dkk_main">
+
+    <form:form method="post" modelAttribute="user" action="${actions}" enctype="multipart/form-data">
 
         <div class="dkk">
+
             <div class="dkk1">
                 <div class="contentdkk1">
                     <h5>Lưu ý:</h5>
@@ -40,49 +41,61 @@
                 </div>
 
 
-                <%--<form:hidden path="idTk"/>--%>
-                <%--<form:hidden path="taiKhoan"/>--%>
-                <%--<form:hidden path="avt"/>--%>
+                <form:hidden path="idTk"/>
+                <form:hidden path="taiKhoan"/>
+                <form:hidden path="avt"/>
 
 
                 <div class="contentdkk3">
-                    <input class="custom-input" type="text" id="custom-input1" placeholder="${user.hoTen}" disabled ="true"/>
-                    <input class="custom-input" type="text" id="custom-input1" placeholder="${user.email}" disabled ="true"/>
+                    <form:input class="custom-input" type="text" id="custom-input1" path="hoTen" placeholder=""/>
+                    <form:input class="custom-input" type="text" id="custom-input1" path="email" placeholder="" />
                 </div>
 
                 <div class="contentdkk4">
-                    <select class="custom-input" path="gioiTinh" id="custom-input1" cssErrorClass="is-invalid">
-                        <option value="${user.gioiTinh}" label="${user.gioiTinh}" />
-                    </select>
+                    <%--<form:select class="custom-input" path="gioiTinh" id="custom-input1" cssErrorClass="is-invalid">--%>
+                    <%--<form:option value="${user.gioiTinh}" label="${user.gioiTinh}" />--%>
+                    <%--</form:select>--%>
+
+                    <form:select path="gioiTinh" id="gioiTinh" class="form-select" cssErrorClass="is-invalid">
+                        <form:option value="" label="Giới tính" />
+                        <form:option value="Nam" label="Nam" />
+                        <form:option value="Nữ" label="Nữ" />
+                        <form:option value="Khác" label="Khác" />
+                    </form:select>
 
 
                     <div class="contentdkk5">
-                        <input class="custom-input" type="text" id="custom-input1" placeholder="${user.ngaySinh}" disabled ="true"/>
+                        <form:input class="custom-input" type="date" id="custom-input1" path="ngaySinh" placeholder="" />
                     </div>
 
                     <div class="contentdkk5">
-                        <input class="custom-input" type="text" id="custom-input1" placeholder="${user.sdt}" disabled ="true"/>
+                        <form:input class="custom-input" type="text" id="custom-input1" path="sdt" placeholder="" />
                     </div>
 
                     <div class="contentdkk5">
-                        <input class="custom-input" type="text" id="custom-input1" placeholder="${user.diaChi}" disabled ="true"/>
+                        <form:input class="custom-input" type="text" id="custom-input1" path="diaChi" placeholder="" />
                     </div>
 
                     <!--hide-->
-                    <%--<form:input type="text" path="matKhau" id="matKhauu" placeholder=""/>--%>
-                    <%--<form:input type="file" id="file1" path="file" placeholder="Upload Avatar"/>--%>
-
-
+                    <form:input type="text" path="matKhau" id="matKhauu" placeholder=""/>
+                    <form:input type="file" id="file1" path="file" placeholder="Upload Avatar"/>
 
                     <div class="submitdkk">
-                        <a><button type="submit">ĐĂNG KÝ KHÁM</button></a>
+                        <a><button type="submit">CẬP NHẬT THÔNG TIN</button></a>
                     </div>
                     <p id="luuy">*Lưu ý: bệnh nhân chỉ được gửi phiếu đăng ký khám mới sau 24h kể từ khi gửi phiếu đăng ký hiện tại!</p>
                 </div>
-
-
             </div>
-    </nav>
+        </form:form>
+            
 
-    <form:input type="text" id="hoTen111" path="tenBenhNhanDky" value="${pageContext.request.userPrincipal.name}" />
-</form:form>
+        <form:form method="post" modelAttribute="themphieudky" action="${actionss}" enctype="multipart/form-data">
+            <div class="submitdkk">
+                <a><button type="submit" >ĐĂNG KÝ KHÁM</button></a>
+            </div>
+            <form:input type="text" id="hoTen111" path="tenBenhNhanDky" value="${pageContext.request.userPrincipal.name}" />
+        </form:form>
+
+
+</nav>
+

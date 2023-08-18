@@ -46,6 +46,8 @@ public class LapDsKhamController {
 
         model.addAttribute("dskham", this.phieuDangKyService.getPhieuDangKy(params));
         model.addAttribute("dsbacsi", this.phieuDangKyService.getBacSi());
+        
+        model.addAttribute("dskham", this.phieuDangKyService.timKiemPDK(params));
 
         return "lapdskham";
     }
@@ -74,7 +76,6 @@ public class LapDsKhamController {
     @PostMapping("/yta/lapdskham")
     public String lapdskham(Model model, @ModelAttribute(value = "themDSpkd") PhieuDangKy pdk, @RequestParam Map<String, String> params) {
 
-        
         model.addAttribute("dskham", this.phieuDangKyService.getPhieuDangKy(params));
 
         return "lapdskham";

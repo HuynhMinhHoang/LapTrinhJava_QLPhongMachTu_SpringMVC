@@ -13,6 +13,7 @@ import com.hmh.repository.LapDsKhamRepository;
 import com.hmh.repository.TaiKhoanRepository;
 import com.hmh.service.LapDsKhamService;
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 import java.util.Map;
 import org.eclipse.persistence.jpa.jpql.parser.DateTime;
@@ -58,10 +59,14 @@ public class LapDsKhamServiceImpl implements LapDsKhamService {
         pdk.setNgayDky(timestamp);
 
         pdk.setTrangThaidky((short) 0);
-        
-//        pdk.setNgayHkham(currentDate);
 
+//        pdk.setNgayHkham(currentDate);
         return this.lapDsKhamRepository.themPhieuDangKy(pdk);
+    }
+
+    @Override
+    public List<PhieuDangKy> timKiemPDK(Map<String, String> params) {
+        return lapDsKhamRepository.timKiemPDK(params);
     }
 
 }
