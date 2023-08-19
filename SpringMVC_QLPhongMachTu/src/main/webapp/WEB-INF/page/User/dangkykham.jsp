@@ -1,5 +1,4 @@
-<%-- 
-    Document   : dangkykham
+<%--    Document   : dangkykham
     Created on : Jul 26, 2023, 11:01:33 PM
     Author     : Asus
 --%>
@@ -37,7 +36,7 @@
             <div class="contentdkk2_main">
                 <div class="contentdkk2">
                     <h1>ĐĂNG KÝ KHÁM</h1>
-                    <h5>Vui lòng kiểm tra thông tin chính xác trước khi gửi phiếu đăng ký khám!</h5>
+                    <h5>Vui lòng kiểm tra và cập nhật thông tin chính xác trước khi gửi phiếu đăng ký khám!</h5>
                 </div>
 
 
@@ -47,8 +46,8 @@
 
 
                 <div class="contentdkk3">
-                    <form:input class="custom-input" type="text" id="custom-input1" path="hoTen" placeholder=""/>
-                    <form:input class="custom-input" type="text" id="custom-input1" path="email" placeholder="" />
+                    <form:input class="custom-input" type="text" id="custom-input1" path="hoTen" placeholder="Họ và tên"/>
+                    <form:input class="custom-input" type="text" id="custom-input1" path="email" placeholder="Email cá nhân" />
                 </div>
 
                 <div class="contentdkk4">
@@ -69,32 +68,35 @@
                     </div>
 
                     <div class="contentdkk5">
-                        <form:input class="custom-input" type="text" id="custom-input1" path="sdt" placeholder="" />
+                        <form:input class="custom-input" type="text" id="custom-input1" path="sdt" placeholder="Số điện thoại" />
                     </div>
 
                     <div class="contentdkk5">
-                        <form:input class="custom-input" type="text" id="custom-input1" path="diaChi" placeholder="" />
+                        <form:input class="custom-input" type="text" id="custom-input1" path="diaChi" placeholder="Địa chỉ" />
                     </div>
 
                     <!--hide-->
                     <form:input type="text" path="matKhau" id="matKhauu" placeholder=""/>
                     <form:input type="file" id="file1" path="file" placeholder="Upload Avatar"/>
 
-                    <div class="submitdkk">
+                    <div class="submitdkk submitdkk111">
                         <a><button type="submit">CẬP NHẬT THÔNG TIN</button></a>
                     </div>
                     <p id="luuy">*Lưu ý: bệnh nhân chỉ được gửi phiếu đăng ký khám mới sau 24h kể từ khi gửi phiếu đăng ký hiện tại!</p>
-                </div>
-            </div>
-        </form:form>
-            
 
-        <form:form method="post" modelAttribute="themphieudky" action="${actionss}" enctype="multipart/form-data">
-            <div class="submitdkk">
-                <a><button type="submit" >ĐĂNG KÝ KHÁM</button></a>
-            </div>
-            <form:input type="text" id="hoTen111" path="tenBenhNhanDky" value="${pageContext.request.userPrincipal.name}" />
-        </form:form>
+                </div>
+            </form:form>
+            <form:form method="post" modelAttribute="themphieudky" action="${actionss}" enctype="multipart/form-data">
+                <div class="submitdkk">
+                    <a><button type="submit" >ĐĂNG KÝ KHÁM</button></a>
+                </div>
+                <form:input type="text" id="hoTen111" path="tenBenhNhanDky" value="${pageContext.request.userPrincipal.name}" />
+            </form:form>
+        </div>
+
+
+
+
 
 
 </nav>

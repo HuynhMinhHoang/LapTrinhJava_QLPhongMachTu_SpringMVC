@@ -15,8 +15,12 @@ import org.springframework.ui.Model;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import com.hmh.service.LapDsKhamService;
+import java.util.Date;
 import java.util.Map;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -33,6 +37,14 @@ public class LapDsKhamController {
     private LapDsKhamService phieuDangKyService;
     @Autowired
     private TaiKhoanService taiKhoanService;
+    
+    @Autowired
+    private CustomDateEditor customDateEditor;
+
+    @InitBinder
+    public void initBinder(WebDataBinder binder) {
+        binder.registerCustomEditor(Date.class, customDateEditor);
+    }
 
     @GetMapping("/yta/lapdskham")
     public String lapdskham(Model model, Authentication authentication, @RequestParam Map<String, String> params) {

@@ -49,6 +49,7 @@
                             <td>${p.idBn.email}</td>
                             <td>${p.ngayDky}</td>
                             <td>${p.idYt.hoTen}</td>
+                            
                             <td>
                                 <form:select name="idBs" path="idBs" id="idBs" class="form-select" cssErrorClass="is-invalid">
                                     <c:forEach items="${dsbacsi}" var="c">
@@ -56,9 +57,11 @@
                                     </c:forEach>
                                 </form:select>
                             </td>
+                            
                             <td>
                                 <form:input type="date" path="ngayHkham" id="ngayHKham" placeholder=""/>
                             </td>
+                            
                             <td>
                                 <c:choose>
                                     <c:when test="${p.trangThaidky.toString() eq 0}">
@@ -69,20 +72,27 @@
                                     </c:otherwise>
                                 </c:choose>
                             </td>
-                            <td>
-                                <button class="admin_submit111" type="submit">
-                                    <a href="<c:url value="/yta/lapdskham/${p.idPhieudk}"/>" >
-                                        <c:choose>
-                                            <c:when test="${p.trangThaidky == 0}">
+                            
+                            <td> 
+                                <c:choose>
+                                    <c:when test="${p.trangThaidky == 0}">
+                                        <button class="admin_submit111" type="submit">
+                                            <a href="<c:url value="/yta/lapdskham/${p.idPhieudk}"/>" >
                                                 Xác nhận
-                                            </c:when>
-                                            <c:otherwise>
-                                                Hủy xác nhận
-                                            </c:otherwise>
-                                        </c:choose>
-                                    </a>
-                                </button>
+                                            </a>
+                                        </button>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <button class="admin_submit111" id="xacnhanLK" type="submit">
+                                            <a href="<c:url value="/yta/lapdskham/${p.idPhieudk}"/>" >
+                                                Hủy Xác nhận
+                                            </a>
+                                        </button>
+                                    </c:otherwise>
+                                </c:choose>
                             </td>
+                            
+                            
                             <!--<td>${p.idPk.idPhieukham}</td>-->
 
                         </tr>

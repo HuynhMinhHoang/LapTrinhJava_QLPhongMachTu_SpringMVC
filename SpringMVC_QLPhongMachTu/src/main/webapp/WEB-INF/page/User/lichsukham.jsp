@@ -28,7 +28,9 @@
 
                             <th>Tên bệnh nhân</th>
                             <th>Trạng thái</th>
+
                             <th>Ngày đăng ký và thời gian</th>
+                            <th id="Username">Y tá xác nhận</th>
                             <th></th>
 
                         </tr>
@@ -50,6 +52,7 @@
                                 </td>
 
                                 <td>${p.ngayDky}</td>
+                                <td>${p.idYt.hoTen}</td>
                                 <td>
                                     <c:url value="/api/benhnhan/lichsukham/${t.idPhieudk}" var="apiDelete" />
                                     <c:choose>

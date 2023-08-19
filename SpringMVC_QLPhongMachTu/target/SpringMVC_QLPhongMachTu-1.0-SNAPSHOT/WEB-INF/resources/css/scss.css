@@ -475,14 +475,14 @@ ul.menucha > li > a:hover{
     background: white;
 }
 
-#custom-input1::placeholder{
+/*#custom-input1::placeholder{
     color: black;
 
 }
 
 .custom-input {
     background-color: white;
-}
+}*/
 
 /*end_dangky*/
 
@@ -575,7 +575,7 @@ ul.menucha > li > a:hover{
 }
 
 .contentdkk2_main{
-    padding: 45px;
+    padding: 45px 45px 0px 45px;
 
 }
 
@@ -641,7 +641,7 @@ ul.menucha > li > a:hover{
     justify-content: center;
 }
 .submitdkk a button{
-    width: 160px;
+    width: 200px;
     padding: 14px;
     font-size: 15px;
     border: 0px solid rgb(43, 43, 43);
@@ -651,7 +651,10 @@ ul.menucha > li > a:hover{
     transition: 0.3s;
     border-radius: 6px;
 }
-
+.submitdkk111 a button{
+    background: #dc3545;
+    box-shadow: 0px 5px 10px 0 rgba(220,53,69, 0.5)
+}
 #ngayHKham{
     padding: 7.5px;
     border-radius: 10px;
@@ -1121,7 +1124,9 @@ tbody tr:nth-child(even) {
     background-color: #0000000b;
 }
 
-
+#xacnhanLK{
+    display: none;
+}
 
 .admin_submit111{
     width: 160px;
@@ -1260,7 +1265,7 @@ tbody tr:nth-child(even) {
 .login111{
     /*    background:  rgba(130, 201, 30, 0.2);*/
     margin: auto;
-    padding: 100px;
+    padding: 100px 100px 70px 100px;
     text-align: center;
 }
 .login_main1111 {
