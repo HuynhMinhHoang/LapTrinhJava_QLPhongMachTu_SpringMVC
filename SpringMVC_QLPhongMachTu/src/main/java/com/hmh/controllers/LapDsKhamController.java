@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.hmh.service.LapDsKhamService;
 import java.util.Date;
 import java.util.Map;
+import javax.servlet.http.HttpSession;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -37,7 +38,10 @@ public class LapDsKhamController {
     private LapDsKhamService phieuDangKyService;
     @Autowired
     private TaiKhoanService taiKhoanService;
-    
+
+    @Autowired
+    private LapDsKhamService lapDsKhamService;
+
     @Autowired
     private CustomDateEditor customDateEditor;
 
@@ -46,9 +50,14 @@ public class LapDsKhamController {
         binder.registerCustomEditor(Date.class, customDateEditor);
     }
 
+    @ModelAttribute
+    public void commonAttr(Model model) {
+        model.addAttribute("dsbacsi", this.phieuDangKyService.getBacSi());
+    }
+
     @GetMapping("/yta/lapdskham")
     public String lapdskham(Model model, Authentication authentication, @RequestParam Map<String, String> params) {
-        model.addAttribute("user", new TaiKhoan());
+//        model.addAttribute("user", new TaiKhoan());
         model.addAttribute("themDSpkd", new PhieuDangKy());
         if (authentication != null) {
             UserDetails user = taiKhoanService.loadUserByUsername(authentication.getName());
@@ -56,19 +65,19 @@ public class LapDsKhamController {
             model.addAttribute("user", u);
         }
 
-        model.addAttribute("dskham", this.phieuDangKyService.getPhieuDangKy(params));
-        model.addAttribute("dsbacsi", this.phieuDangKyService.getBacSi());
-        
+        model.addAttribute("dskham", this.phieuDangKyService.getPhieuDangKy(null));
+
         model.addAttribute("dskham", this.phieuDangKyService.timKiemPDK(params));
 
         return "lapdskham";
     }
 
     @GetMapping("/yta/lapdskham/{id}")
-    public String lapdskham(Model model, @PathVariable(value = "id") int id, @RequestParam Map<String, String> params, Authentication authentication) {
+    public String lapdskham(Model model, @PathVariable(value = "id") int id, @RequestParam Map<String, String> params, Authentication authentication,
+            @RequestParam("idPhieudk") int idPhieuDangKy,
+            @RequestParam("idBs") int idBacSi) {
 
-        model.addAttribute("user", new TaiKhoan());
-
+//        model.addAttribute("user", new TaiKhoan());
         if (authentication != null) {
             UserDetails userDetails = taiKhoanService.loadUserByUsername(authentication.getName());
             TaiKhoan tk = this.taiKhoanService.getTaiKhoanByUsername(userDetails.getUsername());
@@ -79,16 +88,26 @@ public class LapDsKhamController {
                 return "redirect:/yta/lapdskham";
             }
         }
+//        model.addAttribute("themDSpkd", lapDsKhamService.chonBacSiChoPhieuDangKy(idPhieuDangKy, idBacSi));
+        model.addAttribute("themDSpkd", this.phieuDangKyService.getPhieuDangKyById(id));
 
-        model.addAttribute("dskham", this.phieuDangKyService.getPhieuDangKy(params));
+        model.addAttribute("dskham", this.phieuDangKyService.getPhieuDangKy(null));
 
         return "lapdskham";
     }
 
     @PostMapping("/yta/lapdskham")
-    public String lapdskham(Model model, @ModelAttribute(value = "themDSpkd") PhieuDangKy pdk, @RequestParam Map<String, String> params) {
+    public String lapdskham(Model model, @ModelAttribute(value = "themDSpkd") PhieuDangKy pdk) {
 
-        model.addAttribute("dskham", this.phieuDangKyService.getPhieuDangKy(params));
+        String err = "";
+
+//        if (this.phieuDangKyService.themPhieuDangKy(pdk) == true) {
+//            return "redirect:/yta/lapdskham";
+//        } else {
+//            err = "Khong thanh cong";
+//        }
+        model.addAttribute("err", err);
+        model.addAttribute("dskham", this.phieuDangKyService.getPhieuDangKy(null));
 
         return "lapdskham";
     }

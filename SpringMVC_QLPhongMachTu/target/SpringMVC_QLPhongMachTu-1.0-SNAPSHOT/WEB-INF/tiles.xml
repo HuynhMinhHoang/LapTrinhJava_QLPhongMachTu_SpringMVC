@@ -80,8 +80,17 @@ Click nbfs://nbhost/SystemFileSystem/Templates/XML/XMLDocument.xml to edit this 
                        value="/WEB-INF/page/User/lapdskham.jsp" />
     </definition>
     
+    <definition name="lapphieukham" extends="baseLayout">
+        <put-attribute name="title" value="Lập phiếu khám bệnh" />
+        <put-attribute name="content"
+                       value="/WEB-INF/page/User/lapphieukham.jsp" />
+    </definition>
     
-    
+    <definition name="dangkylich" extends="baseLayout">
+        <put-attribute name="title" value="Đăng ký lịch trực" />
+        <put-attribute name="content"
+                       value="/WEB-INF/page/User/dangkylich.jsp" />
+    </definition>
     
     
     

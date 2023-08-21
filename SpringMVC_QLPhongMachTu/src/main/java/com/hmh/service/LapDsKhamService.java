@@ -17,6 +17,8 @@ public interface LapDsKhamService {
 
     List<PhieuDangKy> getPhieuDangKy(Map<String, String> params);
 
+    PhieuDangKy getPhieuDangKyById(int id);
+
     public List<TaiKhoan> getBacSi();
 
     Boolean trangThai(int id, TaiKhoan tk);
@@ -24,4 +26,7 @@ public interface LapDsKhamService {
     boolean themPhieuDangKy(PhieuDangKy pdk);
 
     List<PhieuDangKy> timKiemPDK(Map<String, String> params);
+
+    boolean chonBacSiChoPhieuDangKy(int idPhieuDangKy, int idBacSi);
+
 }

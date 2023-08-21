@@ -4,6 +4,7 @@
  */
 package com.hmh.repository;
 
+import com.hmh.pojo.DichVu;
 import com.hmh.pojo.PhieuDangKy;
 import com.hmh.pojo.TaiKhoan;
 import java.util.List;
@@ -16,6 +17,8 @@ import java.util.Map;
 public interface LapDsKhamRepository {
 
     public List<PhieuDangKy> getPhieuDangKy(Map<String, String> params);
+    
+    PhieuDangKy getPhieuDangKyById(int id);
 
     public List<TaiKhoan> getBacSi();
 
@@ -25,4 +28,6 @@ public interface LapDsKhamRepository {
     boolean themPhieuDangKy(PhieuDangKy pdk);
 
     List<PhieuDangKy> timKiemPDK(Map<String, String> params);
+    
+    
 }

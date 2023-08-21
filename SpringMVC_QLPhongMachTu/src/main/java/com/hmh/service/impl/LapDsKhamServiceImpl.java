@@ -50,13 +50,10 @@ public class LapDsKhamServiceImpl implements LapDsKhamService {
     public boolean themPhieuDangKy(PhieuDangKy pdk) {
         TaiKhoan tk = taiKhoanRepository.getTaiKhoan(pdk.getTenBenhNhanDky()).get(0);
 
-        java.util.Date currentDate = new java.util.Date();
-
-        Timestamp timestamp = new Timestamp(currentDate.getTime());
-
+//        java.util.Date currentDate = new java.util.Date();
+//
+//        Timestamp timestamp = new Timestamp(currentDate.getTime());
         pdk.setIdBn(tk);
-
-        pdk.setNgayDky(timestamp);
 
         pdk.setTrangThaidky((short) 0);
 
@@ -66,7 +63,26 @@ public class LapDsKhamServiceImpl implements LapDsKhamService {
 
     @Override
     public List<PhieuDangKy> timKiemPDK(Map<String, String> params) {
-        return lapDsKhamRepository.timKiemPDK(params);
+        return this.lapDsKhamRepository.timKiemPDK(params);
+    }
+
+    @Override
+    public PhieuDangKy getPhieuDangKyById(int id) {
+        return this.lapDsKhamRepository.getPhieuDangKyById(id);
+    }
+
+    @Override
+    public boolean chonBacSiChoPhieuDangKy(int idPhieuDangKy, int idBacSi) {
+        PhieuDangKy phieuDangKy = lapDsKhamRepository.getPhieuDangKyById(idPhieuDangKy);
+        TaiKhoan bacSi = taiKhoanRepository.getTaiKhoanById(idBacSi);
+
+        if (phieuDangKy != null && bacSi != null) {
+            phieuDangKy.setIdBs(bacSi);
+            lapDsKhamRepository.themPhieuDangKy(phieuDangKy);
+            return true;
+        }
+
+        return false;
     }
 
 }

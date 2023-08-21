@@ -4,6 +4,7 @@
  */
 package com.hmh.repository.impl;
 
+import com.hmh.pojo.DichVu;
 import com.hmh.pojo.PhieuDangKy;
 import com.hmh.pojo.TaiKhoan;
 import java.util.List;
@@ -38,9 +39,13 @@ public class LapDsKhamRepositoryImpl implements LapDsKhamRepository {
 
     @Override
     public List<PhieuDangKy> getPhieuDangKy(Map<String, String> params) {
-        Session s = this.factory.getObject().getCurrentSession();
-        Query q = s.createQuery("From PhieuDangKy");
+        Session session = this.factory.getObject().getCurrentSession();
+        CriteriaBuilder builder = session.getCriteriaBuilder();
+        CriteriaQuery<PhieuDangKy> query = builder.createQuery(PhieuDangKy.class);
+        Root root = query.from(PhieuDangKy.class);
+        query = query.select(root);
 
+        Query q = session.createQuery(query);
         return q.getResultList();
     }
 
@@ -48,7 +53,6 @@ public class LapDsKhamRepositoryImpl implements LapDsKhamRepository {
     public List<TaiKhoan> getBacSi() {
         Session s = this.factory.getObject().getCurrentSession();
         Query q = s.createQuery("From TaiKhoan Where idRole=2");
-
         return q.getResultList();
     }
 
@@ -61,11 +65,11 @@ public class LapDsKhamRepositoryImpl implements LapDsKhamRepository {
             if (pdk.getTrangThaidky() == 1) {
                 pdk.setTrangThaidky((short) 0);
                 pdk.setIdYt(null);
-                pdk.setIdBs(null);
+//                pdk.setIdBs(null);
             } else {
                 pdk.setTrangThaidky((short) 1);
                 pdk.setIdYt(tk);
-                pdk.setIdBs(getBacSi().get(0));
+//                pdk.setIdBs(tk);
             }
             return true;
         } catch (HibernateException ex) {
@@ -78,7 +82,13 @@ public class LapDsKhamRepositoryImpl implements LapDsKhamRepository {
     public boolean themPhieuDangKy(PhieuDangKy pdk) {
         Session session = this.factory.getObject().getCurrentSession();
         try {
-            session.save(pdk);
+//            TaiKhoan tkBs = pdk.getIdBs();
+//            pdk.setIdBs(tkBs);
+            if (pdk.getIdPhieudk() == null) {
+                session.save(pdk);
+            } else {    
+                session.update(pdk);
+            }
             return true;
         } catch (HibernateException e) {
             System.err.println(e.getMessage());
@@ -103,7 +113,7 @@ public class LapDsKhamRepositoryImpl implements LapDsKhamRepository {
             String kwDate = params.get("kwDate");
             if (kwDate != null && !kwDate.isEmpty()) {
                 Date date = Date.valueOf(kwDate); // Chuyển ngày thành kiểu Date
-                Predicate p1 = builder.equal(root.get("ngayDky"), date);
+                Predicate p1 = builder.equal(root.get("chonNgaykham"), date);
                 query.where(p1);
             }
         }
@@ -111,5 +121,13 @@ public class LapDsKhamRepositoryImpl implements LapDsKhamRepository {
         Query q = session.createQuery(query);
         return q.getResultList();
     }
+
+    @Override
+    public PhieuDangKy getPhieuDangKyById(int id) {
+        Session session = this.factory.getObject().getCurrentSession();
+        return session.get(PhieuDangKy.class, id);
+    }
+    
+
 
 }
