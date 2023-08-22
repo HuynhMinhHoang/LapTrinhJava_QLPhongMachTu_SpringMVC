@@ -1096,7 +1096,7 @@ main.table1{
     background-color: #fffff;
     box-shadow: 0px 0px 40px 0px #c0f4b9;
     margin-top: 60px;
-    
+
 
     /*        display: flex;
             justify-content: center;*/
@@ -1478,11 +1478,14 @@ main.lskham{
 /*khambenh*/
 .khambenh{
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
+    background: #f0f8ffba;
+    border: 0px solid aliceblue;
+    box-shadow: 0px 2px 15px 0 rgb(155,255,255);
 }
 
 .dkykhambenh{
-    padding: 50px;
+    padding: 60px 50px 20px 50px;
 }
 
 .contentdkk2_main1{
@@ -1507,6 +1510,45 @@ main.lskham{
 }
 
 .table__body11{
-    margin-top: 15px;
+    margin-top: 20px;
     height: 430px;
+    border: none;
+}
+
+.table__body11 thead th{
+    background-color: #d3f8ff;
+    font-size: 18px;
+    color: #313131;
+}
+
+.submitdkk1111 a button{
+    margin-top: 20px;
+    background: #5addf7;
+    box-shadow: 0px 2px 15px 0 rgb(155,255,255);
+}
+
+.inputkw1{
+    font-size: 17px;
+}
+.inputkw1 input{
+    background-color: white;
+}
+.inputkw1 button{
+    background-color: white;
+}
+
+.contentdkk31 input{
+    border: none;
+}
+
+.contentdkk51 input{
+    border: none;
+    margin-bottom: 10px;
+}
+
+.contentdkk41 select{
+    margin-top: 15px;
+    border: none;
+    margin-bottom: 20px;
+    color: #757575;
 }

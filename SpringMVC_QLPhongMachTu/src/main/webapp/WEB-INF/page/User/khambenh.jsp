@@ -22,7 +22,7 @@
 
 
 
-                <div class="contentdkk3">
+                <div class="contentdkk3 contentdkk31">
                     <input class="custom-input" type="text" id="custom-input1" path="hoTen" placeholder="ID bệnh nhân" readonly="true"/>
                     <input class="custom-input" type="text" id="custom-input1" path="email" placeholder="Họ và tên" readonly="true"/>
                 </div>
@@ -31,25 +31,23 @@
                     <h5>* Thông tin bệnh án</h5>
                 </div>
                 
-                <div class="contentdkk4">
-
-                    
+                <div class="contentdkk4 contentdkk41">
 
                     <select path="gioiTinh" id="gioiTinh" class="form-select" cssErrorClass="is-invalid">
                         <option value="" label="Dịch vụ" />
                     </select>
 
 
-                    <div class="contentdkk5">
+                    <div class="contentdkk5 contentdkk51">
                         <input class="custom-input" type="text" id="custom-input1" path="sdt" placeholder="Triệu chứng" />
                     </div>
 
-                    <div class="contentdkk5">
+                    <div class="contentdkk5 contentdkk51">
                         <input class="custom-input" type="text" id="custom-input1" path="diaChi" placeholder="Kết luận bệnh án" />
                     </div>
 
-                    <div class="submitdkk submitdkk111">
-                        <a><button type="submit">CẬP NHẬT THÔNG TIN</button></a>
+                    <div class="submitdkk submitdkk111 submitdkk1111">
+                        <a><button type="submit">LƯU THÔNG TIN</button></a>
                     </div>
 
                 </div>
@@ -64,7 +62,7 @@
                     <h1>LỊCH SỬ KHÁM BỆNH</h1>
                     <div class="inputkw inputkw1">
                         <form action="${actions}">
-                            <input name="kw" type="search" placeholder="Tìm kiếm...">
+                            <input name="kwDate" type="date"" placeholder="Tìm kiếm theo ngày...">
                             <button type="submit"> <i class="fa-solid fa-magnifying-glass"></i> </button>
                         </form>
                     </div>
@@ -107,36 +105,8 @@
 
         </form>
 
-
-
     </div>
-
-
+         
+                    
 </nav>
 
-<div>
-    <div class="profile_bs">
-        <c:if test="${pageContext.request.userPrincipal.name != null}">
-            <div class="profile_img">
-                <div class="title_name">THÔNG TIN CÁ NHÂN</div>
-
-                <img src="<c:url value="${user.avt}"/>" alt="err"/>
-            </div>
-            <h5>Chức vụ: ${user.idRole.chucVu}</h5>
-            <h5>Bác sĩ: ${user.hoTen}</h5>
-            <h5>Ngày sinh: ${user.ngaySinh}</h5>
-            <h5>Giới tính: ${user.gioiTinh}</h5>
-            <h5>Sđt: ${user.sdt}</h5>
-
-
-
-            <div class="profile_btn">
-                <button class="admin_submit111 admin_submit11111" type="submit">
-                    <a href="<c:url value ="/dangkylich"/>">
-                        Đăng ký lịch
-                    </a>
-                </button>
-            </div>
-        </c:if>
-    </div>
-</div>
