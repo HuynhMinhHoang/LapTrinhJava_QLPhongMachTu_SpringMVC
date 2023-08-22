@@ -27,7 +27,7 @@
                     <h5>Ngày sinh: ${user.ngaySinh}</h5>
                     <h5>Giới tính: ${user.gioiTinh}</h5>
                     <h5>Sđt: ${user.sdt}</h5>
-                    
+
 
 
                     <div class="profile_btn">
@@ -48,7 +48,7 @@
                     <tr>
                         <th>Bác sĩ</th>
                         <th>Bệnh nhân</th>
-                        <th>Dịch vụ</th>
+                
                         <th>Ngày khám</th>
                         <th>Giờ khám</th>
                         <th  id="Username">Trạng thái</th>
@@ -60,14 +60,14 @@
                         <tr>
                             <td>${d.idBs.hoTen}</td>
                             <td>${d.idBn.hoTen}</td>
-                            <td></td>
+                     
                             <td>${d.chonNgaykham}</td>
                             <td>${d.thoiGianKham}</td>
 
                             <td id="xacnhan1">${d.trangThaidky == 1 ? 'Đã xác nhận' : 'Chưa xác nhận'}</td>
                             <td>
-                                <button class="admin_submit111" type="submit">
-                                    <a href="" >
+                                <button class="admin_submit111">
+                                    <a href="/bacsi/khambenh/${d.idBn}" >
                                         Khám bệnh
                                     </a>
                                 </button>

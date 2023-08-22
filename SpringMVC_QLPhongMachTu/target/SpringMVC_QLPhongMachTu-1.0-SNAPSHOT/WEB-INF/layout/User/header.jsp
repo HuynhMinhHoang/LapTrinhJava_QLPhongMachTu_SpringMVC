@@ -67,6 +67,12 @@
                         <li class="tab" style="color: darkred"><a href="<c:url value ="/logout"/>">Đăng xuất</a></li>
                         </c:if>
 
+
+                    <li class="tab" style="color: darkred"><a href="<c:url value ="/bacsi/khambenh"/>">Khám b?nh</a></li>
+
+
+
+
                 </ul>
             </div>
         </header>

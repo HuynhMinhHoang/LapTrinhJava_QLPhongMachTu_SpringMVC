@@ -27,10 +27,11 @@ public class LapPhieuKhamRepositoryImpl implements LapPhieuKhamRepository {
     private LocalSessionFactoryBean factory;
 
     @Override
-    public List<PhieuDangKy> getPhieuDangKy() {
+    public List<PhieuDangKy> getPhieuDangKy(int idBs) {
         Session s = this.factory.getObject().getCurrentSession();
-        Query q = s.createQuery("FROM PhieuDangKy WHERE trangThaidky =:trangThaidky");
+        Query q = s.createQuery("FROM PhieuDangKy WHERE trangThaidky = :trangThaidky AND idBs.idTk = :idBs");
         q.setParameter("trangThaidky", (short) 1);
+         q.setParameter("idBs", idBs);
 
         return q.getResultList();
 

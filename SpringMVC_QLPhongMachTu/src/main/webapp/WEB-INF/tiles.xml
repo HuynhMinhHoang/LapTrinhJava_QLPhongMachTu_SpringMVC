@@ -66,8 +66,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/XML/XMLDocument.xml to edit this 
                        value="/WEB-INF/page/User/doimatkhau.jsp" />
     </definition>
     
+
     
-    
+
     
     
     
@@ -92,6 +93,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/XML/XMLDocument.xml to edit this 
                        value="/WEB-INF/page/User/dangkylich.jsp" />
     </definition>
     
+    <definition name="khambenh" extends="baseLayout">
+        <put-attribute name="title" value="Quá trình khám bệnh" />
+        <put-attribute name="content"
+                       value="/WEB-INF/page/User/khambenh.jsp" />
+    </definition>
     
     
     

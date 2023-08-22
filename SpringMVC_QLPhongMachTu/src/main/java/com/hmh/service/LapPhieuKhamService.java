@@ -13,5 +13,5 @@ import java.util.Map;
  * @author Asus
  */
 public interface LapPhieuKhamService {
-    List<PhieuDangKy> getPhieuDangKy();
+    List<PhieuDangKy> getPhieuDangKy(int idBs);
 }

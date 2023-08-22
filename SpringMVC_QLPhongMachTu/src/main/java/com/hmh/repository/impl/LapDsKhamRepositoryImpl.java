@@ -39,13 +39,9 @@ public class LapDsKhamRepositoryImpl implements LapDsKhamRepository {
 
     @Override
     public List<PhieuDangKy> getPhieuDangKy(Map<String, String> params) {
-        Session session = this.factory.getObject().getCurrentSession();
-        CriteriaBuilder builder = session.getCriteriaBuilder();
-        CriteriaQuery<PhieuDangKy> query = builder.createQuery(PhieuDangKy.class);
-        Root root = query.from(PhieuDangKy.class);
-        query = query.select(root);
+        Session s = this.factory.getObject().getCurrentSession();
+        Query q = s.createQuery("From PhieuDangKy");
 
-        Query q = session.createQuery(query);
         return q.getResultList();
     }
 
@@ -53,6 +49,7 @@ public class LapDsKhamRepositoryImpl implements LapDsKhamRepository {
     public List<TaiKhoan> getBacSi() {
         Session s = this.factory.getObject().getCurrentSession();
         Query q = s.createQuery("From TaiKhoan Where idRole=2");
+
         return q.getResultList();
     }
 
@@ -60,16 +57,15 @@ public class LapDsKhamRepositoryImpl implements LapDsKhamRepository {
     public Boolean trangThai(int id, TaiKhoan tk) {
         Session session = this.factory.getObject().getCurrentSession();
         PhieuDangKy pdk = session.get(PhieuDangKy.class, id);
-
         try {
             if (pdk.getTrangThaidky() == 1) {
                 pdk.setTrangThaidky((short) 0);
                 pdk.setIdYt(null);
-//                pdk.setIdBs(null);
+                pdk.setIdBs(null);
             } else {
                 pdk.setTrangThaidky((short) 1);
                 pdk.setIdYt(tk);
-//                pdk.setIdBs(tk);
+                pdk.setIdBs(tk);
             }
             return true;
         } catch (HibernateException ex) {
@@ -82,24 +78,28 @@ public class LapDsKhamRepositoryImpl implements LapDsKhamRepository {
     public boolean themPhieuDangKy(PhieuDangKy pdk) {
         Session session = this.factory.getObject().getCurrentSession();
         try {
-//            TaiKhoan tkBs = pdk.getIdBs();
-//            pdk.setIdBs(tkBs);
-            if (pdk.getIdPhieudk() == null) {
-                session.save(pdk);
-            } else {    
-                session.update(pdk);
-            }
+            session.save(pdk);
             return true;
         } catch (HibernateException e) {
             System.err.println(e.getMessage());
         }
         return false;
     }
-//
-//    @Override
-//    public TaiKhoan getBacSiByID() {
-//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-//    }
+
+    @Override
+    public TaiKhoan getIdBacSi(int id) {
+        Session session = this.factory.getObject().getCurrentSession();
+        CriteriaBuilder builder = session.getCriteriaBuilder();
+        CriteriaQuery<TaiKhoan> query = builder.createQuery(TaiKhoan.class);
+        Root<TaiKhoan> root = query.from(TaiKhoan.class);
+        query.where(
+                builder.and(
+                        builder.equal(root.get("idTk"), id))
+        );
+        Query q = session.createQuery(query);
+        List<TaiKhoan> results = q.getResultList();
+        return results.isEmpty() ? null : results.get(0);
+    }
 
     @Override
     public List<PhieuDangKy> timKiemPDK(Map<String, String> params) {
@@ -125,9 +125,38 @@ public class LapDsKhamRepositoryImpl implements LapDsKhamRepository {
     @Override
     public PhieuDangKy getPhieuDangKyById(int id) {
         Session session = this.factory.getObject().getCurrentSession();
-        return session.get(PhieuDangKy.class, id);
+        CriteriaBuilder builder = session.getCriteriaBuilder();
+        CriteriaQuery<PhieuDangKy> query = builder.createQuery(PhieuDangKy.class);
+        Root<PhieuDangKy> root = query.from(PhieuDangKy.class);
+        query.where(builder.equal(root.get("idPhieudk"), id));
+        Query q = session.createQuery(query);
+        List<PhieuDangKy> results = q.getResultList();
+        return results.isEmpty() ? null : results.get(0);
     }
-    
 
+    @Override
+    public boolean themVaCapNhat(PhieuDangKy pdk) {
+        Session session = this.factory.getObject().getCurrentSession();
+        try {
+            if (pdk.getIdPhieudk() == null) {
+                session.save(pdk);
+                return true;
+            } else {
+                session.update(pdk);
+                if (pdk.getTrangThaidky() != null && pdk.getTrangThaidky() == 1) {
+                    pdk.setTrangThaidky((short) 0);
+                    pdk.setIdYt(null);
+                    pdk.setIdBs(null);
+                } else {
+                    pdk.setTrangThaidky((short) 1);
+                }
+                return true;
+            }
+
+        } catch (HibernateException ex) {
+            ex.printStackTrace();
+        }
+        return false;
+    }
 
 }

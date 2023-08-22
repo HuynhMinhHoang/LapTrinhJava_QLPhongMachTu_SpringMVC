@@ -20,6 +20,7 @@ com\hmh\pojo\ChiTietThoiGianTruc.class
 com\hmh\repository\impl\TaiKhoanRepositoryImpl.class
 com\hmh\repository\LichSuKhamRepository.class
 com\hmh\controllers\IndexController.class
+com\hmh\service\impl\EmailServiceImpl.class
 com\hmh\pojo\Thuoc.class
 com\hmh\repository\impl\QuanLyTaiKhoanRepositoryImpl.class
 com\hmh\controllers\DangKyLichController.class
@@ -48,6 +49,7 @@ com\hmh\service\impl\QuanLyThuocServiceImpl.class
 com\hmh\configs\HibernateConfig.class
 com\hmh\configs\CustomSuccessHandler.class
 com\hmh\pojo\Thuoc_.class
+com\hmh\formatter\PhieuKhamFormatter.class
 com\hmh\pojo\PhieuKhamBenh_.class
 com\hmh\configs\AppConfig.class
 com\hmh\repository\impl\LichSuKhamRepositoryImpl.class
@@ -55,6 +57,7 @@ com\hmh\configs\SecurityWebApplnitializer.class
 com\hmh\configs\DispatcherServletInitializer.class
 com\hmh\controllers\DangNhapController.class
 com\hmh\repository\QuanLyTaiKhoanRepository.class
+com\hmh\controllers\KhamBenhController.class
 com\hmh\pojo\ChiTietThoiGianTruc_.class
 com\hmh\repository\impl\QuanLyThuocRepositoryImpl.class
 com\hmh\service\QuanLyTaiKhoanService.class
@@ -74,6 +77,7 @@ com\hmh\repository\LapDsKhamRepository.class
 com\hmh\service\DangKyKhamService.class
 com\hmh\controllers\QuanLyThuocController.class
 com\hmh\repository\DangKyKhamRepository.class
+com\hmh\service\EmailService.class
 com\hmh\repository\TaiKhoanRepository.class
 com\hmh\controllers\DangKyController.class
 com\hmh\controllers\LichSuKhamController.class

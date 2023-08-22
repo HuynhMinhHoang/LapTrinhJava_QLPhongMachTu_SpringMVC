@@ -24,8 +24,8 @@ public class LapPhieuKhamServiceImpl implements LapPhieuKhamService {
     private LapPhieuKhamRepository lapPhieuKhamRepository;
 
     @Override
-    public List<PhieuDangKy> getPhieuDangKy() {
-        return this.lapPhieuKhamRepository.getPhieuDangKy();
+    public List<PhieuDangKy> getPhieuDangKy(int idBs) {
+        return this.lapPhieuKhamRepository.getPhieuDangKy(idBs);
     }
 
 }

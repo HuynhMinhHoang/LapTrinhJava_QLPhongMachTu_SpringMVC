@@ -4,10 +4,12 @@
  */
 package com.hmh.controllers;
 
+import com.hmh.pojo.PhieuDangKy;
 import com.hmh.pojo.TaiKhoan;
 import com.hmh.service.LapDsKhamService;
 import com.hmh.service.LapPhieuKhamService;
 import com.hmh.service.TaiKhoanService;
+import java.util.List;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -40,10 +42,11 @@ public class LapPhieuKhamController {
             UserDetails user = taiKhoanService.loadUserByUsername(authentication.getName());
             TaiKhoan u = taiKhoanService.getTaiKhoan(user.getUsername()).get(0);
             model.addAttribute("user", u);
+
+            model.addAttribute("dsbenhnhan", this.lapPhieuKhamService.getPhieuDangKy(u.getIdTk()));
+
         }
 
-        model.addAttribute("dsbenhnhan", this.lapPhieuKhamService.getPhieuDangKy());
-//        model.addAttribute("dsbacsi", this.phieuDangKyService.getBacSi());
         return "lapphieukham";
     }
 }

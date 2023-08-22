@@ -557,7 +557,7 @@ ul.menucha > li > a:hover{
     text-align: justify;
 }
 .contentdkk1 h5{
-    font-size: 20px;
+    font-size: 19px;
     color: white;
 }
 .dkk2{
@@ -1473,4 +1473,40 @@ main.lskham{
     margin-bottom: 30px;
 
     color: #0dcaf0;
+}
+
+/*khambenh*/
+.khambenh{
+    display: flex;
+    justify-content: center;
+}
+
+.dkykhambenh{
+    padding: 50px;
+}
+
+.contentdkk2_main1{
+    padding-bottom: 45px;
+}
+
+.lskhambenh{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+
+.inputkw1 input{
+    margin-top: 0px;
+    margin-bottom: 10px;
+}
+
+.contentdkk21{
+    margin-top: 17px;
+    text-align: center;
+}
+
+.table__body11{
+    margin-top: 15px;
+    height: 430px;
 }

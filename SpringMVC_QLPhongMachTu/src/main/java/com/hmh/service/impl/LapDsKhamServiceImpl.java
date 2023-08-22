@@ -55,6 +55,7 @@ public class LapDsKhamServiceImpl implements LapDsKhamService {
 //        Timestamp timestamp = new Timestamp(currentDate.getTime());
         pdk.setIdBn(tk);
 
+//        pdk.setNgayDky(timestamp);
         pdk.setTrangThaidky((short) 0);
 
 //        pdk.setNgayHkham(currentDate);
@@ -63,7 +64,7 @@ public class LapDsKhamServiceImpl implements LapDsKhamService {
 
     @Override
     public List<PhieuDangKy> timKiemPDK(Map<String, String> params) {
-        return this.lapDsKhamRepository.timKiemPDK(params);
+        return lapDsKhamRepository.timKiemPDK(params);
     }
 
     @Override
@@ -72,17 +73,7 @@ public class LapDsKhamServiceImpl implements LapDsKhamService {
     }
 
     @Override
-    public boolean chonBacSiChoPhieuDangKy(int idPhieuDangKy, int idBacSi) {
-        PhieuDangKy phieuDangKy = lapDsKhamRepository.getPhieuDangKyById(idPhieuDangKy);
-        TaiKhoan bacSi = taiKhoanRepository.getTaiKhoanById(idBacSi);
-
-        if (phieuDangKy != null && bacSi != null) {
-            phieuDangKy.setIdBs(bacSi);
-            lapDsKhamRepository.themPhieuDangKy(phieuDangKy);
-            return true;
-        }
-
-        return false;
+    public boolean themVaCapNhat(PhieuDangKy pdk) {
+        return this.lapDsKhamRepository.themVaCapNhat(pdk);
     }
-
 }
