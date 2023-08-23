@@ -8,12 +8,16 @@
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
+<c:url value="/bacsi/khambenh" var="actions"/>
+
 
 
 <nav class="dkk_main dkykhambenh">
 
     <div class="dkk khambenh">
-        <form>
+
+        <form:form class="form_login11" method="post" action="${actions}" modelAttribute="dsdv">
+
             <div class="contentdkk2_main contentdkk2_main1">
                 <div class="contentdkk2 contentdkk21">
                     <h1>PHIẾU KHÁM BỆNH NHÂN</h1>
@@ -23,19 +27,31 @@
 
 
                 <div class="contentdkk3 contentdkk31">
-                    <input class="custom-input" type="text" id="custom-input1" path="hoTen" placeholder="ID bệnh nhân" readonly="true"/>
-                    <input class="custom-input" type="text" id="custom-input1" path="email" placeholder="Họ và tên" readonly="true"/>
+                    <div id="input_tt">
+                        <h5>ID Bệnh nhân</h5>
+                        <input type="text"  placeholder="${idpdk.idBn.idTk}" readonly="true"/>
+                    </div>
+
+                    <div>
+                        <h5>Họ tên</h5>
+                        <input type="text" placeholder="${idpdk.idBn.hoTen}" readonly="true"/>
+                    </div>
+
                 </div>
+
 
                 <div class="contentdkk2 contentdkk22">
                     <h5>* Thông tin bệnh án</h5>
                 </div>
-                
+
                 <div class="contentdkk4 contentdkk41">
 
-                    <select path="gioiTinh" id="gioiTinh" class="form-select" cssErrorClass="is-invalid">
-                        <option value="" label="Dịch vụ" />
-                    </select>
+                    <form:select path="idDv" id="idDv" class="form-select" cssErrorClass="is-invalid">
+                        <option value="" >Dịch vụ</option>
+                        <c:forEach items="${listDv}" var="c" >
+                            <option value="${c.idDv}" >${c.tenDv}</option>
+                        </c:forEach>
+                    </form:select>
 
 
                     <div class="contentdkk5 contentdkk51">
@@ -54,7 +70,7 @@
 
             </div>
 
-        </form>
+        </form:form>
 
         <form>
             <div class="contentdkk2_main contentdkk2_main1">
@@ -75,10 +91,10 @@
                     <table>
                         <thead>
                             <tr>
-                                <th>Bệnh nhân</th>
-                                <th>Bệnh nhân</th>
-                                <th>Bệnh nhân</th>
-                                
+                                <th>ID Bệnh nhân</th>
+                                <th>Họ tên</th>
+                                <th>Ngày khám</th>
+
                                 <th>Triệu chứng</th>
 
                                 <th>Dịch vụ</th>
@@ -106,7 +122,7 @@
         </form>
 
     </div>
-         
-                    
+
+
 </nav>
 

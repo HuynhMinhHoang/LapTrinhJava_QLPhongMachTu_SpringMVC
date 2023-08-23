@@ -1569,6 +1569,7 @@ main.lskham{
     height: 430px;
     border: none;
     background: white;
+    width: 100%;
 }
 
 .table__body11 thead th{
@@ -1593,8 +1594,20 @@ main.lskham{
     background-color: white;
 }
 
-.contentdkk31 input{
-    /*border: none;*/
+
+.contentdkk31 div h5{
+    font-size: 16px;
+    color: #136740
+
+}
+
+#input_tt input:placeholder{
+    color: black;
+}
+
+
+#input_tt input{
+    margin-right: 20px;
 }
 
 .contentdkk51 input{
@@ -1606,5 +1619,6 @@ main.lskham{
     margin-top: 15px;
     /*border: none;*/
     margin-bottom: 20px;
-    color: #757575;
+
 }
+

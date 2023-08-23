@@ -36,17 +36,18 @@ public class LapPhieuKhamController {
     private LapPhieuKhamService lapPhieuKhamService;
 
     @GetMapping("/bacsi/lapphieukham")
-    public String lapphieukham(Model model, Authentication authentication) {
+    public String lapphieukham(Model model, Authentication authentication, @RequestParam Map<String, String> params) {
 
         if (authentication != null) {
             UserDetails user = taiKhoanService.loadUserByUsername(authentication.getName());
             TaiKhoan u = taiKhoanService.getTaiKhoan(user.getUsername()).get(0);
             model.addAttribute("user", u);
 
+            model.addAttribute("dsbenhnhan", this.phieuDangKyService.getPhieuDangKy(params));
             model.addAttribute("dsbenhnhan", this.lapPhieuKhamService.getPhieuDangKy(u.getIdTk()));
-
         }
 
         return "lapphieukham";
     }
+
 }

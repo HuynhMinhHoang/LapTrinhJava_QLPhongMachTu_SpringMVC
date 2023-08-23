@@ -10,6 +10,8 @@ com\hmh\pojo\TaiKhoan_.class
 com\hmh\configs\SpringSecurityConfig.class
 com\hmh\formatter\UserRoleFormatter.class
 com\hmh\pojo\HoaDon.class
+com\hmh\repository\impl\KhamBenhRepositoryImpl.class
+com\hmh\repository\KhamBenhRepository.class
 com\hmh\service\impl\TaiKhoanServiceImpl.class
 com\hmh\configs\TilesConfig.class
 com\hmh\pojo\ChiTietDv_.class
@@ -74,10 +76,12 @@ com\hmh\pojo\LichTruc_.class
 com\hmh\formatter\LapDsKhamFormatter.class
 com\hmh\repository\LapDsKhamRepository.class
 com\hmh\service\DangKyKhamService.class
+com\hmh\service\KhamBenhService.class
 com\hmh\controllers\QuanLyThuocController.class
 com\hmh\repository\DangKyKhamRepository.class
 com\hmh\repository\TaiKhoanRepository.class
 com\hmh\controllers\DangKyController.class
+com\hmh\service\impl\KhamBenhServiceImpl.class
 com\hmh\controllers\LichSuKhamController.class
 com\hmh\pojo\PhieuDangKy_.class
 com\hmh\controllers\LapPhieuKhamController.class

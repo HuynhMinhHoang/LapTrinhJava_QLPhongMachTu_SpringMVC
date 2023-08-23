@@ -13,5 +13,5 @@ import java.util.Map;
  * @author Asus
  */
 public interface DangKyKhamRepository {
-    List<DichVu> getDichVu();
+   
 }

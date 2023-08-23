@@ -114,7 +114,6 @@
 
                 <form:select path="thoiGianKham" id="thoiGianKham" class="form-select buoiKham1" cssErrorClass="is-invalid" placeholder="Giờ khám">
                     <form:option value="" label="Buổi khám" />
-
                     <form:option value="Sáng" label="Sáng" />
                     <form:option value="Trưa" label="Trưa" />
                     <form:option value="Chiều" label="Chiều" />
