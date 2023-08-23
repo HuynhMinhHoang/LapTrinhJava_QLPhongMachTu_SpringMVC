@@ -557,7 +557,7 @@ ul.menucha > li > a:hover{
     text-align: justify;
 }
 .contentdkk1 h5{
-    font-size: 19px;
+    font-size: 18px;
     color: white;
 }
 .dkk2{
@@ -1103,9 +1103,9 @@ main.table1{
 }
 
 .table__body1 {
-    width: 100%;
+    width: 70%;
     border-radius: 20px;
-    height: 550px;
+    height: 575px;
     margin-top: 10px;
     /*margin-bottom: 50px;*/
     background-color: #fffb;
@@ -1151,6 +1151,7 @@ tbody tr:nth-child(even) {
     width: 160px;
     text-align: center;
     font-size: 17px;
+    color: white;
     border-radius: 6px;
     border: none;
     background-color: rgb(130, 201, 30);
@@ -1184,7 +1185,8 @@ tbody tr:nth-child(even) {
 }
 
 .table__body1{
-    width: 100%;
+    width: 90%;
+    margin-right: 50px;
 }
 
 .table1{
@@ -1193,7 +1195,7 @@ tbody tr:nth-child(even) {
     padding: 0px;
     border-radius: 0px;
     align-items: center;
-    padding: 0px 50px 0px 50px;
+    padding: 15px 50px 50px 50px;
 }
 
 .change_ac11{
@@ -1254,7 +1256,7 @@ tbody tr:nth-child(even) {
 
 .header-lapdskham{
     display: flex;
-    margin-top: 40px;
+    margin-top: 50px;
     margin-bottom: 20px;
     justify-content: space-around;
     align-items: center;
@@ -1284,6 +1286,57 @@ tbody tr:nth-child(even) {
 .table__body1111111{
     margin-bottom: 40px;
 }
+
+
+.table11{
+    height: 570px;
+    width: 20%;
+    padding: 20px 25px 25px 25px;
+    background: #e9f9e7;
+    border-radius: 20px;
+    text-align: center;
+}
+
+.chonbacsi h5{
+    font-size: 20px;
+    margin-bottom: 15px;
+    margin-top: 20px;
+}
+
+
+.chonbacsi input{
+    width: 220px;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    font-size: 17px;
+    padding: 10px;
+}
+
+.chonbacsi select{
+    width: 220px;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    font-size: 17px;
+    padding: 10px;
+    margin: auto;
+}
+
+.btnchonbacsi button{
+    width: 150px;
+    padding: 10px;
+    border: .0px solid rgb(43, 43, 43);
+    background-color:rgb(130, 201, 30);
+    margin-top: 30px;
+    border-radius: 10px;
+    font-size: 18px;
+    color: white;
+}
+
+
+
+
+
+
 
 
 
@@ -1412,6 +1465,7 @@ main.lskham{
 
 .lsk1 p{
     margin: 0px;
+    font-size: 30px;
 }
 
 
@@ -1479,17 +1533,18 @@ main.lskham{
 .khambenh{
     display: flex;
     justify-content: space-around;
-    background: #f0f8ffba;
+    /*background: #f0f8ffba;*/
+    background-image: url('khambenh.png');
     border: 0px solid aliceblue;
     box-shadow: 0px 2px 15px 0 rgb(155,255,255);
 }
 
 .dkykhambenh{
-    padding: 60px 50px 20px 50px;
+    padding: 80px 50px 40px 50px;
 }
 
 .contentdkk2_main1{
-    padding-bottom: 45px;
+    padding-bottom: 50px;
 }
 
 .lskhambenh{
@@ -1513,10 +1568,11 @@ main.lskham{
     margin-top: 20px;
     height: 430px;
     border: none;
+    background: white;
 }
 
 .table__body11 thead th{
-    background-color: #d3f8ff;
+    background-color: #e1fade;
     font-size: 18px;
     color: #313131;
 }
@@ -1538,17 +1594,17 @@ main.lskham{
 }
 
 .contentdkk31 input{
-    border: none;
+    /*border: none;*/
 }
 
 .contentdkk51 input{
-    border: none;
+    /*border: none;*/
     margin-bottom: 10px;
 }
 
 .contentdkk41 select{
     margin-top: 15px;
-    border: none;
+    /*border: none;*/
     margin-bottom: 20px;
     color: #757575;
 }

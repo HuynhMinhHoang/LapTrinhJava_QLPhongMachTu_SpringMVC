@@ -6,7 +6,6 @@ package com.hmh.controllers;
 
 import com.hmh.pojo.PhieuDangKy;
 import com.hmh.pojo.TaiKhoan;
-import com.hmh.service.EmailService;
 import com.hmh.service.TaiKhoanService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -14,13 +13,14 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 
-import org.springframework.web.bind.annotation.RequestMapping;
 import com.hmh.service.LapDsKhamService;
 import java.util.Date;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
+import org.springframework.mail.SimpleMailMessage;
+
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -44,6 +44,9 @@ public class LapDsKhamController {
 
     @Autowired
     private CustomDateEditor customDateEditor;
+
+    @Autowired
+    private JavaMailSender javaMailSender;
 
     @InitBinder
     public void initBinder(WebDataBinder binder) {
@@ -85,12 +88,26 @@ public class LapDsKhamController {
     }
 
     @PostMapping("/yta/lapdskham")
-    public String lapdskham(Model model, @ModelAttribute(value = "themDSpdk") PhieuDangKy pdk, BindingResult rs) {
+    public String lapdskham(Model model, @ModelAttribute(value = "themDSpdk") PhieuDangKy pdk, BindingResult rs,
+            @RequestParam Map<String, String> params) {
+
+        int id = Integer.parseInt(params.get("idPhieudk"));
+
+        PhieuDangKy p = (PhieuDangKy) this.phieuDangKyService.getPhieuDangKyById(id);
 
         String msg = "";
         if (!rs.hasErrors()) {
             if (this.phieuDangKyService.themVaCapNhat(pdk) == true) {
-                msg = "Xác nhận thành công!";
+//                msg = "Xác nhận thành công!";
+                SimpleMailMessage message = new SimpleMailMessage();
+                message.setTo(p.getIdBn().getEmail());
+                message.setSubject("LỊCH HẸN KHÁM BỆNH (Health Couch)");
+                message.setText("Chào, " + p.getIdBn().getHoTen()
+                        + " \nBạn có lịch hẹn khám tại bệnh viện Health Couch vào ngày [" + pdk.getChonNgaykham()
+                        + "] \nVào buổi " + pdk.getThoiGianKham());
+//                message.setCharset("UTF-8");
+                javaMailSender.send(message);
+
                 return "redirect:/yta/lapdskham";
             } else {
                 msg = "Xác nhận không thành công!";

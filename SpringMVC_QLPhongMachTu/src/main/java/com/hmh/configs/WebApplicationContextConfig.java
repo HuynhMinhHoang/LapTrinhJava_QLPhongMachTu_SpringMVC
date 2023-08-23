@@ -98,11 +98,15 @@ public class WebApplicationContextConfig implements WebMvcConfigurer {
         mailSender.setHost("smtp.gmail.com");
         mailSender.setPort(587);
         mailSender.setUsername("hmh20172018@gmail.com");
-        mailSender.setPassword("huynhhoang1");
-        Properties props = mailSender.getJavaMailProperties();
-        props.put("mail.smtp.auth", "true");
-        props.put("mail.smtp.starttls.enable", "true");
+        mailSender.setPassword("iaxedjjzdrljeulu");
+
+        Properties properties = new Properties();
+        properties.put("mail.smtp.auth", "true");
+        properties.put("mail.smtp.starttls.enable", "true");
+        mailSender.setJavaMailProperties(properties);
+
         return mailSender;
+
     }
 
 //    @Bean

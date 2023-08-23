@@ -7,7 +7,7 @@ package com.hmh.controllers;
 import com.hmh.pojo.PhieuDangKy;
 import com.hmh.pojo.TaiKhoan;
 import com.hmh.service.DangKyKhamService;
-import com.hmh.service.EmailService;
+
 //import com.hmh.service.DangKyKhamService;
 import com.hmh.service.LapDsKhamService;
 import com.hmh.service.TaiKhoanService;
