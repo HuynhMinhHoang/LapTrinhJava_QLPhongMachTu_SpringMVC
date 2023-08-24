@@ -18,11 +18,11 @@ import org.springframework.stereotype.Service;
  * @author Asus
  */
 @Service
-public class KhamBenhServiceImpl implements KhamBenhService{
+public class KhamBenhServiceImpl implements KhamBenhService {
 
     @Autowired
     private KhamBenhRepository khamBenhRepository;
-    
+
     @Override
     public PhieuDangKy getPDK(int id) {
         return this.khamBenhRepository.getPDK(id);
@@ -32,5 +32,10 @@ public class KhamBenhServiceImpl implements KhamBenhService{
     public List<DichVu> getDichVu() {
         return this.khamBenhRepository.getDichVu();
     }
-    
+
+    @Override
+    public List<PhieuDangKy> getLichSuKham(Map<String, String> params, int idBn) {
+        return this.khamBenhRepository.getLichSuKham(params, idBn);
+    }
+
 }

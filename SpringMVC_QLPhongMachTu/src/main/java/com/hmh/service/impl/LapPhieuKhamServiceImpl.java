@@ -27,5 +27,7 @@ public class LapPhieuKhamServiceImpl implements LapPhieuKhamService {
     public List<PhieuDangKy> getPhieuDangKy(int idBs) {
         return this.lapPhieuKhamRepository.getPhieuDangKy(idBs);
     }
+    
+    
 
 }

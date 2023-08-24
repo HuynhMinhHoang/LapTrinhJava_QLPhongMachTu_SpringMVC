@@ -40,4 +40,12 @@ public class KhamBenhRepositoryImpl implements KhamBenhRepository {
         return query.getResultList();
     }
 
+    @Override
+    public List<PhieuDangKy> getLichSuKham(Map<String, String> params, int idBn) {
+        Session session = this.factory.getObject().getCurrentSession();
+        Query query = session.createQuery("FROM PhieuDangKy p WHERE p.idBn.idTk = :idBn");
+        query.setParameter("idBn", idBn);
+        return query.getResultList();
+    }
+
 }

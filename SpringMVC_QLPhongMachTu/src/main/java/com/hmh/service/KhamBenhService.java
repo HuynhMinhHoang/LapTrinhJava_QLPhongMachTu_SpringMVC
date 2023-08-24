@@ -18,4 +18,7 @@ public interface KhamBenhService {
     PhieuDangKy getPDK(int id);
 
     List<DichVu> getDichVu();
+    
+    List<PhieuDangKy> getLichSuKham(Map<String, String> params, int idBn);
+    
 }

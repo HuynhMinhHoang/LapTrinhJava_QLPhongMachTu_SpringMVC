@@ -14,4 +14,6 @@ import java.util.Map;
  */
 public interface LapPhieuKhamService {
     List<PhieuDangKy> getPhieuDangKy(int idBs);
+    
+    
 }

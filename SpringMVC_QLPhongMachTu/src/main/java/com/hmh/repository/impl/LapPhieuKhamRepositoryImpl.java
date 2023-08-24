@@ -36,5 +36,7 @@ public class LapPhieuKhamRepositoryImpl implements LapPhieuKhamRepository {
         return q.getResultList();
 
     }
+    
+    
 
 }
