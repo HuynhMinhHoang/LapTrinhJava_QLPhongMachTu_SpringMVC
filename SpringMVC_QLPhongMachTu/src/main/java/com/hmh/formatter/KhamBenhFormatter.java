@@ -13,15 +13,16 @@ import org.springframework.format.Formatter;
  *
  * @author Asus
  */
-public class PhieuKhamFormatter implements Formatter<PhieuKhamBenh> {
+public class KhamBenhFormatter implements Formatter<PhieuKhamBenh> {
 
     @Override
-    public String print(PhieuKhamBenh pk, Locale locale) {
-        return String.valueOf(pk.getIdPhieukham());
+    public String print(PhieuKhamBenh p, Locale locale) {
+        return String.valueOf(p.getIdPhieukham());
     }
 
     @Override
-    public PhieuKhamBenh parse(String text, Locale locale) throws ParseException {
-        return new PhieuKhamBenh(Integer.parseInt(text));
+    public PhieuKhamBenh parse(String id, Locale locale) throws ParseException {
+        return new PhieuKhamBenh(Integer.parseInt(id));
     }
+    
 }

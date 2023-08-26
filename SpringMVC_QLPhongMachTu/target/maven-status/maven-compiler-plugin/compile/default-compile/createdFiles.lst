@@ -50,7 +50,6 @@ com\hmh\service\impl\QuanLyThuocServiceImpl.class
 com\hmh\configs\HibernateConfig.class
 com\hmh\configs\CustomSuccessHandler.class
 com\hmh\pojo\Thuoc_.class
-com\hmh\formatter\PhieuKhamFormatter.class
 com\hmh\pojo\PhieuKhamBenh_.class
 com\hmh\configs\AppConfig.class
 com\hmh\repository\impl\LichSuKhamRepositoryImpl.class
@@ -64,6 +63,7 @@ com\hmh\repository\impl\QuanLyThuocRepositoryImpl.class
 com\hmh\service\QuanLyTaiKhoanService.class
 com\hmh\controllers\DangKyKhamController.class
 com\hmh\controllers\ApiUserController.class
+com\hmh\formatter\KhamBenhFormatter.class
 com\hmh\service\impl\LapDsKhamServiceImpl.class
 com\hmh\controllers\QuanLyTaiKhoanControlller.class
 com\hmh\service\TaiKhoanService.class

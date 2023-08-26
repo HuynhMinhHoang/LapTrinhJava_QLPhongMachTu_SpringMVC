@@ -8,7 +8,6 @@ C:\Users\Asus\Desktop\SpringMVC_QLPhongMachTu\SpringMVC_QLPhongMachTu\src\main\j
 C:\Users\Asus\Desktop\SpringMVC_QLPhongMachTu\SpringMVC_QLPhongMachTu\src\main\java\com\hmh\repository\impl\TaiKhoanRepositoryImpl.java
 C:\Users\Asus\Desktop\SpringMVC_QLPhongMachTu\SpringMVC_QLPhongMachTu\src\main\java\com\hmh\service\impl\LapDsKhamServiceImpl.java
 C:\Users\Asus\Desktop\SpringMVC_QLPhongMachTu\SpringMVC_QLPhongMachTu\src\main\java\com\hmh\service\QuanLyThuocService.java
-C:\Users\Asus\Desktop\SpringMVC_QLPhongMachTu\SpringMVC_QLPhongMachTu\src\main\java\com\hmh\formatter\PhieuKhamFormatter.java
 C:\Users\Asus\Desktop\SpringMVC_QLPhongMachTu\SpringMVC_QLPhongMachTu\src\main\java\com\hmh\repository\impl\LapDsKhamRepositoryImpl.java
 C:\Users\Asus\Desktop\SpringMVC_QLPhongMachTu\SpringMVC_QLPhongMachTu\src\main\java\com\hmh\configs\DispatcherServletInitializer.java
 C:\Users\Asus\Desktop\SpringMVC_QLPhongMachTu\SpringMVC_QLPhongMachTu\src\main\java\com\hmh\configs\SecurityWebApplnitializer.java
@@ -49,6 +48,7 @@ C:\Users\Asus\Desktop\SpringMVC_QLPhongMachTu\SpringMVC_QLPhongMachTu\src\main\j
 C:\Users\Asus\Desktop\SpringMVC_QLPhongMachTu\SpringMVC_QLPhongMachTu\src\main\java\com\hmh\repository\impl\KhamBenhRepositoryImpl.java
 C:\Users\Asus\Desktop\SpringMVC_QLPhongMachTu\SpringMVC_QLPhongMachTu\src\main\java\com\hmh\repository\LichSuKhamRepository.java
 C:\Users\Asus\Desktop\SpringMVC_QLPhongMachTu\SpringMVC_QLPhongMachTu\src\main\java\com\hmh\pojo\TaiKhoan.java
+C:\Users\Asus\Desktop\SpringMVC_QLPhongMachTu\SpringMVC_QLPhongMachTu\src\main\java\com\hmh\formatter\KhamBenhFormatter.java
 C:\Users\Asus\Desktop\SpringMVC_QLPhongMachTu\SpringMVC_QLPhongMachTu\src\main\java\com\hmh\pojo\HoaDon.java
 C:\Users\Asus\Desktop\SpringMVC_QLPhongMachTu\SpringMVC_QLPhongMachTu\src\main\java\com\hmh\service\LapDsKhamService.java
 C:\Users\Asus\Desktop\SpringMVC_QLPhongMachTu\SpringMVC_QLPhongMachTu\src\main\java\com\hmh\formatter\DateFormatter.java

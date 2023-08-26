@@ -6,6 +6,7 @@ package com.hmh.service;
 
 import com.hmh.pojo.DichVu;
 import com.hmh.pojo.PhieuDangKy;
+import com.hmh.pojo.PhieuKhamBenh;
 import java.util.List;
 import java.util.Map;
 
@@ -18,7 +19,9 @@ public interface KhamBenhService {
     PhieuDangKy getPDK(int id);
 
     List<DichVu> getDichVu();
-    
+
     List<PhieuDangKy> getLichSuKham(Map<String, String> params, int idBn);
-    
+
+    boolean themPhieuKhamBenh(PhieuKhamBenh pkb, int idPdk);
+
 }

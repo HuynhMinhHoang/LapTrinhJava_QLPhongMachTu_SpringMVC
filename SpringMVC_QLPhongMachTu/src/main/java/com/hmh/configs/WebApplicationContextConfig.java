@@ -6,8 +6,8 @@ package com.hmh.configs;
 
 import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
+import com.hmh.formatter.KhamBenhFormatter;
 import com.hmh.formatter.LapDsKhamFormatter;
-import com.hmh.formatter.PhieuKhamFormatter;
 import com.hmh.formatter.UserRoleFormatter;
 
 import java.text.SimpleDateFormat;
@@ -55,7 +55,7 @@ public class WebApplicationContextConfig implements WebMvcConfigurer {
     public void addFormatters(FormatterRegistry registry) {
         registry.addFormatter(new UserRoleFormatter());
         registry.addFormatter(new LapDsKhamFormatter());
-        registry.addFormatter(new PhieuKhamFormatter());
+        registry.addFormatter(new KhamBenhFormatter());
     }
 
 //    @Bean

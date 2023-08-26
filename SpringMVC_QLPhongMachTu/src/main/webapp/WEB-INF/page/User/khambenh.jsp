@@ -10,13 +10,22 @@
 
 <c:url value="/bacsi/khambenh" var="actions"/>
 
-
+<%--<c:if test="${errMsg != null}">
+    <div class="alert1">
+        ${errMsg}
+    </div>
+</c:if>--%>
 
 <nav class="dkk_main dkykhambenh">
 
     <div class="dkk khambenh">
 
-        <form>
+        <form:form class="form_login11" method="post" action="${actions}" modelAttribute="taoPKB">
+            <form:hidden path="idPhieukham"/>
+            <form:hidden path="ngayKhamBenh"/>
+            
+            <%--<form:hidden path="pdk"/>--%>
+            <input type="hidden" name="pdk" value="${pdkID.idPhieudk}" />
 
             <div class="contentdkk2_main contentdkk2_main1">
                 <div class="contentdkk2 contentdkk21">
@@ -29,12 +38,12 @@
                 <div class="contentdkk3 contentdkk31">
                     <div id="input_tt">
                         <h5>ID Bệnh nhân</h5>
-                        <input type="text"  placeholder="${idpdk.idBn.idTk}" readonly="true"/>
+                        <input type="text"  placeholder="${idpdk.idBn.idTk}" disabled="true"/>
                     </div>
 
                     <div>
                         <h5>Họ tên</h5>
-                        <input type="text" placeholder="${idpdk.idBn.hoTen}" readonly="true"/>
+                        <input type="text" placeholder="${idpdk.idBn.hoTen}" disabled="true"/>
                     </div>
 
                 </div>
@@ -42,7 +51,7 @@
 
                 <div class="contentdkk5 contentdkk51">
                     <h5>Ngày khám</h5>
-                    <input type="text" placeholder="${idpdk.chonNgaykham}" readonly="true"/>
+                    <input type="text" placeholder="${idpdk.chonNgaykham}" disabled="true"/>
                 </div>
 
 
@@ -56,11 +65,11 @@
 
 
                     <div class="contentdkk5 contentdkk51">
-                        <input class="custom-input" type="text" id="custom-input1" path="sdt" placeholder="Triệu chứng" />
+                        <form:input class="custom-input" type="text" id="custom-input1" path="trieuChung" placeholder="Triệu chứng" />
                     </div>
 
                     <div class="contentdkk5 contentdkk51">
-                        <input class="custom-input" type="text" id="custom-input1" path="diaChi" placeholder="Kết luận bệnh án" />
+                        <form:input class="custom-input" type="text" id="custom-input1" path="ketLuan" placeholder="Kết luận bệnh án" />
                     </div>
 
                     <div class="submitdkk submitdkk111 submitdkk1111">
@@ -71,15 +80,111 @@
 
             </div>
 
-        </form>
+        </form:form>
 
 
 
 
 
+
+        <form:form class="form_login11" method="post" action="${actions}" modelAttribute="dsdv">
+
+
+            <div class="contentdkk2_main contentdkk2_main1">
+
+
+                <div class="contentdkk2 contentdkk21 contentdkk211">
+                    <h1>DỊCH VỤ KHÁM BỆNH</h1>
+                </div>
+
+
+                <div class="dichvu_kb">
+                    <form:select path="idDv" id="idDv" class="form-select form-select1" cssErrorClass="is-invalid">
+                        <option value="" >Dịch vụ</option>
+                        <c:forEach items="${listDv}" var="c" >
+                            <option value="${c.idDv}" >${c.tenDv}</option>
+                        </c:forEach>
+                    </form:select>
+
+
+
+                    <div class="submitdkk submitdkk111 submitdkk1111 submitdkk111112">
+                        <a href=""><button type="submit">THÊM</button></a>
+                    </div>
+                </div>
+
+
+
+
+
+
+                <section class="table__body1 table__body11 table__body111">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID Phiếu khám bệnh</th>
+                                <th>ID Dịch vụ</th>
+                                <th>Tên dịch vụ</th>
+                                <th>Giá dịch vụ</th>
+                                <th></th>
+
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <c:forEach items="${lichSuKham}" var="p">
+                                <c:choose>
+                                    <c:when test="${p.idPk.trieuChung != null}">
+                                        <tr>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td id="xoaThuoc">
+                                                <div class="admin_submit admin_submit11 admin_submit1111" onclick="xoaThuoc('${apiDelete}')">
+                                                    XÓA  
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <tr>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>   
+                                    </c:otherwise>
+                                </c:choose>
+                            </c:forEach>
+                        </tbody>
+                    </table>
+                </section>       
+
+
+            </div>
+
+        </form:form> 
+
+
+
+
+
+
+    </div>
+
+
+
+
+    <!--DICH VU KHAM B?NH-->
+
+
+
+    <div class="dkk khambenh khambenh1">
 
         <form>
-            <div class="contentdkk2_main contentdkk2_main1">
+            <div class="contentdkk2_main contentdkk2_main1 contentdkk2_main11">
                 <div class="contentdkk2 lskhambenh">
                     <h1>LỊCH SỬ KHÁM BỆNH</h1>
                     <div class="inputkw inputkw1">
@@ -140,104 +245,6 @@
 
         </form>
 
-
-
-
-
-
-    </div>
-
-
-
-
-    <!--DICH VU KHAM B?NH-->
-
-
-
-    <div class="dkk khambenh khambenh1">
-
-        <form:form class="form_login11" method="post" action="${actions}" modelAttribute="dsdv">
-
-
-            <div class="contentdkk2_main contentdkk2_main1">
-
-
-                <div class="contentdkk2 contentdkk21 contentdkk211">
-                    <h1>DỊCH VỤ KHÁM BỆNH</h1>
-                </div>
-
-
-                <div class="dichvu_kb">
-                    <form:select path="idDv" id="idDv" class="form-select form-select1" cssErrorClass="is-invalid">
-                        <option value="" >Dịch vụ</option>
-                        <c:forEach items="${listDv}" var="c" >
-                            <option value="${c.idDv}" >${c.tenDv}</option>
-                        </c:forEach>
-                    </form:select>
-
-
-
-                    <div class="submitdkk submitdkk111 submitdkk1111">
-                        <a href=""><button type="submit">THÊM</button></a>
-                    </div>
-                </div>
-
-
-
-
-
-
-                <section class="table__body1 table__body11 table__body111">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>ID Dịch vụ</th>
-                                <th>Tên dịch vụ</th>
-                                <th>Giá dịch vụ</th>
-                                <th></th>
-
-                            </tr>
-                        </thead>
-
-                        <tbody>
-                            <c:forEach items="${lichSuKham}" var="p">
-                                <c:choose>
-                                    <c:when test="${p.idPk.trieuChung != null}">
-                                        <tr>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-
-                                            <td id="xoaThuoc">
-                                                <div class="admin_submit admin_submit11 admin_submit1111" onclick="xoaThuoc('${apiDelete}')">
-                                                    XÓA  
-                                                </div>
-                                            </td>
-
-
-                                        </tr>
-                                    </c:when>
-                                    <c:otherwise>
-                                        <tr>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <th></th>
-                                        </tr>   
-                                    </c:otherwise>
-                                </c:choose>
-                            </c:forEach>
-                        </tbody>
-                    </table>
-                </section>       
-
-
-            </div>
-
-        </form:form> 
-
     </div>
 
 
@@ -247,5 +254,5 @@
 
 </nav>
 
-<a href="/SpringMVC_QLPhongMachTu/generate-pdf?id=${id}" target="_blank">Generate PDF</a>
+<!--<a href="/SpringMVC_QLPhongMachTu/generate-pdf?id=${id}" target="_blank">Generate PDF</a>-->
 

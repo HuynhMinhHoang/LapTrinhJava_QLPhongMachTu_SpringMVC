@@ -6,9 +6,11 @@ package com.hmh.repository.impl;
 
 import com.hmh.pojo.DichVu;
 import com.hmh.pojo.PhieuDangKy;
+import com.hmh.pojo.PhieuKhamBenh;
 import com.hmh.repository.KhamBenhRepository;
 import java.util.List;
 import java.util.Map;
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,6 +48,28 @@ public class KhamBenhRepositoryImpl implements KhamBenhRepository {
         Query query = session.createQuery("FROM PhieuDangKy p WHERE p.idBn.idTk = :idBn");
         query.setParameter("idBn", idBn);
         return query.getResultList();
+    }
+
+    @Override
+    public boolean themPhieuKhamBenh(PhieuKhamBenh pkb, int idPdk) {
+        Session session = this.factory.getObject().getCurrentSession();
+        PhieuDangKy pdk = session.get(PhieuDangKy.class, idPdk);
+
+        try {
+            if (pkb.getIdPhieukham() == null) {
+                pdk.setIdPk(pkb);
+                session.save(pkb);
+            } else {
+                session.update(pkb);
+            }
+
+            return true;
+        } catch (HibernateException ex) {
+            System.err.println(ex.getMessage());
+        }
+
+        return false;
+
     }
 
 }
