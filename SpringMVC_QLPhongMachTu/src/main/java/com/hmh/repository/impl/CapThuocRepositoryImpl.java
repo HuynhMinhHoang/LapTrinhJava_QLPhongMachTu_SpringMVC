@@ -31,18 +31,18 @@ import org.springframework.transaction.annotation.Transactional;
 @Repository
 @Transactional
 public class CapThuocRepositoryImpl implements CapThuocRepository {
-    
+
     @Autowired
     private LocalSessionFactoryBean factory;
-    
+
     @Override
     public List<Thuoc> getListThuoc(Map<String, String> params) {
         Session session = this.factory.getObject().getCurrentSession();
         Query query = session.createQuery("From Thuoc");
-        
+
         return query.getResultList();
     }
-    
+
     @Override
     public List<Thuoc> timKiemThuoc(Map<String, String> params) {
         Session session = this.factory.getObject().getCurrentSession();
@@ -50,7 +50,7 @@ public class CapThuocRepositoryImpl implements CapThuocRepository {
         CriteriaQuery<Thuoc> query = builder.createQuery(Thuoc.class);
         Root root = query.from(Thuoc.class);
         query = query.select(root);
-        
+
         if (params != null) {
             String kw = params.get("kw");
             if (kw != null && !kw.isEmpty()) {
@@ -61,26 +61,26 @@ public class CapThuocRepositoryImpl implements CapThuocRepository {
         javax.persistence.Query q = session.createQuery(query);
         return q.getResultList();
     }
-    
+
     @Override
-    public boolean themPhieuThuoc(ChiTietThuoc ctThuoc) {
+    public boolean themPhieuThuoc(ChiTietThuoc ctThuoc, int idPhieuKham) {
         Session session = this.factory.getObject().getCurrentSession();
-//        ChiTietThuoc ctt = session.get(ChiTietThuoc.class, ctThuoc);
-        
+        ChiTietThuoc ctt = session.get(ChiTietThuoc.class, idPhieuKham);
+
         try {
             if (ctThuoc.getIdChitietThuoc() == null) {
                 session.save(ctThuoc);
-//                ctt.setIdPhieukham(pkb);
+//                ctt.setIdPhieukham(idPhieuKham);
             } else {
                 session.update(ctThuoc);
             }
-            
+
             return true;
         } catch (HibernateException ex) {
             System.err.println(ex.getMessage());
         }
-        
+
         return false;
     }
-    
+
 }

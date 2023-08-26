@@ -5,6 +5,7 @@
 package com.hmh.service;
 
 import com.hmh.pojo.ChiTietThuoc;
+import com.hmh.pojo.PhieuDangKy;
 import com.hmh.pojo.PhieuKhamBenh;
 import com.hmh.pojo.Thuoc;
 import java.util.List;
@@ -20,5 +21,5 @@ public interface CapThuocService {
 
     List<Thuoc> timKiemThuoc(Map<String, String> params);
 
-    boolean themPhieuThuoc(ChiTietThuoc ctThuoc);
+    boolean themPhieuThuoc(ChiTietThuoc ctThuoc, int idPhieuKham);
 }

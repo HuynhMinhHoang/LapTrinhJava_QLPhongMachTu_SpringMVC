@@ -5,6 +5,7 @@
 package com.hmh.repository;
 
 import com.hmh.pojo.ChiTietThuoc;
+import com.hmh.pojo.PhieuDangKy;
 import com.hmh.pojo.PhieuKhamBenh;
 import com.hmh.pojo.TaiKhoan;
 import com.hmh.pojo.Thuoc;
@@ -16,9 +17,10 @@ import java.util.Map;
  * @author Asus
  */
 public interface CapThuocRepository {
-     List<Thuoc> getListThuoc(Map<String, String> params);
-     
-     List<Thuoc> timKiemThuoc(Map<String, String> params);
-     
-     boolean themPhieuThuoc(ChiTietThuoc ctThuoc);
+
+    List<Thuoc> getListThuoc(Map<String, String> params);
+
+    List<Thuoc> timKiemThuoc(Map<String, String> params);
+
+    boolean themPhieuThuoc(ChiTietThuoc ctThuoc, int idPhieuKham);
 }

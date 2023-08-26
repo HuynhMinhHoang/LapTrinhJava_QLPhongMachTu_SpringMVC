@@ -5,9 +5,11 @@
 package com.hmh.service.impl;
 
 import com.hmh.pojo.ChiTietThuoc;
+import com.hmh.pojo.PhieuDangKy;
 import com.hmh.pojo.PhieuKhamBenh;
 import com.hmh.pojo.Thuoc;
 import com.hmh.repository.CapThuocRepository;
+import com.hmh.repository.LapDsKhamRepository;
 import com.hmh.service.CapThuocService;
 import java.util.List;
 import java.util.Map;
@@ -24,6 +26,9 @@ public class CapThuocServiceImpl implements CapThuocService {
     @Autowired
     private CapThuocRepository capThuocRepository;
 
+    @Autowired
+    private LapDsKhamRepository lapDsKhamRepository;
+
     @Override
     public List<Thuoc> getListThuoc(Map<String, String> params) {
         return this.capThuocRepository.getListThuoc(params);
@@ -35,8 +40,13 @@ public class CapThuocServiceImpl implements CapThuocService {
     }
 
     @Override
-    public boolean themPhieuThuoc(ChiTietThuoc ctThuoc) {
-        return this.capThuocRepository.themPhieuThuoc(ctThuoc);
+    public boolean themPhieuThuoc(ChiTietThuoc ctThuoc, int idPhieuKham) {
+        PhieuDangKy phieuDangKy = lapDsKhamRepository.getPhieuDangKyById(idPhieuKham);
+
+        PhieuKhamBenh phieuKhamBenh = phieuDangKy.getIdPk();
+        ctThuoc.setIdPhieukham(phieuKhamBenh);
+
+        return this.capThuocRepository.themPhieuThuoc(ctThuoc, idPhieuKham);
     }
 
 }

@@ -90,8 +90,8 @@ public class CapThuocController {
     public String taoChiTietThuoc(Model model, @ModelAttribute(value = "addChiTietThuoc") ChiTietThuoc cct, @RequestParam Map<String, String> params,
             @RequestParam("idPDK") int idPDK) {
 
-        if (this.capThuocService.themPhieuThuoc(cct) == true) {
-            return "redirect:/bacsi/capthuoc?idPDK=" + idPDK;
+        if (this.capThuocService.themPhieuThuoc(cct, idPDK) == true) {
+            return "redirect:/bacsi/khambenh";
         }
 
         return "capthuoc";
