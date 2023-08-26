@@ -1529,6 +1529,11 @@ main.lskham{
     color: #0dcaf0;
 }
 
+.none_chon{
+    display: none;
+}
+
+
 /*khambenh*/
 .khambenh{
     display: flex;
@@ -1548,10 +1553,10 @@ main.lskham{
 }
 
 .khambenh1{
-/*    margin-top: 70px;
-    border-radius: 30px;
-    background-image: url(banner_bg.png);
-    box-shadow: 0px 10px 40px 0px #c0f4b9;*/
+    /*    margin-top: 70px;
+        border-radius: 30px;
+        background-image: url(banner_bg.png);
+        box-shadow: 0px 10px 40px 0px #c0f4b9;*/
 }
 
 .lskhambenh{
@@ -1642,8 +1647,8 @@ main.lskham{
 
 .khambenh1{
     width: 55%;
-    margin: auto;    
-    
+    margin: auto;
+
     margin-top: 70px;
     border-radius: 30px;
     background-image: url(banner_bg.png);
@@ -1673,3 +1678,32 @@ main.lskham{
     height: 420px;
 }
 
+
+
+/*capthuoc*/
+.contentdkk311{
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.table__body111{
+    margin-top: 50px;
+}
+
+.contentdkk511 button{
+    border-radius: 50%;
+    border: none;
+    background: white;
+}
+
+.contentdkk511 button img{
+    width: 37px ;
+    height: 37px;
+    
+}
+
+.form-select111{
+    width: 55% !important;
+}

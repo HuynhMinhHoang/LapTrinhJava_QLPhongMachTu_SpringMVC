@@ -104,7 +104,8 @@ public class LapDsKhamController {
                 message.setSubject("LỊCH HẸN KHÁM BỆNH (Health Couch)");
                 message.setText("Chào, " + p.getIdBn().getHoTen()
                         + " \nBạn có lịch hẹn khám tại bệnh viện Health Couch vào ngày [" + pdk.getChonNgaykham()
-                        + "] \nVào buổi " + pdk.getThoiGianKham());
+                        + "] \nVào buổi " + pdk.getThoiGianKham()
+                        + "\n Bác sĩ khám: " + pdk.getIdBs().getHoTen());
 //                message.setCharset("UTF-8");
                 javaMailSender.send(message);
 

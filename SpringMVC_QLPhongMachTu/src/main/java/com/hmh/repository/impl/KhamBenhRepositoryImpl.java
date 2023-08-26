@@ -57,8 +57,8 @@ public class KhamBenhRepositoryImpl implements KhamBenhRepository {
 
         try {
             if (pkb.getIdPhieukham() == null) {
-                pdk.setIdPk(pkb);
                 session.save(pkb);
+                pdk.setIdPk(pkb);
             } else {
                 session.update(pkb);
             }

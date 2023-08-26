@@ -10,6 +10,7 @@ import com.hmh.pojo.PhieuKhamBenh;
 import com.hmh.pojo.TaiKhoan;
 import com.hmh.service.KhamBenhService;
 import com.hmh.service.LapDsKhamService;
+import com.hmh.service.LapPhieuKhamService;
 import com.hmh.service.TaiKhoanService;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
@@ -59,6 +60,9 @@ public class KhamBenhController {
     @Autowired
     private CustomDateEditor customDateEditor;
 
+    @Autowired
+    private LapPhieuKhamService lapPhieuKhamService;
+
     @InitBinder
     public void initBinder(WebDataBinder binder) {
         binder.registerCustomEditor(Date.class, customDateEditor);
@@ -73,7 +77,12 @@ public class KhamBenhController {
             UserDetails user = taiKhoanService.loadUserByUsername(authentication.getName());
             TaiKhoan u = taiKhoanService.getTaiKhoan(user.getUsername()).get(0);
             model.addAttribute("user", u);
+
+            model.addAttribute("dsbenhnhan", this.phieuDangKyService.getPhieuDangKy(params));
+            model.addAttribute("dsbenhnhan", this.lapPhieuKhamService.getPhieuDangKy(u.getIdTk()));
+            
         }
+        ;
 
         return "khambenh";
     }
@@ -110,33 +119,33 @@ public class KhamBenhController {
 
         if (!rs.hasErrors()) {
             if (this.khamBenhService.themPhieuKhamBenh(pkb, pdk) == true) {
-                return "/bacsi/khambenh";
+                return "redirect:/bacsi/capthuoc?idPDK=" + pdk;
             }
         }
 
         return "khambenh";
     }
-
-    @GetMapping("/generate-pdf")
-    public void generatePDF(HttpServletResponse response,
-            @RequestParam("id") int id) throws IOException, DocumentException {
-
-        PhieuDangKy phieuDangKy = this.khamBenhService.getPDK(id); // Lấy thông tin phiếu đăng ký
-
-        response.setContentType("application/pdf");
-        response.setHeader("Content-Disposition", "inline; filename=example.pdf");
-
-        OutputStream out = response.getOutputStream();
-
-        Document document = new Document();
-        PdfWriter.getInstance(document, out);
-
-        document.open();
-        document.add(new Paragraph("Phieu dang ky " + phieuDangKy.getIdBn().getHoTen() + "\nNgay dang ky: " + phieuDangKy.getChonNgaykham()));
-        document.close();
-
-        out.flush();
-        out.close();
-    }
+//
+//    @GetMapping("/generate-pdf")
+//    public void generatePDF(HttpServletResponse response,
+//            @RequestParam("id") int id) throws IOException, DocumentException {
+//
+//        PhieuDangKy phieuDangKy = this.khamBenhService.getPDK(id); // Lấy thông tin phiếu đăng ký
+//
+//        response.setContentType("application/pdf");
+//        response.setHeader("Content-Disposition", "inline; filename=example.pdf");
+//
+//        OutputStream out = response.getOutputStream();
+//
+//        Document document = new Document();
+//        PdfWriter.getInstance(document, out);
+//
+//        document.open();
+//        document.add(new Paragraph("Phieu dang ky " + phieuDangKy.getIdBn().getHoTen() + "\nNgay dang ky: " + phieuDangKy.getChonNgaykham()));
+//        document.close();
+//
+//        out.flush();
+//        out.close();
+//    }
 
 }
