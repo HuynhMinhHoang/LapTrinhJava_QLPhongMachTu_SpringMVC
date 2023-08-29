@@ -4,15 +4,25 @@
  */
 package com.hmh.controllers;
 
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfWriter;
+import java.io.IOException;
+import java.io.OutputStream;
+import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
 import com.hmh.pojo.ChiTietThuoc;
 import com.hmh.pojo.PhieuDangKy;
 import com.hmh.pojo.PhieuKhamBenh;
 import com.hmh.pojo.TaiKhoan;
+import com.hmh.pojo.Thuoc;
 import com.hmh.service.CapThuocService;
 import com.hmh.service.KhamBenhService;
 import com.hmh.service.LapDsKhamService;
 import com.hmh.service.LapPhieuKhamService;
 import com.hmh.service.TaiKhoanService;
+import java.util.List;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -64,6 +74,7 @@ public class CapThuocController {
 
         }
 
+        model.addAttribute("listThuocByID", capThuocService.layThuocByPhieuDangKyId(idPDK));
         PhieuDangKy phieuDangKy = this.khamBenhService.getPDK(idPDK);
 
         model.addAttribute("idPDK", idPDK);
@@ -91,10 +102,51 @@ public class CapThuocController {
             @RequestParam("idPDK") int idPDK) {
 
         if (this.capThuocService.themPhieuThuoc(cct, idPDK) == true) {
-            return "redirect:/bacsi/khambenh";
+            return "redirect:/bacsi/capthuoc?idPDK=" + idPDK;
+//            return "redirect:/bacsi/lapphieukham";
         }
 
         return "capthuoc";
+    }
+
+    @GetMapping("/ThongTinThuoc-PDF")
+    public void generatePDF(HttpServletResponse response,
+            @RequestParam("idPDK") int idPDK,
+            @RequestParam Map<String, String> params) throws IOException, DocumentException {
+
+        PhieuDangKy phieuDangKy = this.khamBenhService.getPDK(idPDK);
+
+        if (phieuDangKy != null) {
+            List<ChiTietThuoc> danhSachThuoc = capThuocService.layThuocByPhieuDangKyId(idPDK);
+
+            response.setContentType("application/pdf");
+            response.setHeader("Content-Disposition", "inline; filename=ThongTinThuoc.pdf");
+
+            OutputStream out = response.getOutputStream();
+
+            Document document = new Document();
+            PdfWriter.getInstance(document, out);
+
+            document.open();
+            document.add(new Paragraph("TOA THUOC PHONG MACH HEALTH COUCH\n"
+                    + "\nTen benh nhan: " + phieuDangKy.getIdBn().getHoTen()
+                    + "\nNgay kham: " + phieuDangKy.getChonNgaykham()
+                    + "\nKet luan: " + phieuDangKy.getIdPk().getKetLuan())
+            );
+
+            for (ChiTietThuoc t : danhSachThuoc) {
+                document.add(new Paragraph("\n---------------------------------------------"));
+                document.add(new Paragraph("Ten thuoc: " + t.getIdThuoc().getTenThuoc()));
+                document.add(new Paragraph("Gia thuoc: " + t.getIdThuoc().getGiaThuoc()));
+                document.add(new Paragraph("So luong: " + t.getSoLuongSd()));
+                document.add(new Paragraph("Huong dan su dung: " + t.getHdsd()));
+//                document.add(new Paragraph("---------------------------------------------"));
+            }
+            document.close();
+
+            out.flush();
+            out.close();
+        }
     }
 
 }

@@ -20,11 +20,11 @@
 
     <div class="dkk khambenh">
 
-        <form:form class="form_login11" method="post" action="${actions}" modelAttribute="addChiTietThuoc">
+        <form:form id="capthuoc" class="form_login11" method="post" action="${actions}" modelAttribute="addChiTietThuoc">
             <form:hidden path="idChitietThuoc"/>
             <input type="hidden" name="idPDK" value="${idPDK}" />
 
-         
+
             <div class="contentdkk2_main contentdkk2_main1">
                 <div class="contentdkk2 contentdkk21">
                     <h1>CẤP THUỐC</h1>
@@ -61,10 +61,9 @@
 
 
 
-                    <div class="contentdkk3 contentdkk31 contentdkk311">
+                    <div class="contentdkk3 contentdkk31 contentdkk311" id="dynamicFieldsContainer">
 
                         <form:select path="idThuoc" id="idThuoc" class="form-select form-select1 form-select111" cssErrorClass="is-invalid">
-                            <option value="" >Thuốc</option>
                             <c:forEach items="${listThuoc}" var="c">
                                 <option value="${c.idThuoc}" >${c.tenThuoc}</option>
                             </c:forEach>
@@ -76,27 +75,51 @@
                         </div>
 
                         <div class="contentdkk5 contentdkk51 contentdkk511">
-                            <button>
+                            <div  id="addNewFields">
                                 <img src="<c:url value='/img/plus.png'/>" alt="" />
-                            </button>
+                            </div>
                         </div>
 
                     </div>
+
 
 
                     <div class="contentdkk5 contentdkk51">
                         <form:input class="custom-input" type="text" id="custom-input1" path="hdsd" placeholder="Hướng dẫn sử dụng thuốc" />
                     </div>
 
+
                     <div class="submitdkk submitdkk111 submitdkk1111">
-                        <a href=""><button type="submit">LƯU THÔNG TIN</button></a>
+                        <a href=""><button type="submit" >LƯU THÔNG TIN</button></a>
                     </div>
+
+
+                    <c:set var="showPdfLink" value="false" />
+
+                    <c:forEach items="${listThuocByID}" var="thuoc">
+                        <c:if test="${thuoc.idChitietThuoc != null}">
+                            <c:set var="showPdfLink" value="true" />
+                        </c:if>
+                    </c:forEach>
+
+                    <c:if test="${showPdfLink eq 'true'}">
+                        <div class="submitdkk submitdkk111 submitdkk1111 submitdkk111115">
+                            <a href="${pageContext.request.contextPath}/ThongTinThuoc-PDF?idPDK=${idPDK}" target="_blank">Xuất File Thuốc (PDF)</a>
+                        </div>
+                    </c:if>
+
 
                 </div>
 
             </div>
 
         </form:form>
+
+
+
+
+
+
 
         <!--</form>-->
 
@@ -109,7 +132,7 @@
                     <div class="inputkw inputkw1">
                         <form action="${actions}">
                             <input name="kw" type="text"" placeholder="Tìm kiếm thuốc...">
-                            <button type="submit"> <i class="fa-solid fa-magnifying-glass"></i> </button>
+                            <!--<button type    ="submit"> <i class="fa-solid fa-magnifying-glass"></i> </button>-->
                         </form>
                     </div>
                 </div>
@@ -127,7 +150,7 @@
                                 <th>Giá thuốc</th>
                                 <th>Đơn vị</th>
                                 <th>Số lượng</th>
-                                <th>HDSD</th>
+
 
                             </tr>
                         </thead>
@@ -141,16 +164,17 @@
                                     <td>${p.giaThuoc}</td>
                                     <td>${p.donVi}</td>
                                     <td>${p.soLuong}</td>
-                                    <th></th>
+
                                 </tr>
                             </c:forEach>
                         </tbody>
                     </table>
                 </section>
 
-                <div class="submitdkk submitdkk111 submitdkk1111">
-                    <a href=""><button type="submit">XUẤT FILE PDF</button></a>
-                </div>
+
+
+
+
 
             </div>
 
@@ -167,4 +191,14 @@
 
 </nav>
 
-<!--<a href="/SpringMVC_QLPhongMachTu/generate-pdf?id=${id}" target="_blank">Generate PDF</a>-->
+
+
+
+<!--<script>
+    function submitForms() {
+        document.getElementById("capthuoc").submit();
+        document.getElementById("capthuoc1").submit();
+    }
+</script>-->
+
+

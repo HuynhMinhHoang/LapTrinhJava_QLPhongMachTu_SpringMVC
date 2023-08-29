@@ -23,4 +23,8 @@ public interface CapThuocRepository {
     List<Thuoc> timKiemThuoc(Map<String, String> params);
 
     boolean themPhieuThuoc(ChiTietThuoc ctThuoc, int idPhieuKham);
+
+    public ChiTietThuoc getChiTietThuocById(int id);
+
+    List<ChiTietThuoc> layThuocByPhieuDangKyId(int idPDK);
 }

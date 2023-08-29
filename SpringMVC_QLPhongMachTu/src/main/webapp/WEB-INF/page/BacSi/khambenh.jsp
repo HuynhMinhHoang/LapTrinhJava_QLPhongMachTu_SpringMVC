@@ -20,7 +20,7 @@
 
     <div class="dkk khambenh">
 
-        <form:form class="form_login11" method="post" action="${actions}" modelAttribute="taoPKB">
+        <form:form id="phieubenh" class="form_login11" method="post" action="${actions}" modelAttribute="taoPKB">
             <form:hidden path="idPhieukham"/>
             <form:hidden path="ngayKhamBenh"/>
 
@@ -73,9 +73,7 @@
                     </div>
 
 
-                    <div class="submitdkk submitdkk111 submitdkk1111">
-                        <a href="<c:url value='/bacsi/capthuoc?idPDK=${pdkID.idPhieudk}'/>"><button type="submit">LƯU THÔNG TIN</button></a>
-                    </div>
+
 
 
                 </div>
@@ -89,8 +87,9 @@
 
 
 
-        <form:form class="form_login11" method="post" action="${actions}" modelAttribute="dsdv">
+        <form:form id="dichvu" class="form_login11" method="post" action="${actions}" modelAttribute="dsdv">
 
+            <input type="hidden" name="pdk" value="${pdkID.idPhieudk}" />
 
             <div class="contentdkk2_main contentdkk2_main1">
 
@@ -102,7 +101,7 @@
 
                 <div class="dichvu_kb">
                     <form:select path="idDv" id="idDv" class="form-select form-select1" cssErrorClass="is-invalid">
-                        <option value="" >Dịch vụ</option>
+                        <!--<option value="" >Dịch vụ</option>-->
                         <c:forEach items="${listDv}" var="c" >
                             <option value="${c.idDv}" >${c.tenDv}</option>
                         </c:forEach>
@@ -110,9 +109,9 @@
 
 
 
-                    <div class="submitdkk submitdkk111 submitdkk1111 submitdkk111112">
-                        <a href=""><button type="submit">THÊM</button></a>
-                    </div>
+                    <!--                    <div class="submitdkk submitdkk111 submitdkk1111 submitdkk111112">
+                                            <a href=""><button type="submit">THÊM</button></a>
+                                        </div>-->
                 </div>
 
 
@@ -170,7 +169,9 @@
         </form:form> 
 
 
-
+        <div class="submitdkk submitdkk111 submitdkk1111">
+            <button type="submit" onclick="submitForms()">LƯU THÔNG TIN</button>
+        </div>
 
 
 
@@ -256,5 +257,13 @@
 
 </nav>
 
-<!--<a href="/SpringMVC_QLPhongMachTu/generate-pdf?id=${id}" target="_blank">Generate PDF</a>-->
+
+<script>
+    function submitForms() {
+        document.getElementById("dichvu").submit();
+        document.getElementById("phieubenh").submit();
+    }
+</script>
+
+
 

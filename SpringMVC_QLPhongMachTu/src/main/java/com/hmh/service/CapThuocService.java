@@ -22,4 +22,9 @@ public interface CapThuocService {
     List<Thuoc> timKiemThuoc(Map<String, String> params);
 
     boolean themPhieuThuoc(ChiTietThuoc ctThuoc, int idPhieuKham);
+
+    ChiTietThuoc getChiTietThuocById(int id);
+    
+    
+    List<ChiTietThuoc> layThuocByPhieuDangKyId(int idPDK);
 }

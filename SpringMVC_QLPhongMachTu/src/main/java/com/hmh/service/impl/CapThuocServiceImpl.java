@@ -49,4 +49,14 @@ public class CapThuocServiceImpl implements CapThuocService {
         return this.capThuocRepository.themPhieuThuoc(ctThuoc, idPhieuKham);
     }
 
+    @Override
+    public ChiTietThuoc getChiTietThuocById(int id) {
+        return this.capThuocRepository.getChiTietThuocById(id);
+    }
+
+    @Override
+    public List<ChiTietThuoc> layThuocByPhieuDangKyId(int idPDK) {
+        return this.capThuocRepository.layThuocByPhieuDangKyId(idPDK);
+    }
+
 }

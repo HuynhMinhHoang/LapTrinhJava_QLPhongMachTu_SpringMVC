@@ -10,10 +10,14 @@ import com.hmh.pojo.PhieuKhamBenh;
 import com.hmh.pojo.TaiKhoan;
 import com.hmh.pojo.Thuoc;
 import com.hmh.repository.CapThuocRepository;
+import com.hmh.repository.KhamBenhRepository;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Join;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import org.hibernate.HibernateException;
@@ -34,6 +38,9 @@ public class CapThuocRepositoryImpl implements CapThuocRepository {
 
     @Autowired
     private LocalSessionFactoryBean factory;
+
+    @Autowired
+    private KhamBenhRepository khamBenhRepository;
 
     @Override
     public List<Thuoc> getListThuoc(Map<String, String> params) {
@@ -81,6 +88,37 @@ public class CapThuocRepositoryImpl implements CapThuocRepository {
         }
 
         return false;
+    }
+
+    @Override
+    public ChiTietThuoc getChiTietThuocById(int id) {
+        Session session = this.factory.getObject().getCurrentSession();
+        CriteriaBuilder builder = session.getCriteriaBuilder();
+        CriteriaQuery<ChiTietThuoc> query = builder.createQuery(ChiTietThuoc.class);
+        Root<ChiTietThuoc> root = query.from(ChiTietThuoc.class);
+        query.where(builder.equal(root.get("idChitietThuoc"), id));
+        javax.persistence.Query q = session.createQuery(query);
+        List<ChiTietThuoc> results = q.getResultList();
+        return results.isEmpty() ? null : results.get(0);
+    }
+
+    @Override
+    public List<ChiTietThuoc> layThuocByPhieuDangKyId(int idPDK) {
+
+        Session s = this.factory.getObject().getCurrentSession();
+        CriteriaBuilder b = s.getCriteriaBuilder();
+        CriteriaQuery<Object[]> q = b.createQuery(Object[].class);
+        List<Predicate> predicates = new ArrayList<>();
+        Root chiTietThuoc = q.from(ChiTietThuoc.class);
+        q.select(chiTietThuoc);
+
+        PhieuDangKy pdk = khamBenhRepository.getPDK(idPDK);
+        Predicate p = b.equal(chiTietThuoc.get("idPhieukham"), pdk.getIdPk());
+        predicates.add(p);
+        q.where(predicates.toArray(Predicate[]::new));
+
+        Query query = s.createQuery(q);
+        return query.getResultList();
     }
 
 }

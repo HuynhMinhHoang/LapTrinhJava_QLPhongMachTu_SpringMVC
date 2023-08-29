@@ -80,6 +80,12 @@ Click nbfs://nbhost/SystemFileSystem/Templates/XML/XMLDocument.xml to edit this 
                        value="/WEB-INF/page/YTa/lapdskham.jsp" />
     </definition>
     
+    <definition name="thanhtoan" extends="baseLayout">
+        <put-attribute name="title" value="Lập danh sách khám" />
+        <put-attribute name="content"
+                       value="/WEB-INF/page/YTa/thanhtoan.jsp" />
+    </definition>
+    
     <definition name="lapphieukham" extends="baseLayout">
         <put-attribute name="title" value="Lập phiếu khám bệnh" />
         <put-attribute name="content"

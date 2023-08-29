@@ -8,6 +8,7 @@ C:\Users\Asus\Desktop\SpringMVC_QLPhongMachTu\SpringMVC_QLPhongMachTu\src\main\j
 C:\Users\Asus\Desktop\SpringMVC_QLPhongMachTu\SpringMVC_QLPhongMachTu\src\main\java\com\hmh\repository\impl\TaiKhoanRepositoryImpl.java
 C:\Users\Asus\Desktop\SpringMVC_QLPhongMachTu\SpringMVC_QLPhongMachTu\src\main\java\com\hmh\service\impl\LapDsKhamServiceImpl.java
 C:\Users\Asus\Desktop\SpringMVC_QLPhongMachTu\SpringMVC_QLPhongMachTu\src\main\java\com\hmh\service\QuanLyThuocService.java
+C:\Users\Asus\Desktop\SpringMVC_QLPhongMachTu\SpringMVC_QLPhongMachTu\src\main\java\com\hmh\formatter\DichVuFormatter.java
 C:\Users\Asus\Desktop\SpringMVC_QLPhongMachTu\SpringMVC_QLPhongMachTu\src\main\java\com\hmh\repository\impl\LapDsKhamRepositoryImpl.java
 C:\Users\Asus\Desktop\SpringMVC_QLPhongMachTu\SpringMVC_QLPhongMachTu\src\main\java\com\hmh\configs\DispatcherServletInitializer.java
 C:\Users\Asus\Desktop\SpringMVC_QLPhongMachTu\SpringMVC_QLPhongMachTu\src\main\java\com\hmh\formatter\ThuocFomatter.java
@@ -28,11 +29,13 @@ C:\Users\Asus\Desktop\SpringMVC_QLPhongMachTu\SpringMVC_QLPhongMachTu\src\main\j
 C:\Users\Asus\Desktop\SpringMVC_QLPhongMachTu\SpringMVC_QLPhongMachTu\src\main\java\com\hmh\service\impl\UserRoleServiceImpl.java
 C:\Users\Asus\Desktop\SpringMVC_QLPhongMachTu\SpringMVC_QLPhongMachTu\src\main\java\com\hmh\controllers\QuanLyTaiKhoanControlller.java
 C:\Users\Asus\Desktop\SpringMVC_QLPhongMachTu\SpringMVC_QLPhongMachTu\src\main\java\com\hmh\repository\TaiKhoanRepository.java
+C:\Users\Asus\Desktop\SpringMVC_QLPhongMachTu\SpringMVC_QLPhongMachTu\src\main\java\com\hmh\repository\impl\ChiTietDVRepositoryImpl.java
 C:\Users\Asus\Desktop\SpringMVC_QLPhongMachTu\SpringMVC_QLPhongMachTu\src\main\java\com\hmh\service\impl\QuanLyThuocServiceImpl.java
 C:\Users\Asus\Desktop\SpringMVC_QLPhongMachTu\SpringMVC_QLPhongMachTu\src\main\java\com\hmh\configs\TilesConfig.java
 C:\Users\Asus\Desktop\SpringMVC_QLPhongMachTu\SpringMVC_QLPhongMachTu\src\main\java\com\hmh\controllers\LapDsKhamController.java
 C:\Users\Asus\Desktop\SpringMVC_QLPhongMachTu\SpringMVC_QLPhongMachTu\src\main\java\com\hmh\controllers\DangKyKhamController.java
 C:\Users\Asus\Desktop\SpringMVC_QLPhongMachTu\SpringMVC_QLPhongMachTu\src\main\java\com\hmh\formatter\UserRoleFormatter.java
+C:\Users\Asus\Desktop\SpringMVC_QLPhongMachTu\SpringMVC_QLPhongMachTu\src\main\java\com\hmh\repository\ChiTietDVRepository.java
 C:\Users\Asus\Desktop\SpringMVC_QLPhongMachTu\SpringMVC_QLPhongMachTu\src\main\java\com\hmh\controllers\DangNhapController.java
 C:\Users\Asus\Desktop\SpringMVC_QLPhongMachTu\SpringMVC_QLPhongMachTu\src\main\java\com\hmh\repository\QuanLyThuocRepository.java
 C:\Users\Asus\Desktop\SpringMVC_QLPhongMachTu\SpringMVC_QLPhongMachTu\src\main\java\com\hmh\configs\HibernateConfig.java
@@ -50,6 +53,7 @@ C:\Users\Asus\Desktop\SpringMVC_QLPhongMachTu\SpringMVC_QLPhongMachTu\src\main\j
 C:\Users\Asus\Desktop\SpringMVC_QLPhongMachTu\SpringMVC_QLPhongMachTu\src\main\java\com\hmh\repository\impl\CapThuocRepositoryImpl.java
 C:\Users\Asus\Desktop\SpringMVC_QLPhongMachTu\SpringMVC_QLPhongMachTu\src\main\java\com\hmh\repository\impl\QuanLyThuocRepositoryImpl.java
 C:\Users\Asus\Desktop\SpringMVC_QLPhongMachTu\SpringMVC_QLPhongMachTu\src\main\java\com\hmh\repository\impl\KhamBenhRepositoryImpl.java
+C:\Users\Asus\Desktop\SpringMVC_QLPhongMachTu\SpringMVC_QLPhongMachTu\src\main\java\com\hmh\service\ChiTietDVService.java
 C:\Users\Asus\Desktop\SpringMVC_QLPhongMachTu\SpringMVC_QLPhongMachTu\src\main\java\com\hmh\repository\LichSuKhamRepository.java
 C:\Users\Asus\Desktop\SpringMVC_QLPhongMachTu\SpringMVC_QLPhongMachTu\src\main\java\com\hmh\controllers\CapThuocController.java
 C:\Users\Asus\Desktop\SpringMVC_QLPhongMachTu\SpringMVC_QLPhongMachTu\src\main\java\com\hmh\pojo\TaiKhoan.java
@@ -70,6 +74,7 @@ C:\Users\Asus\Desktop\SpringMVC_QLPhongMachTu\SpringMVC_QLPhongMachTu\src\main\j
 C:\Users\Asus\Desktop\SpringMVC_QLPhongMachTu\SpringMVC_QLPhongMachTu\src\main\java\com\hmh\service\impl\LapPhieuKhamServiceImpl.java
 C:\Users\Asus\Desktop\SpringMVC_QLPhongMachTu\SpringMVC_QLPhongMachTu\src\main\java\com\hmh\service\QuanLyTaiKhoanService.java
 C:\Users\Asus\Desktop\SpringMVC_QLPhongMachTu\SpringMVC_QLPhongMachTu\src\main\java\com\hmh\controllers\LapPhieuKhamController.java
+C:\Users\Asus\Desktop\SpringMVC_QLPhongMachTu\SpringMVC_QLPhongMachTu\src\main\java\com\hmh\service\impl\ChiTietDVServiceImpl.java
 C:\Users\Asus\Desktop\SpringMVC_QLPhongMachTu\SpringMVC_QLPhongMachTu\src\main\java\com\hmh\repository\impl\UserRoleRepositoryImpl.java
 C:\Users\Asus\Desktop\SpringMVC_QLPhongMachTu\SpringMVC_QLPhongMachTu\src\main\java\com\hmh\controllers\ApiYTaController.java
 C:\Users\Asus\Desktop\SpringMVC_QLPhongMachTu\SpringMVC_QLPhongMachTu\src\main\java\com\hmh\pojo\DichVu.java

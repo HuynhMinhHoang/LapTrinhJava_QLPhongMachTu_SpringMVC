@@ -4,10 +4,12 @@
  */
 package com.hmh.controllers;
 
+import com.hmh.pojo.ChiTietDv;
 import com.hmh.pojo.DichVu;
 import com.hmh.pojo.PhieuDangKy;
 import com.hmh.pojo.PhieuKhamBenh;
 import com.hmh.pojo.TaiKhoan;
+import com.hmh.service.ChiTietDVService;
 import com.hmh.service.KhamBenhService;
 import com.hmh.service.LapDsKhamService;
 import com.hmh.service.LapPhieuKhamService;
@@ -63,6 +65,9 @@ public class KhamBenhController {
     @Autowired
     private LapPhieuKhamService lapPhieuKhamService;
 
+    @Autowired
+    private ChiTietDVService chiTietDVService;
+
     @InitBinder
     public void initBinder(WebDataBinder binder) {
         binder.registerCustomEditor(Date.class, customDateEditor);
@@ -80,9 +85,9 @@ public class KhamBenhController {
 
             model.addAttribute("dsbenhnhan", this.phieuDangKyService.getPhieuDangKy(params));
             model.addAttribute("dsbenhnhan", this.lapPhieuKhamService.getPhieuDangKy(u.getIdTk()));
-            
+
         }
-        ;
+        
 
         return "khambenh";
     }
@@ -108,6 +113,10 @@ public class KhamBenhController {
         model.addAttribute("pdkID", phieuDangKyService.getPhieuDangKyById(id));
         model.addAttribute("listDv", this.khamBenhService.getDichVu());
         model.addAttribute("dsdv", new DichVu());
+        
+  
+        
+        model.addAttribute("dsdv", new ChiTietDv());
         model.addAttribute("lichSuKham", this.khamBenhService.getLichSuKham(params, idBn));
 
         return "khambenh";
@@ -115,37 +124,18 @@ public class KhamBenhController {
 
     @PostMapping("/bacsi/khambenh")
     public String taoPhieuKham(Model model, @ModelAttribute(value = "taoPKB") PhieuKhamBenh pkb, @RequestParam Map<String, String> params,
-            @RequestParam(value = "pdk") int pdk, BindingResult rs) {
+            @RequestParam(value = "pdk") int pdk, BindingResult rs,
+            @ModelAttribute(value = "dsdv") ChiTietDv ctDv) {
 
         if (!rs.hasErrors()) {
-            if (this.khamBenhService.themPhieuKhamBenh(pkb, pdk) == true) {
-                return "redirect:/bacsi/capthuoc?idPDK=" + pdk;
+            if (this.chiTietDVService.themVaCapNhat(ctDv, pdk) == true) {
+                if (this.khamBenhService.themPhieuKhamBenh(pkb, pdk) == true) {
+                    return "redirect:/bacsi/capthuoc?idPDK=" + pdk;
+                }
             }
         }
 
         return "khambenh";
     }
-//
-//    @GetMapping("/generate-pdf")
-//    public void generatePDF(HttpServletResponse response,
-//            @RequestParam("id") int id) throws IOException, DocumentException {
-//
-//        PhieuDangKy phieuDangKy = this.khamBenhService.getPDK(id); // Lấy thông tin phiếu đăng ký
-//
-//        response.setContentType("application/pdf");
-//        response.setHeader("Content-Disposition", "inline; filename=example.pdf");
-//
-//        OutputStream out = response.getOutputStream();
-//
-//        Document document = new Document();
-//        PdfWriter.getInstance(document, out);
-//
-//        document.open();
-//        document.add(new Paragraph("Phieu dang ky " + phieuDangKy.getIdBn().getHoTen() + "\nNgay dang ky: " + phieuDangKy.getChonNgaykham()));
-//        document.close();
-//
-//        out.flush();
-//        out.close();
-//    }
 
 }
