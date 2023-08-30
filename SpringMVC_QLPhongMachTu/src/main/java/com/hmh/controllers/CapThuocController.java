@@ -21,6 +21,7 @@ import com.hmh.service.CapThuocService;
 import com.hmh.service.KhamBenhService;
 import com.hmh.service.LapDsKhamService;
 import com.hmh.service.LapPhieuKhamService;
+import com.hmh.service.QuanLyThuocService;
 import com.hmh.service.TaiKhoanService;
 import java.util.List;
 import java.util.Map;
@@ -58,6 +59,9 @@ public class CapThuocController {
 
     @Autowired
     private KhamBenhService khamBenhService;
+
+    @Autowired
+    private QuanLyThuocService quanLyThuocService;
 
     @GetMapping("/bacsi/capthuoc")
     public String capthuoc(Model model, Authentication authentication, @RequestParam("idPDK") int idPDK, @RequestParam Map<String, String> params) {
@@ -101,9 +105,24 @@ public class CapThuocController {
     public String taoChiTietThuoc(Model model, @ModelAttribute(value = "addChiTietThuoc") ChiTietThuoc cct, @RequestParam Map<String, String> params,
             @RequestParam("idPDK") int idPDK) {
 
-        if (this.capThuocService.themPhieuThuoc(cct, idPDK) == true) {
+        String err = "";
+        Thuoc thuoc = this.quanLyThuocService.getThuocById(cct.getIdThuoc().getIdThuoc());
+        int slThuoc = thuoc.getSoLuong();
+        int slBan = cct.getSoLuongSd();
+        int slConLai = slThuoc - slBan;
+
+        if (slBan > slConLai) {
+            err = "Số lượng thuốc không đủ!";
+            model.addAttribute("err", err);
             return "redirect:/bacsi/capthuoc?idPDK=" + idPDK;
-//            return "redirect:/bacsi/lapphieukham";
+        }
+
+        if (this.capThuocService.themPhieuThuoc(cct, idPDK)) {
+
+            thuoc.setSoLuong(slConLai);
+            this.quanLyThuocService.themThuoc(thuoc);
+
+            return "redirect:/bacsi/capthuoc?idPDK=" + idPDK;
         }
 
         return "capthuoc";

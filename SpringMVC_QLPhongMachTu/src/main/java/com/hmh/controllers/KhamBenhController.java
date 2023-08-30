@@ -10,9 +10,9 @@ import com.hmh.pojo.PhieuDangKy;
 import com.hmh.pojo.PhieuKhamBenh;
 import com.hmh.pojo.TaiKhoan;
 import com.hmh.service.ChiTietDVService;
+
 import com.hmh.service.KhamBenhService;
 import com.hmh.service.LapDsKhamService;
-import com.hmh.service.LapPhieuKhamService;
 import com.hmh.service.TaiKhoanService;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
@@ -39,6 +39,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.servlet.view.RedirectView;
 
 /**
  *
@@ -63,9 +65,6 @@ public class KhamBenhController {
     private CustomDateEditor customDateEditor;
 
     @Autowired
-    private LapPhieuKhamService lapPhieuKhamService;
-
-    @Autowired
     private ChiTietDVService chiTietDVService;
 
     @InitBinder
@@ -74,7 +73,7 @@ public class KhamBenhController {
     }
 
     @GetMapping("/bacsi/khambenh")
-    public String khambenh(Model model, Authentication authentication, @RequestParam Map<String, String> params) {
+    public String khambenh(Model model, @ModelAttribute(value = "taoPKB") PhieuKhamBenh pkb, Authentication authentication, @RequestParam Map<String, String> params, @RequestParam(value = "pdk") int pdk) {
         model.addAttribute("user", new TaiKhoan());
         model.addAttribute("taoPKB", new PhieuKhamBenh());
         model.addAttribute("dsdv", new DichVu());
@@ -82,18 +81,15 @@ public class KhamBenhController {
             UserDetails user = taiKhoanService.loadUserByUsername(authentication.getName());
             TaiKhoan u = taiKhoanService.getTaiKhoan(user.getUsername()).get(0);
             model.addAttribute("user", u);
-
-            model.addAttribute("dsbenhnhan", this.phieuDangKyService.getPhieuDangKy(params));
-            model.addAttribute("dsbenhnhan", this.lapPhieuKhamService.getPhieuDangKy(u.getIdTk()));
-
         }
-        
+
+        model.addAttribute("pk", this.khamBenhService.getPkbyIdPdk(pdk));
 
         return "khambenh";
     }
 
     @GetMapping("/bacsi/khambenh/{id}")
-    public String khamBenhByID(Model model, @PathVariable(value = "id") int id, @RequestParam Map<String, String> params, Authentication authentication) {
+    public String khamBenhByID(Model model, @PathVariable(value = "id") int id, @RequestParam Map<String, String> params, Authentication authentication, @ModelAttribute("pk") PhieuKhamBenh pk) {
         model.addAttribute("taoPKB", new PhieuKhamBenh());
 
         if (authentication != null) {
@@ -113,29 +109,40 @@ public class KhamBenhController {
         model.addAttribute("pdkID", phieuDangKyService.getPhieuDangKyById(id));
         model.addAttribute("listDv", this.khamBenhService.getDichVu());
         model.addAttribute("dsdv", new DichVu());
-        
-  
-        
         model.addAttribute("dsdv", new ChiTietDv());
+
         model.addAttribute("lichSuKham", this.khamBenhService.getLichSuKham(params, idBn));
+        model.addAttribute("DvDk", this.khamBenhService.getDvByIdPdk(id));
+
+        model.addAttribute("pk", this.khamBenhService.getPkbyIdPdk(id));
 
         return "khambenh";
     }
 
     @PostMapping("/bacsi/khambenh")
     public String taoPhieuKham(Model model, @ModelAttribute(value = "taoPKB") PhieuKhamBenh pkb, @RequestParam Map<String, String> params,
-            @RequestParam(value = "pdk") int pdk, BindingResult rs,
-            @ModelAttribute(value = "dsdv") ChiTietDv ctDv) {
+            @RequestParam(value = "pdk") int id, BindingResult rs, @ModelAttribute(value = "dsdv") ChiTietDv ctDv) {
+
+        PhieuDangKy phieuDangKy = this.khamBenhService.getPDK(id);
 
         if (!rs.hasErrors()) {
-            if (this.chiTietDVService.themVaCapNhat(ctDv, pdk) == true) {
-                if (this.khamBenhService.themPhieuKhamBenh(pkb, pdk) == true) {
-                    return "redirect:/bacsi/capthuoc?idPDK=" + pdk;
+            if (phieuDangKy.getIdPk() == null) {
+                if (this.khamBenhService.themPhieuKhamBenh(pkb, id) == true) {
+                    return "redirect:/bacsi/khambenh/" + id;
                 }
+            } else if (this.chiTietDVService.themVaCapNhat(ctDv, id) == true) {
+                return "redirect:/bacsi/khambenh/" + id;
             }
         }
 
         return "khambenh";
     }
+//        if (!rs.hasErrors()) {
+//            if (this.chiTietDVService.themVaCapNhat(ctDv, pdk) == true) {
+//                if (this.khamBenhService.themPhieuKhamBenh(pkb, pdk) == true) {
+//                    return "redirect:/bacsi/capthuoc?idPDK=" + pdk;
+//                }
+//            }
+//        }
 
 }

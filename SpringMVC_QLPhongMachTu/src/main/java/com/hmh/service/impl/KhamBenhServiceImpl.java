@@ -4,6 +4,7 @@
  */
 package com.hmh.service.impl;
 
+import com.hmh.pojo.ChiTietDv;
 import com.hmh.pojo.DichVu;
 import com.hmh.pojo.PhieuDangKy;
 import com.hmh.pojo.PhieuKhamBenh;
@@ -52,6 +53,16 @@ public class KhamBenhServiceImpl implements KhamBenhService {
         pkb.setNgayKhamBenh(timestamp);
 
         return this.khamBenhRepository.themPhieuKhamBenh(pkb, idPdk);
+    }
+
+    @Override
+    public List<ChiTietDv> getDvByIdPdk(int id) {
+        return this.khamBenhRepository.getDvByIdPdk(id);
+    }
+
+    @Override
+    public List<PhieuDangKy> getPkbyIdPdk(int id) {
+        return this.khamBenhRepository.getPkByIdPdk(id);
     }
 
 }

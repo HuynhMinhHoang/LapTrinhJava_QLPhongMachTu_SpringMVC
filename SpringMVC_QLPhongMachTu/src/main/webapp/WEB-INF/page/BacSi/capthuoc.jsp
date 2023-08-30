@@ -10,11 +10,11 @@
 
 <c:url value="/bacsi/capthuoc" var="actions"/>
 
-<%--<c:if test="${errMsg != null}">
+<c:if test="${err != null}">
     <div class="alert1">
-        ${errMsg}
+        ${err}
     </div>
-</c:if>--%>
+</c:if>
 
 <nav class="dkk_main dkykhambenh">
 
@@ -90,23 +90,11 @@
 
 
                     <div class="submitdkk submitdkk111 submitdkk1111">
-                        <a href=""><button type="submit" >LƯU THÔNG TIN</button></a>
+                        <a href="<c:url value ="/bacsi/capthuoc?idPDK"/>" ><button type="submit" >LƯU THÔNG TIN</button></a>
                     </div>
 
 
-                    <c:set var="showPdfLink" value="false" />
 
-                    <c:forEach items="${listThuocByID}" var="thuoc">
-                        <c:if test="${thuoc.idChitietThuoc != null}">
-                            <c:set var="showPdfLink" value="true" />
-                        </c:if>
-                    </c:forEach>
-
-                    <c:if test="${showPdfLink eq 'true'}">
-                        <div class="submitdkk submitdkk111 submitdkk1111 submitdkk111115">
-                            <a href="${pageContext.request.contextPath}/ThongTinThuoc-PDF?idPDK=${idPDK}" target="_blank">Xuất File Thuốc (PDF)</a>
-                        </div>
-                    </c:if>
 
 
                 </div>
@@ -124,7 +112,70 @@
         <!--</form>-->
 
 
+        <form>
+            <div class="contentdkk2_main contentdkk2_main1 contentdkk2_main11">
 
+                <section class="table__body1 table__body11 table__body111111">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Tên thuốc</th>
+                                <th>Số lượng</th>
+                                <th>Hướng dẫn sử dụng</th>
+                                <th></th>
+
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <c:forEach items="${listThuocByID}" var="p">
+                                <tr>
+                                    <td>${p.idThuoc.tenThuoc}</td>
+                                    <td>${p.soLuongSd} ${p.idThuoc.donVi.tenDonVi}</td>
+                                    <td>${p.hdsd}</td>
+<!--                                    <td><td id="xoaThuoc">
+                                        <c:url value="/api/admin/quanlythuoc/${t.idThuoc}" var="apiDelete" />
+                                        <div class="admin_submit admin_submit11 admin_submit1111" onclick="xoaThuoc('${apiDelete}')">
+                                            XÓA  
+                                        </div>
+                                    </td>-->
+                                    <th></th>
+                                </tr>
+                            </c:forEach>
+                        </tbody>
+                    </table>
+                </section>
+
+                <c:set var="showPdfLink" value="false" />
+
+                <c:forEach items="${listThuocByID}" var="thuoc">
+                    <c:if test="${thuoc.idChitietThuoc != null}">
+                        <c:set var="showPdfLink" value="true" />
+                    </c:if>
+                </c:forEach>
+
+                <c:if test="${showPdfLink eq 'true'}">
+                    <div class="submitdkk submitdkk111 submitdkk1111 submitdkk111115">
+                        <a href="${pageContext.request.contextPath}/ThongTinThuoc-PDF?idPDK=${idPDK}" target="_blank">XUẤT FILE THUỐC (PDF)</a>
+                    </div>
+                </c:if>
+
+            </div>
+
+        </form>
+
+
+
+
+
+
+
+
+
+    </div>
+
+
+    <div class="dkk khambenh khambenh1">
         <form>
             <div class="contentdkk2_main contentdkk2_main1 contentdkk2_main11">
                 <div class="contentdkk2 lskhambenh">
@@ -132,7 +183,7 @@
                     <div class="inputkw inputkw1">
                         <form action="${actions}">
                             <input name="kw" type="text"" placeholder="Tìm kiếm thuốc...">
-                            <!--<button type    ="submit"> <i class="fa-solid fa-magnifying-glass"></i> </button>-->
+                            <button type="submit"> <i class="fa-solid fa-magnifying-glass"></i> </button>
                         </form>
                     </div>
                 </div>
@@ -162,7 +213,7 @@
                                     <td>${p.tenThuoc}</td>
                                     <td>${p.xuatXu}</td>
                                     <td>${p.giaThuoc}</td>
-                                    <td>${p.donVi}</td>
+                                    <td>${p.donVi.tenDonVi}</td>
                                     <td>${p.soLuong}</td>
 
                                 </tr>
@@ -171,18 +222,11 @@
                     </table>
                 </section>
 
-
-
-
-
-
             </div>
 
         </form>
+
     </div>
-
-
-
 
 
 

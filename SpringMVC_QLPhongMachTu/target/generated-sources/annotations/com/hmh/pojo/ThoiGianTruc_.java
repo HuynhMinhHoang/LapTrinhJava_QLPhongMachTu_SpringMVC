@@ -1,6 +1,5 @@
 package com.hmh.pojo;
 
-import com.hmh.pojo.ChiTietLichTruc;
 import com.hmh.pojo.ChiTietThoiGianTruc;
 import java.util.Date;
 import javax.annotation.Generated;
@@ -8,7 +7,7 @@ import javax.persistence.metamodel.SetAttribute;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
-@Generated(value="EclipseLink-2.7.9.v20210604-rNA", date="2023-08-29T15:51:36")
+@Generated(value="EclipseLink-2.7.9.v20210604-rNA", date="2023-08-30T04:20:10")
 @StaticMetamodel(ThoiGianTruc.class)
 public class ThoiGianTruc_ { 
 
@@ -17,6 +16,5 @@ public class ThoiGianTruc_ {
     public static volatile SingularAttribute<ThoiGianTruc, Integer> idtgTruc;
     public static volatile SetAttribute<ThoiGianTruc, ChiTietThoiGianTruc> chiTietThoiGianTrucSet;
     public static volatile SingularAttribute<ThoiGianTruc, String> buoiTruc;
-    public static volatile SetAttribute<ThoiGianTruc, ChiTietLichTruc> chiTietLichTrucSet;
 
 }
