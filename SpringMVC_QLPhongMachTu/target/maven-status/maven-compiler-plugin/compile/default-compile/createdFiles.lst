@@ -1,6 +1,7 @@
 com\hmh\formatter\ThuocFomatter.class
 com\hmh\pojo\DichVu.class
 com\hmh\controllers\ApiQuanLyAdminController.class
+com\hmh\service\impl\ThongKeBenhNhanServiceImpl.class
 com\hmh\pojo\UserRole.class
 com\springmvc\dto\momoclasses\Environment$1.class
 com\springmvc\enums\ConfirmRequestType.class
@@ -8,6 +9,7 @@ com\hmh\service\impl\LapPhieuKhamServiceImpl.class
 com\hmh\pojo\HoaDon.class
 com\hmh\repository\impl\KhamBenhRepositoryImpl.class
 com\springmvc\share\utils\LogUtils.class
+com\hmh\controllers\ApiBacSiController.class
 com\springmvc\dto\momoclasses\Environment$EnvTarget.class
 com\springmvc\enums\RequestType.class
 com\hmh\repository\impl\UserRoleRepositoryImpl.class
@@ -28,6 +30,7 @@ com\hmh\controllers\CapThuocController.class
 com\hmh\pojo\DonviThuoc_.class
 com\hmh\pojo\TaiKhoan.class
 com\hmh\repository\impl\LapDsKhamRepositoryImpl.class
+com\hmh\service\impl\ThanhToanServiceImpl.class
 com\hmh\repository\impl\LapPhieuKhamRepositoryImpl.class
 com\springmvc\dto\momoclasses\PaymentResponse.class
 com\hmh\service\impl\ChiTietDVServiceImpl.class
@@ -56,8 +59,11 @@ com\hmh\repository\DangKyKhamRepository.class
 com\hmh\controllers\DangKyController.class
 com\hmh\pojo\PhieuDangKy_.class
 com\springmvc\dto\momoclasses\MoMoEndpoint.class
+com\hmh\pojo\LoaiThanhToan_.class
 com\hmh\service\impl\LichSuKhamServiceImpl.class
 com\hmh\pojo\ThoiGianTruc.class
+com\hmh\repository\impl\ThanhToanRepositoryImpl.class
+com\hmh\repository\impl\ThongKeBenhNhanRepositoryImpl.class
 com\hmh\service\impl\DangKyKhamServiceImpl.class
 com\hmh\repository\LapPhieuKhamRepository.class
 com\hmh\pojo\ThoiGianTruc_.class
@@ -71,6 +77,7 @@ com\hmh\service\impl\TaiKhoanServiceImpl.class
 com\springmvc\dto\momoclasses\PaymentRequest.class
 com\hmh\configs\TilesConfig.class
 com\springmvc\dto\momoclasses\HttpRequest.class
+com\hmh\pojo\LoaiThanhToan.class
 com\hmh\pojo\ChiTietDv_.class
 com\hmh\controllers\ThanhToanController.class
 com\hmh\configs\WebApplicationContextConfig.class
@@ -86,6 +93,7 @@ com\hmh\service\QuanLyThuocService.class
 com\springmvc\dto\momoclasses\Response.class
 com\hmh\service\impl\CapThuocServiceImpl.class
 com\springmvc\enums\Language.class
+com\hmh\controllers\ThongKeBenhNhanController.class
 com\hmh\repository\UserRoleRepository.class
 com\springmvc\dto\momoclasses\PartnerInfo.class
 com\hmh\pojo\DichVu_.class
@@ -93,6 +101,7 @@ com\hmh\service\impl\QuanLyTaiKhoanServiceImpl.class
 com\hmh\pojo\ChiTietThuoc_.class
 com\hmh\service\LapDsKhamService.class
 com\hmh\pojo\HoaDon_.class
+com\hmh\repository\ThongKeBenhNhanRepository.class
 com\springmvc\momoprocessor\AbstractProcess.class
 com\hmh\service\impl\QuanLyThuocServiceImpl.class
 com\hmh\configs\HibernateConfig.class
@@ -111,13 +120,16 @@ com\hmh\repository\CapThuocRepository.class
 com\springmvc\share\constants\Constants.class
 com\hmh\pojo\PhieuDangKy.class
 com\hmh\controllers\ApiYTaController.class
+com\hmh\service\ThanhToanService.class
 com\hmh\service\LapPhieuKhamService.class
 com\springmvc\momoprocessor\CreateOrderMoMo.class
 com\hmh\formatter\DonViFormatter.class
 com\hmh\formatter\LapDsKhamFormatter.class
+com\hmh\repository\ThanhToanRepository.class
 com\hmh\pojo\DonviThuoc.class
 com\hmh\repository\TaiKhoanRepository.class
 com\hmh\pojo\TienKham_.class
 com\hmh\service\impl\KhamBenhServiceImpl.class
 com\hmh\controllers\LichSuKhamController.class
+com\hmh\service\ThongKeBenhNhanService.class
 com\hmh\controllers\LapPhieuKhamController.class

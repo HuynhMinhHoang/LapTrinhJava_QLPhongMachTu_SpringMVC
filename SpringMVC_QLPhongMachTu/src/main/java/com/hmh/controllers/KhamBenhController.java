@@ -137,6 +137,9 @@ public class KhamBenhController {
 
         return "khambenh";
     }
+    
+    
+    
 //        if (!rs.hasErrors()) {
 //            if (this.chiTietDVService.themVaCapNhat(ctDv, pdk) == true) {
 //                if (this.khamBenhService.themPhieuKhamBenh(pkb, pdk) == true) {

@@ -96,7 +96,7 @@
                 </div>
 
             </div>
-            <div class="submitdkk submitdkk111 submitdkk1111">
+            <div class="submitdkk submitdkk111 submitdkk1111 submitdkk11115">
                 <button type="submit" >LƯU THÔNG TIN</button>
             </div>
 
@@ -128,7 +128,7 @@
 
 
 
-                    <div class="submitdkk submitdkk111 submitdkk1111 submitdkk111112">
+                    <div class="submitdkk submitdkk111 submitdkk1111 submitdkk111112 submitdkk11116">
                         <button  type="submit" >THÊM</button>
                     </div>
                 </div>
@@ -169,8 +169,8 @@
 
 
 
-            <div class="submitdkk submitdkk111 submitdkk1111">
-                <a href="<c:url value='/bacsi/capthuoc?idPDK=${idpdk.idPhieudk}'/>" >Cap Thuoc</a>
+            <div class="submitdkk submitdkk111 submitdkk1111 submitdkk11119">
+                <a href="<c:url value='/bacsi/capthuoc?idPDK=${idpdk.idPhieudk}'/>" >Cấp thuốc</a>
             </div>
 
         </div>

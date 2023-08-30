@@ -57,7 +57,7 @@
                             <td>${d.tienThuoc}</td>
                             <td>dich vu</td>
 
-                            <td>${d.tienKham.tienKham + d.tienThuoc}</td>
+                            <td>${d.tienKham.tienKham + d.tienThuoc} vnđ</td>
                             <td>${d.ngayThanhToan}</td>
                             <td>
                                 <select path="loaiThanhToan" id="loaiThanhToan" class="form-select form-select1 form-select11" cssErrorClass="is-invalid">

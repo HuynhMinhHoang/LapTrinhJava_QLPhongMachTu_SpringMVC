@@ -125,5 +125,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/XML/XMLDocument.xml to edit this 
                        value="/WEB-INF/page/Admin/quanlytaikhoan.jsp" />
     </definition>
     
+    <definition name="thongke" extends="baseLayoutAdmin">
+        <put-attribute name="title" value="Thống kê" />
+        <put-attribute name="content"
+                       value="/WEB-INF/page/Admin/thongke.jsp" />
+    </definition>
+    
 </tiles-definitions>
 
