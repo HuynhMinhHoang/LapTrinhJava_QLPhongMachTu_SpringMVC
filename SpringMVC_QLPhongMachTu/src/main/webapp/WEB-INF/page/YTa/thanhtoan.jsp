@@ -55,9 +55,9 @@
 
                             <td>${d.tienKham.tienKham}</td>
                             <td>${d.tienThuoc}</td>
-                            <td>dich vu</td>
+                            <td>${d.tienDv}</td>
 
-                            <td>${d.tienKham.tienKham + d.tienThuoc} vnđ</td>
+                            <td>${d.tienKham.tienKham + d.tienThuoc + d.tienDv} vnđ</td>
                             <td>${d.ngayThanhToan}</td>
                             <td>
                                 <select path="loaiThanhToan" id="loaiThanhToan" class="form-select form-select1 form-select11" cssErrorClass="is-invalid">
@@ -70,18 +70,12 @@
                             <td>
                                 <c:choose>
                                     <c:when test="${d.ngayThanhToan == null}">
-                                        <a href="<c:url value="/thanhtoan"/>">
-                                            <button class="admin_submit111" type="submit">
-                                                Thanh toán
-                                            </button>
+                                        <a href="/SpringMVC_QLPhongMachTu/thanhtoan" class="admin_submit111">
+                                            Thanh toán
                                         </a>
                                     </c:when>
                                 </c:choose>
                             </td>
-
-
-
-
                         </tr>
                     </tbody>
                 </c:forEach>

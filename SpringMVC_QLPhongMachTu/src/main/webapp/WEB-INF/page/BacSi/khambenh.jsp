@@ -10,11 +10,11 @@
 
 <c:url value="/bacsi/khambenh" var="actions"/>
 
-<%--<c:if test="${errMsg != null}">
+<c:if test="${errMsg != null}">
     <div class="alert1">
         ${errMsg}
     </div>
-</c:if>--%>
+</c:if>
 
 <nav class="dkk_main dkykhambenh">
 
@@ -96,9 +96,20 @@
                 </div>
 
             </div>
-            <div class="submitdkk submitdkk111 submitdkk1111 submitdkk11115">
-                <button type="submit" >LƯU THÔNG TIN</button>
-            </div>
+
+            <c:choose>
+                <c:when test="${idpdk.idPk.trieuChung == null && idpdk.idPk.ketLuan == null}">
+                    <div class="submitdkk submitdkk111 submitdkk1111 submitdkk11115">
+                        <button type="submit" >LƯU THÔNG TIN</button>
+                    </div>
+                </c:when>
+                <c:otherwise>
+                    <div class="submitdkk submitdkk111 submitdkk1111 submitdkk11115 submitdkk1111555">
+                        <button type="submit" >LƯU THÔNG TIN RRR</button>
+                    </div>
+                </c:otherwise>
+            </c:choose>
+
 
         </form:form>
 
@@ -158,7 +169,7 @@
                                 <td>${ct.idPdk.idPhieudk}</td>
                                 <td>${ct.idDv.idDv}</td>
                                 <td>${ct.idDv.tenDv}</td>
-                                <td>${ct.idDv.giaDv}</td>
+                                <td>${ct.idDv.giaDv} vnđ</td>
                                 <td></td>
                             </tr> 
                         </c:forEach>

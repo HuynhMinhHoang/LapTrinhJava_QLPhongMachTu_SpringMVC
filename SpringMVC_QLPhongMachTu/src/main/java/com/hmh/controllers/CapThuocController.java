@@ -138,20 +138,8 @@ public class CapThuocController {
     public String taoHoaDon(Model model, @RequestParam Map<String, String> params,
             @RequestParam("idPDK") int idPDK, @ModelAttribute("addHoaDon") HoaDon hd) {
 
-//        BigDecimal tongTienThuoc = BigDecimal.ZERO;
-//
-////        String err = "";
-//        List<ChiTietThuoc> danhSachThuoc = capThuocService.layThuocByPhieuDangKyId(idPDK);
-//        for (ChiTietThuoc t : danhSachThuoc) {
-//            BigDecimal soLuongSd = new BigDecimal(t.getSoLuongSd());
-//            BigDecimal giaThuoc = new BigDecimal(t.getIdThuoc().getGiaThuoc());
-//            BigDecimal tienThuoc = soLuongSd.multiply(giaThuoc);
-//            tongTienThuoc = tongTienThuoc.add(tienThuoc);
-//        }
 
         if (this.capThuocService.themHoaDonByPDK(hd, idPDK)) {
-//            long tienThuocLong = tongTienThuoc.setScale(0, RoundingMode.HALF_UP).longValue();
-//            hd.setTienThuoc(tienThuocLong);
             return "redirect:/bacsi/lapphieukham";
         }
 

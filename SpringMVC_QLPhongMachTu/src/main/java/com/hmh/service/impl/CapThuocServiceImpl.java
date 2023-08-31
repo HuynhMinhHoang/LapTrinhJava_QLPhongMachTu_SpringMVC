@@ -4,6 +4,7 @@
  */
 package com.hmh.service.impl;
 
+import com.hmh.pojo.ChiTietDv;
 import com.hmh.pojo.ChiTietThuoc;
 import com.hmh.pojo.HoaDon;
 import com.hmh.pojo.PhieuDangKy;
@@ -71,8 +72,8 @@ public class CapThuocServiceImpl implements CapThuocService {
     public boolean themHoaDonByPDK(HoaDon hd, int idPDK) {
 
         PhieuDangKy phieuDangKy = this.khamBenhRepository.getPDK(idPDK);
-//        PhieuDangKy phieuDangKy1 = this.capThuocRepository.layThuocByPhieuDangKyId(idPDK);
 
+        //tong tien thuoc
         BigDecimal tongTienThuoc = BigDecimal.ZERO;
 
         List<ChiTietThuoc> danhSachThuoc = capThuocRepository.layThuocByPhieuDangKyId(idPDK);
@@ -85,9 +86,21 @@ public class CapThuocServiceImpl implements CapThuocService {
         long tienThuocLong = tongTienThuoc.setScale(0, RoundingMode.HALF_UP).longValue();
 
         
+        //tong tien dich vu
+        BigDecimal tongTienDV = BigDecimal.ZERO;
+
+        List<ChiTietDv> danhSachDV = khamBenhRepository.getDvByIdPdk(idPDK);
+        for (ChiTietDv dv : danhSachDV) {
+            BigDecimal giaDV = new BigDecimal(dv.getIdDv().getGiaDv());
+            tongTienDV = tongTienDV.add(giaDV);
+        }
+
+        long tongTienDVLong = tongTienDV.setScale(0, RoundingMode.HALF_UP).longValue();
+
         hd.setTienKham(this.getTienKham(100000));
         hd.setIdPhieudky(phieuDangKy);
         hd.setTienThuoc(tienThuocLong);
+        hd.setTienDv(tongTienDVLong);
 
 //        hd.setTienThuoc();
         return this.capThuocRepository.themHoaDonByPDK(hd, idPDK);

@@ -1477,6 +1477,10 @@ main.lskham{
     font-size: 30px;
 }
 
+.submitdkk1111555 {
+    display: none;
+}
+
 
 /*dangkylich*/
 .one2111{
@@ -1799,3 +1803,77 @@ select.form-select11{
     text-align: center;
 }
 
+/*thongke*/
+.textThongKe{
+    text-align: center;
+    padding: 50px;
+}
+.textThongKe h1{
+    font-size: 30px;
+}
+
+.container_TK{
+    display: flex;
+    justify-content: space-around;
+}
+
+.TK_Thang h2{
+    font-size: 25px;
+}
+
+.TK_Thang form button{
+    margin-top: 30px;
+    width: 200px;
+    padding: 12px;
+    font-size: 17px;
+    border: 0px solid rgb(43, 43, 43);
+    background-color: rgb(130, 201, 30);
+    color: white;
+    box-shadow: 0px 5px 10px 0 rgba(130, 201, 30, 0.5);
+    transition: 0.3s;
+    border-radius: 6px;
+}
+
+.TK_Thang form label{
+    padding: 10px 10px 10px 0px;
+}
+
+.TK_Thang form select{
+    padding: 5px 10px 5px 10px;
+}
+
+
+
+
+.TK_Quy h2{
+    font-size: 25px;
+}
+
+.TK_Quy form button{
+    margin-top: 30px;
+    width: 200px;
+    padding: 12px;
+    font-size: 17px;
+    border: 0px solid rgb(43, 43, 43);
+    background-color: rgb(130, 201, 30);
+    color: white;
+    box-shadow: 0px 5px 10px 0 rgba(130, 201, 30, 0.5);
+    transition: 0.3s;
+    border-radius: 6px;
+}
+
+.TK_Quy form label{
+    padding: 10px 10px 10px 0px;
+}
+
+.TK_Quy form select{
+    padding: 5px 10px 5px 10px;
+}
+
+
+
+
+.circle-chart {
+    width: 500px; 
+    height: 500px; 
+}

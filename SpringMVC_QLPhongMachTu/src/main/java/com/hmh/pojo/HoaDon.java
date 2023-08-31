@@ -44,8 +44,13 @@ public class HoaDon implements Serializable {
     @Column(name = "ngay_thanh_toan")
     @Temporal(TemporalType.TIMESTAMP)
     private Date ngayThanhToan;
+
     @Column(name = "tien_thuoc")
     private Long tienThuoc;
+
+    @Column(name = "tien_dv")
+    private Long tienDv;
+
     @JoinColumn(name = "loai_thanh_toan", referencedColumnName = "id_loaiThanhToan")
     @ManyToOne
     private LoaiThanhToan loaiThanhToan;
@@ -135,5 +140,19 @@ public class HoaDon implements Serializable {
     public String toString() {
         return "com.hmh.pojo.HoaDon[ idHoadon=" + idHoadon + " ]";
     }
-    
+
+    /**
+     * @return the tienDv
+     */
+    public Long getTienDv() {
+        return tienDv;
+    }
+
+    /**
+     * @param tienDv the tienDv to set
+     */
+    public void setTienDv(Long tienDv) {
+        this.tienDv = tienDv;
+    }
+
 }
