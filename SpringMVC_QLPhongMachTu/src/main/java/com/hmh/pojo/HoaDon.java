@@ -32,7 +32,8 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "HoaDon.findAll", query = "SELECT h FROM HoaDon h"),
     @NamedQuery(name = "HoaDon.findByIdHoadon", query = "SELECT h FROM HoaDon h WHERE h.idHoadon = :idHoadon"),
     @NamedQuery(name = "HoaDon.findByNgayThanhToan", query = "SELECT h FROM HoaDon h WHERE h.ngayThanhToan = :ngayThanhToan"),
-    @NamedQuery(name = "HoaDon.findByTienThuoc", query = "SELECT h FROM HoaDon h WHERE h.tienThuoc = :tienThuoc")})
+    @NamedQuery(name = "HoaDon.findByTienThuoc", query = "SELECT h FROM HoaDon h WHERE h.tienThuoc = :tienThuoc"),
+    @NamedQuery(name = "HoaDon.findByTienDv", query = "SELECT h FROM HoaDon h WHERE h.tienDv = :tienDv")})
 public class HoaDon implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -44,16 +45,10 @@ public class HoaDon implements Serializable {
     @Column(name = "ngay_thanh_toan")
     @Temporal(TemporalType.TIMESTAMP)
     private Date ngayThanhToan;
-
     @Column(name = "tien_thuoc")
     private Long tienThuoc;
-
     @Column(name = "tien_dv")
     private Long tienDv;
-
-    @JoinColumn(name = "loai_thanh_toan", referencedColumnName = "id_loaiThanhToan")
-    @ManyToOne
-    private LoaiThanhToan loaiThanhToan;
     @JoinColumn(name = "id_phieudky", referencedColumnName = "id_phieudk")
     @ManyToOne
     private PhieuDangKy idPhieudky;
@@ -92,12 +87,12 @@ public class HoaDon implements Serializable {
         this.tienThuoc = tienThuoc;
     }
 
-    public LoaiThanhToan getLoaiThanhToan() {
-        return loaiThanhToan;
+    public Long getTienDv() {
+        return tienDv;
     }
 
-    public void setLoaiThanhToan(LoaiThanhToan loaiThanhToan) {
-        this.loaiThanhToan = loaiThanhToan;
+    public void setTienDv(Long tienDv) {
+        this.tienDv = tienDv;
     }
 
     public PhieuDangKy getIdPhieudky() {
@@ -140,19 +135,5 @@ public class HoaDon implements Serializable {
     public String toString() {
         return "com.hmh.pojo.HoaDon[ idHoadon=" + idHoadon + " ]";
     }
-
-    /**
-     * @return the tienDv
-     */
-    public Long getTienDv() {
-        return tienDv;
-    }
-
-    /**
-     * @param tienDv the tienDv to set
-     */
-    public void setTienDv(Long tienDv) {
-        this.tienDv = tienDv;
-    }
-
+    
 }

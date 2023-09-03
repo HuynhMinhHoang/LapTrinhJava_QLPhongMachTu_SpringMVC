@@ -136,7 +136,7 @@
                                     <td>${p.idThuoc.tenThuoc}</td>
                                     <td>${p.soLuongSd} ${p.idThuoc.donVi.tenDonVi}</td>
                                     <td>${p.hdsd}</td>
-                                    <td>${p.idThuoc.giaThuoc * p.soLuongSd} vnđ</td>
+                                    <td>${p.idThuoc.giaThuoc * p.soLuongSd}vnđ</td>
 
                                 </tr>
                             </c:forEach>

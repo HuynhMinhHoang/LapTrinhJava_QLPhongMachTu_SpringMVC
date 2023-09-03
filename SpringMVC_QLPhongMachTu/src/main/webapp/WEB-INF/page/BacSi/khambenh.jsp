@@ -7,6 +7,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <c:url value="/bacsi/khambenh" var="actions"/>
 
@@ -51,7 +52,7 @@
 
                 <div class="contentdkk5 contentdkk51">
                     <h5>Ngày khám</h5>
-                    <input type="text" placeholder="${idpdk.chonNgaykham}" disabled="true"/>
+                    <input type="text" placeholder="<fmt:formatDate value="${idpdk.chonNgaykham}" pattern="dd-MM-yyyy" />" disabled="true"/>
                 </div>
 
 
@@ -169,7 +170,7 @@
                                 <td>${ct.idPdk.idPhieudk}</td>
                                 <td>${ct.idDv.idDv}</td>
                                 <td>${ct.idDv.tenDv}</td>
-                                <td>${ct.idDv.giaDv} vnđ</td>
+                                <td>${ct.idDv.giaDv}vnđ</td>
                                 <td></td>
                             </tr> 
                         </c:forEach>

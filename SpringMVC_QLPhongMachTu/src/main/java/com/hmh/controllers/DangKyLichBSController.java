@@ -13,10 +13,10 @@ import org.springframework.web.bind.annotation.GetMapping;
  * @author Asus
  */
 @Controller
-public class DangKyLichController {
+public class DangKyLichBSController {
 
-    @GetMapping("/dangkylich")
-    public String dangkylich(Model model) {
-        return "dangkylich";
+    @GetMapping("/bacsi/dangkylichBS")
+    public String dangkylichBS(Model model) {
+        return "dangkylichBS";
     }
 }

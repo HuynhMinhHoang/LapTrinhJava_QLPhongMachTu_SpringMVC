@@ -4,6 +4,7 @@
  */
 package com.hmh.service.impl;
 
+import com.hmh.pojo.HoaDon;
 import com.hmh.pojo.PhieuDangKy;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +17,7 @@ import com.hmh.service.ThongKeBenhNhanService;
  * @author LENOVO
  */
 @Service
-public class ThongKeBenhNhanServiceImpl implements ThongKeBenhNhanService {
+public class ThongKeBenhNhanhServiceImpl implements ThongKeBenhNhanService {
 
     @Autowired
     private ThongKeBenhNhanRepository thongKeRepository;
@@ -30,5 +31,7 @@ public class ThongKeBenhNhanServiceImpl implements ThongKeBenhNhanService {
     public List<PhieuDangKy> loadDsTheoQuy(int nam, int quy) {
         return this.thongKeRepository.loadDsTheoQuy(nam, quy);
     }
+
+ 
 
 }
