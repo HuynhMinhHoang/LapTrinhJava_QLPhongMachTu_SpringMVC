@@ -11,6 +11,7 @@
 
 
 <main class="table">
+<<<<<<<< HEAD:SpringMVC_QLPhongMachTu/src/main/webapp/WEB-INF/page/Admin/thongkebenhnhan.jsp
 
     <div class="textThongKe">
         <h1>Thống Kê Bệnh Nhân</h1>
@@ -40,11 +41,36 @@
             <div id="chart_div" style="width: 220%; height: 350px;"></div>
         </div>
 
+========
+
+    <h1>Thống Kê Bệnh Nhân</h1>
+
+    <h2>Thống Kê Theo Tháng: </h2>
+    <form action="${pageContext.request.contextPath}/admin/thongke" method="post">
+        <label for="year">Chọn năm:</label>
+        <select id="year" name="year">
+            <c:forEach var="year" begin="2020" end="2030">
+                <option value="${year}">${year}</option>
+            </c:forEach>
+        </select>
+        <br>
+        <label for="month">Chọn tháng:</label>
+        <select id="month" name="month">
+            <c:forEach var="month" begin="1" end="12">
+                <option value="${month}">${month}</option>
+            </c:forEach>
+        </select>
+        <br>
+        <button type="submit" class="btn btn-danger">Thực hiện thống kê</button>
+    </form>
+    <canvas id="monthlyRevenueChart"></canvas>
+>>>>>>>> b8b493f4f58144ecd15c58f4fb7909e2befa7a9b:SpringMVC_QLPhongMachTu/src/main/webapp/WEB-INF/page/Admin/thongke.jsp
 
 
 
 
 
+<<<<<<<< HEAD:SpringMVC_QLPhongMachTu/src/main/webapp/WEB-INF/page/Admin/thongkebenhnhan.jsp
         <div class="TK_Quy">
             <h2>Thống Kê Bệnh Nhân Theo Quý: </h2>
             <form action="${pageContext.request.contextPath}/admin/thongkebenhnhan" method="post">
@@ -71,6 +97,34 @@
 
 
     </nav>
+========
+
+    <h2>Thống Kê Theo Quý: </h2>
+    <form action="${pageContext.request.contextPath}/admin/thongke" method="post">
+        <label for="year">Chọn năm:</label>
+        <select id="year" name="year">
+            <c:forEach var="year" begin="2020" end="2030">
+                <option value="${year}">${year}</option>
+            </c:forEach>
+        </select>
+        <br>
+        <label for="month">Chọn Quý:</label>
+        <select id="month" name="month">
+            <c:forEach var="month" begin="1" end="4">
+                <option value="${month}">${month}</option>
+            </c:forEach>
+        </select>
+        <br>
+        <button type="submit" class="btn btn-danger">Thực hiện thống kê</button>
+    </form>
+    <canvas id="monthlyRevenueChart"></canvas>
+    <!--    <h2>test theo thang</h2>-->
+    <!--<div>-->
+    <%--<c:forEach items="${list}" var="t">--%>
+    <!--<h3>${t}</h3>-->
+    <%--</c:forEach>--%>
+    <!--</div>-->
+>>>>>>>> b8b493f4f58144ecd15c58f4fb7909e2befa7a9b:SpringMVC_QLPhongMachTu/src/main/webapp/WEB-INF/page/Admin/thongke.jsp
 
 
 
@@ -91,7 +145,11 @@
         function drawChart() {
             var data = google.visualization.arrayToDataTable([
                 ['Loại', 'Số lượng'],
+<<<<<<<< HEAD:SpringMVC_QLPhongMachTu/src/main/webapp/WEB-INF/page/Admin/thongkebenhnhan.jsp
 
+========
+//                ['Khách hàng', khachHangCount],
+>>>>>>>> b8b493f4f58144ecd15c58f4fb7909e2befa7a9b:SpringMVC_QLPhongMachTu/src/main/webapp/WEB-INF/page/Admin/thongke.jsp
                 ['Bệnh Nhân Chưa Khám', benhNhanCount],
                 ['Bệnh Nhân Đã Khám', TrangThaiKhamCount]
 
@@ -106,6 +164,7 @@
             };
 
             var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+<<<<<<<< HEAD:SpringMVC_QLPhongMachTu/src/main/webapp/WEB-INF/page/Admin/thongkebenhnhan.jsp
 
 
             chart.draw(data, options);
@@ -152,3 +211,12 @@
 
     </script>
 
+========
+
+
+            chart.draw(data, options);
+        }
+    </script>
+
+    <div id="chart_div" style="width: 100%; height: 300px;"></div>
+>>>>>>>> b8b493f4f58144ecd15c58f4fb7909e2befa7a9b:SpringMVC_QLPhongMachTu/src/main/webapp/WEB-INF/page/Admin/thongke.jsp

@@ -34,8 +34,13 @@
                         <th>Chức vụ</th>
                         <th>Ca trực</th>
                         <th>Ngày đăng ký</th>
+<<<<<<< HEAD
 <!--                        <th>Trạng thái</th>-->
                         <!--<th></th>-->
+=======
+                        <th>Trạng thái</th>
+                        <th></th>
+>>>>>>> b8b493f4f58144ecd15c58f4fb7909e2befa7a9b
                     </tr>
                 </thead>
 
@@ -47,21 +52,36 @@
                             <td>${p.idTk.idRole.chucVu}</td>                     
                             <td>${p.idTgTruc.buoiTruc} (${p.idTgTruc.batDau} - ${p.idTgTruc.ketThuc})</td>
                             <td> <fmt:formatDate value="${p.ngayDkyTruc}" pattern="EEEE, dd-MM-yyyy" /></td>
+<<<<<<< HEAD
 <!--                            <td>
                                 <c:choose>
                                     <c:when test="{p.trangThaiTruc.toString() eq 0}">
+=======
+                            <td>
+                                <c:choose>
+                                    <c:when test="${p.trangThaiTruc.toString() eq 0}">
+>>>>>>> b8b493f4f58144ecd15c58f4fb7909e2befa7a9b
                                         <p id="xacnhan">Chưa điểm danh</p>
                                     </c:when>
                                     <c:otherwise>
                                         <p id="xacnhan1">Đã điểm danh</p>
                                     </c:otherwise>
                                 </c:choose> 
+<<<<<<< HEAD
                             </td>-->
 <!--                            <td>
                                 <div class="admin_submit admin_submit11 admin_submit1113">
                                     Ðiểm danh
                                 </div>
                             </td>-->
+=======
+                            </td>
+                            <td>
+                                <div class="admin_submit admin_submit11 admin_submit1113">
+                                    Ðiểm danh
+                                </div>
+                            </td>
+>>>>>>> b8b493f4f58144ecd15c58f4fb7909e2befa7a9b
                         </tr>
                     </c:forEach>
                 </tbody>
