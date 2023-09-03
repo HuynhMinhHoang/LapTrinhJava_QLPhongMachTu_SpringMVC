@@ -138,7 +138,6 @@ public class CapThuocController {
     public String taoHoaDon(Model model, @RequestParam Map<String, String> params,
             @RequestParam("idPDK") int idPDK, @ModelAttribute("addHoaDon") HoaDon hd) {
 
-
         if (this.capThuocService.themHoaDonByPDK(hd, idPDK)) {
             return "redirect:/bacsi/lapphieukham";
         }

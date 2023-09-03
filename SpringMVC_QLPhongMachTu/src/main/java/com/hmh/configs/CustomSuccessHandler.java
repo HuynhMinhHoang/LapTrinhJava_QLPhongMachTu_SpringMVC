@@ -34,8 +34,17 @@ public class CustomSuccessHandler implements AuthenticationSuccessHandler {
             } else if (authority.getAuthority().equals("ROLE_YTA")) {
                 redirectStrategy.sendRedirect(hsr, hsr1, "/yta/thanhtoan");
                 return;
+            } else if (authority.getAuthority().equals("ROLE_YTA")) {
+                redirectStrategy.sendRedirect(hsr, hsr1, "/yta/taohoadon");
+                return;
+            } else if (authority.getAuthority().equals("ROLE_YTA")) {
+                redirectStrategy.sendRedirect(hsr, hsr1, "/yta/dangkylichYT");
+                return;
             } else if (authority.getAuthority().equals("ROLE_BACSI")) {
                 redirectStrategy.sendRedirect(hsr, hsr1, "/bacsi/lapphieukham");
+                return;
+            } else if (authority.getAuthority().equals("ROLE_BACSI")) {
+                redirectStrategy.sendRedirect(hsr, hsr1, "/bacsi/dangkylichBS");
                 return;
             } else if (authority.getAuthority().equals("ROLE_BACSI")) {
                 redirectStrategy.sendRedirect(hsr, hsr1, "/bacsi/khambenh");
@@ -53,7 +62,13 @@ public class CustomSuccessHandler implements AuthenticationSuccessHandler {
                 redirectStrategy.sendRedirect(hsr, hsr1, "/admin/quanlythuoc");
                 return;
             } else if (authority.getAuthority().equals("ROLE_ADMIN")) {
-                redirectStrategy.sendRedirect(hsr, hsr1, "/admin/thongke");
+                redirectStrategy.sendRedirect(hsr, hsr1, "/admin/thongkebenhnhan");
+                return;
+            } else if (authority.getAuthority().equals("ROLE_ADMIN")) {
+                redirectStrategy.sendRedirect(hsr, hsr1, "/admin/thongkedoanhthu");
+                return;
+            } else if (authority.getAuthority().equals("ROLE_ADMIN")) {
+                redirectStrategy.sendRedirect(hsr, hsr1, "/admin/lichtruc");
                 return;
             }
 

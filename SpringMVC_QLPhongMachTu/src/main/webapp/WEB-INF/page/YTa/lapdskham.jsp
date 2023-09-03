@@ -8,6 +8,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <c:url value="/yta/lapdskham" var="actions"/>
 <h1>${msg}</h1>
@@ -52,7 +53,8 @@
                         </td>
                         <td>[${p.idBn.idTk}] ${p.idBn.hoTen}</td>
                         <td>${p.idBn.email}</td>
-                        <td>${p.chonNgaykham}</td>
+                        <td><fmt:formatDate value="${p.chonNgaykham}" pattern="dd-MM-yyyy" /></td>
+                        
                         <td>${p.thoiGianKham}</td>
 
 
