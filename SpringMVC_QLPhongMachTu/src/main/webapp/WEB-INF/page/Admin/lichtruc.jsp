@@ -68,11 +68,8 @@
 
                             <td>${p.idTk}</td>
                             <td>${p.hoTen}</td>    
-<<<<<<< HEAD
                             <td>${p.taiKhoan}</td>
-=======
-                            <td id="Username">${p.username}</td>
->>>>>>> b8b493f4f58144ecd15c58f4fb7909e2befa7a9b
+
 
                             <td>${p.idRole.chucVu}</td>
                         </tr>
@@ -211,17 +208,10 @@
                             <td>
                                 <c:choose>
                                     <c:when test="${p.trangThaiTruc.toString() eq 0}">
-<<<<<<< HEAD
                                         <p id="xacnhan">Chưa xác nhận</p>
                                     </c:when>
                                     <c:otherwise>
                                         <p id="xacnhan1">Đã xác nhận</p>
-=======
-                                        <p id="xacnhan">Chưa điểm danh</p>
-                                    </c:when>
-                                    <c:otherwise>
-                                        <p id="xacnhan1">Đã điểm danh</p>
->>>>>>> b8b493f4f58144ecd15c58f4fb7909e2befa7a9b
                                     </c:otherwise>
                                 </c:choose>
                             </td>
