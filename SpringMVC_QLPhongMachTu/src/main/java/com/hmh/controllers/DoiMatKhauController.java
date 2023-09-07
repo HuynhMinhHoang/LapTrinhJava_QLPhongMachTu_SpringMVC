@@ -7,6 +7,8 @@ package com.hmh.controllers;
 import com.hmh.pojo.PhieuDangKy;
 import com.hmh.pojo.TaiKhoan;
 import com.hmh.service.TaiKhoanService;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.Map;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,14 +38,14 @@ public class DoiMatKhauController {
     private TaiKhoanService taiKhoanService;
 
     @GetMapping("/doimatkhau")
-    public String doiMatKhau(Model model, @RequestParam Map<String, String> params, Authentication authen) {
+    public String doiMatKhau(Model model, @RequestParam Map<String, String> params, Authentication authen, @RequestParam(name = "err", required = false) String err) {
 
         if (authen != null) {
             UserDetails user = taiKhoanService.loadUserByUsername(authen.getName());
             TaiKhoan u = taiKhoanService.getTaiKhoan(user.getUsername()).get(0);
             model.addAttribute("user", u);
         }
-
+         model.addAttribute("err", err);
         return "doimatkhau";
     }
 
@@ -52,28 +54,35 @@ public class DoiMatKhauController {
             @RequestParam("matKhauHienTai") String matKhauCu,
             @RequestParam("matKhauMoi") String matKhauMoi,
             @RequestParam("xacNhanMatKhauMoi") String xacNhanMatKhauMoi,
-            HttpSession session) {
+            HttpSession session) throws UnsupportedEncodingException {
 
         Integer id = Integer.parseInt(params.get("idNguoiDung"));
         TaiKhoan tk = this.taiKhoanService.getTaiKhoanById(id);
+        String err = "";
 
         if (authen != null) {
             if (!matKhauMoi.equals(xacNhanMatKhauMoi)) {
-                session.setAttribute("error", "Mật khẩu mới không khớp!");
-                return "redirect:/doimatkhau";
+                err = "Mật khẩu mới không khớp!";
+//                session.setAttribute("error", "Mật khẩu mới không khớp!");
+                return "redirect:/doimatkhau" + "?err=" + URLEncoder.encode(err, "UTF-8");
             }
             if (passwordEncoder.matches(matKhauCu, tk.getMatKhau())) {
                 String hashedPassword = passwordEncoder.encode(matKhauMoi);
                 tk.setMatKhau(hashedPassword);
                 boolean capNhatThanhCong = taiKhoanService.doiMatKhau(tk);
                 if (capNhatThanhCong) {
-                    session.setAttribute("success", "Đổi mật khẩu thành công!");
+//                    session.setAttribute("success", "Đổi mật khẩu thành công!");
+                    err = "Đổi mật khẩu thành công!";
                     return "redirect:/";
                 } else {
-                    session.setAttribute("error", "Lỗi khi cập nhật mật khẩu!");
+                    err = "Lỗi khi cập nhật mật khẩu!";
+                    return "redirect:/doimatkhau" + "?err=" + URLEncoder.encode(err, "UTF-8");
+//                    session.setAttribute("error", "Lỗi khi cập nhật mật khẩu!");
                 }
             } else {
-                session.setAttribute("error", "Mật khẩu cũ không đúng!");
+//                session.setAttribute("error", "Mật khẩu cũ không đúng!");
+                err = "Mật khẩu cũ không đúng!";
+                return "redirect:/doimatkhau" + "?err=" + URLEncoder.encode(err, "UTF-8");
             }
         }
         return "redirect:/doimatkhau";

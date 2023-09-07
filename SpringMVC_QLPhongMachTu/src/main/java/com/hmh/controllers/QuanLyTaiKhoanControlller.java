@@ -9,6 +9,8 @@ import com.hmh.service.QuanLyTaiKhoanService;
 //import com.hmh.service.QuanLyTaiKhoanService;
 import com.hmh.service.TaiKhoanService;
 import com.hmh.service.UserRoleService;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -16,6 +18,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
@@ -37,7 +40,7 @@ public class QuanLyTaiKhoanControlller {
 
     @Autowired
     private UserRoleService userRoleService;
-    
+
     @Autowired
     private CustomDateEditor customDateEditor;
 
@@ -52,11 +55,11 @@ public class QuanLyTaiKhoanControlller {
     }
 
     @GetMapping("/admin/quanlytaikhoan")
-    public String quanlytaikhoan(Model model, @RequestParam Map<String, String> params) {
+    public String quanlytaikhoan(Model model, @RequestParam Map<String, String> params,  @RequestParam(name = "err", required = false) String err) {
         model.addAttribute("addtaikhoan", new TaiKhoan());
         model.addAttribute("qltaikhoan", this.quanLyTaiKhoanService.getTaiKhoanAdmin(null));
         model.addAttribute("qltaikhoan", this.quanLyTaiKhoanService.timKiemTK(params));
-
+        model.addAttribute("err", err);
         return "quanlytaikhoan";
     }
 
@@ -69,19 +72,22 @@ public class QuanLyTaiKhoanControlller {
     }
 
     @PostMapping("/admin/quanlytaikhoan")
-    public String addTaiKhoanAdmin(Model model, @ModelAttribute(value = "addtaikhoan") TaiKhoan tk) {
+    public String addTaiKhoanAdmin(Model model, @ModelAttribute(value = "addtaikhoan") TaiKhoan tk, BindingResult rs) throws UnsupportedEncodingException {
         String err = "";
 
-        if (!tk.getTaiKhoan().isEmpty() && !tk.getMatKhau().isEmpty()) {
-            if (this.quanLyTaiKhoanService.themTaiKhoan(tk) == true) {
-                return "redirect:/admin/quanlytaikhoan";
+        if (!rs.hasErrors()) {
+            if (!tk.getTaiKhoan().isEmpty() && !tk.getMatKhau().isEmpty()&& !tk.getHoTen().isEmpty() && !tk.getGioiTinh().isEmpty() 
+                    && !tk.getDiaChi().isEmpty() && tk.getIdRole().getIdRole() != null && !tk.getNgaySinh().equals(null) && !tk.getEmail().isEmpty() && !tk.getSdt().isEmpty()) {
+                if (this.quanLyTaiKhoanService.themTaiKhoan(tk) == true) {
+                    return "redirect:/admin/quanlytaikhoan";
+                }
+            } else {
+                err = "Vui lòng nhập đầy đủ thông tin!";
+                return "redirect:/admin/quanlytaikhoan" + "?err=" + URLEncoder.encode(err, "UTF-8");
             }
-        } else {
-            err = "Vui lòng nhập tài khoản hoặc mật khẩu!";
         }
 
         model.addAttribute("qltaikhoan", this.quanLyTaiKhoanService.getTaiKhoanAdmin(null));
-        model.addAttribute("err", err);
         return "quanlytaikhoan";
     }
 }

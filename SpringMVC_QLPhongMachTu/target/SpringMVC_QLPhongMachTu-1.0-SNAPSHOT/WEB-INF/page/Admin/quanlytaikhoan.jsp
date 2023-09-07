@@ -12,12 +12,12 @@
 
 <main class="table">
     <div>
-
         <c:if test="${err != null}">
             <div class="alert1">
                 ${err}
             </div>
         </c:if>
+
         <section class="table__header">
             <h3>DANH SÁCH TÀI KHOẢN</h3>
             <div class="inputkw">

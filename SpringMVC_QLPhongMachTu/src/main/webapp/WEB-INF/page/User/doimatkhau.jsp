@@ -9,9 +9,9 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 
-<c:if test="${errMsg != null}">
+<c:if test="${err != null}">
     <div class="alert1">
-        ${errMsg}
+        ${err}
     </div>
 </c:if>
 

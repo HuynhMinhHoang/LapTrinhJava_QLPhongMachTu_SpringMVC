@@ -14,7 +14,11 @@
 
 
 <nav class="dkk_main dkykhambenh themdichvu">
-
+    <c:if test="${err != null}">
+        <div class="alert1">
+            ${err}
+        </div>
+    </c:if>
     <div class="dkk khambenh">
 
         <form:form method="post" modelAttribute="taoDV" action="${actions}">
