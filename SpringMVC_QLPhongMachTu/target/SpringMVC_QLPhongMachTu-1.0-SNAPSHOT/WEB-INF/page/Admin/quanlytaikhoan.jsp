@@ -56,7 +56,7 @@
 
                             <tr>
                                 <td>
-                                    <c:url value="/api/admin/quanlytaikhoan/${p.idTk}" var="apiDel"/>
+                                    <c:url value="/admin/quanlytaikhoan/${p.idTk}" var="apiDel"/>
                                     <div class="admin_submit admin_submit11" onclick="xoaTaiKhoan('${apiDel}')">
                                         XÓA  
                                     </div>
@@ -124,13 +124,13 @@
         <form:hidden path="avt"/>
         <%--<form:hidden path="matKhau"/>--%>
 
-        <div class="change_ac">
+        <div class="change_ac change_acQLTK">
 
             <div class="change_ac1">
 
 
 
-                <div class="change1 change11">
+                <div class="change1 change11 change11TK">
                     <h5>Họ tên</h5>
                     <form:input type="text" path="hoTen" id="hoTen" placeholder=""/>
                 </div>

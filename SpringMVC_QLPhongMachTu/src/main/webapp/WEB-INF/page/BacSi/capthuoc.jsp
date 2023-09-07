@@ -72,7 +72,7 @@
 
 
                         <div class="contentdkk5 contentdkk51">
-                            <form:input class="custom-input" type="number" id="custom-input1" path="soLuongSd" placeholder="Số lượng" />
+                            <form:input class="custom-input" type="number" min="0" id="custom-input1" path="soLuongSd" placeholder="Số lượng" />
                         </div>
 
                         <div class="contentdkk5 contentdkk51 contentdkk511">

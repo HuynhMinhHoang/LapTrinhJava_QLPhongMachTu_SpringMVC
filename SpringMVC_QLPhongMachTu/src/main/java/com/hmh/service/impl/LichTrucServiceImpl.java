@@ -66,4 +66,8 @@ public class LichTrucServiceImpl implements LichTrucService {
 
     }
 
+    @Override
+    public List<ChiTietThoiGianTruc> getChiTietTgtByidTk(TaiKhoan idTk) {
+        return this.lichTrucRepository.getChiTietTgtByidTk(idTk);
+    }
 }

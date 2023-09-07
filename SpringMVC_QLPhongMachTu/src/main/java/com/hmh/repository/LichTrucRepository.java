@@ -32,5 +32,8 @@ public interface LichTrucRepository {
 
     List<Object> getChiTietThoiGianTrucByIDTK(TaiKhoan idTk);
 
+    List<ChiTietThoiGianTruc> getChiTietTgtByidTk(TaiKhoan idTk);
+
     boolean xoaLichTruc(int id);
+
 }

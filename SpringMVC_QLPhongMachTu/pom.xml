@@ -58,6 +58,12 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+            <version>2.12.6</version>
+            <type>jar</type>
+        </dependency>
+        <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-web-api</artifactId>
             <version>7.0</version>
@@ -177,7 +183,7 @@
         </dependency>
         
         <!--kiemtrangay-->
-<!--        <dependency>
+        <!--        <dependency>
             <groupId>org.apache.taglibs</groupId>
             <artifactId>taglibs-standard</artifactId>
             <version>1.2.5</version>
@@ -251,6 +257,13 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-support</artifactId>
             <version>2.0.8</version>
+        </dependency>
+        
+        <!--react-->
+        <dependency>
+            <groupId>com.nimbusds</groupId>
+            <artifactId>nimbus-jose-jwt</artifactId>
+            <version>9.31</version>
         </dependency>
 
     </dependencies>

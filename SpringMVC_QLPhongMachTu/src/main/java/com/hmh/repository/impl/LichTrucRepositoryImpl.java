@@ -143,4 +143,13 @@ public class LichTrucRepositoryImpl implements LichTrucRepository {
         return q.getResultList();
     }
 
+    @Override
+    public List<ChiTietThoiGianTruc> getChiTietTgtByidTk(TaiKhoan idTk) {
+        Session session = this.factory.getObject().getCurrentSession();
+        Query query = session.createQuery("From ChiTietThoiGianTruc Where idTk =: idTk");
+        query.setParameter("idTk", idTk);
+        return query.getResultList();
+    }
+
+    
 }

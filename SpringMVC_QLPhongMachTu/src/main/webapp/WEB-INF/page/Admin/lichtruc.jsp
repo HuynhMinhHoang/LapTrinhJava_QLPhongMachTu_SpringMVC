@@ -11,24 +11,16 @@
 <c:url value="/admin/lichtruc" var="actions"/>
 
 
+
+
+
 <main class="table">
+
+
     <div>
-
-        <%--<c:if test="${err != null}">--%>
-        <!--<div class="alert1">-->
-        <!--{err}-->
-        <!--</div>-->
-        <%--</c:if>--%>
-
-
-        <section class="table__header">
-            <div class="inputkw">
-                <form action="${actions}">
-                    <input name="kw" type="search" placeholder="Tìm kiếm...">
-                    <button type="submit"> <i class="fa-solid fa-magnifying-glass"></i> </button>
-                </form>
-            </div>
-        </section>
+        <div class="textThongKe">
+            <h1>ĐĂNG KÝ LỊCH TRỰC</h1>
+        </div>
 
 
         <section class="table__body">
@@ -105,7 +97,7 @@
 
 <c:choose>
     <c:when test="${idtk.idTk != null}">
-        <form:form  method="post" modelAttribute="lichtruc" action="${actions}" enctype="multipart/form-data">
+        <form:form id="myForm"  method="post" modelAttribute="lichtruc" action="${actions}" enctype="multipart/form-data">
             <!--    <div class="text-lsk text-lsk111">
                     <p>Đăng ký lịch trực</p>
                 </div>-->
@@ -161,7 +153,7 @@
 
                     <div class="login0111 login01111515">
                         <div class="one2111 one2111 one211122123">
-                            <button type="submit" >Xác nhận</button>
+                            <button onclick="showConfirm()" type="submit" >Xác nhận</button>
                         </div>
                     </div>
                 </div>
@@ -201,7 +193,7 @@
 
                         <tr>
                             <td>${p.idChiTietTgTruc}</td>
-                            <td>${p.idTk.hoTen}</td>
+                            <td>${p.idTk.hoTen} [${p.idTk.idTk}]</td>
                             <td>${p.idTk.idRole.chucVu}</td>                     
                             <td>${p.idTgTruc.buoiTruc}</td>
                             <td>${p.ngayDkyTruc}</td>
@@ -216,8 +208,8 @@
                                 </c:choose>
                             </td>
                             <td>
-                                <c:url value="/api/admin/lichtruc/${p.idChiTietTgTruc}" var="apiDel"/>
-                                <div class="admin_submit admin_submit11" onclick="xoaTaiKhoan('${apiDel}')">
+                                <c:url value="/admin/lichtruc/${p.idChiTietTgTruc}" var="apiDel"/>
+                                <div class="admin_submit admin_submit11" onclick="xoaLichTruc('${apiDel}')">
                                     XÓA  
                                 </div>
                             </td>

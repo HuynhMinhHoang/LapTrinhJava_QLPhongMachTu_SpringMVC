@@ -61,7 +61,7 @@
             </div>
 
             <div class="password">
-                <a href="#" style="color: rgb(20, 20, 20); font-size: 15px"><p>Quên mật khẩu?</p></a>
+                <a href="<c:url value ="/quenmatkhau"/>" style="color: rgb(20, 20, 20); font-size: 15px"><p>Quên mật khẩu?</p></a>
             </div>
         </form>
     </div>

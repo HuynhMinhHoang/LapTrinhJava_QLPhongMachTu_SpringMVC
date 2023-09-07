@@ -242,7 +242,9 @@
                                         <tr>
                                             <td>${p.idPhieudk}</td>
                                             <td>${p.idBn.hoTen}</td>
-                                            <td>${p.chonNgaykham}</td>
+                                            <td>
+                                                <fmt:formatDate value="${p.chonNgaykham}" pattern="dd-MM-yyyy" />
+                                            </td>
                                             <td>${p.idPk.trieuChung}</td>
                                             <td>${p.idPk.ketLuan}</td>
                                             <th></th>

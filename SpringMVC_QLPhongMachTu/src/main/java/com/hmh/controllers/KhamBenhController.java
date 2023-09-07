@@ -82,7 +82,6 @@ public class KhamBenhController {
             TaiKhoan u = taiKhoanService.getTaiKhoan(user.getUsername()).get(0);
             model.addAttribute("user", u);
         }
-
         model.addAttribute("pk", this.khamBenhService.getPkbyIdPdk(pdk));
 
         return "khambenh";
@@ -110,8 +109,12 @@ public class KhamBenhController {
         model.addAttribute("listDv", this.khamBenhService.getDichVu());
         model.addAttribute("dsdv", new DichVu());
         model.addAttribute("dsdv", new ChiTietDv());
+//        model.addAttribute("lichSuKham", this.lapDsKhamService.timKiemPDK_LSK(params));
 
         model.addAttribute("lichSuKham", this.khamBenhService.getLichSuKham(params, idBn));
+
+        model.addAttribute("lichSuKham", this.lapDsKhamService.timKiemPDK_LSK(idBn, params));
+
         model.addAttribute("DvDk", this.khamBenhService.getDvByIdPdk(id));
 
         model.addAttribute("pk", this.khamBenhService.getPkbyIdPdk(id));

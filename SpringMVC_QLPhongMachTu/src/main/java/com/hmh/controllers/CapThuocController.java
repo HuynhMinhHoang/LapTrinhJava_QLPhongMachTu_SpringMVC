@@ -165,6 +165,7 @@ public class CapThuocController {
 
             document.open();
             document.add(new Paragraph("TOA THUOC PHONG MACH HEALTH COUCH\n"
+                    + "\nID Phieu Dang Ky: " + phieuDangKy.getIdPhieudk()
                     + "\nTen benh nhan: " + phieuDangKy.getIdBn().getHoTen()
                     + "\nNgay kham: " + phieuDangKy.getChonNgaykham()
                     + "\nKet luan: " + phieuDangKy.getIdPk().getKetLuan())

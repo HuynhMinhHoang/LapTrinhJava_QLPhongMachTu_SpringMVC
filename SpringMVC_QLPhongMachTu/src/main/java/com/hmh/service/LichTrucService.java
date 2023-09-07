@@ -30,6 +30,8 @@ public interface LichTrucService {
     public ChiTietThoiGianTruc getChiTietThoiGianTrucById(int id);
 
     List<Object> getChiTietThoiGianTrucByIDTK(TaiKhoan idTk);
+    
+    List<ChiTietThoiGianTruc> getChiTietTgtByidTk(TaiKhoan id);
 
     boolean xoaLichTruc(int id);
 }

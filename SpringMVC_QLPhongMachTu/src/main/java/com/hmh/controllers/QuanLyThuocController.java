@@ -6,6 +6,7 @@ package com.hmh.controllers;
 
 import com.hmh.pojo.Thuoc;
 import com.hmh.service.QuanLyThuocService;
+import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  *
@@ -30,10 +32,10 @@ public class QuanLyThuocController {
     }
 
     @GetMapping("/admin/quanlythuoc")
-    public String loadDSThuoc(Model model) {
+    public String loadDSThuoc(Model model, @RequestParam Map<String, String> params) {
         model.addAttribute("thuoc", new Thuoc());
         model.addAttribute("qlThuoc", this.quanLyThuocService.getThuoc(null));
-
+        model.addAttribute("qlThuoc", this.quanLyThuocService.timKiemThuoc(params));
         return "quanlythuoc";
     }
 
