@@ -4,6 +4,7 @@
  */
 package com.hmh.pojo;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
@@ -22,8 +23,6 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 
 /**
  *

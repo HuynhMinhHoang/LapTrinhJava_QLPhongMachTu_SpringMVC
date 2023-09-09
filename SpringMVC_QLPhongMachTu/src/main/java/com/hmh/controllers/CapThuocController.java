@@ -75,6 +75,7 @@ public class CapThuocController {
 
         model.addAttribute("addChiTietThuoc", new ChiTietThuoc());
         model.addAttribute("addHoaDon", new HoaDon());
+        model.addAttribute("loaiThuoc", this.quanLyThuocService.getLoaiThuoc());
 
         model.addAttribute("listThuoc", this.capThuocService.getListThuoc(params));
         model.addAttribute("listThuoc", this.capThuocService.timKiemThuoc(params));
@@ -101,6 +102,8 @@ public class CapThuocController {
 
         model.addAttribute("addChiTietThuoc", new ChiTietThuoc());
         model.addAttribute("addHoaDon", new HoaDon());
+
+        model.addAttribute("loaiThuoc", this.quanLyThuocService.getLoaiThuoc());
 
         model.addAttribute("listThuoc", this.capThuocService.getListThuoc(params));
         model.addAttribute("listThuoc", this.capThuocService.timKiemThuoc(params));
@@ -139,12 +142,12 @@ public class CapThuocController {
         }
 
 //        if (cct.getSoLuongSd() != null && !cct.getHdsd().isEmpty()) {
-            if (this.capThuocService.themPhieuThuoc(cct, idPDK)) {
-                thuoc.setSoLuong(slConLai);
-                this.quanLyThuocService.themThuoc(thuoc);
+        if (this.capThuocService.themPhieuThuoc(cct, idPDK)) {
+            thuoc.setSoLuong(slConLai);
+            this.quanLyThuocService.themThuoc(thuoc);
 
-                return "redirect:/bacsi/capthuoc?idPDK=" + idPDK;
-            }
+            return "redirect:/bacsi/capthuoc?idPDK=" + idPDK;
+        }
 //        }
 
         return "capthuoc";

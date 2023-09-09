@@ -6,7 +6,7 @@ import javax.persistence.metamodel.SetAttribute;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
-@Generated(value="EclipseLink-2.7.9.v20210604-rNA", date="2023-09-09T17:13:08")
+@Generated(value="EclipseLink-2.7.9.v20210604-rNA", date="2023-09-09T23:12:39")
 @StaticMetamodel(DichVu.class)
 public class DichVu_ { 
 

@@ -32,6 +32,7 @@ com\hmh\service\LichSuKhamService.class
 com\hmh\controllers\LapDsKhamController.class
 com\hmh\momoclasses\Request.class
 com\hmh\pojo\UserRole_.class
+com\hmh\pojo\LoaiThuoc_.class
 com\hmh\controllers\QuenMatKhauController.class
 com\hmh\momoclasses\Environment.class
 com\hmh\controllers\DoiMatKhauController.class
@@ -155,6 +156,7 @@ com\hmh\service\LapPhieuKhamService.class
 com\hmh\formatter\DonViFormatter.class
 com\hmh\repository\impl\BenhNhanRepositoryImpl.class
 com\hmh\formatter\LapDsKhamFormatter.class
+com\hmh\pojo\LoaiThuoc.class
 com\hmh\repository\ThanhToanRepository.class
 com\hmh\pojo\DonviThuoc.class
 com\hmh\repository\TaiKhoanRepository.class
