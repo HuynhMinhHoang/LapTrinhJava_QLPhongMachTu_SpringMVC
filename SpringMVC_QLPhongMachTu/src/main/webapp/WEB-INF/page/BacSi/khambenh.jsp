@@ -181,9 +181,18 @@
 
 
 
-            <div class="submitdkk submitdkk111 submitdkk1111 submitdkk11119">
-                <a href="<c:url value='/bacsi/capthuoc?idPDK=${idpdk.idPhieudk}'/>" >Cấp thuốc</a>
-            </div>
+            <c:choose>
+                <c:when test="${idpdk.idPk != null}">
+                    <div class="submitdkk submitdkk111 submitdkk1111 submitdkk11119">
+                        <a href="<c:url value='/bacsi/capthuoc?idPDK=${idpdk.idPhieudk}'/>" >Cấp thuốc</a>
+                    </div>
+                </c:when>
+                <c:otherwise>
+                    <div class="submitdkk submitdkk111 submitdkk1111 submitdkk11119" style="display: none;">
+                        <a href="<c:url value='/bacsi/capthuoc?idPDK=${idpdk.idPhieudk}'/>" >Cấp thuốc</a>
+                    </div>
+                </c:otherwise>
+            </c:choose>
 
         </div>
 

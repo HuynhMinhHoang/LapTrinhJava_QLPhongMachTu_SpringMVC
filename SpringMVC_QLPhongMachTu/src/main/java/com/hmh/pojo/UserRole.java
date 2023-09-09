@@ -4,7 +4,6 @@
  */
 package com.hmh.pojo;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.Set;
 import javax.persistence.Basic;
@@ -20,6 +19,8 @@ import javax.persistence.Table;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 /**
  *
@@ -103,5 +104,5 @@ public class UserRole implements Serializable {
     public String toString() {
         return "com.hmh.pojo.UserRole[ idRole=" + idRole + " ]";
     }
-
+    
 }

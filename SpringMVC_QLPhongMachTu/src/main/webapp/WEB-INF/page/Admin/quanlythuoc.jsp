@@ -129,7 +129,7 @@
             <div class="change_ac1">
                 <div class="change1">
                     <h5>Số Lượng</h5>
-                    <form:input type="number" min="0" path="soLuong" id="soLuong" placeholder=""/>
+                    <form:input type="number" min="0" path="soLuong" id="soLuong" placeholder="" required="true"/>
                 </div>
             </div>
 

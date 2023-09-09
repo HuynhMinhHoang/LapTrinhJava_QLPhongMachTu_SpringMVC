@@ -10,7 +10,7 @@ import javax.persistence.metamodel.SetAttribute;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
-@Generated(value="EclipseLink-2.7.9.v20210604-rNA", date="2023-09-08T15:05:22")
+@Generated(value="EclipseLink-2.7.9.v20210604-rNA", date="2023-09-09T17:13:08")
 @StaticMetamodel(PhieuDangKy.class)
 public class PhieuDangKy_ { 
 
@@ -19,6 +19,7 @@ public class PhieuDangKy_ {
     public static volatile SingularAttribute<PhieuDangKy, TaiKhoan> idBn;
     public static volatile SingularAttribute<PhieuDangKy, PhieuKhamBenh> idPk;
     public static volatile SingularAttribute<PhieuDangKy, TaiKhoan> idYt;
+    public static volatile SingularAttribute<PhieuDangKy, Date> thoiGianTaophieu;
     public static volatile SingularAttribute<PhieuDangKy, Short> trangThaidky;
     public static volatile SingularAttribute<PhieuDangKy, String> thoiGianKham;
     public static volatile SetAttribute<PhieuDangKy, HoaDon> hoaDonSet;

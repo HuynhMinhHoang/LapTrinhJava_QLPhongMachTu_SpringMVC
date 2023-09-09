@@ -73,7 +73,7 @@ public class LapDsKhamController {
     public String lapdskham(Model model, Authentication authentication, @RequestParam Map<String, String> params) {
 //        model.addAttribute("user", new TaiKhoan());
         model.addAttribute("themDSpdk", new PhieuDangKy());
-       
+
         model.addAttribute("dskham", this.phieuDangKyService.getPhieuDangKy(params));
 //        model.addAttribute("dsbacsi", this.phieuDangKyService.getBacSi());
         model.addAttribute("dskham", this.phieuDangKyService.timKiemPDK(params));
@@ -110,7 +110,7 @@ public class LapDsKhamController {
 
         }
 
-         model.addAttribute("msg", msg);
+        model.addAttribute("msg", msg);
         model.addAttribute("dsTk", dsTk);
         return "lapdskham";
     }
@@ -119,7 +119,7 @@ public class LapDsKhamController {
     public String lapdskham(Model model, @ModelAttribute(value = "themDSpdk") PhieuDangKy pdk, BindingResult rs,
             @RequestParam Map<String, String> params) throws MessagingException, ParseException, UnsupportedEncodingException {
 
-        int demPk = 0;
+        int demPk = 1;
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 
         Date currentDate = new Date();
@@ -138,9 +138,10 @@ public class LapDsKhamController {
             }
         }
 
-        if (demPk < 5) {
+        if (demPk <= 2) {
             if (!rs.hasErrors()) {
                 if (this.phieuDangKyService.themVaCapNhat(pdk) == true) {
+
 //                    MimeMessage message = javaMailSender.createMimeMessage();
 //                    MimeMessageHelper helper = new MimeMessageHelper(message, true, "UTF-8");
 //
@@ -165,7 +166,6 @@ public class LapDsKhamController {
 //                    helper.setText(content, true);
 //
 //                    javaMailSender.send(message);
-
                     msg = "Xác nhận thành công!";
                     return "redirect:/yta/lapdskham/" + id + "?msg=" + URLEncoder.encode(msg, "UTF-8");
                 } else {

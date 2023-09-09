@@ -72,7 +72,7 @@
 
 
                         <div class="contentdkk5 contentdkk51">
-                            <form:input class="custom-input" type="number" min="0" id="custom-input1" path="soLuongSd" placeholder="Số lượng" />
+                            <form:input class="custom-input" type="number" min="0" id="custom-input1" path="soLuongSd" placeholder="Số lượng" required="true"/>
                         </div>
 
                         <div class="contentdkk5 contentdkk51 contentdkk511">
@@ -90,12 +90,12 @@
 
 
                     <div class="contentdkk5 contentdkk51">
-                        <form:input class="custom-input" type="text" id="custom-input1" path="hdsd" placeholder="Hướng dẫn sử dụng thuốc" />
+                        <form:input class="custom-input" type="text" id="custom-input1" path="hdsd" placeholder="Hướng dẫn sử dụng thuốc" required="true"/>
                     </div>
 
 
                     <!--                    <div class="submitdkk submitdkk111 submitdkk1111">
-                                            <a href="<c:url value ="/bacsi/capthuoc?idPDK"/>" ><button type="submit" >LƯU THÔNG TIN</button></a>
+                                            <a href="<:url value ="/bacsi/capthuoc?idPDK"/>" ><button type="submit" >LƯU THÔNG TIN</button></a>
                                         </div>-->
                 </div>
 
@@ -157,14 +157,14 @@
                         <a href="${pageContext.request.contextPath}/ThongTinThuoc-PDF?idPDK=${idPDK}" target="_blank">XUẤT FILE THUỐC (PDF)</a>
                     </div>
 
-                    
+
                 </c:if>
-                
+
                 <div class="submitdkk submitdkk111 submitdkk1111">
-                        <a>
-                            <button type="submit" >XUẤT HÓA ĐƠN</button>
-                        </a>
-                    </div>
+                    <a>
+                        <button type="submit" >XUẤT HÓA ĐƠN</button>
+                    </a>
+                </div>
 
 
 

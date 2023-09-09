@@ -78,6 +78,14 @@ public class CapThuocController {
 
         model.addAttribute("listThuoc", this.capThuocService.getListThuoc(params));
         model.addAttribute("listThuoc", this.capThuocService.timKiemThuoc(params));
+
+        if (authentication != null) {
+            UserDetails user = taiKhoanService.loadUserByUsername(authentication.getName());
+            TaiKhoan u = taiKhoanService.getTaiKhoan(user.getUsername()).get(0);
+            model.addAttribute("user", u);
+
+        }
+
         model.addAttribute("listThuocByID", capThuocService.layThuocByPhieuDangKyId(idPDK));
         PhieuDangKy phieuDangKy = this.khamBenhService.getPDK(idPDK);
 
@@ -88,51 +96,56 @@ public class CapThuocController {
     }
 
     @GetMapping("/bacsi/capthuoc/{id}")
-    public String khamBenhByID(Model model, @PathVariable(value = "id") int id, @RequestParam Map<String, String> params, Authentication authentication, @RequestParam(name = "err", required = false) String err) {
+    public String khamBenhByID(Model model, @RequestParam(name = "err", required = false) String err,
+            @PathVariable(value = "id") int id, @RequestParam Map<String, String> params, Authentication authentication) {
 
         model.addAttribute("addChiTietThuoc", new ChiTietThuoc());
         model.addAttribute("addHoaDon", new HoaDon());
+
         model.addAttribute("listThuoc", this.capThuocService.getListThuoc(params));
         model.addAttribute("listThuoc", this.capThuocService.timKiemThuoc(params));
+        PhieuDangKy phieuDangKy = this.khamBenhService.getPDK(id);
+
+        List<ChiTietThuoc> listThuoc = this.capThuocService.layThuocByPhieuDangKyId(id);
 
         if (authentication != null) {
             UserDetails user = taiKhoanService.loadUserByUsername(authentication.getName());
             TaiKhoan u = taiKhoanService.getTaiKhoan(user.getUsername()).get(0);
             model.addAttribute("user", u);
         }
+
+        model.addAttribute("idpdk", phieuDangKy);
+        model.addAttribute("listThuocByID", listThuoc);
+
         model.addAttribute("err", err);
+
         return "capthuoc";
     }
 
     @PostMapping("/bacsi/capthuoc")
     public String taoChiTietThuocvaHoaDon(Model model, @ModelAttribute(value = "addChiTietThuoc") ChiTietThuoc cct, @RequestParam Map<String, String> params,
-            @RequestParam("idPDK") int idPDK, @ModelAttribute(value = "addHoaDon") HoaDon hd, BindingResult rs) throws UnsupportedEncodingException {
+            @RequestParam("idPDK") int idPDK, @ModelAttribute(value = "addHoaDon") HoaDon hd) throws UnsupportedEncodingException {
 
+        PhieuDangKy pdk = this.phieuDangKyService.getPhieuDangKyById(idPDK);
         String err = "";
         Thuoc thuoc = this.quanLyThuocService.getThuocById(cct.getIdThuoc().getIdThuoc());
-        Integer slThuoc = thuoc.getSoLuong();
-        Integer slBan = cct.getSoLuongSd();
-        Integer slConLai = slThuoc - slBan;
+        int slThuoc = thuoc.getSoLuong();
+        int slBan = cct.getSoLuongSd();
+        int slConLai = slThuoc - slBan;
 
         if (slBan > slConLai) {
             err = "Số lượng thuốc không đủ!";
-            return "redirect:/bacsi/capthuoc/" + idPDK + "?err=" + URLEncoder.encode(err, "UTF-8");
+            return "redirect:/bacsi/capthuoc?idPDK=" + pdk.getIdPhieudk();
         }
 
-        if (!rs.hasErrors()) {
-            if (!cct.getHdsd().isEmpty() && cct.getSoLuongSd()!= null) {
-                if (this.capThuocService.themPhieuThuoc(cct, idPDK)) {
-                    thuoc.setSoLuong(slConLai);
-                    this.quanLyThuocService.themThuoc(thuoc);
+//        if (cct.getSoLuongSd() != null && !cct.getHdsd().isEmpty()) {
+            if (this.capThuocService.themPhieuThuoc(cct, idPDK)) {
+                thuoc.setSoLuong(slConLai);
+                this.quanLyThuocService.themThuoc(thuoc);
 
-                    return "redirect:/bacsi/capthuoc/" + idPDK;
-                }
-
-            } else {
-                err = "Vui lòng nhập đầy đủ thông tin!";
-                return "redirect:/bacsi/capthuoc/" + idPDK + "?err=" + URLEncoder.encode(err, "UTF-8");
+                return "redirect:/bacsi/capthuoc?idPDK=" + idPDK;
             }
-        }
+//        }
 
         return "capthuoc";
     }
