@@ -16,6 +16,7 @@
 <!--</div>-->
 <%--</c:if>--%>
 
+
 <main class="table table324234">
 
     <div>
@@ -34,26 +35,46 @@
                         <th>Chức vụ</th>
                         <th>Ca trực</th>
                         <th>Ngày đăng ký</th>
-<!--                        <th>Trạng thái</th>-->
+                        <th></th>
+                        <!--                        <th>Trạng thái</th>-->
                         <!--<th></th>-->
                         <!--<th></th>-->
                     </tr>
                 </thead>
 
                 <tbody>
-                    <c:forEach items="${listCTLT}" var="p">
+                    <c:forEach items="${listCTLT}" var="p" varStatus="status">
+                        <%--<form:hidden path="idChiTietTgTruc" id="idChiTietTgTruc_${p.idChiTietTgTruc}"/>--%>
+                        <%--<form:hidden path="ngayDkyTruc"/>--%>
+                        <%--<form:hidden path="idTk"/>--%>
+                        <%--<form:hidden path="idTgTruc"/>--%>
                         <tr>
                             <td>${p.idTk.idTk}</td>
                             <td>${p.idTk.hoTen}</td>
                             <td>${p.idTk.idRole.chucVu}</td>                     
-                            <td>${p.idTgTruc.buoiTruc} (${p.idTgTruc.batDau} - ${p.idTgTruc.ketThuc})</td>
+                            <td>[${p.idChiTietTgTruc}] ${p.idTgTruc.buoiTruc} (${p.idTgTruc.batDau} - ${p.idTgTruc.ketThuc})</td>
                             <td> <fmt:formatDate value="${p.ngayDkyTruc}" pattern="EEEE, dd-MM-yyyy" /></td>
-                 
-<!--                            <td>
-                                <div class="admin_submit admin_submit11 admin_submit1113">
-                                    Ðiểm danh
-                                </div>
-                            </td>-->
+                            <c:choose>
+                                <c:when test="${p.trangThaiTruc eq 1}">
+                                    <td>
+                                        <p id="xacnhan1"> Đã điểm danh</p>
+                                    </td>
+                                </c:when>
+                                <c:otherwise>
+                                    <td>
+                                        <c:choose>
+                                            <c:when test="${gioHienTai ge p.idTgTruc.batDau and gioHienTai le p.idTgTruc.ketThuc and ngayHienTai eq p.ngayDkyTruc  }">
+                                                <input type="hidden" name="idChiTietTgTruc" id="idChiTietTgTruc" value="${p.idChiTietTgTruc}">                                     
+                                                <a href="<c:url value="/yta/dangkylichYT/${p.idChiTietTgTruc}"/>">Điểm danh</a>
+
+                                            </c:when>
+                                            <c:otherwise>
+                                                <p id="xacnhan">Ngoài giờ điểm danh</p>
+                                            </c:otherwise>
+                                        </c:choose>
+                                    </td>
+                                </c:otherwise>
+                            </c:choose>
                         </tr>
                     </c:forEach>
                 </tbody>
@@ -61,29 +82,6 @@
         </section>
 
     </div>
+
 </main> 
 
-<script>
-    function displayCurrentTime() {
-        var currentTime = new Date();
-
-        var daysOfWeek = ["Chủ Nhật", "Thứ Hai", "Thứ Ba", "Thứ Tư", "Thứ Năm", "Thứ Sáu", "Thứ Bảy"];
-        var dayOfWeek = daysOfWeek[currentTime.getDay()];
-
-        var day = currentTime.getDate();
-        var month = currentTime.getMonth() + 1; // Lưu ý: Tháng bắt đầu từ 0
-        var year = currentTime.getFullYear();
-
-        var hours = currentTime.getHours();
-        var minutes = currentTime.getMinutes();
-        var seconds = currentTime.getSeconds();
-
-        var formattedTime = dayOfWeek + ", " + day + "-" + month + "-" + year + " " + hours + ":" + minutes + ":" + seconds;
-
-        document.getElementById("current-time").textContent = formattedTime;
-    }
-
-    // Gọi hàm displayCurrentTime một lần khi trang được tải và sau đó mỗi giây
-    displayCurrentTime();
-    setInterval(displayCurrentTime, 1000);
-</script>

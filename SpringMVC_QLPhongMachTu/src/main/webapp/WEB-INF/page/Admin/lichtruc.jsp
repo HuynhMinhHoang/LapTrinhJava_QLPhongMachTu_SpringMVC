@@ -16,6 +16,12 @@
 
 <main class="table">
 
+    <c:if test="${msg != null}">
+        <div class="alert1">
+            ${msg}
+        </div>
+    </c:if>
+
 
     <div>
         <div class="textThongKe">

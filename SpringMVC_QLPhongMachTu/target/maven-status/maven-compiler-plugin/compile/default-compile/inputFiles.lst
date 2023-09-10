@@ -113,6 +113,7 @@ C:\Users\Asus\Desktop\SpringMVC_QLPhongMachTu\SpringMVC_QLPhongMachTu\src\main\j
 C:\Users\Asus\Desktop\SpringMVC_QLPhongMachTu\SpringMVC_QLPhongMachTu\src\main\java\com\hmh\repository\impl\ChiTietDVRepositoryImpl.java
 C:\Users\Asus\Desktop\SpringMVC_QLPhongMachTu\SpringMVC_QLPhongMachTu\src\main\java\com\hmh\service\impl\QuanLyThuocServiceImpl.java
 C:\Users\Asus\Desktop\SpringMVC_QLPhongMachTu\SpringMVC_QLPhongMachTu\src\main\java\com\hmh\service\BenhNhanService.java
+C:\Users\Asus\Desktop\SpringMVC_QLPhongMachTu\SpringMVC_QLPhongMachTu\src\main\java\com\hmh\formatter\LoaiThuocFormatter.java
 C:\Users\Asus\Desktop\SpringMVC_QLPhongMachTu\SpringMVC_QLPhongMachTu\src\main\java\com\hmh\controllers\DangNhapController.java
 C:\Users\Asus\Desktop\SpringMVC_QLPhongMachTu\SpringMVC_QLPhongMachTu\src\main\java\com\hmh\repository\QuanLyThuocRepository.java
 C:\Users\Asus\Desktop\SpringMVC_QLPhongMachTu\SpringMVC_QLPhongMachTu\src\main\java\com\hmh\configs\HibernateConfig.java

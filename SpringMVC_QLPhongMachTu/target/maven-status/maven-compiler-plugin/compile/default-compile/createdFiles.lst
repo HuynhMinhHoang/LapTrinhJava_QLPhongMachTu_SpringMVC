@@ -107,6 +107,7 @@ com\hmh\service\impl\ThongKeServiceImpl.class
 com\hmh\pojo\ChiTietThoiGianTruc.class
 com\hmh\controllers\ApiBenhNhanController.class
 com\hmh\repository\ChiTietDVRepository.class
+com\hmh\formatter\LoaiThuocFormatter.class
 com\hmh\service\impl\UserRoleServiceImpl.class
 com\hmh\enums\RequestType.class
 com\hmh\service\ChiTietDVService.class

@@ -36,4 +36,5 @@ public interface LichTrucRepository {
 
     boolean xoaLichTruc(int id);
 
+    boolean update(ChiTietThoiGianTruc tg);
 }

@@ -70,4 +70,10 @@ public class LichTrucServiceImpl implements LichTrucService {
     public List<ChiTietThoiGianTruc> getChiTietTgtByidTk(TaiKhoan idTk) {
         return this.lichTrucRepository.getChiTietTgtByidTk(idTk);
     }
+
+    @Override
+    public boolean update(ChiTietThoiGianTruc tg) {
+        return this.lichTrucRepository.update(tg);
+    }
+
 }

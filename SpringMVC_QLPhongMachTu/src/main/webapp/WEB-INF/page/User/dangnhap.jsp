@@ -6,9 +6,16 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<!DOCTYPE html>
 
 <c:url value="/dangnhap" var="action"/>
+
+<c:if test="${not empty requestScope.loginError}">
+    <div class="alert1">
+        ${requestScope.loginError}
+    </div>
+</c:if>
+
+
 <c:if test="${param.error !=null}">
     <div class="alert1">
         Sai tài khoản hoặc mật khẩu!
@@ -16,12 +23,13 @@
 </c:if>
 
 
-
 <c:if test="${param.accessDenied != null}">
     <div class="alert1">
         Không có quyền truy cập!
     </div>
 </c:if>
+
+
 
 
 
