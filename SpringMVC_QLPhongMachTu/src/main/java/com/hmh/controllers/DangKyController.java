@@ -58,7 +58,7 @@ public class DangKyController {
 
         if (!rs.hasErrors()) {
             if (!user.getTaiKhoan().isEmpty() && !user.getMatKhau().isEmpty() && !user.getHoTen().isEmpty() && !user.getConfirmmatKhau().isEmpty() && !user.getEmail().isEmpty() && !user.getGioiTinh().isEmpty()
-                    && !user.getNgaySinh().equals(null) && !user.getSdt().isEmpty() && !user.getDiaChi().isEmpty()) {
+                    && user.getNgaySinh() != null && !user.getSdt().isEmpty() && !user.getDiaChi().isEmpty()) {
                 if (userDetailsService.getTaiKhoan(username).isEmpty()) {
                     if (user.getMatKhau().equals(user.getConfirmmatKhau())) {
                         if (this.userDetailsService.addTaiKhoan(user) == true) {

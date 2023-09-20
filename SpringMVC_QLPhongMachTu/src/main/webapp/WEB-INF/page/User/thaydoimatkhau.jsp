@@ -42,7 +42,7 @@
                         </div>
 
                         <div class="one1111">
-                            <input type="number" min="0" id="maXacNhan" name="maXacNhan" placeholder="Nhập mã xác nhận"/>
+                            <input type="number" min="0" id="maXacNhan" name="maXacNhan" placeholder="Nhập mã xác nhận" required="true"/>
                         </div>
                     </div>
                 </div>
@@ -54,7 +54,7 @@
                         </div>
 
                         <div class="one1111">
-                            <input type="password" id="matKhauMoi" name="matKhauMoi" placeholder="Nhập mật khẩu mới"/>
+                            <input type="password" id="matKhauMoi" name="matKhauMoi" placeholder="Nhập mật khẩu mới" />
                         </div>
 
                     </div>
